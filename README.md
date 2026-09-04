@@ -6,12 +6,14 @@ Der bestehende ältere Kurs wird **nicht einfach gekürzt oder modernisiert**, s
 
 ## Aktueller Stand
 
-Die Arbeitsblätter **A1–A12** sind erstellt und liegen unter [arbeitsblaetter/](arbeitsblaetter/README.md). Die benötigten Bilddateien und visuellen Vorlagen liegen in `arbeitsblaetter/assets/`.
+Die Arbeitsblätter **A1–A13** sind erstellt und liegen unter [arbeitsblaetter/](arbeitsblaetter/README.md). Ebenfalls fertig ist der **unbenotete Word-Übungstest** mit Aufgabenblatt, Ausgangsdokument und Bilddatei.
+
+Die benötigten Bilddateien und visuellen Vorlagen liegen in `arbeitsblaetter/assets/`.
 
 ## Geplanter Umfang
 
-- 13 Arbeitsblätter (`A1`–`A13`)
-- 1 vollständiger **unbenoteter Übungstest**
+- 13 Arbeitsblätter (`A1`–`A13`) ✅
+- 1 vollständiger **unbenoteter Übungstest** ✅
 - 1 benoteter **persönlicher Steckbrief mit Foto**
 - 1 benoteter **Word-Test**
 - zusätzlich eine **Fleissnote** aus `A1`–`A13`
@@ -36,3 +38,10 @@ Wichtig: Generierte DOCX-Dateien nicht isoliert von Hand pflegen. Änderungen so
 Die Schülerinnen und Schüler sollen Word **durch Benutzung lernen**, nicht durch lange Erklärungen zur Benutzeroberfläche.
 
 Jedes Arbeitsblatt soll möglichst eine klare Kompetenz, einen sichtbaren Arbeitsauftrag und ein konkretes Resultat haben. Gegen Ende des Kurses werden bekannte Funktionen kombiniert und die Hilfestellungen reduziert.
+
+Die Progression endet bewusst mit:
+
+- **A11:** komplexere Vorlage nachbauen
+- **A12:** selbst gestalten ohne Zielvorlage
+- **A13:** zweiseitiger Gesamtauftrag ohne neue Word-Funktion
+- **Übungstest:** testähnliche Situation mit separater Ausgangsdatei
