@@ -4,6 +4,10 @@ Neu konzipierter Word-Kurs für eine 8. Klasse in der Schweiz.
 
 Der bestehende ältere Kurs wird **nicht einfach gekürzt oder modernisiert**, sondern didaktisch neu aufgebaut: kurze Aufträge, wenig Erklärungstext, direktes Arbeiten in Word und zunehmend selbstständige Anwendung.
 
+## Aktueller Stand
+
+Die Arbeitsblätter **A1–A9** sind erstellt und liegen unter [arbeitsblaetter/](arbeitsblaetter/README.md). Die benötigten Bilddateien und visuellen Vorlagen liegen in `arbeitsblaetter/assets/`.
+
 ## Geplanter Umfang
 
 - 13 Arbeitsblätter (`A1`–`A13`)
