@@ -14,6 +14,11 @@ Aktueller Arbeitsstand des Word-Kurses.
 - A10 – Kopf- & Fusszeile / Seitenzahlen
 - A11 – Dokument nach Vorlage nachbauen
 - A12 – Selbstständig gestalten
+- A13 – Gesamtauftrag / Prüfungsvorbereitung
+
+Zusätzlich:
+- `Uebungstest_Word.docx` – unbenotetes Aufgabenblatt
+- `Uebungstest_Ausgangsdokument.docx` – Ausgangsdatei zum Bearbeiten
 
 `assets/` enthält die für Aufgaben benötigten Bilddateien sowie die eingebetteten Zielvorlagen.
 
