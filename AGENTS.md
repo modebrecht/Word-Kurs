@@ -1,32 +1,34 @@
 # AGENTS.md – Arbeitsweise für den Word-Kurs
 
-Diese Datei beschreibt, wie neue Arbeitsblätter in diesem Repository erstellt und bestehende Blätter geändert werden sollen. Sie ist die technische und didaktische Arbeitsanweisung für weitere Bearbeitung durch Menschen oder Coding-/AI-Agenten.
+Diese Datei beschreibt, wie neue Arbeitsblätter, Tests und bestehende DOCX-Dateien in diesem Repository erstellt bzw. geändert werden sollen.
 
-## 1. Grundprinzip
+## 1. Source of Truth
 
 Die DOCX-Dateien unter `arbeitsblaetter/` sind **generierte Ergebnisse**. Die eigentliche Quelle liegt in `src/`.
 
 Darum gilt:
 
-- Änderungen an einem Arbeitsblatt möglichst **nicht nur direkt in der DOCX-Datei** machen.
-- Die Änderung im passenden Python-Builder unter `src/` umsetzen.
-- Danach die DOCX-Dateien neu generieren.
-- Neue wiederverwendbare Layout-Funktionen gehören nach Möglichkeit in `src/course_common.py`.
-- `src/generate_course.py` ist der gemeinsame Einstiegspunkt für den vollständigen Build.
+- Änderungen nicht nur direkt in einer generierten DOCX vornehmen.
+- Änderung im passenden Python-Builder unter `src/` umsetzen.
+- Danach den vollständigen Kurs neu generieren.
+- Wiederverwendbare Layout-Funktionen gehören nach `src/course_common.py`.
+- `src/generate_course.py` ist der gemeinsame Einstiegspunkt.
 
-Aktuell ist der Generator aufgeteilt in:
+Aktuelle Builder:
 
 - `src/build_a1_a5.py`
 - `src/build_a6_a9.py`
-- `src/build_a10_a13.py`
+- `src/build_a10_a13.py` – enthält aktuell A10–A12
+- `src/build_a13.py`
+- `src/build_uebungstest.py`
 - `src/course_common.py`
 - `src/generate_course.py`
 
-`build_a10_a13.py` enthält aktuell A10–A12. A13 wird dort als nächstes ergänzt.
+Neue grössere Blöcke dürfen eigene Builder erhalten. Bestehende Builder nicht unnötig zu Monolithen ausbauen.
 
-## 2. Ziel des Kurses
+## 2. Kursziel und Didaktik
 
-Der Kurs ist für eine 8. Sekundarklasse konzipiert. Die Arbeitsblätter sollen nicht wie ein Word-Handbuch wirken.
+Zielgruppe ist eine 8. Sekundarklasse. Die Arbeitsblätter sollen nicht wie ein Word-Handbuch wirken.
 
 Bevorzugt werden:
 
@@ -35,56 +37,54 @@ Bevorzugt werden:
 - ein sichtbares Resultat
 - kurze, konkrete Formulierungen
 - direkte Arbeit in Word
-- Wiederholung bereits bekannter Funktionen
+- Wiederholung bekannter Funktionen
 - zunehmend weniger Hilfestellung
 
-Die zentrale didaktische Regel lautet:
+Zentrale Regel:
 
 > Schwieriger bedeutet nicht automatisch, mehr Information zu verstecken.
 
-Nur Informationen verstecken oder selbst ableiten lassen, wenn genau diese Ableitung Teil des Lernziels ist. Keine zusätzliche Denkaufgabe einbauen, die mit der eigentlichen Word-Kompetenz nichts zu tun hat.
+Nur Informationen verstecken oder selbst ableiten lassen, wenn diese Ableitung Teil des Lernziels ist. Keine zusätzliche Denkaufgabe einbauen, die mit der eigentlichen Word-Kompetenz nichts zu tun hat.
 
 Bei jedem Blatt prüfen:
 
-- Was ist das eigentliche Lernziel?
-- Was müssen die Schülerinnen und Schüler bereits können?
-- Welche Informationen sind sichtbar und welche müssen sie selbst ableiten?
+- Was ist die neue bzw. zentrale Kompetenz?
+- Was müssen die Schülerinnen und Schüler schon können?
+- Welche Informationen müssen sichtbar bleiben?
 - Entsteht unbeabsichtigte Zusatzbelastung?
 - Wird aus Versehen mehr als eine neue Kompetenz gleichzeitig geprüft?
 - Ist die Progression geführt → teilweise geführt → selbstständig nachvollziehbar?
 
 Siehe zusätzlich `planung/DIDAKTIK.md` und `planung/KURSUEBERSICHT.md`.
 
-## 3. Sprache und Schwierigkeitsgrad
+## 3. Sprache
 
 Die Klasse ist eher schwach. Darum:
 
 - keine unnötigen Fachbegriffe
-- lieber `Farbe`, `Blau`, `dunkelblau` als Begriffe wie `Akzentfarbe`
-- Arbeitsschritte sichtbar und eindeutig formulieren
+- lieber `Farbe`, `Blau`, `dunkelblau` als `Akzentfarbe`
+- Arbeitsschritte eindeutig formulieren
 - bei frühen Blättern konkrete Textstellen nennen
-- keine widersprüchlich wirkenden Anweisungen wie zuerst „alles 11 pt“ und danach ohne Reihenfolge „Titel 20 pt“
+- keine widersprüchlich wirkenden Vorgaben
 - neue Funktionen einzeln einführen und später kombinieren
-
-Ein sichtbarer Nachbau nach Vorlage ist in frühen Blättern ausdrücklich erwünscht. Das reduziert Interpretationslast und macht das Ziel kontrollierbar.
 
 ## 4. Visuelles System
 
 Alle Arbeitsblätter sollen wie Teile desselben Kurses aussehen.
 
-Wichtige Konstanten:
+Konstanten:
 
-- Schrift: **Arial** als robuste Standardschrift
-- Hauptfarbe Navy: `#17324D`
-- Teal: ungefähr `#237B78`
+- Schrift: **Arial**
+- Navy: `#17324D`
+- Teal: `#237B78`
 - dunkles Teal: `#1D6765`
 - helles Grau: `#F3F6F7`
 - helles Teal: `#EAF4F3`
 - warmer Tipp-Hintergrund: `#F8F3EA`
-- Grau für Sekundärtext: `#667684`
-- Linien: ungefähr `#D3DEE2`
+- Sekundärtext: `#667684`
+- Linien: `#D3DEE2`
 
-Das Hauptlayout arbeitet mit einem festen zweispaltigen Raster:
+Hauptraster:
 
 - linke Labelspalte: ca. `3.2244 cm`
 - rechte Inhaltsspalte: ca. `14.1164 cm`
@@ -92,70 +92,52 @@ Das Hauptlayout arbeitet mit einem festen zweispaltigen Raster:
 
 Typischer Aufbau:
 
-1. Header `WORD KURS | SEKUNDARSTUFE I · SEK 8 | ARBEITSBLATT A#`
+1. Kurs-Header
 2. Codezeile
 3. grosser Titel
 4. kurze Unterzeile
 5. Lernziel
-6. Aufgabe(n)
-7. Tipp / Merke / Check nur wenn didaktisch nötig
+6. Aufgabe
+7. Tipp / Merke / Check nur wenn nötig
 8. Abschlusszeile
-9. Footer mit Blattnummer und Titel
+9. Footer
 
-Die Abschlusszeile lautet grundsätzlich:
+Grundsätzliche Abschlusszeile:
 
 `FERTIG? Gib dieses Arbeitsblatt in deinem Ordner "IB" ab.`
 
-Bei Aufgaben mit zusätzlicher Bilddatei darf sie passend erweitert werden.
+Bei zusätzlichen Bilddateien darf sie entsprechend erweitert werden.
 
-Keine Name-/Klasse-/Datum-Zeile hinzufügen, sofern dies nicht ausdrücklich für eine spätere Aufgabe verlangt wird.
+Keine Name-/Klasse-/Datum-Zeile hinzufügen, ausser sie wird für eine konkrete spätere Aufgabe benötigt.
 
-## 5. Eine oder mehrere Seiten?
+## 5. Seiten und Arbeitsbereiche
 
-**Eine Seite bevorzugen**, wenn die Aufgabe sinnvoll darauf Platz hat.
+Eine Seite bevorzugen, wenn die Aufgabe sinnvoll darauf Platz hat.
 
-Mehrere Seiten sind sinnvoll, wenn dadurch die Arbeit in Word sauberer wird. Beispiele:
+Mehrere Seiten verwenden, wenn dadurch echtes Arbeiten in Word sauberer möglich wird, z. B.:
 
-- Seite 1 = Anleitung, Seite 2 = echte Übungsseite für Seitenlayout
-- Seite 1 = Anleitung, Seite 2 = freie Fläche für eine echte Word-Tabelle
-- Seite 1 = Anleitung, Seiten 2–3 = mehrseitiges Dokument für Kopf-/Fusszeilen
-- Seite 1 = Auftrag, Seite 2 = Rohmaterial für einen selbstständigen Nachbau oder Gestaltungsauftrag
+- Anleitung + separate Übungsseite für Seitenlayout
+- Anleitung + freie Seite für eine echte Tabelle
+- Anleitung + zweitseitiger Arbeitsbereich für Kopf-/Fusszeilen
+- Aufgabenblatt + separate Ausgangsdatei bei testähnlichen Aufgaben
 
-Nicht künstlich alles auf eine Seite quetschen. Umgekehrt keine zweite Seite nur für zusätzlichen Erklärungstext erzeugen.
+Arbeitsbereiche dürfen in einen eigenen Abschnitt gelegt werden, wenn Schülerinnen und Schüler dort Kopf-/Fusszeilen oder Seiteneinstellungen verändern sollen, ohne das Aufgabenblatt zu zerstören.
 
-## 6. Vorgehen für ein neues Arbeitsblatt
+## 6. Vorgehen für neue DOCX-Dateien
 
-### Schritt 1 – Lernziel festlegen
+### Lernziel festlegen
 
-Zuerst in einem Satz bestimmen, welche **neue** Word-Kompetenz gelernt werden soll.
+Zuerst in einem Satz bestimmen, welche Kompetenz gelernt oder überprüft wird.
 
-Beispiele:
+Alles andere sollte bereits bekannt sein oder sichtbar erklärt werden.
 
-- A7: Bild einfügen, zuschneiden, Textumbruch
-- A8: Tabelle erstellen und Zellen verbinden
-- A9: Formatvorlagen statt manueller Überschriftenformatierung
-- A10: Kopf-/Fusszeile und automatische Seitenzahl
+### Aufgabe als Produkt denken
 
-Alles andere auf dem Blatt sollte entweder bereits bekannt sein oder sichtbar erklärt werden.
+Nicht nur eine Funktion isoliert anklicken lassen, sondern ein kleines sinnvolles Produkt bauen lassen, etwa Flyer, Infoblatt, Reisebericht, Tabelle oder Veranstaltungsankündigung.
 
-### Schritt 2 – Aufgabe als Produkt denken
+### Builder ergänzen
 
-Nicht „klicke auf Funktion X“, sondern ein kleines sichtbares Produkt bauen lassen:
-
-- Einladung
-- Infoblatt
-- Sporttag-Plan
-- Reisebericht
-- Tabelle
-- Flyer
-
-Das Produkt soll den Einsatz der Funktion sinnvoll machen.
-
-### Schritt 3 – Builder ergänzen
-
-Neue Blattfunktion im passenden Builder anlegen.
-
-Gemeinsame Dinge nicht duplizieren, sondern aus `course_common.py` verwenden bzw. dort ergänzen:
+Neue Blattfunktion im passenden Builder anlegen. Gemeinsame Dinge aus `course_common.py` verwenden:
 
 - Farben
 - Schrift
@@ -165,156 +147,148 @@ Gemeinsame Dinge nicht duplizieren, sondern aus `course_common.py` verwenden bzw
 - Absatzformatierung
 - Seitenaufbau
 
-Danach sicherstellen, dass der Builder in `src/generate_course.py` eingebunden ist.
+Danach den Builder in `src/generate_course.py` einbinden.
 
-### Schritt 4 – Assets sauber ablegen
+### Assets
 
-Aufgabenbilder und visuelle Zielvorlagen gehören nach `arbeitsblaetter/assets/` bzw. in den passenden Unterordner.
+Aufgabenbilder nach `arbeitsblaetter/assets/`, visuelle Zielvorlagen nach `arbeitsblaetter/assets/vorlagen/`.
 
 Dateinamen:
 
 - klein
 - eindeutig
-- mit Blattnummer beginnen, z. B. `a7_schulhaus.png`
-- keine temporären Dateien oder kryptischen Namen committen
+- möglichst mit Blattnummer oder Zweck beginnen
+- keine temporären Dateien
+- wenn möglich reproduzierbar im Builder erzeugen
 
-Wenn eine visuelle Vorlage automatisch erzeugt werden kann, diese ebenfalls reproduzierbar über den Builder erzeugen.
+## 7. Generieren
 
-Bei A11 wurde das Bergbild beispielsweise direkt im Generator erzeugt. Dabei auf **sichtbaren Kontrast** achten: Schnee, Berg und Himmel dürfen nicht nahezu gleich aussehen.
-
-### Schritt 5 – Generieren
-
-Lokal aus dem Repository-Root:
-
-```bash
-python src/generate_course.py
-```
-
-Abhängigkeiten vorher installieren:
+Vom Repository-Root:
 
 ```bash
 pip install -r requirements.txt
+python src/generate_course.py
 ```
 
 Die fertigen Dateien landen unter `arbeitsblaetter/`.
 
-## 7. Pflicht-QA für jede DOCX-Datei
+## 8. Pflicht-QA
 
-Eine DOCX ist **nicht fertig**, nur weil sie sich erzeugen lässt.
+Eine DOCX ist **nicht fertig**, nur weil sie erzeugt werden kann.
 
 Nach jeder Erstellung oder Layoutänderung:
 
-1. DOCX rendern bzw. als PDF/PNG ausgeben.
-2. **Jede Seite** visuell kontrollieren.
-3. Bei 100 % prüfen:
+1. DOCX mit dem kanonischen Renderer rendern.
+2. **Jede Seite** als PNG bei 100 % visuell kontrollieren.
+3. Prüfen:
    - abgeschnittener Text
-   - überlappende Elemente
+   - Überlappungen
    - falsche Seitenumbrüche
-   - schiefe Spaltenbreiten
-   - unterschiedliche Rasterbreiten
+   - schiefe Raster/Spalten
    - zu kleine Schrift
    - unerwartete Leerzeilen
-   - Header/Footer korrekt
+   - Header/Footer
    - Bilder nicht verzerrt
-   - Tabellen nicht über den Seitenrand
-   - Bildkontraste und Lesbarkeit
-4. Erst danach als fertig betrachten.
+   - Tabellen innerhalb der Seite
+4. Fehler im Layout bzw. Generator beheben und erneut rendern.
 
-Wenn etwas schief sitzt, die Ursache im Layout/Generator korrigieren. Keine pixelweisen kosmetischen Workarounds einbauen, wenn das feste Raster die eigentliche Ursache ist.
+Für die lokale ChatGPT-Arbeitsumgebung ist der Renderer:
 
-Bei einem 2- oder 3-seitigen Blatt müssen **alle Seiten** kontrolliert werden, nicht nur die erste.
+```bash
+python /home/oai/skills/docx/render_docx.py DATEI.docx --output_dir QA_ORDNER
+```
 
-## 8. Word-spezifische Regeln
+Keine QA-PNGs, PDFs oder temporären Hilfsdateien ins Repository committen.
 
-### Absatzabstand statt Enter
+## 9. Word-spezifische Regeln
 
-Keine Layouts bauen, die viele leere Enter-Zeilen benötigen. Abstand über Absatzformatierung erzeugen.
+### Absätze
+
+Abstände über Absatzformatierung erzeugen, nicht über viele leere Enter-Zeilen.
 
 ### Listen
 
-Aufzählungen und Nummerierungen als echte Word-Listen verwenden, nicht als manuell eingetippte Zeichen, wenn die Funktion selbst das Lernziel ist.
+Wenn Aufzählung oder Nummerierung Lernziel/Prüfkriterium ist, echte Word-Listen verwenden bzw. verlangen.
 
 ### Seitenumbruch
 
-Für eine neue Seite `Ctrl + Enter` bzw. einen echten Seitenumbruch verwenden, nicht viele Enter-Zeichen.
+Für neue Seiten echte Seitenumbrüche (`Ctrl + Enter`) verwenden, nicht viele Enter-Zeichen.
 
 ### Formatvorlagen
 
-Wenn Formatvorlagen das Lernziel sind, nicht gleichzeitig verlangen, Schriftgrösse/Fett manuell nachzubauen. Die Formatvorlage ist dann die eigentliche Kompetenz.
+Wenn Formatvorlagen Lernziel sind, nicht gleichzeitig dieselben Überschriften manuell über Schriftgrösse/Fett nachbauen lassen.
 
 ### Bilder
 
-Bilder proportional skalieren. Zuschneiden und Textumbruch nur einführen, wenn sie explizit Teil des Lernziels sind.
+Proportional skalieren. Zuschneiden und Textumbruch nur verlangen, wenn bekannt bzw. Lernziel.
 
 ### Tabellen
 
-Wenn das Erstellen einer Tabelle geübt wird, genügend freie Dokumentfläche geben. Keine echte Schülertabelle innerhalb einer Layout-Tabelle des Arbeitsblatts erzwingen.
+Wenn Tabellen geübt werden, genügend freie Dokumentfläche bereitstellen. Keine Schülertabelle in eine Layout-Tabelle des Aufgabenblatts zwängen.
 
-### Kopf-/Fusszeilen und Seitenzahlen
+### Kopf-/Fusszeilen
 
-Wenn Kopf-/Fusszeilen geübt werden, die Übungsseiten nach Möglichkeit in einen eigenen Abschnitt legen. So kann die Kursanleitung auf Seite 1 unverändert bleiben. Seitenzahlen müssen als echte automatische Word-Felder entstehen, nicht als von Hand eingetippte Zahlen.
+Bei Arbeitsblättern mit eigenem Kurs-Header für Schüleraufgaben einen separaten Abschnitt oder eine separate Ausgangsdatei verwenden.
 
 ### Tabulatoren
 
-Tabulatoren, Lineal und komplexe hängende Einzüge gehören aktuell **nicht zum Pflichtkurs**, weil sie auf den Schulgeräten bereits unzuverlässig waren. Nur wieder aufnehmen, wenn sie vorher lokal auf den tatsächlichen Schulgeräten getestet wurden.
+Tabulatoren, Lineal und komplexe hängende Einzüge gehören aktuell **nicht zum Pflichtkurs**, weil sie auf den Schulgeräten unzuverlässig waren. Nur wieder aufnehmen, wenn sie vorher lokal auf den tatsächlichen Schulgeräten getestet wurden.
 
-## 9. Repetition und neue Kompetenz trennen
+## 10. Progression
 
-Eine neue Funktion darf bekannte Funktionen wiederholen. Aber nicht gleichzeitig mehrere unbekannte Funktionen voraussetzen.
+Die aktuelle Schlussprogression ist bewusst:
 
-Beispiel:
+- A10: neue Funktion Kopf-/Fusszeile
+- A11: bekannte Werkzeuge anhand einer sichtbaren Vorlage kombinieren
+- A12: selbst gestalten, keine Zielvorlage
+- A13: Gesamtauftrag, keine neue Word-Funktion
+- Übungstest: separate Ausgangsdatei, testähnliche Bedingungen, keine Klickanleitung
 
-- A5 wiederholt A1–A4 und führt nur das Verschieben/Verkleinern einer vorhandenen Grafik als kleine neue Handlung ein.
-- A7 führt Bilder gezielt ein.
-- A8 führt Tabellen gezielt ein.
-- A9 führt Formatvorlagen gezielt ein.
-- A10 führt Kopf-/Fusszeilen und Seitenzahlen gezielt ein.
-- A11 kombiniert bekannte Funktionen mit sichtbarer Vorlage, aber ohne Klickanleitung.
-- A12 entfernt die Zielvorlage und gibt nur noch klare Pflichtbestandteile vor.
+Der Übungstest ist unbenotet. Seine Punkte dienen nur zur Orientierung.
 
-Wenn ein Blatt zu viel enthält, lieber auf zwei Blätter splitten. A1 wurde genau aus diesem Grund in A1 und A2 getrennt.
+## 11. Git- und Build-Workflow
 
-## 10. Git- und Build-Workflow
-
-GitHub Actions führt bei Änderungen unter `src/**` automatisch aus:
+GitHub Actions reagiert auf Änderungen unter `src/**` und führt aus:
 
 ```bash
 python src/generate_course.py
 ```
 
-und committet geänderte generierte Arbeitsblätter unter `arbeitsblaetter/` zurück ins Repository.
+Danach werden Änderungen unter `arbeitsblaetter/` automatisch zurück ins Repository committed.
 
-Darum bei Änderungen bevorzugt:
+Bevorzugter Ablauf:
 
 1. Generator/Quellcode ändern.
-2. Lokal generieren und QA durchführen.
-3. Quellcode committen.
-4. Prüfen, ob der GitHub-Actions-Build erfolgreich war.
-5. Sicherstellen, dass die generierten DOCX-Dateien im Repository dem geprüften Stand entsprechen.
+2. Lokal generieren.
+3. DOCX-Dateien vollständig rendern und prüfen.
+4. Quellcode und Planungsdokumente committen.
+5. GitHub-Actions-Build abwarten.
+6. Prüfen, ob der Build erfolgreich war.
+7. Sicherstellen, dass generierte DOCX-Dateien und Assets im Repository vorhanden sind.
 
-Wenn der Kursumfang erweitert wird, auch prüfen:
+Bei erweitertem Kursumfang ebenfalls prüfen:
 
 - `src/generate_course.py`
 - `arbeitsblaetter/README.md`
 - Root-`README.md`
 - `planung/KURSUEBERSICHT.md`
-- Build-Workflow und dessen Commit-Text
+- `.github/workflows/build-word-course.yml`
 
-## 11. Nicht machen
+## 12. Nicht machen
 
-- nicht nur eine generierte DOCX ändern und den Generator veraltet lassen
-- nicht unnötig neue Schriftarten einführen
-- nicht bei jedem Blatt ein neues Design erfinden
-- nicht mehr Text hinzufügen, nur um ein Blatt „voll“ aussehen zu lassen
-- nicht mehrere neue Word-Funktionen auf einmal versteckt prüfen
-- nicht mit Leerzeichen oder vielen Enters Layout bauen
-- nicht visuelle Probleme ignorieren, weil der Python-Code ohne Fehler durchläuft
-- keine temporären QA-, Migrations- oder Hilfsdateien ins Repo committen
+- nur eine generierte DOCX ändern und den Generator veraltet lassen
+- bei jedem Blatt ein neues Design erfinden
+- unnötig neue Schriftarten einführen
+- Erklärungstext hinzufügen, nur um eine Seite zu füllen
+- mehrere unbekannte Word-Funktionen versteckt gleichzeitig prüfen
+- Layout mit Leerzeichen oder vielen Enters bauen
+- visuelle Fehler ignorieren, weil Python ohne Fehler durchläuft
+- QA-, Migrations- oder temporäre Hilfsdateien committen
 
-## 12. Entscheidungskriterium
+## 13. Entscheidungskriterium
 
-Wenn unklar ist, ob etwas auf ein Blatt gehört, gilt diese Frage:
+Wenn unklar ist, ob etwas auf ein Blatt gehört:
 
-**Hilft es den Schülerinnen und Schülern, genau die gewünschte Word-Kompetenz zu lernen – oder macht es die Aufgabe nur zusätzlich kompliziert?**
+**Hilft es den Schülerinnen und Schülern, genau die gewünschte Word-Kompetenz zu lernen bzw. zu zeigen – oder macht es die Aufgabe nur zusätzlich kompliziert?**
 
-Nur Ersteres gehört ins Pflichtblatt.
+Nur Ersteres gehört in den Pflichtteil.
