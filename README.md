@@ -6,18 +6,28 @@ Der bestehende ältere Kurs wird **nicht einfach gekürzt oder modernisiert**, s
 
 ## Aktueller Stand
 
-Die Arbeitsblätter **A1–A13** sind erstellt und liegen unter [arbeitsblaetter/](arbeitsblaetter/README.md). Ebenfalls fertig ist der **unbenotete Word-Übungstest** mit Aufgabenblatt, Ausgangsdokument und Bilddatei.
+Das vollständige Paket ist erstellt:
 
-Die benötigten Bilddateien und visuellen Vorlagen liegen in `arbeitsblaetter/assets/`.
+- Arbeitsblätter **A1–A13** ✅
+- vollständiger **unbenoteter Word-Übungstest** ✅
+- benoteter **persönlicher Steckbrief mit Foto** inkl. Bewertungsraster ✅
+- benoteter **Word-Test** inkl. Ausgangsdokument, Bilddatei und Korrekturblatt ✅
 
-## Geplanter Umfang
+Die fertigen Dateien liegen unter [arbeitsblaetter/](arbeitsblaetter/README.md). Benötigte Bilddateien und visuelle Vorlagen liegen in `arbeitsblaetter/assets/`.
 
-- 13 Arbeitsblätter (`A1`–`A13`) ✅
-- 1 vollständiger **unbenoteter Übungstest** ✅
-- 1 benoteter **persönlicher Steckbrief mit Foto**
-- 1 benoteter **Word-Test**
-- zusätzlich eine **Fleissnote** aus `A1`–`A13`
-- bei den drei Noten gilt: **eine Streichnote**
+## Bewertungsmodell
+
+Es entstehen drei Noten:
+
+1. **Fleissnote** aus A1–A13
+2. **persönlicher Steckbrief** – 20 Punkte
+3. **Word-Test** – 30 Punkte
+
+Für Steckbrief und Word-Test gilt die lineare Skala:
+
+`Note = 1 + 5 × (Punkte / Maximalpunkte)`
+
+Die Note wird auf eine Dezimalstelle gerundet; **60 % entsprechen Note 4.0**. Bei den drei Noten ist eine Streichnote vorgesehen.
 
 ## Planungsdokumente
 
@@ -37,11 +47,11 @@ Wichtig: Generierte DOCX-Dateien nicht isoliert von Hand pflegen. Änderungen so
 
 Die Schülerinnen und Schüler sollen Word **durch Benutzung lernen**, nicht durch lange Erklärungen zur Benutzeroberfläche.
 
-Jedes Arbeitsblatt soll möglichst eine klare Kompetenz, einen sichtbaren Arbeitsauftrag und ein konkretes Resultat haben. Gegen Ende des Kurses werden bekannte Funktionen kombiniert und die Hilfestellungen reduziert.
-
 Die Progression endet bewusst mit:
 
 - **A11:** komplexere Vorlage nachbauen
 - **A12:** selbst gestalten ohne Zielvorlage
 - **A13:** zweiseitiger Gesamtauftrag ohne neue Word-Funktion
-- **Übungstest:** testähnliche Situation mit separater Ausgangsdatei
+- **Übungstest:** vollständige testähnliche Situation ohne Note
+- **Steckbrief:** persönliche, aber objektiv messbare Anwendungsnote
+- **Word-Test:** gleicher Arbeitsmodus wie im Übungstest, aber mit neuem Inhalt

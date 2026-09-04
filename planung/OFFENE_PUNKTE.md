@@ -1,74 +1,69 @@
 # Offene Punkte / Tests
 
-Diese Datei sammelt Punkte, die vor der Finalisierung des Kurses noch entschieden oder praktisch getestet werden müssen.
+Der Kursinhalt **A1–A13**, der unbenotete Übungstest, der benotete Steckbrief und der benotete Word-Test sind erstellt.
 
-## Technisch unbedingt testen
+Offen sind vor allem praktische Schul- und Bewertungsdetails.
+
+## Technisch vor dem Einsatz testen
+
+### Schul-PCs / Word-Version
+
+Mindestens einmal auf den tatsächlichen Geräten prüfen:
+
+- Öffnen und Speichern der DOCX-Dateien
+- Arial vorhanden
+- Bildimport und Zuschneiden
+- Textumbruch `Quadrat`
+- echte Aufzählungen und Nummerierungen
+- Tabellen
+- Seitenumbrüche
+- Kopf- und Fusszeilen
+- automatische Seitenzahlen
+- Abgabe in den vorgesehenen Schulordner
 
 ### Tabulatoren / Einzüge
 
-Tabulatoren und hängende Einzüge gehören aktuell **nicht zum Pflichtkurs**.
-
-Hintergrund:
-
-- Tabulatoren haben in der bisherigen Umgebung nicht zuverlässig funktioniert.
-- Auch hängende Einzüge / Lineal-Verhalten können je nach lokaler Word-Version oder Konfiguration problematisch sein.
-
-**Falls das Thema später wieder aufgenommen werden soll:** zuerst lokal auf den tatsächlichen Schul-PCs testen. Nicht an einer technisch fragilen Lösung festhalten.
-
----
-
-## Kursstruktur noch finalisieren
-
-- genaue Reihenfolge A6–A10 prüfen
-- entscheiden, ob Spalten wirklich in A6 gehören
-- Umfang von Formatvorlagen in A9 festlegen
-- A11–A13 konkrete Produkte / Szenarien definieren
-- sicherstellen, dass pro Blatt nicht zu viele neue Funktionen eingeführt werden
-- prüfen, ob weitere Blätter wie A1 aufgeteilt werden sollten, wenn die kognitive Last zu hoch wird
+Tabulatoren und komplexe hängende Einzüge gehören weiterhin **nicht zum Pflichtkurs**. Falls sie später wieder aufgenommen werden, zuerst lokal auf den Schul-PCs testen.
 
 ## Fleissnote
 
 Noch festzulegen:
 
-- konkretes Punktesystem A1–A13
+- konkretes Punktesystem für A1–A13
 - Mindestanforderung pro Blatt
 - Umgang mit Absenzen
-- Umgang mit verspäteten Abgaben
-- Notenschlüssel
+- Umgang mit verspäteten oder fehlenden Abgaben
+- Umrechnung der Fleisspunkte in eine Note
+
+## Streichnote
+
+Das Grundmodell steht: Von Fleissnote, Steckbrief und Word-Test zählt die schlechteste Note nicht.
+
+Noch festzulegen:
+
+- genaue rechnerische Umsetzung im Notentool
+- Rundungsregel für die Schlussnote
 
 ## Persönlicher Steckbrief
 
-Noch festzulegen:
+Festgelegt sind:
 
-- finale Pflichtinhalte
-- exakte Formatvorgaben
-- Bewertungsraster
-- Punktzahl
-- Notenschlüssel
-- Ablauf für eigenes Foto / Datenschutz
-- Abgabeformat (`.docx`, PDF oder beides)
+- Pflichtinhalte und Formatvorgaben
+- 20-Punkte-Raster mit 10 Kriterien à 0/1/2 Punkten
+- lineare Notenskala; 12/20 = Note 4.0
+- DOCX-Abgabe
+- Foto bleibt in der Schulabgabe und soll nicht öffentlich publiziert werden
+
+Praktisch noch klären: Wie das Foto auf den Schulgeräten bereitgestellt wird.
 
 ## Übungstest und Word-Test
 
-Noch festzulegen:
+Festgelegt sind:
 
-- Dauer
-- Ausgangsdateien
-- genaue Kompetenzen
-- Punkteverteilung
-- erlaubte Hilfsmittel
-- Notenschlüssel des benoteten Tests
-- Verhältnis zwischen Übungstest und echtem Test
+- Übungstest im gleichen Arbeitsmodus wie der Test, aber ohne Note
+- Word-Test: 45 Minuten, 30 Punkte
+- separates Aufgabenblatt, Ausgangsdokument und Bilddatei
+- Korrekturblatt mit Teilpunkten und vollständigem Notenschlüssel
+- lineare Notenskala; 18/30 = Note 4.0
 
-## Schulumgebung allgemein
-
-Vor Finalisierung mindestens einmal prüfen:
-
-- tatsächlich eingesetzte Word-Version
-- Standardschriftarten auf den Schulgeräten
-- Speichern / Abgeben der Dateien
-- Bildimport
-- Textumbruch
-- Tabellen
-- Kopf- und Fusszeilen
-- Seitenumbrüche
+Noch vor dem Einsatz entscheiden: Welche Hilfsmittel während des benoteten Tests ausdrücklich erlaubt sind.

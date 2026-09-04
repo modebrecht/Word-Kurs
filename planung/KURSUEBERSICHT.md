@@ -27,7 +27,7 @@ Schwerpunkte:
 
 Zusätzlich entsteht aus `A1`–`A13` eine Fleissnote.
 
-> **Status:** A1–A13 und der unbenotete Übungstest sind erstellt und als DOCX umgesetzt. Als Nächstes folgen der benotete persönliche Steckbrief und der eigentliche Word-Test.
+> **Status:** Das komplette Paket A1–A13, Übungstest, benoteter Steckbrief und benoteter Word-Test ist erstellt und als DOCX umgesetzt.
 
 ---
 
@@ -149,15 +149,24 @@ Rahmen:
 
 Geprüft werden Seitenlayout, Grundformatierung, Formatvorlagen, Aufzählung, Nummerierung, Bild, Seitenumbruch, Tabelle, Kopfzeile und automatische Seitenzahl.
 
-Der Test ist bewusst eine echte praktische Word-Aufgabe und kein Multiple-Choice-Test.
-
 ---
 
 ## Benoteter persönlicher Steckbrief
 
-Separater Anwendungsauftrag mit eigenem Foto und klaren Pflichtinhalten sowie Formatvorgaben.
+Datei:
 
-Bewertet wird die saubere und selbstständige Anwendung von Word, nicht primär Geschmack oder Kreativität.
+- `Benoteter_Steckbrief.docx`
+
+Rahmen:
+
+- persönlicher Steckbrief auf genau einer A4-Seite
+- eigenes bzw. freigegebenes Foto
+- klare Pflichtinhalte und Formatvorgaben
+- 10 Kriterien à 0/1/2 Punkte
+- maximal 20 Punkte
+- lineare Notenskala; 12/20 = Note 4.0
+
+Bewertet wird die saubere und selbstständige Anwendung von Word, nicht Geschmack oder Kreativität.
 
 Details: [STECKBRIEF.md](STECKBRIEF.md)
 
@@ -165,15 +174,22 @@ Details: [STECKBRIEF.md](STECKBRIEF.md)
 
 ## Benoteter Word-Test
 
-Praktischer Word-Test unter möglichst gleichen Bedingungen für alle Schülerinnen und Schüler.
+Dateien:
 
-Geplant:
+- `Word_Test.docx` – Aufgabenblatt
+- `Word_Test_Ausgangsdokument.docx` – rohe Ausgangsdatei
+- `assets/word_test_rheinfall.png` – Bilddatei
+- `Word_Test_Korrekturblatt.docx` – Korrekturraster und Notenschlüssel
 
-- separate Ausgangsdatei
-- klare, messbare Aufgaben
-- bekannte Funktionen aus dem Kurs
-- objektiv korrigierbare Kriterien
-- ähnliche Arbeitsweise wie im unbenoteten Übungstest
+Rahmen:
+
+- 45 Minuten
+- 30 Punkte
+- gleiche Arbeitsweise wie im Übungstest, aber anderer Inhalt
+- nur bekannte Word-Kompetenzen
+- genau zwei Seiten als Ziel
+- objektive Teilpunkte
+- lineare Notenskala; 18/30 = Note 4.0
 
 ---
 

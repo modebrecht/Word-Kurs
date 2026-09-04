@@ -1,6 +1,6 @@
 # Bewertung
 
-## Aktuelles Bewertungsmodell
+## Bewertungsmodell
 
 Im Word-Kurs entstehen **drei Noten**:
 
@@ -8,100 +8,79 @@ Im Word-Kurs entstehen **drei Noten**:
 2. **Note für den persönlichen Steckbrief**
 3. **Note für den Word-Test**
 
-Von diesen drei Noten wird **eine Streichnote** gewährt. Damit zählt am Ende die schlechteste der drei Noten nicht.
-
-> Die genaue rechnerische Umsetzung der Streichnote und allfällige Rundungsregeln werden vor dem Einsatz noch festgelegt.
+Von diesen drei Noten wird eine **Streichnote** gewährt; die schlechteste Note zählt damit nicht.
 
 ---
 
 ## 1. Fleissnote A1–A13
 
-Die Fleissnote soll **nicht einfach eine versteckte zweite Word-Prüfung** sein. Sie bewertet vor allem den Arbeitsprozess über den gesamten Kurs.
+Die Fleissnote soll keine versteckte zweite Word-Prüfung sein. Sie bewertet vor allem den Arbeitsprozess über den gesamten Kurs.
 
-Mögliche Kriterien:
+Geeignete Kriterien:
 
 - Arbeitsblätter vollständig bearbeitet
 - sinnvoll und ernsthaft gearbeitet
-- Aufgaben nicht nur minimal oder als Alibi gelöst
 - Dateien korrekt gespeichert / abgegeben
 - Sorgfalt
 - Korrekturen und Rückmeldungen umgesetzt
-- kontinuierliche Mitarbeit über den Kurs hinweg
+- kontinuierliche Mitarbeit
 
-### Noch festzulegen
-
-- Punktesystem pro Arbeitsblatt
-- Umgang mit Absenzen
-- Umgang mit verspäteten oder fehlenden Abgaben
-- Gewichtung von Vollständigkeit vs. Sorgfalt
-- Umrechnung Punkte → Schweizer Note
+Noch festzulegen sind das konkrete Punktesystem pro Blatt, der Umgang mit Absenzen und verspäteten Abgaben sowie die Umrechnung in eine Note.
 
 ---
 
 ## 2. Persönlicher Steckbrief
 
-Benotete praktische Anwendungsaufgabe.
+Benotete praktische Anwendungsaufgabe mit eigenem bzw. freigegebenem Foto.
 
-Bewertet werden sollen vor allem **messbare Word-Kompetenzen** und die Einhaltung klarer Vorgaben.
+Bewertet werden **10 messbare Kriterien mit je 0 / 1 / 2 Punkten**, maximal **20 Punkte**. Dazu gehören Pflichtinhalte, Seitenformat, Schrift, Titel/Zwischentitel, Absatzabstände, echte Aufzählung, Foto-Bearbeitung, Textumbruch/Position und technische Sauberkeit.
 
-Nicht zu stark bewertet werden soll subjektiver Geschmack wie „schön“ oder „kreativ“.
+Subjektiver Geschmack wie `schön`, `cool` oder `kreativ` ist kein eigenes Kriterium.
 
-Besser geeignete Kriterien sind beispielsweise:
+Notenformel:
 
-- Pflichtinhalte vollständig
-- Schrift- und Absatzformatierung korrekt
-- Foto sauber eingefügt und platziert
-- Textumbruch sinnvoll
-- Struktur übersichtlich
-- Abstände konsistent
-- Formatvorgaben eingehalten
-- Dokument gut lesbar
+`Note = 1 + 5 × (Punkte / 20)`
 
-Details und spätere Rubrik: [STECKBRIEF.md](STECKBRIEF.md)
+Auf eine Dezimalstelle runden. **12/20 = 60 % = Note 4.0.**
+
+Details: [STECKBRIEF.md](STECKBRIEF.md)
 
 ---
 
 ## 3. Word-Test
 
-Der benotete Word-Test soll:
+Der benotete Word-Test ist eine praktische Word-Aufgabe mit:
 
-- praktisch in Word durchgeführt werden
-- für alle möglichst gleiche Bedingungen bieten
-- nur bekannte Kompetenzen aus dem Kurs prüfen
-- klare und objektiv kontrollierbare Aufgaben enthalten
-- nicht auf Multiple Choice oder Theoriefragen reduziert werden
+- separatem Aufgabenblatt
+- Ausgangsdokument
+- Bilddatei
+- 45 Minuten Arbeitszeit
+- 30 Punkten
+- Korrekturblatt mit Teilpunkten und vollständigem Notenschlüssel
 
-Vor dem benoteten Test gibt es einen **vollständigen unbenoteten Übungstest** im gleichen Grundformat.
+Geprüft werden nur bekannte Kompetenzen aus dem Kurs: Seitenlayout, Grundformatierung, Formatvorlagen, Aufzählung, Nummerierung, Bildbearbeitung/Textumbruch, Seitenumbruch, Tabelle sowie Kopf-/Fusszeile mit automatischer Seitenzahl.
 
-### Noch festzulegen
+Der Test verwendet denselben **Arbeitsmodus** wie der unbenotete Übungstest, aber anderen Inhalt. Dadurch werden die Bedingungen vorher geübt, ohne die eigentliche Testaufgabe vorwegzunehmen.
 
-- Testdauer
-- erlaubte Hilfsmittel
-- Ausgangsdatei
-- genaue Kompetenzverteilung
-- Punkteverteilung
-- Notenschlüssel
+Notenformel:
+
+`Note = 1 + 5 × (Punkte / 30)`
+
+Auf eine Dezimalstelle runden. **18/30 = 60 % = Note 4.0.**
 
 ---
 
 ## Grundsatz für die Bewertung
 
-Wo immer möglich, werden **konkrete Ergebnisse** statt Geschmack bewertet.
+Wo immer möglich, werden **konkrete Ergebnisse statt Geschmack** bewertet.
 
-Beispiele:
+Gut messbar sind zum Beispiel:
 
-Gut messbar:
-
-- Titel ist 20 pt und fett
-- Dokument hat genau eine Seite
-- Bild wurde zugeschnitten
+- Titel hat die verlangte Grösse und Formatierung
+- Dokument hat genau die verlangte Seitenzahl
+- Bild wurde zugeschnitten und nicht verzerrt
 - Aufzählung wurde als echte Word-Aufzählung erstellt
-- Seitenzahl ist in der Fusszeile
+- Tabelle ist eine echte Word-Tabelle
+- Seitenzahl ist automatisch in der Fusszeile
 
-Schlecht messbar:
-
-- sieht cool aus
-- ist kreativ
-- gefällt der Lehrperson
-
-Gestaltung darf berücksichtigt werden, sollte aber über Kriterien wie **Lesbarkeit, Übersichtlichkeit, Konsistenz und saubere Ausrichtung** definiert werden.
+Gestaltung wird nur über nachvollziehbare Kriterien wie **Lesbarkeit, Übersichtlichkeit, Konsistenz und saubere Ausrichtung** beurteilt.

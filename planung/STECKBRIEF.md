@@ -2,63 +2,69 @@
 
 ## Idee
 
-Die Schülerinnen und Schüler erstellen einen **persönlichen Steckbrief über sich selbst** und fügen ein eigenes Foto ein.
+Die Schülerinnen und Schüler erstellen einen **persönlichen Steckbrief über sich selbst** und fügen ein eigenes bzw. von der Schule freigegebenes Foto ein.
 
-Die Aufgabe ist benotet und soll vor allem zeigen, ob bekannte Word-Funktionen selbstständig und sauber angewendet werden können.
+Die Aufgabe ist benotet und zeigt, ob bekannte Word-Funktionen selbstständig und sauber angewendet werden können. Der Inhalt dient als Material für die Word-Aufgabe; bewertet wird nicht, wie spannend oder aussergewöhnlich eine Person über sich schreibt.
 
-Der Inhalt dient als Material für die Word-Aufgabe; die Bewertung soll nicht davon abhängen, wie spannend oder aussergewöhnlich eine Person über sich schreibt.
+## Pflichtinhalte
 
-## Mögliche Pflichtinhalte
+Der Steckbrief enthält:
 
-Noch nicht final beschlossen, aktuell denkbar:
+- Vorname als Haupttitel
+- eigenes bzw. freigegebenes Foto
+- Abschnitt `Über mich` mit 3–5 ganzen Sätzen
+- `Meine Interessen` mit mindestens 3 Punkten
+- `Das kann ich gut` mit mindestens 2 Punkten
+- `Das möchte ich noch lernen` mit mindestens 1 Punkt
+- `Mein Fun Fact` mit 1 kurzem Satz
 
-- Vorname / Titel
-- eigenes Foto
-- kurzer Abschnitt „Über mich“
-- Interessen / Hobbys
-- Lieblings… (z. B. Musik, Essen, Sport, Fach)
-- „Das kann ich gut“
-- „Das möchte ich noch lernen“
-- ein Fun Fact
+## Formatvorgaben
 
-## Mögliche Formatvorgaben
-
-Die finale Aufgabe soll **klare und kontrollierbare Formatdeklarationen** enthalten.
-
-Beispiele:
-
-- genau 1 Seite A4
-- definierte Schriftart
-- definierte Schriftgrösse für Fliesstext
-- definierte Schriftgrösse und Formatierung für den Haupttitel
-- definierte Zwischentitel
-- mindestens eine echte Word-Aufzählung
-- Foto einfügen
-- Foto sinnvoll skalieren / eventuell zuschneiden
-- passenden Textumbruch verwenden
-- saubere Absatzabstände
-- keine Positionierung mit einer Kette von Leerzeichen oder Leerzeilen
-- klarer Dateiname
-
-## Bewertungsgrundsatz
-
-Bewertet werden vor allem:
-
-- Pflichtinhalte vorhanden
-- technische Formatvorgaben eingehalten
-- Bild korrekt bearbeitet und platziert
-- Struktur und Ausrichtung sauber
-- Dokument gut lesbar
-- selbstständige Anwendung der im Kurs behandelten Word-Funktionen
-
-Subjektive Kategorien wie „besonders schön“ oder „besonders kreativ“ sollen nur eine geringe oder gar keine Rolle spielen.
+- genau 1 Seite A4, Hochformat
+- Arial
+- Fliesstext 11 pt
+- Haupttitel 20 pt, fett
+- Zwischentitel 14 pt, fett
+- nach Absätzen 6 pt Abstand
+- keine Layout-Ketten aus Leerzeichen oder Leerzeilen
+- `Meine Interessen` als echte Word-Aufzählung
+- Foto ungefähr 5 cm breit
+- Foto sinnvoll zuschneiden, nicht verzerren
+- Textumbruch `Quadrat`
+- Foto rechts oben neben `Über mich`
+- Dateiname `Steckbrief_Nachname_Vorname.docx`
 
 ## Bewertungsraster
 
-Das endgültige Raster wird später gemeinsam entwickelt, wenn die konkrete Aufgabenstellung steht.
+10 Kriterien werden jeweils mit **0 / 1 / 2 Punkten** bewertet, maximal 20 Punkte:
 
-Es soll möglichst schnell und konsistent korrigierbar sein, beispielsweise mit klaren 0/1/2-Punkte-Kriterien.
+1. Pflichtinhalte
+2. Seitenformat
+3. Grundschrift
+4. Haupttitel
+5. Zwischentitel
+6. Absätze
+7. echte Aufzählung
+8. Foto-Bearbeitung
+9. Bildplatzierung / Textumbruch
+10. Abgabe und technische Sauberkeit
+
+Dabei gilt:
+
+- 0 = fehlt oder klar falsch
+- 1 = teilweise erfüllt
+- 2 = vollständig erfüllt
+
+Kreativität oder `schönes Design` ist **kein eigenes Bewertungskriterium**.
+
+## Notenschlüssel
+
+Lineare Schweizer Skala:
+
+`Note = 1 + 5 × (Punkte / 20)`
+
+Die Note wird auf **eine Dezimalstelle** gerundet. 12 von 20 Punkten entsprechen 60 % und damit **Note 4.0**.
 
 ## Datenschutz / Foto
 
-Vor dem Einsatz muss geklärt werden, wie das persönliche Foto in der Schulumgebung bereitgestellt, gespeichert und abgegeben wird. Die Aufgabe soll so organisiert werden, dass keine unnötige Veröffentlichung persönlicher Bilder entsteht.
+Das Foto bleibt in der Schulabgabe und soll nicht unnötig veröffentlicht werden. Die Aufgabe soll mit eigenem oder von der Schule freigegebenem Bildmaterial durchgeführt werden.

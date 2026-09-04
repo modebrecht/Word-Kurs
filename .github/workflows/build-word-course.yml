@@ -23,7 +23,7 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - run: python src/generate_course.py
-      - name: Commit generated worksheets
+      - name: Commit generated Word package
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -31,6 +31,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No generated changes"
           else
-            git commit -m "Build Word course A1-A13 and practice test"
+            git commit -m "Build complete Word course package"
             git push
           fi
