@@ -23,6 +23,8 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - run: python src/generate_course.py
+      - name: Validate generated package
+        run: python src/validate_build.py
       - name: Commit generated Word package
         run: |
           git config user.name "github-actions[bot]"
