@@ -6,11 +6,11 @@ Der bestehende ältere Kurs wird **nicht einfach gekürzt oder modernisiert**, s
 
 ## Geplanter Umfang
 
-- 12 Arbeitsblätter (`A1`–`A12`)
+- 13 Arbeitsblätter (`A1`–`A13`)
 - 1 vollständiger **unbenoteter Übungstest**
 - 1 benoteter **persönlicher Steckbrief mit Foto**
 - 1 benoteter **Word-Test**
-- zusätzlich eine **Fleissnote** aus `A1`–`A12`
+- zusätzlich eine **Fleissnote** aus `A1`–`A13`
 - bei den drei Noten gilt: **eine Streichnote**
 
 ## Planungsdokumente
