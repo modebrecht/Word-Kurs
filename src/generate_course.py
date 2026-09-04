@@ -1,7 +1,9 @@
 from pathlib import Path
 from build_a1_a5 import build_all as build_a1_a5
 from build_a6_a9 import build_all as build_a6_a9
-from build_a10_a13 import build_all as build_a10_a13
+from build_a10_a13 import build_all as build_a10_a12
+from build_a13 import build_all as build_a13
+from build_uebungstest import build_all as build_uebungstest
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -25,6 +27,11 @@ Aktueller Arbeitsstand des Word-Kurses.
 - A10 – Kopf- & Fusszeile / Seitenzahlen
 - A11 – Dokument nach Vorlage nachbauen
 - A12 – Selbstständig gestalten
+- A13 – Gesamtauftrag / Prüfungsvorbereitung
+
+Zusätzlich:
+- `Uebungstest_Word.docx` – unbenotetes Aufgabenblatt
+- `Uebungstest_Ausgangsdokument.docx` – Ausgangsdatei zum Bearbeiten
 
 `assets/` enthält die für Aufgaben benötigten Bilddateien sowie die eingebetteten Zielvorlagen.
 
@@ -36,9 +43,11 @@ def main():
     # Single entry point used locally and by GitHub Actions.
     build_a1_a5(ROOT)
     build_a6_a9(ROOT)
-    build_a10_a13(ROOT)
+    build_a10_a12(ROOT)
+    build_a13(ROOT)
+    build_uebungstest(ROOT)
     write_readme()
-    print('Generated A1-A12 in', ROOT / 'arbeitsblaetter')
+    print('Generated A1-A13 and practice test in', ROOT / 'arbeitsblaetter')
 
 
 if __name__ == '__main__':
