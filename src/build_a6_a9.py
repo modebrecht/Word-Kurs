@@ -145,7 +145,6 @@ def build_a8(out: Path, preview: Path):
     for s in ['Zeit | Ort | Aktivität | Gruppe','09.00 | Aula | Begrüssung | Alle','09.30 | Turnhalle | Staffellauf | A','09.30 | Sportplatz | Fussball | B','10.30 | Aula | Pause | Alle']:
         p=doc.add_paragraph(); x=p.add_run(s); set_run(x,size=11)
     p=doc.add_paragraph(); p.paragraph_format.space_before=Pt(12); x=p.add_run('HIER TABELLE EINFÜGEN'); set_run(x,size=12,bold=True,color=TEAL_DARK)
-    for _ in range(12): doc.add_paragraph(' ')
     finalise(doc,out,'A8 - Tabellen')
 
 
