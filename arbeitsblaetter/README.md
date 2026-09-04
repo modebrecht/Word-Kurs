@@ -11,6 +11,9 @@ Aktueller Arbeitsstand des Word-Kurses.
 - A7 – Bilder in Word
 - A8 – Tabellen
 - A9 – Formatvorlagen & Überschriften
+- A10 – Kopf- & Fusszeile / Seitenzahlen
+- A11 – Dokument nach Vorlage nachbauen
+- A12 – Selbstständig gestalten
 
 `assets/` enthält die für Aufgaben benötigten Bilddateien sowie die eingebetteten Zielvorlagen.
 
