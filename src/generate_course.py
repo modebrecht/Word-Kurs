@@ -29,6 +29,7 @@ Die DOCX-Dateien werden reproduzierbar aus `src/` erzeugt.
 
 
 def main():
+    # Single entry point used locally and by GitHub Actions.
     build_a1_a5(ROOT)
     build_a6_a9(ROOT)
     write_readme()
