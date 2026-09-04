@@ -18,10 +18,11 @@ Aktuell ist der Generator aufgeteilt in:
 
 - `src/build_a1_a5.py`
 - `src/build_a6_a9.py`
+- `src/build_a10_a13.py`
 - `src/course_common.py`
 - `src/generate_course.py`
 
-Wenn A10–A13 ergänzt werden, kann ein neuer Builder wie `build_a10_a13.py` angelegt und in `generate_course.py` eingebunden werden.
+`build_a10_a13.py` enthält aktuell A10–A12. A13 wird dort als nächstes ergänzt.
 
 ## 2. Ziel des Kurses
 
@@ -118,6 +119,7 @@ Mehrere Seiten sind sinnvoll, wenn dadurch die Arbeit in Word sauberer wird. Bei
 - Seite 1 = Anleitung, Seite 2 = echte Übungsseite für Seitenlayout
 - Seite 1 = Anleitung, Seite 2 = freie Fläche für eine echte Word-Tabelle
 - Seite 1 = Anleitung, Seiten 2–3 = mehrseitiges Dokument für Kopf-/Fusszeilen
+- Seite 1 = Auftrag, Seite 2 = Rohmaterial für einen selbstständigen Nachbau oder Gestaltungsauftrag
 
 Nicht künstlich alles auf eine Seite quetschen. Umgekehrt keine zweite Seite nur für zusätzlichen Erklärungstext erzeugen.
 
@@ -132,6 +134,7 @@ Beispiele:
 - A7: Bild einfügen, zuschneiden, Textumbruch
 - A8: Tabelle erstellen und Zellen verbinden
 - A9: Formatvorlagen statt manueller Überschriftenformatierung
+- A10: Kopf-/Fusszeile und automatische Seitenzahl
 
 Alles andere auf dem Blatt sollte entweder bereits bekannt sein oder sichtbar erklärt werden.
 
@@ -144,12 +147,13 @@ Nicht „klicke auf Funktion X“, sondern ein kleines sichtbares Produkt bauen 
 - Sporttag-Plan
 - Reisebericht
 - Tabelle
+- Flyer
 
 Das Produkt soll den Einsatz der Funktion sinnvoll machen.
 
 ### Schritt 3 – Builder ergänzen
 
-Neue Blattfunktion im passenden Builder anlegen oder einen neuen Builder für den nächsten Block erstellen.
+Neue Blattfunktion im passenden Builder anlegen.
 
 Gemeinsame Dinge nicht duplizieren, sondern aus `course_common.py` verwenden bzw. dort ergänzen:
 
@@ -161,7 +165,7 @@ Gemeinsame Dinge nicht duplizieren, sondern aus `course_common.py` verwenden bzw
 - Absatzformatierung
 - Seitenaufbau
 
-Danach den neuen Builder in `src/generate_course.py` aufnehmen.
+Danach sicherstellen, dass der Builder in `src/generate_course.py` eingebunden ist.
 
 ### Schritt 4 – Assets sauber ablegen
 
@@ -175,6 +179,8 @@ Dateinamen:
 - keine temporären Dateien oder kryptischen Namen committen
 
 Wenn eine visuelle Vorlage automatisch erzeugt werden kann, diese ebenfalls reproduzierbar über den Builder erzeugen.
+
+Bei A11 wurde das Bergbild beispielsweise direkt im Generator erzeugt. Dabei auf **sichtbaren Kontrast** achten: Schnee, Berg und Himmel dürfen nicht nahezu gleich aussehen.
 
 ### Schritt 5 – Generieren
 
@@ -211,6 +217,7 @@ Nach jeder Erstellung oder Layoutänderung:
    - Header/Footer korrekt
    - Bilder nicht verzerrt
    - Tabellen nicht über den Seitenrand
+   - Bildkontraste und Lesbarkeit
 4. Erst danach als fertig betrachten.
 
 Wenn etwas schief sitzt, die Ursache im Layout/Generator korrigieren. Keine pixelweisen kosmetischen Workarounds einbauen, wenn das feste Raster die eigentliche Ursache ist.
@@ -243,6 +250,10 @@ Bilder proportional skalieren. Zuschneiden und Textumbruch nur einführen, wenn 
 
 Wenn das Erstellen einer Tabelle geübt wird, genügend freie Dokumentfläche geben. Keine echte Schülertabelle innerhalb einer Layout-Tabelle des Arbeitsblatts erzwingen.
 
+### Kopf-/Fusszeilen und Seitenzahlen
+
+Wenn Kopf-/Fusszeilen geübt werden, die Übungsseiten nach Möglichkeit in einen eigenen Abschnitt legen. So kann die Kursanleitung auf Seite 1 unverändert bleiben. Seitenzahlen müssen als echte automatische Word-Felder entstehen, nicht als von Hand eingetippte Zahlen.
+
 ### Tabulatoren
 
 Tabulatoren, Lineal und komplexe hängende Einzüge gehören aktuell **nicht zum Pflichtkurs**, weil sie auf den Schulgeräten bereits unzuverlässig waren. Nur wieder aufnehmen, wenn sie vorher lokal auf den tatsächlichen Schulgeräten getestet wurden.
@@ -257,6 +268,9 @@ Beispiel:
 - A7 führt Bilder gezielt ein.
 - A8 führt Tabellen gezielt ein.
 - A9 führt Formatvorlagen gezielt ein.
+- A10 führt Kopf-/Fusszeilen und Seitenzahlen gezielt ein.
+- A11 kombiniert bekannte Funktionen mit sichtbarer Vorlage, aber ohne Klickanleitung.
+- A12 entfernt die Zielvorlage und gibt nur noch klare Pflichtbestandteile vor.
 
 Wenn ein Blatt zu viel enthält, lieber auf zwei Blätter splitten. A1 wurde genau aus diesem Grund in A1 und A2 getrennt.
 
