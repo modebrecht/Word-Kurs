@@ -4,7 +4,7 @@
 
 Im Word-Kurs entstehen **drei Noten**:
 
-1. **Fleissnote aus A1–A12**
+1. **Fleissnote aus A1–A13**
 2. **Note für den persönlichen Steckbrief**
 3. **Note für den Word-Test**
 
@@ -14,7 +14,7 @@ Von diesen drei Noten wird **eine Streichnote** gewährt. Damit zählt am Ende d
 
 ---
 
-## 1. Fleissnote A1–A12
+## 1. Fleissnote A1–A13
 
 Die Fleissnote soll **nicht einfach eine versteckte zweite Word-Prüfung** sein. Sie bewertet vor allem den Arbeitsprozess über den gesamten Kurs.
 
