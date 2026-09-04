@@ -67,7 +67,10 @@ def resolve_font_paths() -> tuple[str, str]:
 
 
 def _normalise_docx_zip(source: Path, destination: Path) -> None:
-    """Rewrite a DOCX ZIP with stable entry order and timestamps."""
+    """Rewrite a DOCX ZIP with stable entry order and timestamps.
+
+    The document payload is left untouched; only ZIP-container metadata is normalised.
+    """
     with zipfile.ZipFile(source, "r") as zin, zipfile.ZipFile(
         destination,
         "w",
