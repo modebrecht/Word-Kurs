@@ -6,254 +6,150 @@ Sekundarstufe, Klasse 8b, Schweiz.
 
 ## Kursziel
 
-Die Schülerinnen und Schüler sollen grundlegende und alltagsnahe Word-Kompetenzen sicher anwenden können. Der Kurs soll nicht wie ein altes Software-Handbuch funktionieren, sondern über kurze, konkrete Arbeitsaufträge.
+Die Schülerinnen und Schüler sollen grundlegende und alltagsnahe Word-Kompetenzen sicher anwenden können. Der Kurs funktioniert über kurze, konkrete Arbeitsaufträge statt über lange Software-Erklärungen.
 
-Der Schwerpunkt liegt auf:
+Schwerpunkte:
 
-- sauberer Textformatierung
-- sinnvoller Dokumentstruktur
-- Bildern und Tabellen
-- Seitenlayout
-- zunehmend selbstständiger Anwendung
-- nachvollziehbaren, klar messbaren Formatvorgaben
+- Text und Absätze sauber formatieren
+- Informationen sinnvoll strukturieren
+- Listen, Bilder und Tabellen einsetzen
+- Seitenlayout sowie Kopf-/Fusszeilen beherrschen
+- Formatvorlagen verwenden
+- bekannte Werkzeuge zunehmend selbstständig kombinieren
+- klare, messbare Vorgaben einhalten
 
 ## Umfang
 
-Geplant sind:
-
 1. dreizehn Arbeitsblätter (`A1`–`A13`)
-2. ein vollständiger unbenoteter Übungstest
-3. ein benoteter persönlicher Steckbrief mit Foto
-4. ein benoteter Word-Test
+2. vollständiger unbenoteter Übungstest
+3. benoteter persönlicher Steckbrief mit Foto
+4. benoteter Word-Test
 
 Zusätzlich entsteht aus `A1`–`A13` eine Fleissnote.
+
+> **Status:** A1–A13 und der unbenotete Übungstest sind erstellt und als DOCX umgesetzt. Als Nächstes folgen der benotete persönliche Steckbrief und der eigentliche Word-Test.
 
 ---
 
 ## Arbeitsblätter A1–A13
 
-> **Status:** Laufende Ausarbeitung. A1–A12 sind erstellt und praktisch als DOCX umgesetzt; A13 folgt.
-
 ### A1 – Text formatieren
 
-**Ziel:** Die wichtigsten Grundwerkzeuge ohne zusätzliche Transferlast sicher kennenlernen.
+Grundwerkzeuge: markieren, Schriftart, Schriftgrösse, fett, kursiv, Farbe und `Ctrl + Z`.
 
-Inhalte:
-
-- Text markieren
-- Schriftart
-- Schriftgrösse
-- fett
-- kursiv
-- Schriftfarbe
-- rückgängig machen (`Ctrl + Z`)
-
-**Aufgabe:** Einen Rohtext Schritt für Schritt nach klar sichtbaren Vorgaben formatieren.
-
----
+**Ziel:** Die wichtigsten Formatierungswerkzeuge ohne zusätzliche Transferlast sicher kennenlernen.
 
 ### A2 – Nach Vorlage gestalten
 
-**Ziel:** Die Werkzeuge aus A1 anhand einer sichtbaren Vorlage wiedererkennen und anwenden.
+Eine `Game Night`-Vorlage wird anhand eines sichtbaren Ziels nachgebaut.
 
-**Aufgabe:** Eine `Game Night`-Vorlage möglichst genau nachbauen. Der Text bleibt vorgegeben; verändert wird nur die Formatierung.
-
-**Didaktischer Grund:** Dieser Transfer war ursprünglich Teil von A1 und wurde bewusst auf ein eigenes Blatt ausgelagert, um die kognitive Last für die Klasse zu reduzieren.
-
----
+**Ziel:** A1-Werkzeuge wiedererkennen und anwenden, ohne gleichzeitig neue Funktionen einzuführen.
 
 ### A3 – Absätze und Ordnung
 
-Inhalte:
+Ausrichtung, Zeilenabstand, Absatzabstand und saubere Abstände statt mehrfacher Leerzeilen.
 
-- links / zentriert / rechts ausrichten
-- Zeilenabstand
-- Absatzabstand
-- Abstand statt mehrfacher Leerzeilen
-
-**Ziel:** Einen unübersichtlichen Text sauber strukturieren.
-
-Einfache Einzüge werden vorerst nicht eingeführt.
-
----
+**Ziel:** Einen Text übersichtlich strukturieren.
 
 ### A4 – Listen und Nummerierungen
 
-Inhalte:
+Echte Word-Aufzählungen, echte Nummerierungen und automatische Neunummerierung.
 
-- echte Word-Aufzählungen
-- echte Word-Nummerierungen
-- automatische Fortsetzung / Neunummerierung
-
-**Ziel:** Unterscheiden können: gleichwertige Dinge = Aufzählung, Reihenfolge = Nummerierung.
-
-Komplizierte Listenebenen und hängende Einzüge gehören nicht zum Pflichtteil.
-
----
+**Ziel:** Gleichwertige Dinge und Reihenfolgen korrekt unterscheiden.
 
 ### A5 – Rette das Chaos-Dokument
 
-**Ziel:** Bekannte Funktionen aus A1–A4 in einem absichtlich verhunzten Dokument erkennen und reparieren.
+Bekannte Funktionen aus A1–A4 werden in einem absichtlich schlecht formatierten Dokument kombiniert. Eine vorhandene Grafik wird zusätzlich verschoben und verkleinert.
 
-Enthaltene Fehler:
-
-- falsche Schriftart und Schriftgrösse
-- falsche Farbe
-- falsche Ausrichtung
-- Aufzählung und Nummerierung vertauscht
-- unpassende Abstände
-- Grafik zu gross und an der falschen Stelle
-
-Eine vorhandene Grafik zu verschieben und zu verkleinern ist die kleine neue Kompetenz auf diesem Blatt und wird sichtbar erklärt.
-
-**Wichtig:** Dieses Blatt ersetzt die frühere Pflichtidee mit Tabulatoren / hängenden Einzügen.
-
----
+**Ziel:** Fehler erkennen und bekannte Werkzeuge gezielt einsetzen.
 
 ### A6 – Seitenlayout
 
-Inhalte:
+Hoch-/Querformat, Seitenränder und echter Seitenumbruch mit `Ctrl + Enter`.
 
-- Hochformat / Querformat
-- Seitenränder
-- echter Seitenumbruch mit `Ctrl + Enter`
-
-**Umsetzung:** Zwei Seiten. Seite 1 enthält die Anleitung; Seite 2 ist eine eigene Übungsseite, damit die Schülerinnen und Schüler das Seitenlayout verändern können, ohne die Anleitung zu zerstören.
-
-**Ziel:** Eine Seite gezielt einrichten und eine neue Seite sauber mit einem Seitenumbruch beginnen.
-
----
+**Umsetzung:** Anleitung und Übungsseite sind getrennt, damit das Seitenlayout ohne Zerstörung des Aufgabenblatts verändert werden kann.
 
 ### A7 – Bilder in Word
 
-Inhalte:
+Bild einfügen, zuschneiden, Grösse ändern, verschieben und Textumbruch `Quadrat`.
 
-- Bild aus Datei einfügen
-- Grösse ändern
-- zuschneiden
-- verschieben
-- Textumbruch `Quadrat`
-
-**Aufgabe:** Ein kleines Schulhaus-Infoblatt nach Vorlage bauen. Die benötigte Bilddatei wird mitgeliefert.
-
-**Ziel:** Ein Bild so einsetzen, dass Bild und Text sinnvoll zusammenarbeiten.
-
----
+**Ziel:** Bild und Text sinnvoll zusammenführen.
 
 ### A8 – Tabellen
 
-Inhalte:
+Tabelle erstellen, Daten eintragen, Zeile ergänzen, Zellen verbinden und Inhalte ausrichten.
 
-- Tabelle erstellen
-- Daten in Zellen eintragen
-- Zeile ergänzen
-- Zellen verbinden
-- Inhalte ausrichten
-
-**Umsetzung:** Zwei Seiten. Seite 1 zeigt Auftrag und Zielvorlage; Seite 2 enthält Rohdaten und freie Arbeitsfläche für eine echte Word-Tabelle.
-
-**Ziel:** Informationen strukturiert in einer Tabelle darstellen.
-
----
+**Umsetzung:** Freie Übungsseite für eine echte Word-Tabelle.
 
 ### A9 – Formatvorlagen und Überschriften
 
-Inhalte:
+`Titel`, `Überschrift 1`, `Überschrift 2` und `Standard`.
 
-- `Titel`
-- `Überschrift 1`
-- `Überschrift 2`
-- `Standard`
-
-**Aufgabe:** Einen längeren, zunächst gleich formatierten Rohtext mit echten Word-Formatvorlagen strukturieren. Schriftgrösse und Fett werden nicht von Hand eingestellt.
-
-**Ziel:** Einen längeren Text einheitlich und logisch strukturieren und verstehen, dass Überschriften eine Rolle im Dokument erhalten.
-
----
+**Ziel:** Struktur über echte Formatvorlagen statt über manuelle Schriftformatierung erzeugen.
 
 ### A10 – Kopf- und Fusszeile / Seitenzahlen
 
-Inhalte:
+Kopfzeile, Fusszeile, automatische Seitenzahl und Wiederholung auf mehreren Seiten.
 
-- Kopfzeile öffnen und Text einsetzen
-- Fusszeile öffnen
-- automatische Seitenzahl einfügen
-- Wiederholung von Kopf-/Fusszeile auf mehreren Seiten erkennen
-
-**Umsetzung:** Drei Seiten. Seite 1 enthält die Anleitung; Seiten 2–3 bilden einen bereits formatierten Reisebericht. Die Übungsseiten liegen in einem eigenen Abschnitt und starten ihre Seitenzählung bei 1.
-
-**Ziel:** Ein mehrseitiges Dokument sauber mit wiederkehrender Kopf-/Fusszeile und automatischer Seitenzahl abschliessen.
-
----
+**Umsetzung:** Dreiseitiges Blatt mit separatem zweitseitigem Übungsdokument innerhalb eines eigenen Abschnitts.
 
 ### A11 – Dokument nach Vorlage nachbauen
 
-**Aufgabe:** Ein Klassenlager-Infoblatt anhand einer komplexeren sichtbaren Vorlage nachbauen.
+Ein Klassenlager-Infoblatt wird anhand einer komplexeren sichtbaren Vorlage nachgebaut.
 
-Pflichtwerkzeuge:
+Pflichtwerkzeuge: Formatvorlagen, Aufzählung, Tabelle, Bild mit Textumbruch, Kopfzeile und automatische Seitenzahl.
 
-- Formatvorlagen
-- echte Aufzählung
-- echte Tabelle
-- Bild mit Textumbruch
-- Kopfzeile
-- automatische Seitenzahl
-
-**Didaktischer Schritt:** Es gibt keine A–F-Klickanleitung mehr. Die Vorlage bleibt sichtbar, aber die Schülerinnen und Schüler müssen bekannte Werkzeuge selbst auswählen und kombinieren.
-
-**Ziel:** Mehrere bisherige Kompetenzen kombinieren, ohne dass jeder Klick erklärt wird.
-
----
+**Didaktischer Schritt:** Keine Klickanleitung mehr; die Vorlage bleibt als Orientierung sichtbar.
 
 ### A12 – Selbstständig gestalten
 
-**Aufgabe:** Einen einseitigen Flyer für einen Schulhaus-Sommerabend gestalten. Inhalt und Pflichtbestandteile sind vorgegeben, eine Zielvorlage gibt es nicht mehr.
+Ein einseitiger Flyer für einen Schulhaus-Sommerabend wird ohne Zielvorlage gestaltet.
 
-Pflichtbestandteile:
+Pflicht: Formatvorlagen, echte Aufzählung, echte Tabelle, Bild, Fusszeile und automatische Seitenzahl.
 
-- A4 Hochformat, alles auf einer Seite
-- Formatvorlagen für Titel und Überschriften
-- echte Aufzählung
-- echte Tabelle
-- Bild sinnvoll zuschneiden und platzieren
-- Fusszeile und automatische Seitenzahl
-
-Frei sind unter anderem Anordnung, Grössenverhältnisse, Abstände, Bildposition und passende Farbe.
-
-**Ziel:** Weniger Anleitung, mehr eigene Entscheidungen innerhalb klarer, objektiv überprüfbarer Vorgaben.
-
----
+**Didaktischer Schritt:** Inhalt und Anforderungen sind klar, Layoutentscheidungen liegen bei den Schülerinnen und Schülern.
 
 ### A13 – Gesamtauftrag / Prüfungsvorbereitung
 
-Ein grösserer Auftrag, der mehrere Kompetenzen kombiniert.
+**Aufgabe:** Ein zweiseitiges Infodokument `PROJEKTWOCHE BERN` aus vorgegebenem Rohmaterial erstellen.
 
-Mögliche Bestandteile:
+Pflichtbestandteile:
 
-- Textformatierung
-- Absatzformatierung
-- Bild
-- Tabelle
-- Seitenlayout
-- mehrseitige Struktur
+- A4 Hochformat und Seitenränder
+- Arial 11 pt, Zeilen- und Absatzabstände
+- Formatvorlagen
+- echter Seitenumbruch vor `PROGRAMM`
+- Bild `a13_bern_altstadt.png` mit Zuschneiden und Textumbruch
+- echte Aufzählung und Nummerierung
+- echte Tabelle mit vier Spalten
+- Kopfzeile und automatische Seitenzahl
 
-**Ziel:** Nahezu selbstständige Anwendung als Vorbereitung auf den Übungstest und den Word-Test.
+**Ziel:** Keine neue Word-Funktion mehr, sondern nahezu selbstständige Kombination des gesamten Kursstoffs.
 
 ---
 
 ## Unbenoteter Übungstest
 
-Der Übungstest soll die spätere Testsituation möglichst realistisch abbilden, aber **ohne Note**.
+Der Übungstest bildet die spätere Testsituation möglichst realistisch ab, bleibt aber **unbenotet**.
 
-Geplant:
+Dateien:
 
-- Ausgangsdatei
-- klar definierte Aufgaben
-- mehrere Word-Kompetenzen kombiniert
-- möglichst wenig Hilfestellung
-- gleiche Art von Arbeitsweise wie im späteren Word-Test
+- `Uebungstest_Word.docx` – Aufgabenblatt
+- `Uebungstest_Ausgangsdokument.docx` – rohe Ausgangsdatei
+- `assets/uebungstest_greifensee.png` – Bilddatei
 
-Der Übungstest soll keine Multiple-Choice-Prüfung sein, sondern eine echte praktische Word-Aufgabe.
+Rahmen:
+
+- Richtzeit: 45 Minuten
+- 30 Orientierungspunkte
+- separate Arbeitskopie mit vorgegebenem Dateinamen
+- keine Klickanleitung
+- genau zwei Seiten als Ziel
+- nur bereits bekannte Funktionen
+
+Geprüft werden Seitenlayout, Grundformatierung, Formatvorlagen, Aufzählung, Nummerierung, Bild, Seitenumbruch, Tabelle, Kopfzeile und automatische Seitenzahl.
+
+Der Test ist bewusst eine echte praktische Word-Aufgabe und kein Multiple-Choice-Test.
 
 ---
 
@@ -261,7 +157,7 @@ Der Übungstest soll keine Multiple-Choice-Prüfung sein, sondern eine echte pra
 
 Separater Anwendungsauftrag mit eigenem Foto und klaren Pflichtinhalten sowie Formatvorgaben.
 
-Die Aufgabe soll nicht primär Kreativität oder Geschmack bewerten, sondern die saubere und selbstständige Anwendung von Word.
+Bewertet wird die saubere und selbstständige Anwendung von Word, nicht primär Geschmack oder Kreativität.
 
 Details: [STECKBRIEF.md](STECKBRIEF.md)
 
@@ -273,10 +169,11 @@ Praktischer Word-Test unter möglichst gleichen Bedingungen für alle Schülerin
 
 Geplant:
 
-- Ausgangsdokument
+- separate Ausgangsdatei
 - klare, messbare Aufgaben
 - bekannte Funktionen aus dem Kurs
 - objektiv korrigierbare Kriterien
+- ähnliche Arbeitsweise wie im unbenoteten Übungstest
 
 ---
 
