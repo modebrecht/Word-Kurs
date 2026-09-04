@@ -14,14 +14,18 @@ Darum gilt:
 - Wiederverwendbare Layout-Funktionen gehören nach `src/course_common.py`.
 - `src/generate_course.py` ist der gemeinsame Einstiegspunkt.
 
-Aktuelle Builder:
+Aktuelle Builder und Build-Helfer:
 
 - `src/build_a1_a5.py`
 - `src/build_a6_a9.py`
-- `src/build_a10_a13.py` – enthält aktuell A10–A12
+- `src/build_a10_a12.py`
 - `src/build_a13.py`
 - `src/build_uebungstest.py`
+- `src/build_steckbrief.py`
+- `src/build_word_test.py`
 - `src/course_common.py`
+- `src/build_runtime.py` – portable Preview-Fonts, deterministische DOCX-Saves und transaktionales Publishing
+- `src/validate_build.py` – strukturelle Prüfung der generierten DOCX/PNG und Punktsummen
 - `src/generate_course.py`
 
 Neue grössere Blöcke dürfen eigene Builder erhalten. Bestehende Builder nicht unnötig zu Monolithen ausbauen.
@@ -168,9 +172,10 @@ Vom Repository-Root:
 ```bash
 pip install -r requirements.txt
 python src/generate_course.py
+python src/validate_build.py
 ```
 
-Die fertigen Dateien landen unter `arbeitsblaetter/`.
+Die fertigen Dateien landen unter `arbeitsblaetter/`. `generate_course.py` baut zunächst vollständig in einem Staging-Verzeichnis und veröffentlicht erst nach erfolgreicher Validierung.
 
 ## 8. Pflicht-QA
 
@@ -200,6 +205,8 @@ python /home/oai/skills/docx/render_docx.py DATEI.docx --output_dir QA_ORDNER
 
 Keine QA-PNGs, PDFs oder temporären Hilfsdateien ins Repository committen.
 
+`src/validate_build.py` ergänzt diese visuelle QA durch automatische Strukturprüfungen: erwartete Dateien, gültige DOCX-ZIPs, lesbare PNGs sowie die definierten 20-/30-Punkte-Schemata.
+
 ## 9. Word-spezifische Regeln
 
 ### Absätze
@@ -224,7 +231,7 @@ Proportional skalieren. Zuschneiden und Textumbruch nur verlangen, wenn bekannt 
 
 ### Tabellen
 
-Wenn Tabellen geübt werden, genügend freie Dokumentfläche bereitstellen. Keine Schülertabelle in eine Layout-Tabelle des Aufgabenblatts zwängen.
+Wenn Tabellen geübt werden, genügend freie Dokumentfläche bereitstellen. Keine Schülertabelle in eine Layout-Tabelle des Aufgabenblatts zwängen. Freie Fläche nicht durch Ketten leerer Absätze erzeugen.
 
 ### Kopf-/Fusszeilen
 
@@ -252,6 +259,7 @@ GitHub Actions reagiert auf Änderungen unter `src/**` und führt aus:
 
 ```bash
 python src/generate_course.py
+python src/validate_build.py
 ```
 
 Danach werden Änderungen unter `arbeitsblaetter/` automatisch zurück ins Repository committed.
@@ -260,15 +268,17 @@ Bevorzugter Ablauf:
 
 1. Generator/Quellcode ändern.
 2. Lokal generieren.
-3. DOCX-Dateien vollständig rendern und prüfen.
-4. Quellcode und Planungsdokumente committen.
-5. GitHub-Actions-Build abwarten.
-6. Prüfen, ob der Build erfolgreich war.
-7. Sicherstellen, dass generierte DOCX-Dateien und Assets im Repository vorhanden sind.
+3. Automatische Validierung ausführen.
+4. DOCX-Dateien vollständig rendern und prüfen.
+5. Quellcode und Planungsdokumente committen.
+6. GitHub-Actions-Build abwarten.
+7. Prüfen, ob der Build und die Validierung erfolgreich waren.
+8. Sicherstellen, dass generierte DOCX-Dateien und Assets im Repository vorhanden sind.
 
 Bei erweitertem Kursumfang ebenfalls prüfen:
 
 - `src/generate_course.py`
+- `src/validate_build.py`
 - `arbeitsblaetter/README.md`
 - Root-`README.md`
 - `planung/KURSUEBERSICHT.md`
