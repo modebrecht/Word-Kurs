@@ -25,6 +25,12 @@ Die Arbeitsblätter **A1–A9** sind erstellt und liegen unter [arbeitsblaetter/
 - [Persönlicher Steckbrief](planung/STECKBRIEF.md)
 - [Offene Punkte / Tests](planung/OFFENE_PUNKTE.md)
 
+## Arbeitsblätter weiterentwickeln
+
+Die DOCX-Dateien werden reproduzierbar aus `src/` erzeugt. Die vollständige Arbeitsanweisung für neue Arbeitsblätter, Layoutregeln, didaktische Leitplanken, Assets, Rendering/QA und den GitHub-Actions-Workflow steht in [AGENTS.md](AGENTS.md).
+
+Wichtig: Generierte DOCX-Dateien nicht isoliert von Hand pflegen. Änderungen sollen im Generator nachvollziehbar bleiben und jede fertige DOCX muss nach dem Erzeugen seitenweise visuell geprüft werden.
+
 ## Grundidee
 
 Die Schülerinnen und Schüler sollen Word **durch Benutzung lernen**, nicht durch lange Erklärungen zur Benutzeroberfläche.
