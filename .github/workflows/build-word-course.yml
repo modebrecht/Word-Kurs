@@ -31,6 +31,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No generated changes"
           else
-            git commit -m "Build Word worksheets A1-A12"
+            git commit -m "Build Word course A1-A13 and practice test"
             git push
           fi
