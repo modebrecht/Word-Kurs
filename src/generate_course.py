@@ -1,6 +1,7 @@
 from pathlib import Path
 from build_a1_a5 import build_all as build_a1_a5
 from build_a6_a9 import build_all as build_a6_a9
+from build_a10_a13 import build_all as build_a10_a13
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -21,6 +22,9 @@ Aktueller Arbeitsstand des Word-Kurses.
 - A7 – Bilder in Word
 - A8 – Tabellen
 - A9 – Formatvorlagen & Überschriften
+- A10 – Kopf- & Fusszeile / Seitenzahlen
+- A11 – Dokument nach Vorlage nachbauen
+- A12 – Selbstständig gestalten
 
 `assets/` enthält die für Aufgaben benötigten Bilddateien sowie die eingebetteten Zielvorlagen.
 
@@ -32,8 +36,9 @@ def main():
     # Single entry point used locally and by GitHub Actions.
     build_a1_a5(ROOT)
     build_a6_a9(ROOT)
+    build_a10_a13(ROOT)
     write_readme()
-    print('Generated A1-A9 in', ROOT / 'arbeitsblaetter')
+    print('Generated A1-A12 in', ROOT / 'arbeitsblaetter')
 
 
 if __name__ == '__main__':
