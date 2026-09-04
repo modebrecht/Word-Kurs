@@ -32,7 +32,7 @@ Zusätzlich entsteht aus `A1`–`A13` eine Fleissnote.
 
 ## Arbeitsblätter A1–A13
 
-> **Status:** Laufende Ausarbeitung. A1–A5 sind inhaltlich bereits konkretisiert; spätere Blätter können sich noch verschieben.
+> **Status:** Laufende Ausarbeitung. A1–A9 sind erstellt und praktisch als DOCX umgesetzt; A10–A13 folgen.
 
 ### A1 – Text formatieren
 
@@ -48,7 +48,7 @@ Inhalte:
 - Schriftfarbe
 - rückgängig machen (`Ctrl + Z`)
 
-**Aufgabenidee:** Einen Rohtext Schritt für Schritt nach klar sichtbaren Vorgaben formatieren.
+**Aufgabe:** Einen Rohtext Schritt für Schritt nach klar sichtbaren Vorgaben formatieren.
 
 ---
 
@@ -56,7 +56,7 @@ Inhalte:
 
 **Ziel:** Die Werkzeuge aus A1 anhand einer sichtbaren Vorlage wiedererkennen und anwenden.
 
-**Aufgabenidee:** Eine `Game Night`-Vorlage möglichst genau nachbauen. Der Text bleibt vorgegeben; verändert wird nur die Formatierung.
+**Aufgabe:** Eine `Game Night`-Vorlage möglichst genau nachbauen. Der Text bleibt vorgegeben; verändert wird nur die Formatierung.
 
 **Didaktischer Grund:** Dieser Transfer war ursprünglich Teil von A1 und wurde bewusst auf ein eigenes Blatt ausgelagert, um die kognitive Last für die Klasse zu reduzieren.
 
@@ -95,7 +95,7 @@ Komplizierte Listenebenen und hängende Einzüge gehören nicht zum Pflichtteil.
 
 **Ziel:** Bekannte Funktionen aus A1–A4 in einem absichtlich verhunzten Dokument erkennen und reparieren.
 
-Mögliche / bereits geplante Fehler:
+Enthaltene Fehler:
 
 - falsche Schriftart und Schriftgrösse
 - falsche Farbe
@@ -112,40 +112,45 @@ Eine vorhandene Grafik zu verschieben und zu verkleinern ist die kleine neue Kom
 
 ### A6 – Seitenlayout
 
-Mögliche Inhalte:
+Inhalte:
 
-- Seitenränder
 - Hochformat / Querformat
-- Seitenumbruch
-- eventuell Spalten
+- Seitenränder
+- echter Seitenumbruch mit `Ctrl + Enter`
 
-**Ziel:** Ein Dokument gezielt auf einer Seite bzw. über mehrere Seiten aufbauen.
+**Umsetzung:** Zwei Seiten. Seite 1 enthält die Anleitung; Seite 2 ist eine eigene Übungsseite, damit die Schülerinnen und Schüler das Seitenlayout verändern können, ohne die Anleitung zu zerstören.
+
+**Ziel:** Eine Seite gezielt einrichten und eine neue Seite sauber mit einem Seitenumbruch beginnen.
 
 ---
 
 ### A7 – Bilder in Word
 
-Mögliche Inhalte:
+Inhalte:
 
-- Bild einfügen
+- Bild aus Datei einfügen
 - Grösse ändern
 - zuschneiden
 - verschieben
-- Textumbruch
+- Textumbruch `Quadrat`
 
-**Ziel:** Ein kleines Infoblatt mit sinnvoll platziertem Bild gestalten.
+**Aufgabe:** Ein kleines Schulhaus-Infoblatt nach Vorlage bauen. Die benötigte Bilddatei wird mitgeliefert.
+
+**Ziel:** Ein Bild so einsetzen, dass Bild und Text sinnvoll zusammenarbeiten.
 
 ---
 
 ### A8 – Tabellen
 
-Mögliche Inhalte:
+Inhalte:
 
 - Tabelle erstellen
-- Zeilen und Spalten anpassen
+- Daten in Zellen eintragen
+- Zeile ergänzen
 - Zellen verbinden
 - Inhalte ausrichten
-- einfache Gestaltung
+
+**Umsetzung:** Zwei Seiten. Seite 1 zeigt Auftrag und Zielvorlage; Seite 2 enthält Rohdaten und freie Arbeitsfläche für eine echte Word-Tabelle.
 
 **Ziel:** Informationen strukturiert in einer Tabelle darstellen.
 
@@ -153,14 +158,16 @@ Mögliche Inhalte:
 
 ### A9 – Formatvorlagen und Überschriften
 
-Mögliche Inhalte:
+Inhalte:
 
-- Titel
-- Überschrift 1 / Überschrift 2
-- normaler Text
-- konsistente Formatierung
+- `Titel`
+- `Überschrift 1`
+- `Überschrift 2`
+- `Standard`
 
-**Ziel:** Einen längeren Text einheitlich und logisch strukturieren.
+**Aufgabe:** Einen längeren, zunächst gleich formatierten Rohtext mit echten Word-Formatvorlagen strukturieren. Schriftgrösse und Fett werden nicht von Hand eingestellt.
+
+**Ziel:** Einen längeren Text einheitlich und logisch strukturieren und verstehen, dass Überschriften eine Rolle im Dokument erhalten.
 
 ---
 
