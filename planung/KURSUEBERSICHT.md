@@ -21,80 +21,96 @@ Der Schwerpunkt liegt auf:
 
 Geplant sind:
 
-1. zwölf Arbeitsblätter (`A1`–`A12`)
+1. dreizehn Arbeitsblätter (`A1`–`A13`)
 2. ein vollständiger unbenoteter Übungstest
 3. ein benoteter persönlicher Steckbrief mit Foto
 4. ein benoteter Word-Test
 
-Zusätzlich entsteht aus `A1`–`A12` eine Fleissnote.
+Zusätzlich entsteht aus `A1`–`A13` eine Fleissnote.
 
 ---
 
-## Arbeitsblätter A1–A12
+## Arbeitsblätter A1–A13
 
-> **Status:** Grobplanung. Reihenfolge und Details können sich bei der Ausarbeitung noch verschieben.
+> **Status:** Laufende Ausarbeitung. A1–A5 sind inhaltlich bereits konkretisiert; spätere Blätter können sich noch verschieben.
 
-### A1 – Text gestalten
+### A1 – Text formatieren
 
-**Ziel:** Ein sichtbarer, sinnvoller Einstieg statt einer Word-Oberflächen-Tour.
+**Ziel:** Die wichtigsten Grundwerkzeuge ohne zusätzliche Transferlast sicher kennenlernen.
 
-Mögliche Inhalte:
+Inhalte:
 
 - Text markieren
+- Schriftart
 - Schriftgrösse
 - fett
 - kursiv
 - Schriftfarbe
-- Schriftart
-- rückgängig machen
-- Datei sinnvoll speichern
+- rückgängig machen (`Ctrl + Z`)
 
-**Aufgabenidee:** Einen absichtlich schlecht formatierten Rohtext in einen gut lesbaren Text verwandeln.
-
-**Transfer:** Eine kleine Einladung oder einen kurzen Infotext so gestalten, dass Titel und wichtige Informationen sofort erkennbar sind.
+**Aufgabenidee:** Einen Rohtext Schritt für Schritt nach klar sichtbaren Vorgaben formatieren.
 
 ---
 
-### A2 – Absätze und Ordnung
+### A2 – Nach Vorlage gestalten
 
-Mögliche Inhalte:
+**Ziel:** Die Werkzeuge aus A1 anhand einer sichtbaren Vorlage wiedererkennen und anwenden.
 
-- Absatzausrichtung
-- Absatzabstände
+**Aufgabenidee:** Eine `Game Night`-Vorlage möglichst genau nachbauen. Der Text bleibt vorgegeben; verändert wird nur die Formatierung.
+
+**Didaktischer Grund:** Dieser Transfer war ursprünglich Teil von A1 und wurde bewusst auf ein eigenes Blatt ausgelagert, um die kognitive Last für die Klasse zu reduzieren.
+
+---
+
+### A3 – Absätze und Ordnung
+
+Inhalte:
+
+- links / zentriert / rechts ausrichten
 - Zeilenabstand
-- einfache Einzüge
+- Absatzabstand
+- Abstand statt mehrfacher Leerzeilen
 
 **Ziel:** Einen unübersichtlichen Text sauber strukturieren.
 
----
-
-### A3 – Listen und Nummerierungen
-
-Mögliche Inhalte:
-
-- Aufzählungen
-- Nummerierungen
-- einfache Listenebenen
-
-**Ziel:** Informationen übersichtlich darstellen, statt sie mit Bindestrichen oder Leerzeichen von Hand zu bauen.
+Einfache Einzüge werden vorerst nicht eingeführt.
 
 ---
 
-### A4 – Tabulatoren und Ausrichten
+### A4 – Listen und Nummerierungen
 
-Mögliche Inhalte:
+Inhalte:
 
-- Inhalte ohne Leerzeichen sauber untereinander ausrichten
-- Tabulatoren
-- eventuell einfache Einzüge / hängende Einzüge
+- echte Word-Aufzählungen
+- echte Word-Nummerierungen
+- automatische Fortsetzung / Neunummerierung
 
-**WICHTIG:** Dieses Arbeitsblatt muss vor der Finalisierung **lokal auf den Schulgeräten getestet werden**. In der bisherigen Umgebung gab es bereits Probleme mit Tabulatoren, Lineal und Einzügen.
+**Ziel:** Unterscheiden können: gleichwertige Dinge = Aufzählung, Reihenfolge = Nummerierung.
 
-Wenn es lokal wieder unzuverlässig funktioniert, soll A4 eher ersetzt oder stark vereinfacht werden, statt eine fragile Lösung zu erzwingen.
+Komplizierte Listenebenen und hängende Einzüge gehören nicht zum Pflichtteil.
 
 ---
 
-### A5 – Seitenlayout
+### A5 – Rette das Chaos-Dokument
+
+**Ziel:** Bekannte Funktionen aus A1–A4 in einem absichtlich verhunzten Dokument erkennen und reparieren.
+
+Mögliche / bereits geplante Fehler:
+
+- falsche Schriftart und Schriftgrösse
+- falsche Farbe
+- falsche Ausrichtung
+- Aufzählung und Nummerierung vertauscht
+- unpassende Abstände
+- Grafik zu gross und an der falschen Stelle
+
+Eine vorhandene Grafik zu verschieben und zu verkleinern ist die kleine neue Kompetenz auf diesem Blatt und wird sichtbar erklärt.
+
+**Wichtig:** Dieses Blatt ersetzt die frühere Pflichtidee mit Tabulatoren / hängenden Einzügen.
+
+---
+
+### A6 – Seitenlayout
 
 Mögliche Inhalte:
 
@@ -107,7 +123,7 @@ Mögliche Inhalte:
 
 ---
 
-### A6 – Bilder in Word
+### A7 – Bilder in Word
 
 Mögliche Inhalte:
 
@@ -121,7 +137,7 @@ Mögliche Inhalte:
 
 ---
 
-### A7 – Tabellen
+### A8 – Tabellen
 
 Mögliche Inhalte:
 
@@ -135,7 +151,7 @@ Mögliche Inhalte:
 
 ---
 
-### A8 – Formatvorlagen und Überschriften
+### A9 – Formatvorlagen und Überschriften
 
 Mögliche Inhalte:
 
@@ -148,28 +164,27 @@ Mögliche Inhalte:
 
 ---
 
-### A9 – Kopf- und Fusszeile / Seitenzahlen
+### A10 – Kopf- und Fusszeile / Seitenzahlen
 
 Mögliche Inhalte:
 
 - mehrseitiges Dokument
 - Seitenzahlen
 - Kopfzeile / Fusszeile
-- eventuell Name und Datum
 
 **Ziel:** Ein mehrseitiges Dokument sauber abschliessen.
 
 ---
 
-### A10 – Dokument nach Vorlage nachbauen
+### A11 – Dokument nach Vorlage nachbauen
 
-Die Schülerinnen und Schüler erhalten eine klare visuelle Vorlage und bauen sie möglichst genau nach.
+Die Schülerinnen und Schüler erhalten eine komplexere visuelle Vorlage und bauen sie möglichst genau nach.
 
 **Ziel:** Mehrere bisherige Kompetenzen kombinieren, ohne dass jeder Klick erklärt wird.
 
 ---
 
-### A11 – Selbstständig gestalten
+### A12 – Selbstständig gestalten
 
 Mögliche Aufgabe:
 
@@ -182,7 +197,7 @@ Mögliche Aufgabe:
 
 ---
 
-### A12 – Gesamtauftrag / Prüfungsvorbereitung
+### A13 – Gesamtauftrag / Prüfungsvorbereitung
 
 Ein grösserer Auftrag, der mehrere Kompetenzen kombiniert.
 
@@ -242,7 +257,7 @@ Geplant:
 
 Es entstehen drei Noten:
 
-1. Fleissnote aus `A1`–`A12`
+1. Fleissnote aus `A1`–`A13`
 2. persönlicher Steckbrief
 3. Word-Test
 
