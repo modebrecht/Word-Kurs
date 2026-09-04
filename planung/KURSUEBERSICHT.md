@@ -32,7 +32,7 @@ Zusätzlich entsteht aus `A1`–`A13` eine Fleissnote.
 
 ## Arbeitsblätter A1–A13
 
-> **Status:** Laufende Ausarbeitung. A1–A9 sind erstellt und praktisch als DOCX umgesetzt; A10–A13 folgen.
+> **Status:** Laufende Ausarbeitung. A1–A12 sind erstellt und praktisch als DOCX umgesetzt; A13 folgt.
 
 ### A1 – Text formatieren
 
@@ -173,19 +173,33 @@ Inhalte:
 
 ### A10 – Kopf- und Fusszeile / Seitenzahlen
 
-Mögliche Inhalte:
+Inhalte:
 
-- mehrseitiges Dokument
-- Seitenzahlen
-- Kopfzeile / Fusszeile
+- Kopfzeile öffnen und Text einsetzen
+- Fusszeile öffnen
+- automatische Seitenzahl einfügen
+- Wiederholung von Kopf-/Fusszeile auf mehreren Seiten erkennen
 
-**Ziel:** Ein mehrseitiges Dokument sauber abschliessen.
+**Umsetzung:** Drei Seiten. Seite 1 enthält die Anleitung; Seiten 2–3 bilden einen bereits formatierten Reisebericht. Die Übungsseiten liegen in einem eigenen Abschnitt und starten ihre Seitenzählung bei 1.
+
+**Ziel:** Ein mehrseitiges Dokument sauber mit wiederkehrender Kopf-/Fusszeile und automatischer Seitenzahl abschliessen.
 
 ---
 
 ### A11 – Dokument nach Vorlage nachbauen
 
-Die Schülerinnen und Schüler erhalten eine komplexere visuelle Vorlage und bauen sie möglichst genau nach.
+**Aufgabe:** Ein Klassenlager-Infoblatt anhand einer komplexeren sichtbaren Vorlage nachbauen.
+
+Pflichtwerkzeuge:
+
+- Formatvorlagen
+- echte Aufzählung
+- echte Tabelle
+- Bild mit Textumbruch
+- Kopfzeile
+- automatische Seitenzahl
+
+**Didaktischer Schritt:** Es gibt keine A–F-Klickanleitung mehr. Die Vorlage bleibt sichtbar, aber die Schülerinnen und Schüler müssen bekannte Werkzeuge selbst auswählen und kombinieren.
 
 **Ziel:** Mehrere bisherige Kompetenzen kombinieren, ohne dass jeder Klick erklärt wird.
 
@@ -193,14 +207,20 @@ Die Schülerinnen und Schüler erhalten eine komplexere visuelle Vorlage und bau
 
 ### A12 – Selbstständig gestalten
 
-Mögliche Aufgabe:
+**Aufgabe:** Einen einseitigen Flyer für einen Schulhaus-Sommerabend gestalten. Inhalt und Pflichtbestandteile sind vorgegeben, eine Zielvorlage gibt es nicht mehr.
 
-- Flyer
-- Infoblatt
-- Veranstaltungsankündigung
-- anderes kurzes Dokument mit klaren Pflichtbestandteilen
+Pflichtbestandteile:
 
-**Ziel:** Weniger Anleitung, mehr eigene Entscheidungen innerhalb klarer Vorgaben.
+- A4 Hochformat, alles auf einer Seite
+- Formatvorlagen für Titel und Überschriften
+- echte Aufzählung
+- echte Tabelle
+- Bild sinnvoll zuschneiden und platzieren
+- Fusszeile und automatische Seitenzahl
+
+Frei sind unter anderem Anordnung, Grössenverhältnisse, Abstände, Bildposition und passende Farbe.
+
+**Ziel:** Weniger Anleitung, mehr eigene Entscheidungen innerhalb klarer, objektiv überprüfbarer Vorgaben.
 
 ---
 
