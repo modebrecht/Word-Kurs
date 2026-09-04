@@ -1,6 +1,8 @@
 # Arbeitsblätter
 
-Aktueller Arbeitsstand des Word-Kurses.
+Vollständiger Arbeitsstand des Word-Kurses.
+
+## Kurs
 
 - A1 – Text formatieren
 - A2 – Nach Vorlage gestalten
@@ -16,10 +18,15 @@ Aktueller Arbeitsstand des Word-Kurses.
 - A12 – Selbstständig gestalten
 - A13 – Gesamtauftrag / Prüfungsvorbereitung
 
-Zusätzlich:
-- `Uebungstest_Word.docx` – unbenotetes Aufgabenblatt
-- `Uebungstest_Ausgangsdokument.docx` – Ausgangsdatei zum Bearbeiten
+## Üben und Bewerten
 
-`assets/` enthält die für Aufgaben benötigten Bilddateien sowie die eingebetteten Zielvorlagen.
+- `Uebungstest_Word.docx` – unbenotetes Aufgabenblatt
+- `Uebungstest_Ausgangsdokument.docx` – Ausgangsdatei zum Übungstest
+- `Benoteter_Steckbrief.docx` – benoteter persönlicher Steckbrief inkl. Bewertungsraster
+- `Word_Test.docx` – benoteter Word-Test
+- `Word_Test_Ausgangsdokument.docx` – Ausgangsdatei zum Word-Test
+- `Word_Test_Korrekturblatt.docx` – Korrekturraster und Notenschlüssel
+
+`assets/` enthält die für Aufgaben und Tests benötigten Bilddateien sowie eingebettete Zielvorlagen.
 
 Die DOCX-Dateien werden reproduzierbar aus `src/` erzeugt.
