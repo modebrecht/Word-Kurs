@@ -6,7 +6,7 @@ Der bestehende ältere Kurs wird **nicht einfach gekürzt oder modernisiert**, s
 
 ## Aktueller Stand
 
-Die Arbeitsblätter **A1–A9** sind erstellt und liegen unter [arbeitsblaetter/](arbeitsblaetter/README.md). Die benötigten Bilddateien und visuellen Vorlagen liegen in `arbeitsblaetter/assets/`.
+Die Arbeitsblätter **A1–A12** sind erstellt und liegen unter [arbeitsblaetter/](arbeitsblaetter/README.md). Die benötigten Bilddateien und visuellen Vorlagen liegen in `arbeitsblaetter/assets/`.
 
 ## Geplanter Umfang
 
