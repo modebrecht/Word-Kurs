@@ -4,40 +4,33 @@ Diese Datei sammelt Punkte, die vor der Finalisierung des Kurses noch entschiede
 
 ## Technisch unbedingt testen
 
-### A4 – Tabulatoren / Einzüge
+### Tabulatoren / Einzüge
 
-**Vor der Finalisierung lokal in der Schule testen.**
+Tabulatoren und hängende Einzüge gehören aktuell **nicht zum Pflichtkurs**.
 
 Hintergrund:
 
 - Tabulatoren haben in der bisherigen Umgebung nicht zuverlässig funktioniert.
 - Auch hängende Einzüge / Lineal-Verhalten können je nach lokaler Word-Version oder Konfiguration problematisch sein.
 
-Zu prüfen:
-
-- Verhalten auf den tatsächlichen Schul-PCs
-- sichtbares Lineal
-- Tabstopps setzen und verschieben
-- hängende Einzüge, falls sie im Blatt vorkommen sollen
-- Öffnen und Speichern der vorbereiteten Dateien
-
-**Entscheidungsregel:** Wenn A4 lokal erneut unzuverlässig ist, Blatt vereinfachen oder Thema ersetzen. Nicht an einer technisch fragilen Lösung festhalten.
+**Falls das Thema später wieder aufgenommen werden soll:** zuerst lokal auf den tatsächlichen Schul-PCs testen. Nicht an einer technisch fragilen Lösung festhalten.
 
 ---
 
 ## Kursstruktur noch finalisieren
 
-- genaue Reihenfolge A5–A9 prüfen
-- entscheiden, ob Spalten wirklich in A5 gehören
-- Umfang von Formatvorlagen in A8 festlegen
-- A10–A12 konkrete Produkte / Szenarien definieren
+- genaue Reihenfolge A6–A10 prüfen
+- entscheiden, ob Spalten wirklich in A6 gehören
+- Umfang von Formatvorlagen in A9 festlegen
+- A11–A13 konkrete Produkte / Szenarien definieren
 - sicherstellen, dass pro Blatt nicht zu viele neue Funktionen eingeführt werden
+- prüfen, ob weitere Blätter wie A1 aufgeteilt werden sollten, wenn die kognitive Last zu hoch wird
 
 ## Fleissnote
 
 Noch festzulegen:
 
-- konkretes Punktesystem A1–A12
+- konkretes Punktesystem A1–A13
 - Mindestanforderung pro Blatt
 - Umgang mit Absenzen
 - Umgang mit verspäteten Abgaben
