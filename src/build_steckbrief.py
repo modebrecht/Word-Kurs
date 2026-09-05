@@ -140,7 +140,7 @@ def build_steckbrief(out: Path):
         ("Aufzählung", "«Meine Interessen» ist eine echte Word-Aufzählung."),
         ("Foto", "Foto sinnvoll zugeschnitten, ungefähr 5 cm breit und nicht verzerrt."),
         ("Bildplatzierung", "Textumbruch «Quadrat»; Foto rechts oben; kein Text überlappt."),
-        ("Abgabe & Sauberkeit", "Dateiname korrekt; nichts abgeschnitten/überlappt; Dokument gut lesbar."),
+        ("Abgabe & Sauberkeit", "Dateiname korrekt; nichts abgeschnitten; nichts überlappt; gut lesbar."),
     ]
     table = doc.add_table(rows=1, cols=5)
     table.autofit = False
