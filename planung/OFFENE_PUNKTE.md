@@ -6,9 +6,19 @@ Der Kursinhalt **A1–A13**, der unbenotete Übungstest, der benotete Steckbrief
 
 Für den definierten Pflichtkurs fehlt aktuell **kein zwingendes Word-Thema** mehr. Die bewusst ausgelassenen Bereiche – insbesondere Tabulatoren, hängende Einzüge, komplexe Listenebenen, Spaltenlayout und fortgeschrittene Tabellenfunktionen – sind keine offenen Aufgaben, sondern bewusste Umfangsentscheidungen. Details stehen in [KURSUEBERSICHT.md](KURSUEBERSICHT.md).
 
-Offen sind damit vor allem praktische Schul-, Prüfungs- und Bewertungsdetails.
+Auch die zuvor offenen Bewertungs- und Prüfungsregeln sind inzwischen festgelegt:
 
-## Technisch vor dem Einsatz testen
+- Fleissnote: A1–A13 mit je 0 / 1 / 2 Punkten, maximal 26 Punkte; lineare Notenskala
+- Streichnote: schlechteste von drei gültigen Einzelnoten streichen, Mittelwert der zwei verbleibenden Noten
+- Schlussrundung: kaufmännisch auf eine Dezimalstelle
+- Steckbrief-Foto: vor der benoteten Arbeit im persönlichen Schulordner bereitstellen
+- Word-Test: klar definierte erlaubte und nicht erlaubte Hilfsmittel
+
+Details stehen in [BEWERTUNG.md](BEWERTUNG.md) und [STECKBRIEF.md](STECKBRIEF.md).
+
+---
+
+## Vor dem ersten Einsatz noch praktisch testen
 
 ### Schul-PCs / Word-Version
 
@@ -24,50 +34,16 @@ Mindestens einmal auf den tatsächlichen Geräten prüfen:
 - Kopf- und Fusszeilen
 - automatische Seitenzahlen
 - Abgabe in den vorgesehenen Schulordner
+- Zugriff auf den persönlichen Foto-Ordner beim Steckbrief
 
 ### Tabulatoren / Einzüge
 
 Tabulatoren und komplexe hängende Einzüge gehören weiterhin **nicht zum Pflichtkurs**. Falls sie später wieder aufgenommen werden, zuerst lokal auf den Schul-PCs testen.
 
-## Fleissnote
+---
 
-Noch festzulegen:
+## Status
 
-- konkretes Punktesystem für A1–A13
-- Mindestanforderung pro Blatt
-- Umgang mit Absenzen
-- Umgang mit verspäteten oder fehlenden Abgaben
-- Umrechnung der Fleisspunkte in eine Note
+**Inhaltlich und bewertungstechnisch ist der Kurs vollständig festgelegt.**
 
-## Streichnote
-
-Das Grundmodell steht: Von Fleissnote, Steckbrief und Word-Test zählt die schlechteste Note nicht.
-
-Noch festzulegen:
-
-- genaue rechnerische Umsetzung im Notentool
-- Rundungsregel für die Schlussnote
-
-## Persönlicher Steckbrief
-
-Festgelegt sind:
-
-- Pflichtinhalte und Formatvorgaben
-- 20-Punkte-Raster mit 10 Kriterien à 0/1/2 Punkten
-- lineare Notenskala; 12/20 = Note 4.0
-- DOCX-Abgabe
-- Foto bleibt in der Schulabgabe und soll nicht öffentlich publiziert werden
-
-Praktisch noch klären: Wie das Foto auf den Schulgeräten bereitgestellt wird.
-
-## Übungstest und Word-Test
-
-Festgelegt sind:
-
-- Übungstest im gleichen Arbeitsmodus wie der Test, aber ohne Note
-- Word-Test: 45 Minuten, 30 Punkte
-- separates Aufgabenblatt, Ausgangsdokument und Bilddatei
-- Korrekturblatt mit Teilpunkten und vollständigem Notenschlüssel
-- lineare Notenskala; 18/30 = Note 4.0
-
-Noch vor dem Einsatz entscheiden: Welche Hilfsmittel während des benoteten Tests ausdrücklich erlaubt sind.
+Der einzige noch notwendige Schritt vor dem realen Unterrichtseinsatz ist ein kurzer Praxistest auf den tatsächlichen Schulgeräten und mit dem tatsächlichen Abgabeweg. Dabei sollen keine neuen Inhalte mehr entwickelt werden, sondern nur technische Überraschungen ausgeschlossen werden.
