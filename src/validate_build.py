@@ -42,6 +42,35 @@ EXPECTED_ASSETS = (
     "assets/word_test_rheinfall.png",
 )
 
+EXPECTED_PACKAGES = {
+    "pakete/A7_Bilder_in_Word.zip": (
+        "A7_Bilder_in_Word.docx",
+        "a7_schulhaus.png",
+    ),
+    "pakete/A11_Dokument_nach_Vorlage_nachbauen.zip": (
+        "A11_Dokument_nach_Vorlage_nachbauen.docx",
+        "a11_klassenlager_berge.png",
+    ),
+    "pakete/A12_Selbststaendig_gestalten.zip": (
+        "A12_Selbststaendig_gestalten.docx",
+        "a12_sommerabend.png",
+    ),
+    "pakete/A13_Gesamtauftrag_Pruefungsvorbereitung.zip": (
+        "A13_Gesamtauftrag_Pruefungsvorbereitung.docx",
+        "a13_bern_altstadt.png",
+    ),
+    "pakete/Uebungstest_Word_Paket.zip": (
+        "Uebungstest_Word.docx",
+        "Uebungstest_Ausgangsdokument.docx",
+        "uebungstest_greifensee.png",
+    ),
+    "pakete/Word_Test_Paket.zip": (
+        "Word_Test.docx",
+        "Word_Test_Ausgangsdokument.docx",
+        "word_test_rheinfall.png",
+    ),
+}
+
 _POINT_RE = re.compile(r"\[(\d+)\s*P\]")
 
 
@@ -67,7 +96,6 @@ def _validate_docx(path: Path) -> None:
             raise RuntimeError(f"Invalid DOCX {path}; missing: {', '.join(missing)}")
         ElementTree.fromstring(archive.read("word/document.xml"))
 
-    # Let python-docx parse the package as a second structural check.
     Document(path)
 
 
@@ -79,6 +107,23 @@ def _validate_png(path: Path) -> None:
     with Image.open(path) as image:
         if image.width <= 0 or image.height <= 0:
             raise RuntimeError(f"Invalid PNG dimensions: {path}")
+
+
+def _validate_student_package(path: Path, expected_members: tuple[str, ...]) -> None:
+    if path.stat().st_size < 1024:
+        raise RuntimeError(f"Student package is unexpectedly small: {path}")
+    with zipfile.ZipFile(path, "r") as archive:
+        bad_member = archive.testzip()
+        if bad_member is not None:
+            raise RuntimeError(f"Corrupt ZIP member {bad_member!r} in {path}")
+        names = tuple(archive.namelist())
+        if names != expected_members:
+            raise RuntimeError(
+                f"Unexpected contents in {path.name}: found {names}; expected {expected_members}."
+            )
+        for name in names:
+            if Path(name).name != name:
+                raise RuntimeError(f"Student package must be flat, but found nested member {name!r} in {path}")
 
 
 def _validate_task_points(path: Path, expected_count: int, expected_sum: int) -> None:
@@ -93,7 +138,7 @@ def _validate_task_points(path: Path, expected_count: int, expected_sum: int) ->
 def _validate_grade_rounding() -> None:
     expected = {
         (12, 20): "4.0",
-        (13, 20): "4.3",  # 4.25 must round half-up, not bankers-round to 4.2.
+        (13, 20): "4.3",
         (18, 30): "4.0",
         (30, 30): "6.0",
     }
@@ -105,12 +150,11 @@ def _validate_grade_rounding() -> None:
     if wrong:
         raise RuntimeError(f"Swiss grade rounding is inconsistent: {wrong}")
 
-    # Fleissnote uses the same scale; 13 sheets x 2 points = 26 possible.
     if str(effort_grade(26, 26)) != "6.0":
         raise RuntimeError("Full Fleisspunkte must produce grade 6.0.")
 
     final_examples = {
-        ("5.3", "4.8", "3.5"): "5.1",  # 5.05 rounds half-up to 5.1.
+        ("5.3", "4.8", "3.5"): "5.1",
         ("4.2", "4.2", "5.0"): "4.6",
         ("6.0", "1.0", "6.0"): "6.0",
     }
@@ -169,7 +213,7 @@ def _validate_word_test_key(path: Path) -> None:
         raise RuntimeError("Word-test grading key does not define half-up rounding explicitly.")
 
 
-def validate_course_package(root: Path) -> tuple[int, int]:
+def validate_course_package(root: Path) -> tuple[int, int, int]:
     root = Path(root)
     output = root / "arbeitsblaetter"
     if not output.is_dir():
@@ -177,6 +221,7 @@ def validate_course_package(root: Path) -> tuple[int, int]:
 
     missing = [name for name in EXPECTED_DOCX if not (output / name).is_file()]
     missing += [name for name in EXPECTED_ASSETS if not (output / name).is_file()]
+    missing += [name for name in EXPECTED_PACKAGES if not (output / name).is_file()]
     if not (output / "README.md").is_file():
         missing.append("README.md")
     if missing:
@@ -192,13 +237,16 @@ def validate_course_package(root: Path) -> tuple[int, int]:
     for path in png_files:
         _validate_png(path)
 
+    for package_rel, expected_members in EXPECTED_PACKAGES.items():
+        _validate_student_package(output / package_rel, expected_members)
+
     _validate_grade_rounding()
     _validate_task_points(output / "Uebungstest_Word.docx", expected_count=10, expected_sum=30)
     _validate_task_points(output / "Word_Test.docx", expected_count=11, expected_sum=30)
     _validate_steckbrief(output / "Benoteter_Steckbrief.docx")
     _validate_word_test_key(output / "Word_Test_Korrekturblatt.docx")
 
-    return len(docx_files), len(png_files)
+    return len(docx_files), len(png_files), len(EXPECTED_PACKAGES)
 
 
 def main() -> None:
@@ -210,8 +258,11 @@ def main() -> None:
         help="Repository or staged build root containing arbeitsblaetter/.",
     )
     args = parser.parse_args()
-    docx_count, png_count = validate_course_package(args.root)
-    print(f"Validated Word course package: {docx_count} DOCX, {png_count} PNG")
+    docx_count, png_count, package_count = validate_course_package(args.root)
+    print(
+        f"Validated Word course package: {docx_count} DOCX, {png_count} PNG, "
+        f"{package_count} student ZIP packages"
+    )
 
 
 if __name__ == "__main__":
