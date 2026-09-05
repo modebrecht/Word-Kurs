@@ -39,9 +39,11 @@ Die erste Grobplanung war absichtlich offen formuliert. Bei der praktischen Ausa
 
 - Der ursprüngliche Einstieg wurde auf **A1 und A2 aufgeteilt**: zuerst geführte Grundformatierung, danach Nachbau nach sichtbarer Vorlage. Dadurch wuchs der Kurs von ursprünglich 12 auf 13 Arbeitsblätter.
 - Das ursprünglich mögliche eigene Blatt zu **Tabulatoren / Ausrichten** wurde durch **A5 – Rette das Chaos-Dokument** ersetzt.
-- A5 enthält dafür gezielte Repetition aus A1–A4 und eine kleine, sichtbar erklärte Bildkompetenz.
+- A5 enthält gezielte Repetition aus A1–A4 und als bewusstes Mini-Neuziel das Verkleinern und Verschieben einer bereits vorhandenen Grafik. Diese neue Bedienhandlung wird sichtbar gestützt; Einfügen, Zuschneiden und Textumbruch kommen erst in A7.
+- A7 führt Bild aus Datei einfügen, Zuschneiden und Textumbruch `Quadrat` mit sichtbaren Menüankern ein. Der frühere Platzhalter-Löschschritt wurde entfernt, weil er nicht zum Lernziel gehört.
 - A7 behandelt beim Textumbruch gezielt **`Quadrat`** als verlässliche Standardvariante, nicht alle möglichen Umbrucharten.
 - A8 konzentriert Tabellen auf die für diesen Kurs relevanten Grundfunktionen statt auf fortgeschrittene Tabellenwerkzeuge.
+- A10 spricht für die Lernenden nur von **erster und zweiter Übungsseite**. Die interne Abschnittstechnik des dreiseitigen DOCX bleibt Infrastruktur und wird nicht zum Lernstoff.
 
 ### Bewusst nicht Teil des Pflichtkurses
 
@@ -60,7 +62,7 @@ Diese Punkte fehlen nicht versehentlich. Sie wurden aus Gründen der Zielgruppe,
 
 Für das definierte Kursziel **„grundlegende und alltagsnahe Word-Kompetenzen für Sek 8 sicher anwenden“** ist der Pflichtstoff vollständig abgedeckt. Es gibt aktuell **kein inhaltliches Loch**, das vor dem Unterricht zwingend noch durch ein zusätzliches Arbeitsblatt geschlossen werden müsste.
 
-Noch offen sind nur praktische Einsatz- und Bewertungsdetails; diese stehen in [OFFENE_PUNKTE.md](OFFENE_PUNKTE.md).
+Offen bleiben als Release-Gates die vollständige didaktische Enddiagnose nach `modebrecht/M/didactic.md` und der Praxistest auf den tatsächlichen Schul-PCs. Details stehen in [OFFENE_PUNKTE.md](OFFENE_PUNKTE.md).
 
 ---
 
@@ -92,9 +94,9 @@ Echte Word-Aufzählungen, echte Nummerierungen und automatische Neunummerierung.
 
 ### A5 – Rette das Chaos-Dokument
 
-Bekannte Funktionen aus A1–A4 werden in einem absichtlich schlecht formatierten Dokument kombiniert. Eine vorhandene Grafik wird zusätzlich verschoben und verkleinert.
+Bekannte Funktionen aus A1–A4 werden in einem absichtlich schlecht formatierten Dokument kombiniert. Als klar markiertes Mini-Neuziel wird eine bereits vorhandene Grafik mit sichtbarer Hilfe auf die verlangte Breite gebracht, verschoben und zentriert.
 
-**Ziel:** Fehler erkennen und bekannte Werkzeuge gezielt einsetzen.
+**Ziel:** Fehler erkennen und bekannte Werkzeuge gezielt einsetzen; eine kleine neue Grafikhandlung ausführen, ohne unbekannte Menüwege erraten zu müssen.
 
 ### A6 – Seitenlayout
 
@@ -104,7 +106,9 @@ Hoch-/Querformat, Seitenränder und echter Seitenumbruch mit `Ctrl + Enter`.
 
 ### A7 – Bilder in Word
 
-Bild einfügen, zuschneiden, Grösse ändern, verschieben und Textumbruch `Quadrat`.
+Bild aus Datei einfügen, zuschneiden, Grösse ändern, verschieben und Textumbruch `Quadrat`.
+
+**Umsetzung:** Neue Bildfunktionen erhalten beim ersten Einsatz sichtbare Menüanker. Der Ablauf ist in `BILD EINSETZEN` und `BILD + TEXT` gegliedert; der Auftrag verlangt keinen technisch irrelevanten Platzhalter-Löschschritt.
 
 **Ziel:** Bild und Text sinnvoll zusammenführen.
 
@@ -124,7 +128,7 @@ Tabelle erstellen, Daten eintragen, Zeile ergänzen, Zellen verbinden und Inhalt
 
 Kopfzeile, Fusszeile, automatische Seitenzahl und Wiederholung auf mehreren Seiten.
 
-**Umsetzung:** Dreiseitiges Blatt mit separatem zweitseitigem Übungsdokument innerhalb eines eigenen Abschnitts.
+**Umsetzung:** Dreiseitiges DOCX mit zwei folgenden Übungsseiten. Für die Lernenden heissen sie konsequent `erste Übungsseite` und `zweite Übungsseite`; die interne Abschnittstechnik wird nicht erklärt oder geprüft. Die Menühilfe für die neue automatische Seitenzahl bleibt sichtbar.
 
 ### A11 – Dokument nach Vorlage nachbauen
 
