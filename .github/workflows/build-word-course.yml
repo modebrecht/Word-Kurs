@@ -41,42 +41,44 @@ jobs:
           if marker not in text:
               raise SystemExit('OFFENE_PUNKTE release-gate marker not found')
           prefix = text.split(marker, 1)[0].rstrip()
-          suffix = '''## Vor dem ersten Einsatz noch notwendig
-
-### Schul-PCs / Word-Version
-
-Mindestens einmal auf den tatsächlichen Geräten prüfen:
-
-- Öffnen und Speichern der DOCX-Dateien
-- Arial vorhanden
-- Bildimport und Zuschneiden
-- Textumbruch `Quadrat`
-- echte Aufzählungen und Nummerierungen
-- Tabellen
-- Seitenumbrüche
-- Kopf- und Fusszeilen
-- automatische Seitenzahlen
-- Abgabe in den vorgesehenen Schulordner
-- Zugriff auf den persönlichen Foto-Ordner beim Steckbrief
-
-### Tabulatoren / Einzüge
-
-Tabulatoren und komplexe hängende Einzüge gehören weiterhin **nicht zum Pflichtkurs**. Falls sie später wieder aufgenommen werden, zuerst lokal auf den Schul-PCs testen.
-
----
-
-## Status
-
-**Inhaltlich, didaktisch und bewertungstechnisch ist der Kurs abgeschlossen.**
-
-Die vollständige didaktische Enddiagnose nach `modebrecht/M/didactic.md` wurde durchgeführt. Die materiellen MUST- und SHOULD-Befunde wurden behoben; der repo-weite Visual-/Image-Pass sowie die Abschluss-QA von Übungstest, Steckbrief und Word-Test sind abgeschlossen.
-
-Vor dem realen Unterrichtseinsatz bleibt nur noch ein externer QA-Schritt:
-
-1. kurzer Praxistest auf den tatsächlichen Schulgeräten und mit dem tatsächlichen Abgabeweg
-
-Dabei sollen keine neuen Inhalte mehr entwickelt werden. Nur reale Geräte- oder Abgabeprobleme werden noch behoben.
-'''
+          suffix = '\n'.join([
+              '## Vor dem ersten Einsatz noch notwendig',
+              '',
+              '### Schul-PCs / Word-Version',
+              '',
+              'Mindestens einmal auf den tatsächlichen Geräten prüfen:',
+              '',
+              '- Öffnen und Speichern der DOCX-Dateien',
+              '- Arial vorhanden',
+              '- Bildimport und Zuschneiden',
+              '- Textumbruch `Quadrat`',
+              '- echte Aufzählungen und Nummerierungen',
+              '- Tabellen',
+              '- Seitenumbrüche',
+              '- Kopf- und Fusszeilen',
+              '- automatische Seitenzahlen',
+              '- Abgabe in den vorgesehenen Schulordner',
+              '- Zugriff auf den persönlichen Foto-Ordner beim Steckbrief',
+              '',
+              '### Tabulatoren / Einzüge',
+              '',
+              'Tabulatoren und komplexe hängende Einzüge gehören weiterhin **nicht zum Pflichtkurs**. Falls sie später wieder aufgenommen werden, zuerst lokal auf den Schul-PCs testen.',
+              '',
+              '---',
+              '',
+              '## Status',
+              '',
+              '**Inhaltlich, didaktisch und bewertungstechnisch ist der Kurs abgeschlossen.**',
+              '',
+              'Die vollständige didaktische Enddiagnose nach `modebrecht/M/didactic.md` wurde durchgeführt. Die materiellen MUST- und SHOULD-Befunde wurden behoben; der repo-weite Visual-/Image-Pass sowie die Abschluss-QA von Übungstest, Steckbrief und Word-Test sind abgeschlossen.',
+              '',
+              'Vor dem realen Unterrichtseinsatz bleibt nur noch ein externer QA-Schritt:',
+              '',
+              '1. kurzer Praxistest auf den tatsächlichen Schulgeräten und mit dem tatsächlichen Abgabeweg',
+              '',
+              'Dabei sollen keine neuen Inhalte mehr entwickelt werden. Nur reale Geräte- oder Abgabeprobleme werden noch behoben.',
+              '',
+          ])
           open_points.write_text(prefix + '\n\n' + suffix, encoding='utf-8')
 
           overview = Path('planung/KURSUEBERSICHT.md')
