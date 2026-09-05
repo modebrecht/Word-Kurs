@@ -2,7 +2,11 @@
 
 Der Kursinhalt **A1–A13**, der unbenotete Übungstest, der benotete Steckbrief und der benotete Word-Test sind erstellt.
 
-Offen sind vor allem praktische Schul- und Bewertungsdetails.
+## Kein offenes Inhaltsloch
+
+Für den definierten Pflichtkurs fehlt aktuell **kein zwingendes Word-Thema** mehr. Die bewusst ausgelassenen Bereiche – insbesondere Tabulatoren, hängende Einzüge, komplexe Listenebenen, Spaltenlayout und fortgeschrittene Tabellenfunktionen – sind keine offenen Aufgaben, sondern bewusste Umfangsentscheidungen. Details stehen in [KURSUEBERSICHT.md](KURSUEBERSICHT.md).
+
+Offen sind damit vor allem praktische Schul-, Prüfungs- und Bewertungsdetails.
 
 ## Technisch vor dem Einsatz testen
 
