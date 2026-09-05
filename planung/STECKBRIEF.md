@@ -63,8 +63,22 @@ Lineare Schweizer Skala:
 
 `Note = 1 + 5 × (Punkte / 20)`
 
-Die Note wird auf **eine Dezimalstelle** gerundet. 12 von 20 Punkten entsprechen 60 % und damit **Note 4.0**.
+Die Note wird **kaufmännisch auf eine Dezimalstelle** gerundet. 12 von 20 Punkten entsprechen 60 % und damit **Note 4.0**.
+
+## Foto-Bereitstellung
+
+Die Bilddatei wird **vor der benoteten Arbeit** vorbereitet. Während des Steckbrief-Auftrags soll kein Zeitverlust durch Handytransfer, E-Mail, Cloud-Suche oder spontane Fotoorganisation entstehen.
+
+Standardablauf:
+
+1. Spätestens in der vorherigen Lektion wählt jede Schülerin bzw. jeder Schüler ein eigenes Foto oder lässt mit einem Schulgerät ein geeignetes Foto erstellen.
+2. Die Lehrperson stellt sicher, dass die Datei als JPG oder PNG funktioniert.
+3. Die Datei liegt zu Beginn der benoteten Arbeit bereits im **persönlichen Schulordner** der jeweiligen Person, idealerweise im Ordner `IB/Steckbrief/`.
+4. Empfohlener Dateiname: `steckbrief_foto.jpg` bzw. `steckbrief_foto.png`.
+5. Es wird **kein gemeinsamer Klassenordner mit allen persönlichen Fotos** verwendet.
+
+Falls kein persönliches Foto verwendet werden soll oder kann, erhält die Schülerin bzw. der Schüler ein von der Schule freigegebenes neutrales Ersatzbild. Bewertet wird die Word-Bearbeitung des Bildes, nicht die Qualität oder Attraktivität des Fotos.
 
 ## Datenschutz / Foto
 
-Das Foto bleibt in der Schulabgabe und soll nicht unnötig veröffentlicht werden. Die Aufgabe soll mit eigenem oder von der Schule freigegebenem Bildmaterial durchgeführt werden.
+Das Foto bleibt in der persönlichen Schulablage und in der vorgesehenen Schulabgabe. Es wird nicht unnötig öffentlich publiziert oder in frei zugänglichen Klassenordnern gesammelt.
