@@ -26,14 +26,19 @@ def preview(path: Path):
     d = ImageDraw.Draw(im)
     f_small = ImageFont.truetype(reg, 24)
     f_small_b = ImageFont.truetype(bold, 24)
+    f_label = ImageFont.truetype(bold, 18)
     f_num = ImageFont.truetype(bold, 25)
     line = '#D3DEE2'
+    pale = '#F3F6F7'
+    pale_teal = '#EAF4F3'
     d.rounded_rectangle((18, 18, W-18, H-18), radius=18, outline=line, width=3, fill='white')
     for idx, x in enumerate((120, 800), start=1):
         y = 62
         pw, ph = 520, 320
         d.text((x, 24), f'Übungsseite {idx}', font=f_small_b, fill='#237B78')
         d.rectangle((x, y, x+pw, y+ph), fill='white', outline='#9FB0B7', width=3)
+        d.rectangle((x+3, y+3, x+pw-3, y+55), fill=pale_teal)
+        d.rectangle((x+3, y+ph-52, x+pw-3, y+ph-3), fill=pale)
         d.line((x+30, y+55, x+pw-30, y+55), fill=line, width=2)
         d.line((x+30, y+ph-52, x+pw-30, y+ph-52), fill=line, width=2)
         d.text((x+34, y+17), 'SCHULAUSFLUG LUZERN', font=f_small_b, fill='#17324D')
@@ -42,6 +47,11 @@ def preview(path: Path):
         footer = f'Seite {idx}'
         bbox = d.textbbox((0, 0), footer, font=f_num)
         d.text((x+(pw-(bbox[2]-bbox[0]))/2, y+ph-42), footer, font=f_num, fill='#17324D')
+        if idx == 1:
+            d.text((22, y+18), 'Kopfzeile', font=f_label, fill='#1D6765')
+            d.line((95, y+31, x-6, y+31), fill='#237B78', width=2)
+            d.text((22, y+ph-38), 'Fusszeile', font=f_label, fill='#667684')
+            d.line((92, y+ph-26, x-6, y+ph-26), fill='#9FB0B7', width=2)
     im.save(path, quality=95)
 
 
@@ -86,20 +96,20 @@ def build_document(out: Path, preview_path: Path):
         'Jede Gruppe sucht drei Ausstellungsstücke und notiert dazu die wichtigsten Informationen.',
     ]:
         p = doc.add_paragraph(); p.paragraph_format.space_after = Pt(8); x = p.add_run(s); set_run(x, size=11)
-    p = doc.add_paragraph(); p.paragraph_format.space_before = Pt(8); p.paragraph_format.space_after = Pt(5); x = p.add_run('Im Verkehrshaus'); set_run(x, size=15, bold=True, color=TEAL)
+    p = doc.add_paragraph(); p.paragraph_format.space_before = Pt(8); p.paragraph_format.space_after = Pt(5); x = p.add_run('Im Verkehrshaus'); set_run(x, size=15,bold=True,color=TEAL)
     for s in [
         'Besonders spannend sind die Bereiche Luftfahrt und Raumfahrt. Einige Gruppen besuchen zusätzlich die Eisenbahn-Ausstellung.',
         'Vor dem Mittag treffen wir uns wieder beim Haupteingang und vergleichen unsere Notizen.',
     ]:
         p = doc.add_paragraph(); p.paragraph_format.space_after = Pt(8); x = p.add_run(s); set_run(x, size=11)
     p = doc.add_paragraph(); p.add_run().add_break(WD_BREAK.PAGE)
-    p = doc.add_paragraph(); p.paragraph_format.space_after = Pt(5); x = p.add_run('Mittag und Altstadt'); set_run(x, size=15, bold=True, color=TEAL)
+    p = doc.add_paragraph(); p.paragraph_format.space_after = Pt(5); x = p.add_run('Mittag und Altstadt'); set_run(x, size=15,bold=True,color=TEAL)
     for s in [
         'Das Mittagessen verbringen wir am See. Danach laufen wir gemeinsam in Richtung Altstadt.',
         'Beim Rundgang sehen wir die Kapellbrücke und verschiedene historische Gebäude. Anschliessend bleibt Zeit für eine kurze Pause.',
     ]:
         p = doc.add_paragraph(); p.paragraph_format.space_after = Pt(8); x = p.add_run(s); set_run(x, size=11)
-    p = doc.add_paragraph(); p.paragraph_format.space_before = Pt(8); p.paragraph_format.space_after = Pt(5); x = p.add_run('Rückfahrt'); set_run(x, size=15, bold=True, color=TEAL)
+    p = doc.add_paragraph(); p.paragraph_format.space_before = Pt(8); p.paragraph_format.space_after = Pt(5); x = p.add_run('Rückfahrt'); set_run(x, size=15,bold=True,color=TEAL)
     for s in [
         'Um 16.30 Uhr nehmen wir den Zug zurück. Die Ankunft beim Schulhaus ist ungefähr um 18.00 Uhr.',
         'Damit endet unser Schulausflug nach Luzern.',
