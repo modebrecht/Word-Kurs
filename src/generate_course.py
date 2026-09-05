@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import zipfile
 from pathlib import Path
 
 import build_steckbrief
@@ -11,12 +12,62 @@ from validate_build import validate_course_package
 from worksheets import a01, a02, a03, a04, a05, a06, a07, a08, a09, a10, a11, a12, a13
 
 ROOT = Path(__file__).resolve().parents[1]
+_FIXED_ZIP_TIME = (1980, 1, 1, 0, 0, 0)
 
 WORKSHEETS = {
     'A1': a01, 'A2': a02, 'A3': a03, 'A4': a04, 'A5': a05,
     'A6': a06, 'A7': a07, 'A8': a08, 'A9': a09, 'A10': a10,
     'A11': a11, 'A12': a12, 'A13': a13,
 }
+
+STUDENT_PACKAGES = {
+    'A7': (
+        'A7_Bilder_in_Word.zip',
+        ('A7_Bilder_in_Word.docx', 'assets/a7_schulhaus.png'),
+    ),
+    'A11': (
+        'A11_Dokument_nach_Vorlage_nachbauen.zip',
+        ('A11_Dokument_nach_Vorlage_nachbauen.docx', 'assets/a11_klassenlager_berge.png'),
+    ),
+    'A12': (
+        'A12_Selbststaendig_gestalten.zip',
+        ('A12_Selbststaendig_gestalten.docx', 'assets/a12_sommerabend.png'),
+    ),
+    'A13': (
+        'A13_Gesamtauftrag_Pruefungsvorbereitung.zip',
+        ('A13_Gesamtauftrag_Pruefungsvorbereitung.docx', 'assets/a13_bern_altstadt.png'),
+    ),
+    'UEBUNGSTEST': (
+        'Uebungstest_Word_Paket.zip',
+        ('Uebungstest_Word.docx', 'Uebungstest_Ausgangsdokument.docx', 'assets/uebungstest_greifensee.png'),
+    ),
+    'WORD_TEST': (
+        'Word_Test_Paket.zip',
+        ('Word_Test.docx', 'Word_Test_Ausgangsdokument.docx', 'assets/word_test_rheinfall.png'),
+    ),
+}
+
+
+def _write_student_package(output: Path, package_name: str, members: tuple[str, ...]) -> None:
+    packages = output / 'pakete'
+    packages.mkdir(parents=True, exist_ok=True)
+    destination = packages / package_name
+    with zipfile.ZipFile(destination, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
+        for member in members:
+            source = output / member
+            if not source.is_file():
+                raise RuntimeError(f'Cannot build {package_name}; missing {source}')
+            info = zipfile.ZipInfo(source.name, date_time=_FIXED_ZIP_TIME)
+            info.compress_type = zipfile.ZIP_DEFLATED
+            info.external_attr = 0o100644 << 16
+            archive.writestr(info, source.read_bytes(), compress_type=zipfile.ZIP_DEFLATED, compresslevel=9)
+
+
+def build_student_packages(root: Path, keys: set[str] | None = None) -> None:
+    output = root / 'arbeitsblaetter'
+    selected = STUDENT_PACKAGES if keys is None else {key: STUDENT_PACKAGES[key] for key in keys if key in STUDENT_PACKAGES}
+    for package_name, members in selected.values():
+        _write_student_package(output, package_name, members)
 
 
 def write_readme(root: Path):
@@ -41,6 +92,17 @@ Vollständiger Arbeitsstand des Word-Kurses.
 - A11 – Dokument nach Vorlage nachbauen
 - A12 – Selbstständig gestalten
 - A13 – Gesamtauftrag / Prüfungsvorbereitung
+
+## Schülerpakete mit Bilddateien
+
+Für Aufgaben, die eine separate Bilddatei benötigen, liegen unter `pakete/` fertige ZIP-Dateien. Im ZIP liegen DOCX und benötigte PNG-Datei(en) direkt nebeneinander.
+
+- `pakete/A7_Bilder_in_Word.zip`
+- `pakete/A11_Dokument_nach_Vorlage_nachbauen.zip`
+- `pakete/A12_Selbststaendig_gestalten.zip`
+- `pakete/A13_Gesamtauftrag_Pruefungsvorbereitung.zip`
+- `pakete/Uebungstest_Word_Paket.zip`
+- `pakete/Word_Test_Paket.zip`
 
 ## Üben und Bewerten
 
@@ -67,6 +129,7 @@ def _build_complete_package(root: Path):
     build_uebungstest.build_all(root)
     build_steckbrief.build_all(root)
     build_word_test.build_all(root)
+    build_student_packages(root)
     write_readme(root)
     validate_course_package(root)
 
@@ -90,6 +153,7 @@ def build_selected(values: list[str]):
     install_deterministic_docx_save()
     for code in codes:
         WORKSHEETS[code].build(ROOT)
+    build_student_packages(ROOT, set(codes))
     validate_course_package(ROOT)
     print('Generated', ', '.join(codes), 'in', ROOT / 'arbeitsblaetter')
 
