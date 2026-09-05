@@ -30,8 +30,9 @@ def preview(path: Path):
     line = '#D3DEE2'
     d.rounded_rectangle((18, 18, W-18, H-18), radius=18, outline=line, width=3, fill='white')
     for idx, x in enumerate((120, 800), start=1):
-        y = 54
-        pw, ph = 520, 330
+        y = 62
+        pw, ph = 520, 320
+        d.text((x, 24), f'Übungsseite {idx}', font=f_small_b, fill='#237B78')
         d.rectangle((x, y, x+pw, y+ph), fill='white', outline='#9FB0B7', width=3)
         d.line((x+30, y+55, x+pw-30, y+55), fill=line, width=2)
         d.line((x+30, y+ph-52, x+pw-30, y+ph-52), fill=line, width=2)
@@ -50,23 +51,23 @@ def build_document(out: Path, preview_path: Path):
         'Du setzt Informationen in den oberen und unteren Seitenbereich.',
         'eine Kopfzeile, eine Fusszeile und automatische Seitenzahlen einfügen.'
     )
-    t = block(doc, '01', 'SEITEN 2–3')
+    t = block(doc, '01', 'ÜBUNGSSEITEN')
     r = t.cell(0,1)
     p = r.paragraphs[0]
     _clear(p)
     x = p.add_run('Ergänze den Reisebericht')
     set_run(x, size=12.8, bold=True, color=NAVY)
-    add_text(r, 'Arbeite nur auf den Seiten 2 und 3. Der normale Text ist bereits fertig.', 9.5, after=.6)
+    add_text(r, 'Arbeite nur im Reisebericht auf den beiden folgenden Übungsseiten. Der normale Text ist bereits fertig.', 9.5, after=.6)
     add_picture(r, preview_path, 10.9)
-    add_step(r, 'A', [('Doppelklicke ganz oben auf Seite 2', True, False, NAVY), ('  →  Kopfzeile öffnen', False, False, None)])
+    add_step(r, 'A', [('Doppelklicke ganz oben auf der ersten Übungsseite', True, False, NAVY), ('  →  Kopfzeile öffnen', False, False, None)])
     add_step(r, 'B', [('Kopfzeile', True, False, NAVY), ('  →  «SCHULAUSFLUG LUZERN» eingeben', False, False, None)])
-    add_step(r, 'C', [('Doppelklicke ganz unten auf Seite 2', True, False, NAVY), ('  →  Fusszeile öffnen', False, False, None)])
+    add_step(r, 'C', [('Doppelklicke ganz unten auf der ersten Übungsseite', True, False, NAVY), ('  →  Fusszeile öffnen', False, False, None)])
     add_step(r, 'D', [('Fusszeile', True, False, NAVY), ('  →  «Seite » eingeben', False, False, None)])
-    add_step(r, 'E', [('Direkt hinter «Seite »', True, False, NAVY), ('  →  automatische Seitenzahl einfügen', False, False, None)])
-    add_step(r, 'F', [('Kontrolliere Seite 3', True, False, NAVY), ('  →  Kopf- und Fusszeile erscheinen dort automatisch.', False, False, None)])
-    add_tip(doc, 'Kopf- und Fusszeile sind eigene Seitenbereiche. Tippe diese Angaben nicht in den normalen Text.')
-    add_tip(doc, 'Für die Zahl: Einfügen → Seitenzahl → Aktuelle Position. Die Nummer muss automatisch sein – nicht von Hand tippen.', 'MERKE')
-    add_check(doc, 'Oben steht auf beiden Übungsseiten «SCHULAUSFLUG LUZERN». Unten steht «Seite 1» bzw. «Seite 2».')
+    add_step(r, 'E', [('Direkt hinter «Seite »', True, False, NAVY), ('  →  Einfügen → Seitenzahl → Aktuelle Position', False, False, None)])
+    add_step(r, 'F', [('Kontrolliere die zweite Übungsseite', True, False, NAVY), ('  →  Kopf- und Fusszeile erscheinen dort automatisch; die Zahl steigt von 1 auf 2.', False, False, None)])
+    add_tip(doc, 'Kopfzeile = Bereich oben. Fusszeile = Bereich unten. Beide wiederholen sich auf den Übungsseiten.')
+    add_tip(doc, 'Die Seitenzahl ist automatisch: Tippe nur «Seite » und füge die Zahl über Einfügen → Seitenzahl → Aktuelle Position ein. Die Zahl nicht von Hand schreiben.', 'MERKE')
+    add_check(doc, 'Oben steht auf beiden Übungsseiten «SCHULAUSFLUG LUZERN». Unten steht auf der ersten Übungsseite «Seite 1» und auf der zweiten «Seite 2».')
     add_finish(doc)
     new_detached_workspace_section(
         doc,
