@@ -9,7 +9,7 @@ from xml.etree import ElementTree
 from docx import Document
 from PIL import Image
 
-from grading import swiss_grade_str
+from grading import effort_grade, final_grade_with_drop_str, swiss_grade_str
 
 EXPECTED_DOCX = (
     "A1_Text_formatieren.docx",
@@ -104,6 +104,23 @@ def _validate_grade_rounding() -> None:
     }
     if wrong:
         raise RuntimeError(f"Swiss grade rounding is inconsistent: {wrong}")
+
+    # Fleissnote uses the same scale; 13 sheets x 2 points = 26 possible.
+    if str(effort_grade(26, 26)) != "6.0":
+        raise RuntimeError("Full Fleisspunkte must produce grade 6.0.")
+
+    final_examples = {
+        ("5.3", "4.8", "3.5"): "5.1",  # 5.05 rounds half-up to 5.1.
+        ("4.2", "4.2", "5.0"): "4.6",
+        ("6.0", "1.0", "6.0"): "6.0",
+    }
+    wrong_final = {
+        grades: (final_grade_with_drop_str(*grades), note)
+        for grades, note in final_examples.items()
+        if final_grade_with_drop_str(*grades) != note
+    }
+    if wrong_final:
+        raise RuntimeError(f"Final-grade drop rule is inconsistent: {wrong_final}")
 
 
 def _validate_steckbrief(path: Path) -> None:
