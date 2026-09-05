@@ -194,7 +194,7 @@ def build_correction_sheet(out: Path):
         ("11","Kopfzeile korrekt + automatische Seitenzahl unten mittig",3),
     ]
     score_details = {
-        "8": "Teilpunkte: Bild statt Platzhalter 1 · Zuschneiden 1 · Grösse 0,5 · Quadrat 0,5 · Position 1",
+        "8": "Teilpunkte: Bild statt Platzhalter 1 · Zuschneiden 1 · Grösse passend / nicht verzerrt 1 · Quadrat + Position rechts 1",
         "10": "Teilpunkte: echte 4×5-Tabelle 2 · Daten korrekt 1 · Kopfzeile 1 · Zeit zentriert 1",
         "11": "Teilpunkte: Kopfzeile 1 · automatische Seitenzahl 1 · Fusszeile mittig/auf beiden Seiten 1",
     }

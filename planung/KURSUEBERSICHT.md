@@ -62,7 +62,7 @@ Diese Punkte fehlen nicht versehentlich. Sie wurden aus Gründen der Zielgruppe,
 
 Für das definierte Kursziel **„grundlegende und alltagsnahe Word-Kompetenzen für Sek 8 sicher anwenden“** ist der Pflichtstoff vollständig abgedeckt. Es gibt aktuell **kein inhaltliches Loch**, das vor dem Unterricht zwingend noch durch ein zusätzliches Arbeitsblatt geschlossen werden müsste.
 
-Offen bleiben als Release-Gates die vollständige didaktische Enddiagnose nach `modebrecht/M/didactic.md` und der Praxistest auf den tatsächlichen Schul-PCs. Details stehen in [OFFENE_PUNKTE.md](OFFENE_PUNKTE.md).
+Die vollständige didaktische Enddiagnose nach `modebrecht/M/didactic.md` ist abgeschlossen. Als einziges Release-Gate vor dem realen Unterrichtseinsatz bleibt der Praxistest auf den tatsächlichen Schul-PCs und mit dem tatsächlichen Abgabeweg. Details stehen in [OFFENE_PUNKTE.md](OFFENE_PUNKTE.md).
 
 ---
 
