@@ -8,24 +8,64 @@ Im Word-Kurs entstehen **drei Noten**:
 2. **Note für den persönlichen Steckbrief**
 3. **Note für den Word-Test**
 
-Von diesen drei Noten wird eine **Streichnote** gewährt; die schlechteste Note zählt damit nicht.
+Alle drei Einzelnoten werden auf **eine Dezimalstelle kaufmännisch** gerundet.
+
+Die **Streichnote** gilt erst, wenn alle drei benoteten Bestandteile gültig abgeschlossen sind. Danach wird die numerisch schlechteste der drei Noten gestrichen. Die Schlussnote des Word-Kurses ist der arithmetische Mittelwert der beiden verbleibenden Noten und wird wiederum **kaufmännisch auf eine Dezimalstelle** gerundet.
+
+Beispiel:
+
+- Fleissnote 5.3
+- Steckbrief 4.8
+- Word-Test 3.5
+- 3.5 wird gestrichen
+- Schlussnote: `(5.3 + 4.8) / 2 = 5.05` → **5.1**
+
+Bei Gleichstand der schlechtesten Note spielt es rechnerisch keine Rolle, welche der gleich tiefen Noten gestrichen wird.
+
+Eine nicht absolvierte Pflichtleistung darf nicht strategisch als Streichnote verwendet werden: Bei entschuldigter Absenz wird die benotete Leistung nachgeholt. Bei unentschuldigtem Nichtabsolvieren bzw. Nichtabgeben gilt die schulinterne Regelung; die Streichnote wird erst auf drei gültig festgelegte Einzelnoten angewendet.
 
 ---
 
 ## 1. Fleissnote A1–A13
 
-Die Fleissnote soll keine versteckte zweite Word-Prüfung sein. Sie bewertet vor allem den Arbeitsprozess über den gesamten Kurs.
+Die Fleissnote ist **keine versteckte zweite Word-Prüfung**. Sie bewertet den Arbeitsprozess über den gesamten Kurs.
 
-Geeignete Kriterien:
+Jedes Arbeitsblatt A1–A13 gibt **0 / 1 / 2 Fleisspunkte**. Maximal sind damit **26 Punkte** möglich.
 
-- Arbeitsblätter vollständig bearbeitet
-- sinnvoll und ernsthaft gearbeitet
-- Dateien korrekt gespeichert / abgegeben
-- Sorgfalt
-- Korrekturen und Rückmeldungen umgesetzt
-- kontinuierliche Mitarbeit
+### 2 Punkte
 
-Noch festzulegen sind das konkrete Punktesystem pro Blatt, der Umgang mit Absenzen und verspäteten Abgaben sowie die Umrechnung in eine Note.
+- Blatt vollständig oder praktisch vollständig bearbeitet
+- erkennbar sinnvoll und ernsthaft gearbeitet
+- korrekt gespeichert / abgegeben
+- vereinbarte Korrekturen nach Rückmeldung umgesetzt
+- fristgerecht abgegeben bzw. innerhalb der vereinbarten Nachholfrist nach entschuldigter Absenz
+
+### 1 Punkt
+
+- ein wesentlicher Teil wurde sinnvoll bearbeitet, aber das Blatt bleibt deutlich unvollständig
+- oder Abgabe ohne vereinbarten Grund verspätet
+- oder geforderte Korrekturen bleiben trotz Erinnerung teilweise offen
+
+### 0 Punkte
+
+- Blatt fehlt nach Ablauf der Nachholfrist
+- oder es ist kein sinnvoller Arbeitsversuch erkennbar
+
+**Wichtig:** Einzelne fachliche Word-Fehler führen nicht automatisch zu weniger Fleisspunkten. Entscheidend sind Bearbeitung, Sorgfalt, Abgabe und das Umsetzen von Rückmeldungen. Die eigentliche Word-Kompetenz wird im Steckbrief und im Word-Test benotet.
+
+### Absenzen
+
+- Bei entschuldigter Absenz entsteht **kein automatischer Punktabzug**.
+- Das Blatt wird innerhalb einer vereinbarten Frist nachgeholt.
+- Bei längerer Absenz kann die Lehrperson ein Blatt aus der Fleisswertung herausnehmen, wenn ein Nachholen unverhältnismässig wäre. Dann reduziert sich die maximal mögliche Punktzahl entsprechend.
+
+### Note
+
+Die Fleissnote verwendet dieselbe lineare Skala wie die beiden praktischen Noten:
+
+`Note = 1 + 5 × (erreichte Fleisspunkte / mögliche Fleisspunkte)`
+
+Die Note wird **kaufmännisch auf eine Dezimalstelle** gerundet. 60 % entsprechen Note 4.0.
 
 ---
 
@@ -41,7 +81,7 @@ Notenformel:
 
 `Note = 1 + 5 × (Punkte / 20)`
 
-Auf eine Dezimalstelle runden. **12/20 = 60 % = Note 4.0.**
+Kaufmännisch auf eine Dezimalstelle runden. **12/20 = 60 % = Note 4.0.**
 
 Details: [STECKBRIEF.md](STECKBRIEF.md)
 
@@ -62,11 +102,29 @@ Geprüft werden nur bekannte Kompetenzen aus dem Kurs: Seitenlayout, Grundformat
 
 Der Test verwendet denselben **Arbeitsmodus** wie der unbenotete Übungstest, aber anderen Inhalt. Dadurch werden die Bedingungen vorher geübt, ohne die eigentliche Testaufgabe vorwegzunehmen.
 
+### Erlaubte Hilfsmittel
+
+Erlaubt sind:
+
+- das offizielle Aufgabenblatt
+- das bereitgestellte Ausgangsdokument und die bereitgestellte Bilddatei
+- Microsoft Word mit seinen normalen eingebauten Funktionen, inklusive Rückgängig sowie Rechtschreib-/Grammatikhinweisen
+
+Nicht erlaubt sind:
+
+- eigene Arbeitsblätter A1–A13, persönliche Notizen oder Musterlösungen
+- Internetrecherche, Suchmaschinen, Tutorials oder Videos
+- KI-Assistenten / Chatbots
+- Hilfe durch andere Schülerinnen und Schüler
+- zusätzliche private Geräte als Nachschlagehilfe
+
+Die Lehrperson darf **technische Probleme beheben und Formulierungen der Aufgabe klären**, aber keine Hinweise geben, wo eine Word-Funktion zu finden ist oder wie ein Arbeitsschritt ausgeführt wird.
+
 Notenformel:
 
 `Note = 1 + 5 × (Punkte / 30)`
 
-Auf eine Dezimalstelle runden. **18/30 = 60 % = Note 4.0.**
+Kaufmännisch auf eine Dezimalstelle runden. **18/30 = 60 % = Note 4.0.**
 
 ---
 
