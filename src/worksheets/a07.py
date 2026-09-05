@@ -50,9 +50,28 @@ def preview(path: Path, icon_path: Path):
     im.save(path,quality=95)
 
 
-def build_document(out: Path, preview_path: Path):
+def tool_anchor(path: Path):
+    reg,bold=resolve_font_paths(); W,H=1500,170
+    im=Image.new('RGB',(W,H),'white'); d=ImageDraw.Draw(im)
+    fb=ImageFont.truetype(bold,31); fs=ImageFont.truetype(reg,24)
+    cards=[
+        ('EINFÜGEN','Bilder'),
+        ('BILDFORMAT','Zuschneiden · Breite'),
+        ('LAYOUTOPTIONEN','Quadrat'),
+    ]
+    x=24; gap=18; cw=(W-48-gap*2)//3
+    for title,detail in cards:
+        d.rounded_rectangle((x,18,x+cw,H-18),radius=16,outline='#D3DEE2',width=3,fill='#F8FBFB')
+        d.text((x+24,42),title,font=fb,fill='#17324D')
+        d.text((x+24,92),detail,font=fs,fill='#237B78')
+        x+=cw+gap
+    im.save(path,quality=95)
+
+
+def build_document(out: Path, preview_path: Path, tools_path: Path):
     doc=base_doc('A7','Bilder in Word','Ein Bild passend einsetzen','Du fügst ein Bild ein und passt es so an, dass Text und Bild zusammenpassen.','ein Bild aus einer Datei einfügen, zuschneiden, auf eine passende Grösse bringen und den Text darum laufen lassen.')
     t=block(doc,'01','AUFGABE'); r=t.cell(0,1); p=r.paragraphs[0]; _clear(p); x=p.add_run('Baue das Infoblatt nach'); set_run(x,size=12.8,bold=True,color=NAVY); add_text(r,'Bilddatei: a7_schulhaus.png',9.5,bold=True,color=TEAL_DARK); add_picture(r,preview_path,11.1)
+    add_text(r,'WO FINDEST DU DIE BILDWERKZEUGE?',8.8,bold=True,color=TEAL_DARK,after=.05); add_picture(r,tools_path,10.9)
     add_text(r,'1 · BILD EINSETZEN',8.8,bold=True,color=TEAL_DARK,after=.1)
     add_step(r,'A',[('Klicke hinter «UNSER SCHULHAUS» und drücke Enter',True,False,NAVY),('  →  Einfügen → Bilder → a7_schulhaus.png',False,False,None)])
     add_step(r,'B',[('Bild zuschneiden',True,False,NAVY),('  →  Bild anklicken → Bildformat → Zuschneiden → grossen weissen Rand entfernen',False,False,None)])
@@ -69,9 +88,9 @@ def build_document(out: Path, preview_path: Path):
 
 def build(root: Path):
     sheets=root/'arbeitsblaetter'; assets=sheets/'assets'; prev=assets/'vorlagen'; assets.mkdir(parents=True,exist_ok=True); prev.mkdir(parents=True,exist_ok=True)
-    icon=assets/'a7_school_icon.png'; source=assets/'a7_schulhaus.png'; image=prev/'a7_schulhaus_vorlage.png'
-    school_icon(icon); source_image(source,icon); preview(image,icon)
-    build_document(sheets/'A7_Bilder_in_Word.docx',image)
+    icon=assets/'a7_school_icon.png'; source=assets/'a7_schulhaus.png'; image=prev/'a7_schulhaus_vorlage.png'; tools=prev/'a7_bildwerkzeuge.png'
+    school_icon(icon); source_image(source,icon); preview(image,icon); tool_anchor(tools)
+    build_document(sheets/'A7_Bilder_in_Word.docx',image,tools)
 
 
 if __name__ == '__main__':
