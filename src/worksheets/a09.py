@@ -30,15 +30,34 @@ def preview(path: Path):
     im.save(path,quality=95)
 
 
-def build_document(out: Path, preview_path: Path):
+def styles_anchor(path: Path):
+    reg,bold=resolve_font_paths(); W,H=1500,190
+    im=Image.new('RGB',(W,H),'white'); d=ImageDraw.Draw(im)
+    label=ImageFont.truetype(bold,23); big=ImageFont.truetype(bold,35); normal=ImageFont.truetype(reg,31)
+    items=[
+        ('Titel',big,'Aa'),
+        ('Überschrift 1',big,'Aa'),
+        ('Überschrift 2',ImageFont.truetype(bold,30),'Aa'),
+        ('Standard',normal,'Aa'),
+    ]
+    gap=16; x=20; cw=(W-40-gap*3)//4
+    for name,font,sample in items:
+        d.rounded_rectangle((x,18,x+cw,H-18),radius=14,outline='#D3DEE2',width=3,fill='#FAFCFC')
+        d.text((x+20,42),sample,font=font,fill='#17324D')
+        d.text((x+20,111),name,font=label,fill='#237B78')
+        x+=cw+gap
+    im.save(path,quality=95)
+
+
+def build_document(out: Path, preview_path: Path, styles_path: Path):
     doc=base_doc('A9','Formatvorlagen','Überschriften mit System','Du gibst Textteilen eine feste Rolle, statt jede Überschrift von Hand zu gestalten.','Titel, Überschrift 1, Überschrift 2 und normalen Text mit den passenden Word-Formatvorlagen auszeichnen.')
     t=block(doc,'01','SEITE 2'); r=t.cell(0,1); p=r.paragraphs[0]; _clear(p); x=p.add_run('Gib jedem Textteil die richtige Rolle'); set_run(x,size=12.8,bold=True,color=NAVY); add_text(r,'Arbeite auf Seite 2. Ändere Schriftgrösse oder Fett nicht von Hand.',9.5); add_picture(r,preview_path,10.9)
+    add_text(r,'START → FORMATVORLAGEN',8.8,bold=True,color='#1D6765',after=.05); add_picture(r,styles_path,10.9)
     add_step(r,'A',[('«UNSER SCHULAUSFLUG NACH LUZERN»',True,False,NAVY),('  →  Formatvorlage «Titel»',False,False,None)])
     add_step(r,'B',[('«Der Morgen», «Im Verkehrshaus», «Mittag und Altstadt»',True,False,NAVY),('  →  «Überschrift 1»',False,False,None)])
     add_step(r,'C',[('«Treffpunkt», «Unsere Aufgabe», «Rückfahrt»',True,False,NAVY),('  →  «Überschrift 2»',False,False,None)])
     add_step(r,'D',[('Alle übrigen Absätze',True,False,NAVY),('  →  «Standard»',False,False,None)])
     add_tip(doc,'Titel  >  Überschrift 1  >  Überschrift 2  >  Standard. Wichtig: Entscheidend ist die richtige Formatvorlage; das genaue Aussehen kann je nach Word-Version leicht abweichen.','MERKE')
-    add_tip(doc,'Formatvorlagen findest du bei «Start». Klicke zuerst in den Absatz und dann auf die passende Formatvorlage.')
     add_check(doc,'Sehen alle Überschriften derselben Stufe gleich aus? Dann hast du die Formatvorlagen richtig eingesetzt.')
     add_finish(doc)
     new_workspace_section(doc,'A9')
@@ -52,8 +71,8 @@ def build_document(out: Path, preview_path: Path):
 
 def build(root: Path):
     sheets=root/'arbeitsblaetter'; prev=sheets/'assets'/'vorlagen'; prev.mkdir(parents=True,exist_ok=True)
-    image=prev/'a9_formatvorlagen_vorlage.png'; preview(image)
-    build_document(sheets/'A9_Formatvorlagen_und_Ueberschriften.docx',image)
+    image=prev/'a9_formatvorlagen_vorlage.png'; styles=prev/'a9_formatvorlagen_werkzeuge.png'; preview(image); styles_anchor(styles)
+    build_document(sheets/'A9_Formatvorlagen_und_Ueberschriften.docx',image,styles)
 
 
 if __name__ == '__main__':
