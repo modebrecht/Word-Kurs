@@ -120,7 +120,7 @@ def build_task_sheet(out: Path):
     _clear(r.paragraphs[0])
     _add_req(r,6,"Aufzählung","Die fünf Einträge unter MITNEHMEN als echte Word-Aufzählung formatieren.",2)
     _add_req(r,7,"Nummerierung","Die vier Schritte unter ABLAUF als echte Word-Nummerierung formatieren.",2)
-    _add_req(r,8,"Bild","word_test_rheinfall.png einfügen; weissen Rand wegschneiden; ca. 6 cm breit; Textumbruch «Quadrat»; rechts neben dem Einleitungstext platzieren.",4)
+    _add_req(r,8,"Bild","Ersetze die Zeile «BILD HIER EINFÜGEN: word_test_rheinfall.png» durch das Bild; weissen Rand wegschneiden; ca. 6 cm breit; Textumbruch «Quadrat»; rechts neben dem Einleitungstext platzieren.",4)
 
     t = block(doc, "09-11", "SEITE 2", fill_left=PALE_TEAL, fill_right=PALE_TEAL, label_color=TEAL_DARK)
     r = t.cell(0,1)
@@ -189,10 +189,15 @@ def build_correction_sheet(out: Path):
         ("1","Dateiname korrekt",1),("2","A4 Hochformat + Seitenränder schmal",2),
         ("3","Arial 11; 1,15 Zeilenabstand; 6 pt danach",3),("4","Titel + fünf Bereiche mit verlangten Formatvorlagen",4),
         ("5","Datumszeile fett + dunkelblau",2),("6","MITNEHMEN als echte Aufzählung",2),
-        ("7","ABLAUF als echte Nummerierung",2),("8","Bild: eingefügt, Rand weg, ca. 6 cm, Quadrat, rechts",4),
+        ("7","ABLAUF als echte Nummerierung",2),("8","Bild: Platzhalter ersetzt, zugeschnitten, ca. 6 cm, Quadrat, rechts",4),
         ("9","Echter Seitenumbruch vor PROGRAMM",2),("10","Tabelle 4×5; Kopfzeile fett/zentriert; Zeit zentriert",5),
         ("11","Kopfzeile korrekt + automatische Seitenzahl unten mittig",3),
     ]
+    score_details = {
+        "8": "Teilpunkte: Bild statt Platzhalter 1 · Zuschneiden 1 · Grösse 0,5 · Quadrat 0,5 · Position 1",
+        "10": "Teilpunkte: echte 4×5-Tabelle 2 · Daten korrekt 1 · Kopfzeile 1 · Zeit zentriert 1",
+        "11": "Teilpunkte: Kopfzeile 1 · automatische Seitenzahl 1 · Fusszeile mittig/auf beiden Seiten 1",
+    }
     t = block(doc, "PUNKTE", None, fill_left=NAVY, fill_right=PALE, label_color=WHITE, label_size=9.2)
     r = t.cell(0,1)
     p = r.paragraphs[0]
@@ -216,6 +221,10 @@ def build_correction_sheet(out: Path):
             set_run(x, size=9.2, color=TEXT)
             x = p.add_run(f"    ____ / {pts}")
             set_run(x, size=9.2, bold=True, color=NAVY)
+            detail = score_details.get(no)
+            if detail:
+                x = p.add_run("\n" + detail)
+                set_run(x, size=8.0, color=MID)
 
     t = block(doc, "NOTE", None, fill_left=WHITE, fill_right=WHITE, label_color=TEAL_DARK, label_size=9.2)
     r = t.cell(0,1)
