@@ -35,6 +35,35 @@ def preview(path: Path):
     im.save(path,quality=95)
 
 
+def tools_anchor(path: Path):
+    reg,bold=resolve_font_paths(); W,H=1500,290
+    im=Image.new('RGB',(W,H),'white'); d=ImageDraw.Draw(im)
+    fl=ImageFont.truetype(bold,24); fb=ImageFont.truetype(bold,22); fs=ImageFont.truetype(reg,20)
+    d.rounded_rectangle((18,18,W-18,H-18),radius=18,outline='#D3DEE2',width=3,fill='white')
+    d.text((58,36),'Start → Absatz',font=fl,fill='#1D6765')
+    labels=[('Links',70),('Zentriert',245),('Rechts',470),('Zeilenabstand',735)]
+    for label,x in labels:
+        d.rounded_rectangle((x,95,x+180,160),radius=9,outline='#AEBCC3',width=2,fill='#F8FAFB')
+        if label=='Links':
+            for yy,w in [(111,105),(125,132),(139,92)]: d.line((x+22,yy,x+22+w,yy),fill='#17324D',width=4)
+        elif label=='Zentriert':
+            for yy,w in [(111,105),(125,132),(139,92)]:
+                cx=x+90; d.line((cx-w/2,yy,cx+w/2,yy),fill='#17324D',width=4)
+        elif label=='Rechts':
+            for yy,w in [(111,105),(125,132),(139,92)]: d.line((x+158-w,yy,x+158,yy),fill='#17324D',width=4)
+        else:
+            d.text((x+26,109),'↕  1,0  1,15  1,5',font=fs,fill='#17324D')
+        d.text((x+14,176),label,font=fs,fill='#17324D')
+    d.line((1020,45,1020,240),fill='#D3DEE2',width=2)
+    d.text((1060,36),'Layout → Abstand',font=fl,fill='#1D6765')
+    d.rounded_rectangle((1060,95,1435,160),radius=9,outline='#AEBCC3',width=2,fill='#F8FAFB')
+    d.text((1090,111),'Nach',font=fb,fill='#17324D')
+    d.rounded_rectangle((1220,107,1365,147),radius=6,outline='#237B78',width=3,fill='#EAF4F3')
+    d.text((1260,114),'6 pt',font=fb,fill='#17324D')
+    d.text((1060,183),'Absatz markieren → Wert bei «Nach» setzen',font=fs,fill='#5E6D78')
+    im.save(path,quality=95)
+
+
 def _prepare_kino_workarea(table):
     """Keep font formatting correct so task 02 tests paragraph skills only."""
     r = table.cell(0,1)
@@ -49,11 +78,12 @@ def _prepare_kino_workarea(table):
             set_run(p.runs[0],name='Arial',size=9.8,color=NAVY)
 
 
-def build_document(out: Path, preview_path: Path):
+def build_document(out: Path, preview_path: Path, tools_path: Path):
     doc=base_doc('A3','Absätze & Ordnung','Text braucht Luft','Du lernst, wie du Absätze ausrichtest und Abstände sauber einstellst.','Absätze links, zentriert oder rechts ausrichten und Zeilen- sowie Absatzabstände einstellen.')
     t=block(doc,'01','AUFGABE'); r=t.cell(0,1); p=r.paragraphs[0]; _clear(p); x=p.add_run('Ordne den Infotext Schritt für Schritt'); set_run(x,size=12.8,bold=True,color=NAVY)
-    add_text(r,'Markiere immer genau den Absatz oder die Absätze, die im Schritt genannt werden.',9.4,after=.45)
-    add_text(r,'NEU: Ausrichtung + Zeilenabstand → Start → Absatz.  Abstand nach Absatz → Layout → Abstand → Nach.',9.15,bold=True,color=TEAL_DARK,after=.55)
+    add_text(r,'Markiere immer genau den Absatz oder die Absätze, die im Schritt genannt werden.',9.4,after=.25)
+    add_text(r,'NEU: Ausrichtung + Zeilenabstand → Start → Absatz.  Abstand nach Absatz → Layout → Abstand → Nach.',9.15,bold=True,color=TEAL_DARK,after=.1)
+    add_picture(r,tools_path,10.4)
     add_step(r,'A',[('«Bibliothek am Mittag»',True,False,NAVY),('  →  zentriert',False,False,None)])
     add_step(r,'B',[('«Schulhaus Sonnenberg»',True,False,NAVY),('  →  rechts',False,False,None)])
     add_step(r,'C',[('Die drei Textabsätze',True,False,NAVY),('  →  links',False,False,None)])
@@ -74,8 +104,9 @@ def build_document(out: Path, preview_path: Path):
 
 def build(root: Path):
     sheets=root/'arbeitsblaetter'; prev=sheets/'assets'/'vorlagen'; prev.mkdir(parents=True,exist_ok=True)
-    image=prev/'a3_kinoabend_vorlage.png'; preview(image)
-    build_document(sheets/'A3_Absaetze_und_Ordnung.docx',image)
+    image=prev/'a3_kinoabend_vorlage.png'; tools=prev/'a3_absatz_werkzeuge.png'
+    preview(image); tools_anchor(tools)
+    build_document(sheets/'A3_Absaetze_und_Ordnung.docx',image,tools)
 
 
 if __name__ == '__main__':
