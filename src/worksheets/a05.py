@@ -47,14 +47,14 @@ def preview(path: Path, icon_path: Path):
 
 
 def build_document(out: Path, preview_path: Path, icon: Path):
-    doc=base_doc('A5','Dokument retten','Rette das Chaos-Dokument','Vergleiche mit der Vorlage und repariere gezielte Formatierungsfehler.','bekannte Formatierungsfehler erkennen und reparieren. Eine vorhandene Grafik kann ich verkleinern und an die richtige Stelle verschieben.')
+    doc=base_doc('A5','Dokument retten','Rette das Chaos-Dokument','Vergleiche mit der Vorlage und repariere gezielte Formatierungsfehler.','bekannte Formatierungsfehler erkennen und reparieren. Eine vorhandene Grafik kann ich mit sichtbarer Hilfe verkleinern und an die richtige Stelle verschieben.')
     t=block(doc,'01','REPARIEREN'); r=t.cell(0,1); p=r.paragraphs[0]; _clear(p); x=p.add_run('Mach das Chaos wieder ordentlich'); set_run(x,size=12.8,bold=True,color=NAVY); add_text(r,'Vergleiche immer wieder mit der Vorlage. Arbeite von A bis F.',9.2); add_picture(r,preview_path,9.7)
     add_step(r,'A',[('Titel «SCHULFEST 2026»',True,False,NAVY),('  →  Arial, 20 pt, fett, dunkelblau, zentriert',False,False,None)])
     add_step(r,'B',[('Datum',True,False,NAVY),('  →  Arial, 11 pt, fett, zentriert',False,False,None)])
     add_step(r,'C',[('«Mitnehmen» + drei Dinge',True,False,NAVY),('  →  Überschrift fett, Dinge als Aufzählung',False,False,None)])
     add_step(r,'D',[('«Ablauf» + drei Schritte',True,False,NAVY),('  →  Überschrift fett, Schritte nummerieren',False,False,None)])
     add_step(r,'E',[('Normale Textzeilen',True,False,NAVY),('  →  Arial, 11 pt, links, Zeilenabstand 1,0',False,False,None)])
-    add_step(r,'F',[('Grafik',True,False,NAVY),('  →  ca. 2,2 cm breit, direkt über dem Titel, zentriert',False,False,None)])
+    add_step(r,'F',[('MINI-NEU · Grafik',True,False,TEAL_DARK),('  →  anklicken → Bildformat → Grösse → Breite ca. 2,2 cm; danach über den Titel verschieben und zentrieren',False,False,None)])
     t=block(doc,'CHAOS','DOKUMENT 01',fill_left=PALE,fill_right='FBFCFC',label_color=TEAL_DARK,label_size=11.0); r=t.cell(0,1); p=r.paragraphs[0]; _clear(p)
     x=p.add_run('SCHULFEST 2026'); set_run(x,name='Times New Roman',size=24,italic=True,color='C05A2B')
     p=r.add_paragraph(); p.alignment=WD_ALIGN_PARAGRAPH.RIGHT; x=p.add_run('Freitag, 12. Juni · 17.30 Uhr'); set_run(x,name='Courier New',size=9,color='7A2B83')
@@ -70,7 +70,7 @@ def build_document(out: Path, preview_path: Path, icon: Path):
         ('• Musik in der Aula','Times New Roman',11,False,False,'333333',WD_ALIGN_PARAGRAPH.LEFT),
     ]:
         p=r.add_paragraph(); p.alignment=align; p.paragraph_format.space_before=Pt(0); p.paragraph_format.space_after=Pt(0); p.paragraph_format.line_spacing=.9; x=p.add_run(text); set_run(x,name=name,size=(10 if size>=11 else size),bold=bold,italic=italic,color=color)
-    add_tip(doc,'Grafik verschieben: anklicken → Ctrl + X → Cursor über den Titel → Ctrl + V. Danach zentrieren und verkleinern.  FERTIG? Gib das Blatt in deinem Ordner "IB" ab.')
+    add_tip(doc,'Grafik verschieben: anklicken → Ctrl + X → Cursor über den Titel → Ctrl + V. Danach zentrieren. Die Breite stellst du wie in Schritt F unter Bildformat → Grösse ein.  FERTIG? Gib das Blatt in deinem Ordner "IB" ab.')
     finalise(doc,out,'A5 - Rette das Chaos-Dokument')
 
 
