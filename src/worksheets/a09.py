@@ -37,7 +37,7 @@ def build_document(out: Path, preview_path: Path):
     add_step(r,'B',[('«Der Morgen», «Im Verkehrshaus», «Mittag und Altstadt»',True,False,NAVY),('  →  «Überschrift 1»',False,False,None)])
     add_step(r,'C',[('«Treffpunkt», «Unsere Aufgabe», «Rückfahrt»',True,False,NAVY),('  →  «Überschrift 2»',False,False,None)])
     add_step(r,'D',[('Alle übrigen Absätze',True,False,NAVY),('  →  «Standard»',False,False,None)])
-    add_tip(doc,'Titel  >  Überschrift 1  >  Überschrift 2  >  Standard','MERKE')
+    add_tip(doc,'Titel  >  Überschrift 1  >  Überschrift 2  >  Standard. Wichtig: Entscheidend ist die richtige Formatvorlage; das genaue Aussehen kann je nach Word-Version leicht abweichen.','MERKE')
     add_tip(doc,'Formatvorlagen findest du bei «Start». Klicke zuerst in den Absatz und dann auf die passende Formatvorlage.')
     add_check(doc,'Sehen alle Überschriften derselben Stufe gleich aus? Dann hast du die Formatvorlagen richtig eingesetzt.')
     add_finish(doc)
