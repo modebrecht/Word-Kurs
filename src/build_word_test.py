@@ -45,7 +45,7 @@ def test_asset(path: Path):
     d.line((1030,330,1030,470), fill="#17324D", width=5)
     d.polygon([(1030,332),(1115,350),(1030,380)], fill="#D95852")
     d.rectangle((4,4,W-5,H-5), outline="#D3DEE2", width=8)
-    border = 75
+    border = 140
     img = Image.new("RGB", (W + 2*border, H + 2*border), "white")
     img.paste(core, (border,border))
     img.save(path, quality=95)
