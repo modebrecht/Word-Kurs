@@ -11,7 +11,7 @@ from docx.shared import Pt
 
 from build_runtime import resolve_font_paths
 from course_common import (
-    NAVY,
+    NAVY, TEAL_DARK,
     base_doc, block, add_text, add_step, add_tip, add_check, add_finish,
     add_picture, new_workspace_section, finalise, set_run,
 )
@@ -52,7 +52,7 @@ def styles_anchor(path: Path):
 def build_document(out: Path, preview_path: Path, styles_path: Path):
     doc=base_doc('A9','Formatvorlagen','Überschriften mit System','Du gibst Textteilen eine feste Rolle, statt jede Überschrift von Hand zu gestalten.','Titel, Überschrift 1, Überschrift 2 und normalen Text mit den passenden Word-Formatvorlagen auszeichnen.')
     t=block(doc,'01','SEITE 2'); r=t.cell(0,1); p=r.paragraphs[0]; _clear(p); x=p.add_run('Gib jedem Textteil die richtige Rolle'); set_run(x,size=12.8,bold=True,color=NAVY); add_text(r,'Arbeite auf Seite 2. Ändere Schriftgrösse oder Fett nicht von Hand.',9.5); add_picture(r,preview_path,10.9)
-    add_text(r,'START → FORMATVORLAGEN',8.8,bold=True,color='#1D6765',after=.05); add_picture(r,styles_path,10.9)
+    add_text(r,'START → FORMATVORLAGEN',8.8,bold=True,color=TEAL_DARK,after=.05); add_picture(r,styles_path,10.9)
     add_step(r,'A',[('«UNSER SCHULAUSFLUG NACH LUZERN»',True,False,NAVY),('  →  Formatvorlage «Titel»',False,False,None)])
     add_step(r,'B',[('«Der Morgen», «Im Verkehrshaus», «Mittag und Altstadt»',True,False,NAVY),('  →  «Überschrift 1»',False,False,None)])
     add_step(r,'C',[('«Treffpunkt», «Unsere Aufgabe», «Rückfahrt»',True,False,NAVY),('  →  «Überschrift 2»',False,False,None)])
