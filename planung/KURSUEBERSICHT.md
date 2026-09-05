@@ -31,6 +31,39 @@ Zusätzlich entsteht aus `A1`–`A13` eine Fleissnote.
 
 ---
 
+## Finaler Umfang gegenüber der ursprünglichen Grobplanung
+
+Die erste Grobplanung war absichtlich offen formuliert. Bei der praktischen Ausarbeitung wurden einige Punkte bewusst verändert oder gestrichen. Diese Änderungen gelten inzwischen als **finale Kursentscheidung** und nicht als unerledigte Arbeit.
+
+### Bewusst verändert
+
+- Der ursprüngliche Einstieg wurde auf **A1 und A2 aufgeteilt**: zuerst geführte Grundformatierung, danach Nachbau nach sichtbarer Vorlage. Dadurch wuchs der Kurs von ursprünglich 12 auf 13 Arbeitsblätter.
+- Das ursprünglich mögliche eigene Blatt zu **Tabulatoren / Ausrichten** wurde durch **A5 – Rette das Chaos-Dokument** ersetzt.
+- A5 enthält dafür gezielte Repetition aus A1–A4 und eine kleine, sichtbar erklärte Bildkompetenz.
+- A7 behandelt beim Textumbruch gezielt **`Quadrat`** als verlässliche Standardvariante, nicht alle möglichen Umbrucharten.
+- A8 konzentriert Tabellen auf die für diesen Kurs relevanten Grundfunktionen statt auf fortgeschrittene Tabellenwerkzeuge.
+
+### Bewusst nicht Teil des Pflichtkurses
+
+Folgende Punkte waren in der frühen Grobplanung teilweise als möglich oder optional erwähnt, wurden aber bewusst **nicht** in den Pflichtstoff übernommen:
+
+- Tabulatoren und Arbeiten mit dem Lineal
+- einfache bzw. hängende Einzüge als eigener Lernstoff
+- mehrstufige / komplexe Listenebenen
+- Zeitungsspalten / Spaltenlayout
+- mehrere verschiedene Bild-Textumbrucharten neben `Quadrat`
+- fortgeschrittene Tabellenfunktionen wie Sortieren, Formeln, wiederholte Kopfzeilen oder Text-in-Tabelle-Konvertierung
+
+Diese Punkte fehlen nicht versehentlich. Sie wurden aus Gründen der Zielgruppe, der Unterrichtszeit, der Gerätezuverlässigkeit und der didaktischen Fokussierung weggelassen.
+
+### Vollständigkeitsurteil
+
+Für das definierte Kursziel **„grundlegende und alltagsnahe Word-Kompetenzen für Sek 8 sicher anwenden“** ist der Pflichtstoff vollständig abgedeckt. Es gibt aktuell **kein inhaltliches Loch**, das vor dem Unterricht zwingend noch durch ein zusätzliches Arbeitsblatt geschlossen werden müsste.
+
+Noch offen sind nur praktische Einsatz- und Bewertungsdetails; diese stehen in [OFFENE_PUNKTE.md](OFFENE_PUNKTE.md).
+
+---
+
 ## Arbeitsblätter A1–A13
 
 ### A1 – Text formatieren
