@@ -11,23 +11,32 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.section import WD_ORIENT
 
 from course_common import (
-    NAVY, TEAL,
+    NAVY, TEAL, TEAL_DARK,
     base_doc, block, add_text, add_step, add_tip, add_check, add_finish,
     new_workspace_section, finalise, set_run,
 )
 from course_build_helpers import clear_paragraph as _clear
 
 
+def _add_true_bullet(doc, text: str):
+    p=doc.add_paragraph(style='List Bullet')
+    p.paragraph_format.space_after=Pt(2)
+    x=p.add_run(text); set_run(x,size=11)
+    return p
+
+
 def build_document(out: Path):
     doc=base_doc('A6','Seitenlayout','Die Seite passend einstellen','Du arbeitest heute nur am Aufbau der Seite – nicht am Text.','eine Seite auf Querformat stellen, Seitenränder ändern und mit einem Seitenumbruch gezielt eine neue Seite beginnen.')
-    t=block(doc,'01','SEITE 2'); r=t.cell(0,1); p=r.paragraphs[0]; _clear(p); x=p.add_run('Bearbeite nur die Übungsseite'); set_run(x,size=12.8,bold=True,color=NAVY); add_text(r,'Klicke zuerst irgendwo auf Seite 2. Der Text dort ist bereits richtig formatiert.',9.5,after=.7)
-    add_step(r,'A',[('Seite 2',True,False,NAVY),('  →  Querformat',False,False,None)])
-    add_step(r,'B',[('Seite 2',True,False,NAVY),('  →  Seitenränder «Schmal»',False,False,None)])
+    t=block(doc,'01','SEITENLAYOUT'); r=t.cell(0,1); p=r.paragraphs[0]; _clear(p); x=p.add_run('Bearbeite nur den Übungsteil'); set_run(x,size=12.8,bold=True,color=NAVY)
+    add_text(r,'Klicke zuerst irgendwo auf Seite 2. Dort beginnt der Übungsteil; der Text ist bereits richtig formatiert.',9.5,after=.35)
+    add_text(r,'NEU: Querformat → Layout → Ausrichtung → Querformat.  Seitenränder → Layout → Seitenränder → Schmal.',9.15,bold=True,color=TEAL_DARK,after=.6)
+    add_step(r,'A',[('Übungsteil ab Seite 2',True,False,NAVY),('  →  Querformat',False,False,None)])
+    add_step(r,'B',[('Übungsteil ab Seite 2',True,False,NAVY),('  →  Seitenränder «Schmal»',False,False,None)])
     add_step(r,'C',[('Klicke direkt vor «PACKLISTE»',True,False,NAVY),('  →  Ctrl + Enter',False,False,None)])
     add_step(r,'D',[('Kontrolliere',True,False,NAVY),('  →  «PACKLISTE» beginnt jetzt auf einer neuen Seite.',False,False,None)])
     add_tip(doc,'Hochformat = ▯   |   Querformat = ▭   |   Neue Seite = Ctrl + Enter','MERKE')
     add_tip(doc,'Für eine neue Seite nicht viele Male Enter drücken. Ein Seitenumbruch bleibt auch dann richtig, wenn später Text dazukommt.')
-    add_check(doc,'Seite 1 bleibt Hochformat. Die Übungsseite ist Querformat. «PACKLISTE» beginnt auf einer neuen Seite.')
+    add_check(doc,'Seite 1 bleibt Hochformat. Die Übungsseiten sind Querformat und haben schmale Ränder. «PACKLISTE» beginnt auf einer neuen Seite.')
     add_finish(doc)
     sec=new_workspace_section(doc,'A6'); sec.orientation=WD_ORIENT.PORTRAIT; sec.page_width=Cm(21); sec.page_height=Cm(29.7)
     p=doc.add_paragraph(); p.alignment=WD_ALIGN_PARAGRAPH.CENTER; x=p.add_run('SCHULAUSFLUG NACH LUZERN'); set_run(x,size=20,bold=True,color=NAVY)
@@ -37,7 +46,7 @@ def build_document(out: Path):
         p=doc.add_paragraph(); p.paragraph_format.space_after=Pt(4); x=p.add_run(tm+'  –  '); set_run(x,size=11,bold=True,color=NAVY); x=p.add_run(txt); set_run(x,size=11)
     p=doc.add_paragraph(); p.paragraph_format.space_before=Pt(14); x=p.add_run('PACKLISTE'); set_run(x,size=13,bold=True,color=NAVY)
     for item in ['Trinkflasche','Lunch','Regenjacke','Schreibzeug','Halbtax / Billet falls vorhanden']:
-        p=doc.add_paragraph(); p.paragraph_format.left_indent=Cm(.5); x=p.add_run('•  '+item); set_run(x,size=11)
+        _add_true_bullet(doc,item)
     finalise(doc,out,'A6 - Seitenlayout')
 
 
