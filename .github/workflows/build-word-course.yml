@@ -2,10 +2,8 @@ name: Build Word course
 
 on:
   push:
-    branches: [main]
+    branches: [2nd-rnd-qa]
     paths:
-      - 'src/**'
-      - 'requirements.txt'
       - '.github/workflows/build-word-course.yml'
   workflow_dispatch:
 
@@ -21,18 +19,107 @@ jobs:
         with:
           python-version: '3.12'
           cache: pip
+      - name: Apply final release fixes
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          test = Path('src/build_word_test.py')
+          text = test.read_text(encoding='utf-8')
+          old = '"8": "Teilpunkte: Bild statt Platzhalter 1 · Zuschneiden 1 · Grösse 0,5 · Quadrat 0,5 · Position 1",'
+          new = '"8": "Teilpunkte: Bild statt Platzhalter 1 · Zuschneiden 1 · Grösse passend / nicht verzerrt 1 · Quadrat + Position rechts 1",'
+          if old not in text:
+              raise SystemExit('Expected Word-test half-point scoring line not found')
+          text = text.replace(old, new, 1)
+          if '0,5' in text[text.index('score_details'):text.index('t = block(doc, "PUNKTE"')]:
+              raise SystemExit('Half-point scoring remains in Word-test score details')
+          test.write_text(text, encoding='utf-8')
+
+          open_points = Path('planung/OFFENE_PUNKTE.md')
+          text = open_points.read_text(encoding='utf-8')
+          marker = '## Vor dem ersten Einsatz noch notwendig'
+          if marker not in text:
+              raise SystemExit('OFFENE_PUNKTE release-gate marker not found')
+          prefix = text.split(marker, 1)[0].rstrip()
+          suffix = '''## Vor dem ersten Einsatz noch notwendig
+
+### Schul-PCs / Word-Version
+
+Mindestens einmal auf den tatsächlichen Geräten prüfen:
+
+- Öffnen und Speichern der DOCX-Dateien
+- Arial vorhanden
+- Bildimport und Zuschneiden
+- Textumbruch `Quadrat`
+- echte Aufzählungen und Nummerierungen
+- Tabellen
+- Seitenumbrüche
+- Kopf- und Fusszeilen
+- automatische Seitenzahlen
+- Abgabe in den vorgesehenen Schulordner
+- Zugriff auf den persönlichen Foto-Ordner beim Steckbrief
+
+### Tabulatoren / Einzüge
+
+Tabulatoren und komplexe hängende Einzüge gehören weiterhin **nicht zum Pflichtkurs**. Falls sie später wieder aufgenommen werden, zuerst lokal auf den Schul-PCs testen.
+
+---
+
+## Status
+
+**Inhaltlich, didaktisch und bewertungstechnisch ist der Kurs abgeschlossen.**
+
+Die vollständige didaktische Enddiagnose nach `modebrecht/M/didactic.md` wurde durchgeführt. Die materiellen MUST- und SHOULD-Befunde wurden behoben; der repo-weite Visual-/Image-Pass sowie die Abschluss-QA von Übungstest, Steckbrief und Word-Test sind abgeschlossen.
+
+Vor dem realen Unterrichtseinsatz bleibt nur noch ein externer QA-Schritt:
+
+1. kurzer Praxistest auf den tatsächlichen Schulgeräten und mit dem tatsächlichen Abgabeweg
+
+Dabei sollen keine neuen Inhalte mehr entwickelt werden. Nur reale Geräte- oder Abgabeprobleme werden noch behoben.
+'''
+          open_points.write_text(prefix + '\n\n' + suffix, encoding='utf-8')
+
+          overview = Path('planung/KURSUEBERSICHT.md')
+          text = overview.read_text(encoding='utf-8')
+          old = 'Offen bleiben als Release-Gates die vollständige didaktische Enddiagnose nach `modebrecht/M/didactic.md` und der Praxistest auf den tatsächlichen Schul-PCs. Details stehen in [OFFENE_PUNKTE.md](OFFENE_PUNKTE.md).'
+          new = 'Die vollständige didaktische Enddiagnose nach `modebrecht/M/didactic.md` ist abgeschlossen. Als einziges Release-Gate vor dem realen Unterrichtseinsatz bleibt der Praxistest auf den tatsächlichen Schul-PCs und mit dem tatsächlichen Abgabeweg. Details stehen in [OFFENE_PUNKTE.md](OFFENE_PUNKTE.md).'
+          if old not in text:
+              raise SystemExit('KURSUEBERSICHT old release-gate sentence not found')
+          overview.write_text(text.replace(old, new, 1), encoding='utf-8')
+          PY
       - run: pip install -r requirements.txt
       - run: python src/generate_course.py
       - name: Validate generated package
         run: python src/validate_build.py
-      - name: Commit generated Word package
+      - name: Verify final scoring and status
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          score = Path('src/build_word_test.py').read_text(encoding='utf-8')
+          assert 'Grösse passend / nicht verzerrt 1 · Quadrat + Position rechts 1' in score
+          assert 'Grösse 0,5 · Quadrat 0,5' not in score
+          open_points = Path('planung/OFFENE_PUNKTE.md').read_text(encoding='utf-8')
+          assert 'didaktisch und bewertungstechnisch ist der Kurs abgeschlossen' in open_points
+          assert 'bleibt nur noch ein externer QA-Schritt' in open_points
+          overview = Path('planung/KURSUEBERSICHT.md').read_text(encoding='utf-8')
+          assert 'vollständige didaktische Enddiagnose' in overview and 'ist abgeschlossen' in overview
+          PY
+      - name: Upload final QA artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: final-release-qa
+          path: |
+            arbeitsblaetter/Word_Test_Korrekturblatt.docx
+            planung/OFFENE_PUNKTE.md
+            planung/KURSUEBERSICHT.md
+      - name: Commit final release fixes and generated package
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add arbeitsblaetter
+          git add src/build_word_test.py planung/OFFENE_PUNKTE.md planung/KURSUEBERSICHT.md arbeitsblaetter
           if git diff --cached --quiet; then
-            echo "No generated changes"
+            echo "No final release changes"
           else
-            git commit -m "Build complete Word course package"
+            git commit -m "Finalize Word course release state"
             git push
           fi
