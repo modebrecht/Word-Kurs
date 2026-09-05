@@ -1,0 +1,81 @@
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+if __package__ in (None, ""):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from PIL import Image, ImageDraw, ImageFont
+
+from build_runtime import resolve_font_paths
+from course_common import (
+    NAVY, TEAL_DARK, PALE,
+    base_doc, block, add_text, add_step, add_tip, add_check, add_finish,
+    add_picture, finalise, set_run,
+)
+from course_build_helpers import clear_paragraph as _clear
+
+
+def school_icon(path: Path):
+    W,H=420,300
+    im=Image.new('RGBA',(W,H),(255,255,255,0)); d=ImageDraw.Draw(im)
+    d.rounded_rectangle((55,95,365,260),radius=12,fill='#EAF4F3',outline='#237B78',width=5)
+    d.polygon([(45,105),(210,35),(375,105)],fill='#237B78')
+    d.rounded_rectangle((180,170,240,260),radius=6,fill='#17324D')
+    for x in (95,275): d.rounded_rectangle((x,145,x+55,195),radius=5,fill='white',outline='#17324D',width=4)
+    d.line((210,35,210,2),fill='#17324D',width=5); d.polygon([(210,4),(274,20),(210,36)],fill='#17324D')
+    im.save(path)
+
+
+def source_image(path: Path, icon_path: Path):
+    icon=Image.open(icon_path).convert('RGBA')
+    canvas=Image.new('RGB',(1100,760),'white')
+    icon.thumbnail((650,470)); x=(1100-icon.width)//2; y=(760-icon.height)//2
+    canvas.paste(icon.convert('RGB'),(x,y)); d=ImageDraw.Draw(canvas); d.rectangle((1,1,1098,758),outline='#D3DEE2',width=5)
+    canvas.save(path,quality=95)
+
+
+def preview(path: Path, icon_path: Path):
+    reg,bold=resolve_font_paths(); W,H=1500,480
+    im=Image.new('RGB',(W,H),'white'); d=ImageDraw.Draw(im)
+    ft=ImageFont.truetype(bold,46); fb=ImageFont.truetype(reg,27); fs=ImageFont.truetype(bold,24)
+    d.rounded_rectangle((18,18,W-18,H-18),radius=18,outline='#D3DEE2',width=3,fill='white')
+    d.text((70,48),'UNSER SCHULHAUS',font=ft,fill='#17324D'); d.line((70,112,1430,112),fill='#237B78',width=4)
+    icon=Image.open(icon_path).convert('RGBA'); icon.thumbnail((410,285)); im.paste(icon,(990,145),icon)
+    y=155
+    for s in ['Im Schulhaus Sonnenberg lernen rund 240 Schülerinnen','und Schüler.','','Die Bibliothek befindet sich im Erdgeschoss.','In der grossen Pause ist sie geöffnet.']:
+        if s: d.text((75,y),s,font=fb,fill='#17324D')
+        y+=46
+    d.text((75,394),'Das Bild steht rechts. Der Text läuft links daran vorbei.',font=fs,fill='#5E6D78')
+    im.save(path,quality=95)
+
+
+def build_document(out: Path, preview_path: Path):
+    doc=base_doc('A7','Bilder in Word','Ein Bild passend einsetzen','Du fügst ein Bild ein und passt es so an, dass Text und Bild zusammenpassen.','ein Bild aus einer Datei einfügen, zuschneiden, auf eine passende Grösse bringen und den Text darum laufen lassen.')
+    t=block(doc,'01','AUFGABE'); r=t.cell(0,1); p=r.paragraphs[0]; _clear(p); x=p.add_run('Baue das Infoblatt nach'); set_run(x,size=12.8,bold=True,color=NAVY); add_text(r,'Bilddatei: a7_schulhaus.png',9.5,bold=True,color=TEAL_DARK); add_picture(r,preview_path,11.1)
+    for letter,parts in [
+        ('A',[('Klicke auf «[BILD HIER EINFÜGEN]»',True,False,NAVY),('  →  Bild a7_schulhaus.png einfügen',False,False,None)]),
+        ('B',[('Bild zuschneiden',True,False,NAVY),('  →  den grossen weissen Rand entfernen',False,False,None)]),
+        ('C',[('Bildbreite',True,False,NAVY),('  →  ungefähr 5,5 cm',False,False,None)]),
+        ('D',[('Textumbruch',True,False,NAVY),('  →  Quadrat',False,False,None)]),
+        ('E',[('Bild',True,False,NAVY),('  →  rechts neben den Text verschieben',False,False,None)]),
+        ('F',[('«[BILD HIER EINFÜGEN]»',True,False,NAVY),('  →  löschen',False,False,None)]),
+    ]: add_step(r,letter,parts)
+    t=block(doc,'HIER','ARBEITEN',fill_left=PALE,fill_right='FBFCFC',label_color=TEAL_DARK,label_size=11.0); r=t.cell(0,1); p=r.paragraphs[0]; _clear(p); x=p.add_run('UNSER SCHULHAUS'); set_run(x,size=18,bold=True,color=NAVY); add_text(r,'[BILD HIER EINFÜGEN]',9.5,bold=True,color=TEAL_DARK); add_text(r,'Im Schulhaus Sonnenberg lernen rund 240 Schülerinnen und Schüler.',10.6); add_text(r,'Die Bibliothek befindet sich im Erdgeschoss.',10.6); add_text(r,'In der grossen Pause ist sie geöffnet.',10.6)
+    add_tip(doc,'Bild anklicken → Bildformat. Dort findest du Zuschneiden. Für den Textumbruch klickst du auf das kleine Layout-Symbol neben dem Bild.')
+    add_check(doc,'Ist der weisse Rand weg? Steht das Bild rechts? Läuft der Text links am Bild vorbei?')
+    add_finish(doc,'Gib dieses Arbeitsblatt zusammen mit der Bilddatei in deinem Ordner "IB" ab.')
+    finalise(doc,out,'A7 - Bilder in Word')
+
+
+def build(root: Path):
+    sheets=root/'arbeitsblaetter'; assets=sheets/'assets'; prev=assets/'vorlagen'; assets.mkdir(parents=True,exist_ok=True); prev.mkdir(parents=True,exist_ok=True)
+    icon=assets/'a7_school_icon.png'; source=assets/'a7_schulhaus.png'; image=prev/'a7_schulhaus_vorlage.png'
+    school_icon(icon); source_image(source,icon); preview(image,icon)
+    build_document(sheets/'A7_Bilder_in_Word.docx',image)
+
+
+if __name__ == '__main__':
+    from worksheet_runtime import run_single
+    run_single('A7', build)

@@ -1,16 +1,22 @@
+from __future__ import annotations
+
+import argparse
 from pathlib import Path
 
-import build_a1_a5
-import build_a6_a9
-import build_a10_a12
-import build_a13
-import build_uebungstest
 import build_steckbrief
+import build_uebungstest
 import build_word_test
-from build_runtime import install_deterministic_docx_save, resolve_font_paths, staged_course_root
+from build_runtime import install_deterministic_docx_save, staged_course_root
 from validate_build import validate_course_package
+from worksheets import a01, a02, a03, a04, a05, a06, a07, a08, a09, a10, a11, a12, a13
 
 ROOT = Path(__file__).resolve().parents[1]
+
+WORKSHEETS = {
+    'A1': a01, 'A2': a02, 'A3': a03, 'A4': a04, 'A5': a05,
+    'A6': a06, 'A7': a07, 'A8': a08, 'A9': a09, 'A10': a10,
+    'A11': a11, 'A12': a12, 'A13': a13,
+}
 
 
 def write_readme(root: Path):
@@ -51,18 +57,13 @@ Die DOCX-Dateien werden reproduzierbar aus `src/` erzeugt.
 ''', encoding='utf-8')
 
 
-def _configure_portable_preview_fonts():
-    regular, bold = resolve_font_paths()
-    build_a1_a5.fonts = lambda: (regular, bold)
-    build_a6_a9.fonts = lambda: (regular, bold)
-    build_a10_a12._fonts = lambda: (regular, bold)
+def _build_course_worksheets(root: Path):
+    for module in WORKSHEETS.values():
+        module.build(root)
 
 
-def _build_into(root: Path):
-    build_a1_a5.build_all(root)
-    build_a6_a9.build_all(root)
-    build_a10_a12.build_all(root)
-    build_a13.build_all(root)
+def _build_complete_package(root: Path):
+    _build_course_worksheets(root)
     build_uebungstest.build_all(root)
     build_steckbrief.build_all(root)
     build_word_test.build_all(root)
@@ -70,12 +71,54 @@ def _build_into(root: Path):
     validate_course_package(root)
 
 
-def main():
+def _normalise_code(value: str) -> str:
+    raw = value.strip().upper()
+    if raw.startswith('A'):
+        raw = raw[1:]
+    try:
+        number = int(raw)
+    except ValueError as exc:
+        raise ValueError(f'Unknown worksheet: {value}') from exc
+    code = f'A{number}'
+    if code not in WORKSHEETS:
+        raise ValueError(f'Unknown worksheet: {value}')
+    return code
+
+
+def build_selected(values: list[str]):
+    codes = list(dict.fromkeys(_normalise_code(value) for value in values))
     install_deterministic_docx_save()
-    _configure_portable_preview_fonts()
+    for code in codes:
+        WORKSHEETS[code].build(ROOT)
+    validate_course_package(ROOT)
+    print('Generated', ', '.join(codes), 'in', ROOT / 'arbeitsblaetter')
+
+
+def build_all():
+    install_deterministic_docx_save()
     with staged_course_root(ROOT) as stage_root:
-        _build_into(stage_root)
+        _build_complete_package(stage_root)
     print('Generated complete Word course package in', ROOT / 'arbeitsblaetter')
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description='Generate the complete Word course or selected worksheets.'
+    )
+    parser.add_argument(
+        'worksheets',
+        nargs='*',
+        metavar='A7',
+        help='Optional worksheet codes (for example A7 A8). Omit to rebuild everything.',
+    )
+    args = parser.parse_args()
+    if args.worksheets:
+        try:
+            build_selected(args.worksheets)
+        except ValueError as exc:
+            parser.error(str(exc))
+    else:
+        build_all()
 
 
 if __name__ == '__main__':

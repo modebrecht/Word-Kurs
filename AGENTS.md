@@ -9,26 +9,42 @@ Die DOCX-Dateien unter `arbeitsblaetter/` sind **generierte Ergebnisse**. Die ei
 Darum gilt:
 
 - Änderungen nicht nur direkt in einer generierten DOCX vornehmen.
-- Änderung im passenden Python-Builder unter `src/` umsetzen.
-- Danach den vollständigen Kurs neu generieren.
-- Wiederverwendbare Layout-Funktionen gehören nach `src/course_common.py`.
+- Änderungen am passenden Python-Builder umsetzen.
+- **Jedes Arbeitsblatt A1–A13 hat genau einen eigenen Builder** unter `src/worksheets/`.
+- Ein einzelnes Blatt darf gezielt neu generiert werden; vor einem Release bzw. nach Änderungen an gemeinsamen Helfern den vollständigen Kurs neu bauen.
+- Wiederverwendbare Layout-Funktionen gehören nach `src/course_common.py` bzw. `src/course_build_helpers.py`.
 - `src/generate_course.py` ist der gemeinsame Einstiegspunkt.
 
-Aktuelle Builder und Build-Helfer:
+Arbeitsblatt-Builder:
 
-- `src/build_a1_a5.py`
-- `src/build_a6_a9.py`
-- `src/build_a10_a12.py`
-- `src/build_a13.py`
+- `src/worksheets/a01.py`
+- `src/worksheets/a02.py`
+- `src/worksheets/a03.py`
+- `src/worksheets/a04.py`
+- `src/worksheets/a05.py`
+- `src/worksheets/a06.py`
+- `src/worksheets/a07.py`
+- `src/worksheets/a08.py`
+- `src/worksheets/a09.py`
+- `src/worksheets/a10.py`
+- `src/worksheets/a11.py`
+- `src/worksheets/a12.py`
+- `src/worksheets/a13.py`
+
+Weitere Builder und Build-Helfer:
+
 - `src/build_uebungstest.py`
 - `src/build_steckbrief.py`
 - `src/build_word_test.py`
-- `src/course_common.py`
+- `src/course_common.py` – gemeinsames visuelles System und DOCX-Bausteine
+- `src/course_build_helpers.py` – Word-spezifische Helfer für Abschnitte, Zellen, XML und Seitenzahlen
 - `src/build_runtime.py` – portable Preview-Fonts, deterministische DOCX-Saves und transaktionales Publishing
+- `src/worksheet_runtime.py` – direkter Einzelbuild eines Arbeitsblatts
+- `src/grading.py` – lineare Schweizer Notenskala mit kaufmännischer Rundung
 - `src/validate_build.py` – strukturelle Prüfung der generierten DOCX/PNG und Punktsummen
-- `src/generate_course.py`
+- `src/generate_course.py` – kompletter oder selektiver Build
 
-Neue grössere Blöcke dürfen eigene Builder erhalten. Bestehende Builder nicht unnötig zu Monolithen ausbauen.
+Arbeitsblatt-spezifischer Inhalt und Arbeitsblatt-spezifische Assets gehören in den jeweiligen `aXX.py`-Builder. Gemeinsame Mechanik nicht zwischen den 13 Dateien kopieren, sondern in die gemeinsamen Helfer verschieben.
 
 ## 2. Kursziel und Didaktik
 
@@ -127,7 +143,7 @@ Mehrere Seiten verwenden, wenn dadurch echtes Arbeiten in Word sauberer möglich
 
 Arbeitsbereiche dürfen in einen eigenen Abschnitt gelegt werden, wenn Schülerinnen und Schüler dort Kopf-/Fusszeilen oder Seiteneinstellungen verändern sollen, ohne das Aufgabenblatt zu zerstören.
 
-## 6. Vorgehen für neue DOCX-Dateien
+## 6. Vorgehen für neue oder geänderte Arbeitsblätter
 
 ### Lernziel festlegen
 
@@ -139,9 +155,9 @@ Alles andere sollte bereits bekannt sein oder sichtbar erklärt werden.
 
 Nicht nur eine Funktion isoliert anklicken lassen, sondern ein kleines sinnvolles Produkt bauen lassen, etwa Flyer, Infoblatt, Reisebericht, Tabelle oder Veranstaltungsankündigung.
 
-### Builder ergänzen
+### Passenden Builder bearbeiten
 
-Neue Blattfunktion im passenden Builder anlegen. Gemeinsame Dinge aus `course_common.py` verwenden:
+Für A1–A13 ausschliesslich den entsprechenden Builder `src/worksheets/aXX.py` bearbeiten. Gemeinsame Dinge aus `course_common.py` bzw. `course_build_helpers.py` verwenden:
 
 - Farben
 - Schrift
@@ -150,8 +166,9 @@ Neue Blattfunktion im passenden Builder anlegen. Gemeinsame Dinge aus `course_co
 - Labelzellen
 - Absatzformatierung
 - Seitenaufbau
+- Arbeitsabschnitte und Seitenzahlen
 
-Danach den Builder in `src/generate_course.py` einbinden.
+Ein neues Arbeitsblatt erhält einen eigenen Builder und wird in `WORKSHEETS` in `src/generate_course.py` eingetragen.
 
 ### Assets
 
@@ -163,7 +180,7 @@ Dateinamen:
 - eindeutig
 - möglichst mit Blattnummer oder Zweck beginnen
 - keine temporären Dateien
-- wenn möglich reproduzierbar im Builder erzeugen
+- wenn möglich reproduzierbar im jeweiligen Builder erzeugen
 
 ## 7. Generieren
 
@@ -171,11 +188,29 @@ Vom Repository-Root:
 
 ```bash
 pip install -r requirements.txt
+```
+
+Komplettes Paket:
+
+```bash
 python src/generate_course.py
 python src/validate_build.py
 ```
 
-Die fertigen Dateien landen unter `arbeitsblaetter/`. `generate_course.py` baut zunächst vollständig in einem Staging-Verzeichnis und veröffentlicht erst nach erfolgreicher Validierung.
+Einzelnes Arbeitsblatt oder mehrere Arbeitsblätter:
+
+```bash
+python src/generate_course.py A7
+python src/generate_course.py A7 A8
+```
+
+Ein Arbeitsblatt kann auch direkt über seinen Builder erzeugt werden:
+
+```bash
+python src/worksheets/a07.py
+```
+
+Der vollständige Build baut zunächst in einem Staging-Verzeichnis und veröffentlicht erst nach erfolgreicher Validierung. Selektive Builds ändern nur die Ausgaben der gewählten Arbeitsblätter und validieren danach das bestehende Gesamtpaket.
 
 ## 8. Pflicht-QA
 
@@ -264,16 +299,18 @@ python src/validate_build.py
 
 Danach werden Änderungen unter `arbeitsblaetter/` automatisch zurück ins Repository committed.
 
-Bevorzugter Ablauf:
+Bevorzugter Ablauf bei Änderung eines Arbeitsblatts:
 
-1. Generator/Quellcode ändern.
-2. Lokal generieren.
+1. Nur den passenden `src/worksheets/aXX.py`-Builder ändern.
+2. Das betroffene Blatt selektiv generieren.
 3. Automatische Validierung ausführen.
-4. DOCX-Dateien vollständig rendern und prüfen.
-5. Quellcode und Planungsdokumente committen.
-6. GitHub-Actions-Build abwarten.
-7. Prüfen, ob der Build und die Validierung erfolgreich waren.
-8. Sicherstellen, dass generierte DOCX-Dateien und Assets im Repository vorhanden sind.
+4. Die geänderte DOCX vollständig rendern und visuell prüfen.
+5. Quellcode und nötige Planungsdokumente committen.
+6. GitHub-Actions-Vollbuild abwarten.
+7. Prüfen, ob Build und Validierung erfolgreich waren.
+8. Sicherstellen, dass die generierten Dateien im Repository vorhanden sind.
+
+Bei Änderungen an gemeinsamen Helfern oder vor einem Release lokal immer den vollständigen Kurs bauen und alle betroffenen DOCX-Dateien visuell prüfen.
 
 Bei erweitertem Kursumfang ebenfalls prüfen:
 
@@ -287,6 +324,7 @@ Bei erweitertem Kursumfang ebenfalls prüfen:
 ## 12. Nicht machen
 
 - nur eine generierte DOCX ändern und den Generator veraltet lassen
+- Inhalte mehrerer Arbeitsblätter wieder in einen Sammel-Builder zusammenziehen
 - bei jedem Blatt ein neues Design erfinden
 - unnötig neue Schriftarten einführen
 - Erklärungstext hinzufügen, nur um eine Seite zu füllen
