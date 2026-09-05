@@ -35,19 +35,19 @@ def preview(path: Path, icon_path: Path):
     ft=ImageFont.truetype(bold,48); fs=ImageFont.truetype(bold,26); fh=ImageFont.truetype(bold,24); fb=ImageFont.truetype(reg,23)
     d.rounded_rectangle((18,18,W-18,H-18),radius=18,outline='#D3DEE2',width=3,fill='white')
 
-    icon=Image.open(icon_path).convert('RGBA'); icon.thumbnail((105,75)); im.paste(icon,((W-icon.width)//2,30),icon)
-    s='SCHULFEST 2026'; box=d.textbbox((0,0),s,font=ft); d.text(((W-(box[2]-box[0]))/2,108),s,font=ft,fill='#17324D')
-    s='Freitag, 12. Juni · 17.30 Uhr'; box=d.textbbox((0,0),s,font=fs); d.text(((W-(box[2]-box[0]))/2,172),s,font=fs,fill='#172A3A')
+    icon=Image.open(icon_path).convert('RGBA'); icon.thumbnail((140,100)); im.paste(icon,((W-icon.width)//2,14),icon)
+    s='SCHULFEST 2026'; box=d.textbbox((0,0),s,font=ft); d.text(((W-(box[2]-box[0]))/2,118),s,font=ft,fill='#17324D')
+    s='Freitag, 12. Juni · 17.30 Uhr'; box=d.textbbox((0,0),s,font=fs); d.text(((W-(box[2]-box[0]))/2,176),s,font=fs,fill='#172A3A')
 
     x=115; y=235
-    d.text((x,y),'Mitnehmen',font=fh,fill='#172A3A'); y+=38
+    d.text((x,y),'Mitnehmen',font=fh,fill='#172A3A'); y+=36
     for s in ['Trinkflasche','Jacke für den Abend','gute Laune']:
-        d.text((x+8,y),'•',font=fb,fill='#172A3A'); d.text((x+44,y),s,font=fb,fill='#172A3A'); y+=34
+        d.text((x+8,y),'•',font=fb,fill='#172A3A'); d.text((x+44,y),s,font=fb,fill='#172A3A'); y+=32
 
-    y=382
-    d.text((x,y),'Ablauf',font=fh,fill='#172A3A'); y+=38
+    y=365
+    d.text((x,y),'Ablauf',font=fh,fill='#172A3A'); y+=34
     for i,s in enumerate(['Begrüssung','Spiel & Essen','Musik in der Aula'],1):
-        d.text((x+5,y),f'{i}.',font=fb,fill='#172A3A'); d.text((x+48,y),s,font=fb,fill='#172A3A'); y+=34
+        d.text((x+5,y),f'{i}.',font=fb,fill='#172A3A'); d.text((x+48,y),s,font=fb,fill='#172A3A'); y+=30
     im.save(path,quality=95)
 
 
