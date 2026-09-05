@@ -34,26 +34,27 @@ def asset(path: Path):
 
 
 def preview(path: Path, asset_path: Path):
-    reg,bold=resolve_font_paths(); W,H=1600,980
+    reg,bold=resolve_font_paths(); W,H=1600,1040
     im=Image.new('RGB',(W,H),'white'); d=ImageDraw.Draw(im)
-    fh=ImageFont.truetype(bold,22); ft=ImageFont.truetype(bold,52); f1=ImageFont.truetype(bold,30); fb=ImageFont.truetype(reg,24); fbb=ImageFont.truetype(bold,24); fs=ImageFont.truetype(reg,20); ftab=ImageFont.truetype(reg,21); ftabb=ImageFont.truetype(bold,21)
+    fh=ImageFont.truetype(bold,28); ft=ImageFont.truetype(bold,58); f1=ImageFont.truetype(bold,36); fb=ImageFont.truetype(reg,31); fbb=ImageFont.truetype(bold,30); fs=ImageFont.truetype(reg,26); ftab=ImageFont.truetype(reg,27); ftabb=ImageFont.truetype(bold,27)
     d.rounded_rectangle((18,18,W-18,H-18),radius=18,outline='#D3DEE2',width=3,fill='white')
-    d.text((65,45),'KLASSENLAGER 2026',font=fh,fill='#17324D'); d.text((1320,45),'SEK 8B',font=fh,fill='#237B78')
-    d.text((65,125),'KLASSENLAGER FLIMS',font=ft,fill='#17324D'); d.text((67,190),'15.–18. Juni 2026',font=fbb,fill='#237B78')
-    pic=Image.open(asset_path).convert('RGB').crop((110,80,1090,750)); pic.thumbnail((520,340)); im.paste(pic,(1000,135)); d.rectangle((1000,135,1000+pic.width,135+pic.height),outline='#D3DEE2',width=2)
-    d.text((65,255),'Vier Tage unterwegs in Graubünden:',font=fb,fill='#17324D'); d.text((65,295),'wandern, gemeinsam kochen und Zeit am See.',font=fb,fill='#17324D')
-    d.text((65,385),'MITNEHMEN',font=f1,fill='#237B78'); y=435
+    d.text((65,45),'KLASSENLAGER 2026',font=fh,fill='#17324D'); d.text((1300,45),'SEK 8B',font=fh,fill='#237B78')
+    d.text((65,125),'KLASSENLAGER FLIMS',font=ft,fill='#17324D'); d.text((67,200),'15.–18. Juni 2026',font=fbb,fill='#237B78')
+    pic=Image.open(asset_path).convert('RGB'); pic.thumbnail((520,350)); im.paste(pic,(1010,145)); d.rectangle((1010,145,1010+pic.width,145+pic.height),outline='#D3DEE2',width=2)
+    d.text((65,285),'Vier Tage unterwegs in Graubünden:',font=fb,fill='#17324D'); d.text((65,335),'wandern, gemeinsam kochen und Zeit am See.',font=fb,fill='#17324D')
+    d.text((65,425),'MITNEHMEN',font=f1,fill='#237B78'); y=480
     for item in ['Wanderschuhe','Regenjacke','Trinkflasche','kleiner Rucksack']:
-        d.ellipse((74,y+8,84,y+18),fill='#17324D'); d.text((100,y),item,font=fb,fill='#17324D'); y+=42
-    d.text((65,625),'PROGRAMM',font=f1,fill='#237B78')
-    x0,y0=65,675; cols=[210,390,410]; rows=[['Tag','Vormittag','Nachmittag'],['Montag','Anreise','Dorfrundgang'],['Dienstag','Wanderung','Caumasee'],['Mittwoch','Sport','Freizeit'],['Donnerstag','Aufräumen','Rückreise']]
+        d.ellipse((74,y+10,88,y+24),fill='#17324D'); d.text((105,y),item,font=fb,fill='#17324D'); y+=50
+    d.text((65,700),'PROGRAMM',font=f1,fill='#237B78')
+    x0,y0=65,755; cols=[220,390,420]; rows=[['Tag','Vormittag','Nachmittag'],['Montag','Anreise','Dorfrundgang'],['Dienstag','Wanderung','Caumasee'],['Mittwoch','Sport','Freizeit'],['Donnerstag','Aufräumen','Rückreise']]
     y=y0
     for ri,row in enumerate(rows):
         x=x0
+        row_h=52 if ri==0 else 49
         for w,val in zip(cols,row):
-            d.rectangle((x,y,x+w,y+48 if ri==0 else y+45),fill='white',outline='#D3DEE2',width=2); d.text((x+12,y+12 if ri==0 else y+11),val,font=ftabb if ri==0 else ftab,fill='#17324D'); x+=w
-        y+=48 if ri==0 else 45
-    d.text((65,947),'Klassenlager Flims',font=fs,fill='#667684'); d.text((1440,947),'1',font=fs,fill='#667684')
+            d.rectangle((x,y,x+w,y+row_h),fill='white',outline='#D3DEE2',width=2); d.text((x+12,y+12),val,font=ftabb if ri==0 else ftab,fill='#17324D'); x+=w
+        y+=row_h
+    d.text((65,1000),'Klassenlager Flims',font=fs,fill='#667684'); d.text((1450,1000),'1',font=fs,fill='#667684')
     im.save(path,quality=95)
 
 
