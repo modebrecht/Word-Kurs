@@ -110,8 +110,8 @@ def build_steckbrief(out: Path):
     sec2 = doc.add_section(WD_SECTION.NEW_PAGE)
     sec2.page_width = Cm(21)
     sec2.page_height = Cm(29.7)
-    sec2.top_margin = Cm(1.7)
-    sec2.bottom_margin = Cm(1.5)
+    sec2.top_margin = Cm(1.55)
+    sec2.bottom_margin = Cm(1.35)
     sec2.left_margin = Cm(1.85)
     sec2.right_margin = Cm(1.85)
     sec2.header.is_linked_to_previous = True
@@ -126,7 +126,7 @@ def build_steckbrief(out: Path):
     x = p.add_run("Bewertungsraster")
     set_run(x, size=26, bold=True, color=NAVY)
     p = doc.add_paragraph()
-    p.paragraph_format.space_after = Pt(8)
+    p.paragraph_format.space_after = Pt(5)
     x = p.add_run("10 Kriterien × 0 / 1 / 2 Punkte = maximal 20 Punkte")
     set_run(x, size=10.6, color=MID)
 
@@ -148,7 +148,7 @@ def build_steckbrief(out: Path):
     for i, (c, w, text) in enumerate(zip(table.rows[0].cells, widths, ["#","Kriterium","Erfüllt, wenn ...","P.","Notiz"])):
         c.width = w
         _fill(c, PALE_TEAL)
-        _margins(c, 85, 100, 85, 100)
+        _margins(c, 65, 100, 65, 100)
         p = c.paragraphs[0]
         _clear(p)
         p.alignment = WD_ALIGN_PARAGRAPH.CENTER if i in (0,3,4) else WD_ALIGN_PARAGRAPH.LEFT
@@ -161,13 +161,13 @@ def build_steckbrief(out: Path):
         vals = [str(idx), crit, desc, "0 / 1 / 2", ""]
         for i, (c, w, text) in enumerate(zip(row.cells, widths, vals)):
             c.width = w
-            _margins(c, 70, 90, 70, 90)
+            _margins(c, 50, 90, 50, 90)
             c.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
             p = c.paragraphs[0]
             _clear(p)
             p.alignment = WD_ALIGN_PARAGRAPH.CENTER if i in (0,3,4) else WD_ALIGN_PARAGRAPH.LEFT
             x = p.add_run(text)
-            set_run(x, size=8.8, bold=(i == 1), color=NAVY if i == 1 else TEXT)
+            set_run(x, size=8.7, bold=(i == 1), color=NAVY if i == 1 else TEXT)
             _border(c,
                     top={"val":"single","sz":"4","color":LIGHT_LINE},
                     bottom={"val":"single","sz":"4","color":LIGHT_LINE},
@@ -175,22 +175,22 @@ def build_steckbrief(out: Path):
                     right={"val":"single","sz":"4","color":LIGHT_LINE})
 
     p = doc.add_paragraph()
-    p.paragraph_format.space_before = Pt(8)
-    p.paragraph_format.space_after = Pt(3)
+    p.paragraph_format.space_before = Pt(5)
+    p.paragraph_format.space_after = Pt(2)
     x = p.add_run("Punkte: ____ / 20     Note: ____")
     set_run(x, size=12, bold=True, color=NAVY)
     p = doc.add_paragraph()
-    p.paragraph_format.space_after = Pt(2)
+    p.paragraph_format.space_after = Pt(1)
     x = p.add_run("0 = fehlt / klar falsch   ·   1 = teilweise erfüllt   ·   2 = vollständig erfüllt")
-    set_run(x, size=9.3, color=MID)
+    set_run(x, size=9.2, color=MID)
     p = doc.add_paragraph()
-    p.paragraph_format.space_after = Pt(2)
+    p.paragraph_format.space_after = Pt(1)
     x = p.add_run("Notenschlüssel: Note = 1 + 5 × (Punkte / 20). Kaufmännisch auf eine Dezimalstelle runden. 12/20 = Note 4.0.")
-    set_run(x, size=9.3, bold=True, color=TEAL_DARK)
+    set_run(x, size=9.1, bold=True, color=TEAL_DARK)
     p = doc.add_paragraph()
     p.paragraph_format.space_after = Pt(0)
     x = p.add_run("Kreativität oder «schönes Design» ist kein eigenes Bewertungskriterium.")
-    set_run(x, size=9.3, color=MID)
+    set_run(x, size=9.1, color=MID)
 
     finalise(doc, out, "Benoteter persönlicher Steckbrief")
 
