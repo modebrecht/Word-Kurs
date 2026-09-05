@@ -25,11 +25,10 @@ def preview(path: Path):
     f_body=ImageFont.truetype(reg,30); f_body_b=ImageFont.truetype(bold,30); f_small=ImageFont.truetype(reg,28)
     d.rounded_rectangle((18,18,W-18,H-18),radius=18,outline='#D3DEE2',width=3,fill='white')
     x=65; y=52
-    d.text((x,y),'GAME NIGHT',font=f_title,fill='#237B78'); y+=88
-    d.line((x,y,W-65,y),fill='#237B78',width=5); y+=30
-    d.text((x,y),'Freitag, 18. September',font=f_sub,fill='#17324D'); y+=58
-    d.text((x,y),'18.30-21.00 Uhr',font=f_body_b,fill='#17324D')
-    d.text((515,y),'Zimmer 204',font=f_body_b,fill='#237B78'); y+=64
+    d.text((x,y),'Game Night',font=f_title,fill='#237B78'); y+=96
+    d.text((x,y),'Freitag, 18. September',font=f_sub,fill='#17324D'); y+=62
+    d.text((x,y),'18.30-21.00 Uhr',font=f_body_b,fill='#17324D'); y+=52
+    d.text((x,y),'Zimmer 204',font=f_body_b,fill='#237B78'); y+=64
     d.text((x,y),'Bring dein Lieblingsspiel mit.',font=f_body,fill='#17324D'); y+=52
     d.text((x,y),'Getränke stehen bereit. Anmeldung bis Mittwoch bei Frau Keller.',font=f_small,fill='#5E6D78')
     path.parent.mkdir(parents=True, exist_ok=True); im.save(path,quality=95)
