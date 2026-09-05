@@ -37,16 +37,16 @@ def source_image(path: Path, icon_path: Path):
 
 
 def preview(path: Path, icon_path: Path):
-    reg,bold=resolve_font_paths(); W,H=1500,480
+    reg,bold=resolve_font_paths(); W,H=1500,540
     im=Image.new('RGB',(W,H),'white'); d=ImageDraw.Draw(im)
     ft=ImageFont.truetype(bold,46); fb=ImageFont.truetype(reg,27)
     d.rounded_rectangle((18,18,W-18,H-18),radius=18,outline='#D3DEE2',width=3,fill='white')
     d.text((70,48),'UNSER SCHULHAUS',font=ft,fill='#17324D')
-    icon=Image.open(icon_path).convert('RGBA'); icon.thumbnail((410,285)); im.paste(icon,(990,145),icon)
-    y=155
-    for s in ['Im Schulhaus Sonnenberg lernen rund 240 Schülerinnen','und Schüler.','','Die Bibliothek befindet sich im Erdgeschoss.','In der grossen Pause ist sie geöffnet.']:
-        if s: d.text((75,y),s,font=fb,fill='#17324D')
-        y+=46
+    icon=Image.open(icon_path).convert('RGBA'); icon.thumbnail((410,285)); im.paste(icon,(990,132),icon)
+    d.text((75,150),'Im Schulhaus Sonnenberg lernen rund 240 Schülerinnen',font=fb,fill='#17324D')
+    d.text((75,196),'und Schüler.',font=fb,fill='#17324D')
+    d.text((75,270),'Die Bibliothek befindet sich im Erdgeschoss.',font=fb,fill='#17324D')
+    d.text((75,445),'In der grossen Pause ist sie geöffnet.',font=fb,fill='#17324D')
     im.save(path,quality=95)
 
 
@@ -62,7 +62,7 @@ def build_document(out: Path, preview_path: Path):
     add_step(r,'E',[('Bild anklicken',True,False,NAVY),('  →  mit der Maus rechts neben den Text ziehen',False,False,None)])
     t=block(doc,'HIER','ARBEITEN',fill_left=PALE,fill_right='FBFCFC',label_color=TEAL_DARK,label_size=11.0); r=t.cell(0,1); p=r.paragraphs[0]; _clear(p); x=p.add_run('UNSER SCHULHAUS'); set_run(x,size=18,bold=True,color=NAVY); add_text(r,'Im Schulhaus Sonnenberg lernen rund 240 Schülerinnen und Schüler.',10.6); add_text(r,'Die Bibliothek befindet sich im Erdgeschoss.',10.6); add_text(r,'In der grossen Pause ist sie geöffnet.',10.6)
     add_tip(doc,'Für den Textumbruch: Bild anklicken → kleines Layout-Symbol neben dem Bild → «Quadrat». Dann kann der Text am Bild vorbeilaufen.')
-    add_check(doc,'Ist der weisse Rand weg? Ist das Bild ungefähr 5,5 cm breit? Steht es rechts? Läuft der Text links am Bild vorbei?')
+    add_check(doc,'Ist der weisse Rand weg? Ist das Bild ungefähr 5,5 cm breit? Steht es rechts? Läuft der Text links am Bild vorbei und darunter wieder über die ganze Breite?')
     add_finish(doc,'Gib dieses Arbeitsblatt zusammen mit der Bilddatei in deinem Ordner "IB" ab.')
     finalise(doc,out,'A7 - Bilder in Word')
 
