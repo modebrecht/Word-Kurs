@@ -2,7 +2,7 @@ name: Build Word course
 
 on:
   push:
-    branches: [main]
+    branches: [main, didactic-fix-a5-a7-a10]
     paths:
       - 'src/**'
       - 'requirements.txt'
