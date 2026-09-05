@@ -42,7 +42,7 @@ def practice_asset(path: Path):
     d.line((825,715,850,780), fill="#8A6549", width=12)
     d.rectangle((4,4,W-5,H-5), outline="#D3DEE2", width=8)
 
-    border = 70
+    border = 140
     canvas = Image.new("RGB", (W + 2*border, H + 2*border), "white")
     canvas.paste(im, (border, border))
     canvas.save(path, quality=95)
