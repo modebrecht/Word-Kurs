@@ -1,14 +1,28 @@
 # Didaktische Nachbesserung A5, A7 und A10
 
-## Reanalyse nach `modebrecht/M/didactic.md`
+## Status
 
-Diese Datei beschreibt **vor der Umsetzung** die gezielten Änderungen an A5, A7 und A10. Die erste Fassung dieses Plans war an mehreren Stellen zu radikal: Sie wollte teilweise Informationen oder Schritte reduzieren, obwohl `M/didactic.md` gerade davor warnt, Schwierigkeit mit weniger sichtbarer Hilfe gleichzusetzen.
+**Implementiert und gezielt QA-geprüft auf Branch `didactic-fix-a5-a7-a10`.**
 
-Leitprinzip:
+Die Änderungen wurden nach einer erneuten Analyse mit `modebrecht/M/didactic.md` umgesetzt. Dabei gilt als Leitprinzip:
 
 > **Do not assume that “harder” means “hide more information”. Only hide information that belongs to the actual learning objective.**
 
-Deshalb wird bei jedem Blatt getrennt geprüft:
+Die drei betroffenen Builder wurden angepasst, der komplette Kurs wurde danach neu gebaut und mit `src/validate_build.py` erfolgreich validiert. Zusätzlich wurden die geänderten DOCX mit dem kanonischen Renderer gerendert und **jede Seite bei 100 % visuell geprüft**:
+
+- A5: 1 Seite – geprüft
+- A7: 1 Seite – geprüft
+- A10: 3 Seiten – alle 3 geprüft
+
+Keine Überlappungen, abgeschnittenen Inhalte oder sichtbaren Layoutfehler wurden festgestellt.
+
+**Wichtig:** Damit ist nur die gezielte Nachbesserung von A5, A7 und A10 abgeschlossen. Die vollständige didaktische Enddiagnose des gesamten Kurses A1–A13 plus Übungstest, Steckbrief und Word-Test bleibt ein separates Release-Gate.
+
+---
+
+## Reanalyse nach `modebrecht/M/didactic.md`
+
+Für jedes Blatt wurde getrennt geprüft:
 
 1. Was ist das Lernziel?
 2. Was kennen die Schülerinnen und Schüler bereits?
@@ -20,19 +34,15 @@ Deshalb wird bei jedem Blatt getrennt geprüft:
 8. Wird versehentlich mehr als das Lernziel getestet?
 9. Ist die Darstellung über die Blätter hinweg konsistent?
 
-Es geht **nicht** um ein Redesign und nicht darum, die Blätter ausführlicher zu machen. Nur didaktisch relevante Reibung wird verändert.
+Es ging ausdrücklich **nicht** um ein Redesign oder darum, die Blätter ausführlicher zu machen. Geändert wurde nur didaktisch relevante Reibung.
 
----
+## Kurzurteil
 
-# Kurzurteil
-
-| Blatt | Schweregrad | Kernproblem | Konsequenz |
+| Blatt | Diagnose vor Änderung | Kernproblem | Umgesetzte Konsequenz |
 |---|---|---|---|
-| A5 | SHOULD FIX | Die kleine neue Bildkompetenz ist absichtlich Teil des Blatts, aber das Verkleinern ist weniger sichtbar erklärt als das Verschieben. | Bildaufgabe **behalten**, neue Bedienhandlung vollständig sichtbar machen. |
-| A7 | MUST FIX | Mehrere Bildfunktionen sind neu; insbesondere Einfügen und genaue Breite verlangen momentan teilweise Menüwissen, das noch nicht aufgebaut wurde. | Neue Funktionen sichtbar verankern; keine zusätzliche Theorie einführen. |
-| A10 | MUST FIX | „Seiten 2 und 3“ des DOCX stehen gleichzeitig neben automatischen Seitenzahlen „Seite 1 / Seite 2“. Das erzeugt eine zweite, unbeabsichtigte Seitenlogik. | Physische Seitenzahlen aus der Aufgabenformulierung entfernen; nur von den zwei Übungsseiten sprechen. |
-
-Wichtig: Nach der Reanalyse ist **A5 kein grundsätzlicher Fehlgriff**. Die Bildhandlung dort war im Kursplan ausdrücklich als kleine neue Kompetenz vorgesehen. Der Fehler wäre eher, diese neue Kompetenz nicht vollständig sichtbar zu stützen.
+| A5 | SHOULD FIX | Das bewusste Mini-Neuziel Bild verkleinern/verschieben war legitim, aber das Verkleinern weniger sichtbar gestützt als das Verschieben. | Bildaufgabe behalten; neue Bedienhandlung klar markieren und Menüweg sichtbar machen. |
+| A7 | MUST FIX | Neue Bildfunktionen verlangten teilweise Menüwissen, das noch nicht aufgebaut war; zusätzlich entstand ein unnötiger Platzhalter-Löschschritt. | Neue Funktionen sichtbar verankern; Platzhalter entfernen; keine zusätzliche Umbruch-Theorie einführen. |
+| A10 | MUST FIX | Physische DOCX-Seiten 2/3 standen gleichzeitig neben automatischen Seitenzahlen 1/2. | Nur noch von erster/zweiter Übungsseite sprechen; Abschnittstechnik unsichtbar lassen. |
 
 ---
 
@@ -48,61 +58,30 @@ Bewusstes Mini-Neuziel:
 
 - eine **bereits vorhandene** Grafik verkleinern und an die richtige Stelle verschieben.
 
-Die Kursübersicht nennt diese kleine Bildkompetenz ausdrücklich. A5 ist deshalb nicht versehentlich eine reine Repetition mit heimlich eingeschobener Bildaufgabe.
+A5 ist damit keine reine Repetition mit versehentlich eingeschobener Bildaufgabe. Die kleine Bildhandlung war im Kursplan bewusst vorgesehen.
 
-## Was bereits bekannt ist
+## Problem vor der Änderung
 
-Aus A1–A4:
+Das Verschieben wurde sichtbar mit `Ctrl + X` / `Ctrl + V` erklärt. Für die neue Grössenänderung auf ca. 2,2 cm war dagegen weniger deutlich sichtbar, **wo** diese Breite eingestellt wird.
 
-- Schriftart, Schriftgrösse, fett, kursiv, Farbe
-- Ausrichtung und Abstände
-- echte Aufzählung
-- echte Nummerierung
+Dadurch konnte neben der eigentlichen neuen Handlung zusätzlich unbekanntes Menüwissen getestet werden.
 
-Nicht bekannt:
+## Umgesetzt
 
-- Bilder aus Datei einfügen
-- zuschneiden
-- Textumbruch
+- Schritt F bleibt bestehen und ist jetzt klar als **`MINI-NEU · Grafik`** markiert.
+- Die Grössenänderung wird sichtbar geführt:
+  - `Grafik anklicken → Bildformat → Grösse → Breite ca. 2,2 cm`
+- Die vorhandene Hilfe zum Verschieben bleibt sichtbar.
+- Danach wird die Grafik über den Titel gesetzt und zentriert.
+- Keine weiteren Bildfunktionen werden vorgezogen:
+  - kein Bild aus Datei einfügen
+  - kein Zuschneiden
+  - kein Textumbruch
+- Zielvorlage und Chaos-Grundidee bleiben unverändert.
 
-Diese drei Bildthemen bleiben vollständig A7 vorbehalten.
+## Didaktisches Ergebnis
 
-## Was aktuell sichtbar ist
-
-- Zielvorlage
-- Reparaturbereiche A–F
-- gewünschte Grösse und Position der Grafik
-- Tipp zum Verschieben mit `Ctrl + X` / `Ctrl + V`
-
-## Versteckte Zusatzanforderung
-
-Das **Verschieben** wird sichtbar erklärt. Das **Verkleinern auf ca. 2,2 cm** wird dagegen verlangt, ohne gleich deutlich zu zeigen, wo die Breite eingestellt wird.
-
-Damit muss eine Schülerin oder ein Schüler bei einer neuen Funktion zusätzlich erraten, wie die Grössenänderung in Word funktioniert. Genau diese Art von versteckter Bedieninformation soll laut `M/didactic.md` vermieden werden.
-
-## Änderung
-
-1. Die Grafikaufgabe bleibt bestehen.
-2. Schritt F wird klar als **MINI-NEU: GRAFIK** markiert, damit sichtbar ist, dass hier nicht nur A1–A4 wiederholt werden.
-3. Für das Verkleinern bleibt eine kurze sichtbare Hilfe stehen, z. B.:
-   - `Grafik anklicken → Bildformat → Grösse → Breite ca. 2,2 cm`
-4. Die vorhandene sichtbare Hilfe für das Verschieben bleibt erhalten.
-5. Keine weiteren Bildfunktionen werden in A5 vorgezogen:
-   - kein Zuschneiden
-   - kein Textumbruch
-   - kein Bild aus Datei einfügen
-6. Zielvorlage und Reparaturstruktur bleiben unverändert.
-
-## Was bewusst **nicht** geändert wird
-
-- Die Grafik wird **nicht** aus A5 entfernt.
-- A5 wird nicht künstlich zu einer reinen Repetition gemacht.
-- Es werden keine zusätzlichen Chaos-Fehler eingebaut.
-- Die bekannten Word-Werte werden nicht versteckt, nur um den Auftrag „schwieriger“ zu machen.
-
-## Erfolgskriterium
-
-Wer A1–A4 beherrscht, kann den Wiederholungsteil lösen. Für die eine neue Grafikhandlung reicht die auf dem Blatt sichtbare Hilfe aus; es muss kein noch unbekannter Menüweg erraten werden.
+Wer A1–A4 beherrscht, kann den Wiederholungsteil lösen. Für das eine Mini-Neuziel ist die nötige Bedieninformation sichtbar. Die Schwierigkeit liegt im Anwenden der neuen Grafikhandlung, nicht im Erraten eines Menüwegs.
 
 ---
 
@@ -118,99 +97,49 @@ Ein Bild aus Datei einfügen und so bearbeiten, dass es passend mit Text zusamme
 - Textumbruch `Quadrat`
 - verschieben
 
-## Was bereits bekannt ist
+Aus A5 ist bereits bekannt, wie eine vorhandene Grafik angeklickt, in der Grösse verändert und verschoben wird. Neu sind vor allem Einfügen, Zuschneiden und `Quadrat`.
 
-Aus A5:
+## Probleme vor der Änderung
 
-- eine vorhandene Grafik anklicken
-- Grösse ändern
-- eine vorhandene Grafik verschieben
+### Bild einfügen
 
-Neu in A7:
+`a7_schulhaus.png` sollte eingefügt werden, ohne dass für diese neue Funktion ein klarer Menüanker sichtbar war.
 
-- Bild aus Datei einfügen
-- zuschneiden
-- `Quadrat` als Textumbruch
-- Bild und Text bewusst zusammenführen
+### Breite setzen
 
-## Was aktuell sichtbar ist
+Die Zielbreite war sichtbar, der Menüweg zur Breite aber weniger klar als andere neue Bildfunktionen.
 
-- sichtbare Zielvorlage
-- Dateiname
-- Schritte A–F
-- Hilfe für `Zuschneiden`
-- Hilfe für den Textumbruch über das Layout-Symbol
+### Platzhalter löschen
 
-## Versteckte Zusatzanforderungen
+Der Text `[BILD HIER EINFÜGEN]` musste nach dem Einfügen zusätzlich gelöscht werden. Dieser Aufräumschritt prüfte nichts aus dem eigentlichen Lernziel.
 
-### 1. Bild einfügen
+## Umgesetzt
 
-`Bild a7_schulhaus.png einfügen` wird verlangt, aber der Menüanker für diese **neue** Funktion ist nicht sichtbar. Damit wird neben dem eigentlichen Lernziel zusätzlich getestet, ob die Schülerin oder der Schüler zufällig weiss oder errät, wo Word Bilder einfügt.
+Der Auftrag ist jetzt sichtbar in zwei Phasen gegliedert:
 
-### 2. Breite setzen
+### 1 · BILD EINSETZEN
 
-`ungefähr 5,5 cm` ist sichtbar, aber der Weg zur Breite ist weniger explizit als beim Zuschneiden und Textumbruch.
-
-### 3. Platzhalter löschen
-
-Der Ablauf `auf Platzhalter klicken → Bild einfügen → später Platzhalter löschen` erzeugt einen kleinen zusätzlichen Aufräumschritt, der nichts mit Bildkompetenz zu tun hat.
-
-## Änderung
-
-### A. Neue Funktionen sichtbar verankern
-
-Beim ersten Einfügen kurze sichtbare Hilfe:
-
+- Cursor hinter `UNSER SCHULHAUS`, Enter
 - `Einfügen → Bilder → a7_schulhaus.png`
-
-Bei der Grösse kurze sichtbare Hilfe:
-
+- `Bild anklicken → Bildformat → Zuschneiden` und weissen Rand entfernen
 - `Bild anklicken → Bildformat → Grösse → Breite ca. 5,5 cm`
 
-Die bereits vorhandene Hilfe für Zuschneiden und Textumbruch bleibt sichtbar.
+### 2 · BILD + TEXT
 
-### B. Platzhalter als Zusatzaufgabe entfernen
+- Textumbruch `Quadrat` wählen
+- sichtbarer Zweckanker: **Dann kann der Text am Bild vorbeilaufen.**
+- Bild rechts neben den Text verschieben
 
-Statt `[BILD HIER EINFÜGEN]` als Text, der später separat gelöscht werden muss, erhält der Arbeitsbereich eine **leere, eindeutig bezeichnete Einfügeposition** direkt unter dem Titel bzw. vor dem Einleitungstext.
+Zusätzlich:
 
-Die Aufgabe soll sinngemäss lauten:
-
-- `Setze den Cursor in die freie Zeile unter dem Titel und füge dort das Bild ein.`
-
-Damit entfällt der separate Löschschritt.
-
-### C. Reihenfolge beibehalten, aber Zweck klar machen
-
-Die einzelnen Schritte bleiben sichtbar. Sie werden nicht absichtlich verkürzt, weil die Funktionen neu sind.
-
-Optional dürfen sie visuell in zwei kleine Phasen gegliedert werden:
-
-1. **Bild einsetzen** – einfügen, zuschneiden, Breite
-2. **Bild + Text** – `Quadrat`, nach rechts verschieben
-
-Die Detailhilfe bleibt trotzdem sichtbar.
-
-### D. Keine zusätzliche Umbruch-Theorie
-
-Die erste Planfassung wollte `Mit Text in Zeile` und `Quadrat` gegenüberstellen. Nach `M/didactic.md` ist das nicht nötig und würde einen zusätzlichen Begriff einführen, der nicht zum Pflichtziel gehört.
-
-Stattdessen genügt ein sichtbarer Zweckanker:
-
-> `Quadrat` wählen → dann kann der Text am Bild vorbeilaufen.
-
-Es werden keine anderen Textumbrucharten eingeführt.
-
-## Was bewusst **nicht** geändert wird
-
-- Kein zweites Bild-Arbeitsblatt.
-- Keine weiteren Textumbrucharten.
-- Keine Bildstile oder Effekte.
+- Der Platzhalter wurde aus dem Arbeitsbereich entfernt.
+- Es wird **keine** zusätzliche Theorie zu weiteren Textumbrucharten eingeführt.
 - Die Zielvorlage bleibt sichtbar.
-- Neue Funktionen werden nicht aus der Anleitung entfernt, um künstlich mehr Erinnerung zu verlangen.
+- Neue Bedienwege bleiben sichtbar, weil die Funktionen neu sind.
 
-## Erfolgskriterium
+## Didaktisches Ergebnis
 
-Die Schwierigkeit besteht darin, die neuen Bildfunktionen korrekt anzuwenden. Niemand muss zusätzlich erraten, wo eine noch nie eingeführte Funktion in Word zu finden ist oder einen technisch irrelevanten Platzhalter aufräumen.
+Die Schwierigkeit besteht jetzt darin, die Bildfunktionen korrekt anzuwenden. Die Lernenden müssen nicht zusätzlich erraten, wo eine neue Funktion in Word liegt, und keinen irrelevanten Platzhalter aufräumen.
 
 ---
 
@@ -221,155 +150,76 @@ Die Schwierigkeit besteht darin, die neuen Bildfunktionen korrekt anzuwenden. Ni
 - Kopfzeile als wiederkehrenden Bereich oben verwenden
 - Fusszeile als wiederkehrenden Bereich unten verwenden
 - automatische Seitenzahl einsetzen
-- erkennen, dass die Zahl auf der nächsten Seite automatisch weiterzählt
+- erkennen, dass sie auf der nächsten Seite automatisch weiterzählt
 
-## Was bereits bekannt ist
+## Problem vor der Änderung
 
-- mehrseitige Dokumente
-- normaler Seitenbereich
-- Seitenumbruch
+Der Auftrag sprach von den physischen **Seiten 2 und 3** des dreiseitigen DOCX. Gleichzeitig sollten diese beiden Übungsseiten unten automatisch als **Seite 1** und **Seite 2** nummeriert werden.
 
-Neu:
+Damit gab es zwei Zahlenlogiken für dieselben Seiten. Zum Verständnis hätte die interne Abschnittskonstruktion des DOCX mitgedacht werden müssen – obwohl Abschnitte ausdrücklich **nicht** Lernziel von A10 sind.
 
-- Kopfzeilenbereich
-- Fusszeilenbereich
-- automatisches Seitenzahlfeld
+## Umgesetzt
 
-## Was aktuell sichtbar ist
+- Der Aufgabenblock heisst jetzt `ÜBUNGSSEITEN` statt `SEITEN 2–3`.
+- Der Auftrag sagt:
+  - `Arbeite nur im Reisebericht auf den beiden folgenden Übungsseiten.`
+- Danach werden sie konsequent bezeichnet als:
+  - `erste Übungsseite`
+  - `zweite Übungsseite`
+- Die Vorschau trägt ebenfalls die sichtbaren Labels `Übungsseite 1` und `Übungsseite 2`.
+- Die interne Abschnittstechnik wird **nicht erklärt**.
+- Die sechs sichtbaren Bedienhilfen bleiben erhalten, weil Kopfzeile, Fusszeile und automatische Seitenzahl neue Funktionen sind.
+- Der Menüweg für die automatische Zahl bleibt sichtbar:
+  - `Einfügen → Seitenzahl → Aktuelle Position`
+- Der Konzeptanker beschränkt sich auf das Lernziel:
+  - Kopfzeile = Bereich oben
+  - Fusszeile = Bereich unten
+  - beide wiederholen sich
+  - Seitenzahl = automatische Zahl, nicht von Hand tippen
 
-- Zielvorschau mit zwei Seiten
-- genaue Klickschritte zum Öffnen von Kopf- und Fusszeile
-- Menüweg für die automatische Seitenzahl
-- Kontrolle, dass Kopf/Fuss auf der nächsten Seite wieder erscheinen
+## Didaktisches Ergebnis
 
-Die sechs sichtbaren Schritte sind **kein Problem an sich**. Bei neuen Funktionen ist sichtbare Bedienhilfe erwünscht. Die erste Planfassung wollte sie auf vier Phasen reduzieren; das ist nach der Reanalyse nicht nötig.
-
-## Tatsächliche didaktische Inkonsistenz
-
-Der Auftrag sagt:
-
-- `Arbeite nur auf den Seiten 2 und 3.`
-
-Gleichzeitig soll auf diesen Seiten automatisch stehen:
-
-- `Seite 1`
-- `Seite 2`
-
-Damit existieren für dieselben Blätter zwei Nummerierungen. Um den Widerspruch zu verstehen, müsste die Schülerin oder der Schüler die interne Abschnittslogik des DOCX kennen oder wenigstens erraten.
-
-Diese Abschnittstechnik gehört **nicht** zum Lernziel. Die zusätzliche Seitenlogik ist deshalb unbeabsichtigte kognitive Last.
-
-## Änderung
-
-### A. Physische DOCX-Seitennummern aus der Aufgabe entfernen
-
-Nicht mehr:
-
-- `Arbeite nur auf den Seiten 2 und 3.`
-
-Sondern sinngemäss:
-
-- `Arbeite nur im Reisebericht auf den beiden folgenden Übungsseiten.`
-
-Danach werden die Seiten nur noch bezeichnet als:
-
-- `erste Übungsseite`
-- `zweite Übungsseite`
-
-### B. Abschnittstechnik **nicht erklären**
-
-Die erste Planfassung wollte erklären, die Übungsseiten seien ein „eigenes kleines Dokument“. Das würde eine technische Abstraktion einführen, die für das Lernziel nicht nötig ist.
-
-Besser ist: Die interne Abschnittstechnik bleibt vollständig unsichtbare Infrastruktur.
-
-### C. Sichtbare Schritte behalten
-
-Die vorhandene Klickhilfe bleibt weitgehend erhalten:
-
-1. oben doppelklicken → Kopfzeile öffnen
-2. Kopfzeilentext eingeben
-3. unten doppelklicken → Fusszeile öffnen
-4. `Seite ` eingeben
-5. automatische Seitenzahl direkt dahinter einfügen
-6. zweite Übungsseite kontrollieren
-
-Der Menüpfad für die automatische Seitenzahl bleibt sichtbar, weil die Funktion neu ist.
-
-### D. Kontrolle eindeutig formulieren
-
-Nicht mit physischen DOCX-Seiten arbeiten, sondern:
-
-- Auf der **ersten Übungsseite** steht unten `Seite 1`.
-- Auf der **zweiten Übungsseite** steht unten `Seite 2`.
-- Kopfzeile und Fusszeile erscheinen auf beiden Übungsseiten.
-
-### E. Ein kurzer Konzeptanker
-
-Sichtbar bleiben nur die drei für das Lernziel relevanten Aussagen:
-
-- Kopfzeile = Bereich oben, der sich wiederholt.
-- Fusszeile = Bereich unten, der sich wiederholt.
-- Seitenzahl = automatische Zahl, die auf der nächsten Seite weiterzählt.
-
-Keine Erklärung von Abschnitten, Abschnittsumbrüchen oder Nummerierungs-Neustarts.
-
-## Was bewusst **nicht** geändert wird
-
-- Keine erste Seite ohne Seitenzahl als neues Spezialthema.
-- Keine verschiedenen Kopfzeilen nach Seitenart.
-- Keine Abschnittsumbrüche als Schülerkompetenz.
-- Keine römischen Seitenzahlen.
-- Der Reisebericht bleibt fertig formatiert; A9 wird nicht erneut getestet.
-- Die neue Bedienhilfe wird nicht reduziert, nur um die Aufgabe härter wirken zu lassen.
-
-## Erfolgskriterium
-
-Die Schülerin oder der Schüler muss nur verstehen und anwenden, was tatsächlich Ziel von A10 ist. Die interne Konstruktion des dreiseitigen Arbeitsblatts erzeugt keine zweite, widersprüchliche Seitenlogik mehr.
+Die Lernenden müssen nur noch die drei tatsächlich neuen Konzepte verstehen und anwenden. Die interne technische Konstruktion des Arbeitsblatts erzeugt keine konkurrierende Seitenlogik mehr.
 
 ---
 
-# Hidden but important didactic inconsistencies
+# Hidden but important didactic inconsistencies – Ergebnis
 
-Die Reanalyse nach `M/didactic.md` ergibt drei subtilere Punkte, die bei einer rein technischen Prüfung leicht übersehen werden:
+Die drei subtilen Probleme waren:
 
-1. **A5:** Nicht die Existenz der Grafikaufgabe ist das Problem, sondern die asymmetrische Hilfe: Verschieben wird erklärt, Verkleinern als neue Handlung deutlich weniger.
-2. **A7:** Die sichtbare Schrittfolge wirkt vollständig, verlangt aber bei `Bild einfügen` und teilweise bei der Grösseneinstellung zusätzlich noch nicht aufgebautes Menüwissen.
-3. **A10:** Die physische Seitenposition im DOCX und die automatische Seitennummerierung verwenden gleichzeitig unterschiedliche Zahlen für dieselben Übungsseiten. Das testet unbeabsichtigt Verständnis der Dokument-Infrastruktur.
+1. **A5:** Nicht die Grafikaufgabe selbst war falsch, sondern die asymmetrische Hilfe zwischen Verschieben und Verkleinern.
+2. **A7:** Eine scheinbar vollständige Schrittfolge verlangte trotzdem noch nicht aufgebautes Menüwissen und einen sachfremden Platzhalter-Löschschritt.
+3. **A10:** Physische DOCX-Seitenposition und automatische Seitennummerierung benutzten unterschiedliche Zahlen für dieselben Übungsseiten und testeten damit unbeabsichtigt Dokument-Infrastruktur.
 
----
-
-# Reihenfolge der Umsetzung
-
-1. **A5:** kleine neue Grafikkompetenz sichtbar sauber stützen, nicht entfernen.
-2. **A7:** Einfügen und Grössenweg sichtbar machen; Platzhalter-Zusatzschritt entfernen; `Quadrat` ohne zusätzliche Theorie erklären.
-3. **A10:** widersprüchliche Seitenbezeichnungen entfernen; sichtbare Einführungsschritte beibehalten.
+Diese drei Punkte sind auf diesem Branch behoben.
 
 ---
 
-# QA nach der Umsetzung
+# QA-Nachweis
 
-Für jedes Blatt nach `M/didactic.md` erneut prüfen:
+## Technisch
 
-- Lernziel
-- vorausgesetztes Wissen
-- sichtbare Information
-- versteckte Information
-- tatsächliche Recall-/Inference-Leistung
-- beabsichtigte vs. unbeabsichtigte Schwierigkeit
-- guided → partial help → independent progression
-- Kontextanker
-- unbeabsichtigtes Doppeltesten
-- konsistente Repräsentation
+- vollständiger Kursbuild erfolgreich
+- `src/validate_build.py` erfolgreich
+- GitHub Actions Run `33960720643`: **success**
+- generierte Kursdateien auf dem Branch aktualisiert
 
-Danach technische Pflicht-QA:
+## Visuell
 
-1. betroffene Builder einzeln ausführen,
-2. vollständigen Kursbuild ausführen,
-3. `src/validate_build.py` ausführen,
-4. A5, A7 und A10 mit dem kanonischen DOCX-Renderer rendern,
-5. **jede gerenderte Seite bei 100 % visuell prüfen**,
-6. erst danach Änderungen als fertig betrachten.
+Mit dem kanonischen DOCX-Renderer gerendert und vollständig bei 100 % geprüft:
 
-# Nicht Teil dieses Branches
+- `A5_Rette_das_Chaos_Dokument.docx`: 1/1 Seite sauber
+- `A7_Bilder_in_Word.docx`: 1/1 Seite sauber
+- `A10_Kopf_Fusszeile_Seitenzahlen.docx`: 3/3 Seiten sauber
 
-Dieser Branch bleibt auf A5, A7 und A10 beschränkt. Keine gleichzeitigen Änderungen an Bewertungsmodell, Übungstest, Steckbrief, Word-Test, allgemeinem Kursdesign oder anderen Arbeitsblättern, ausser eine minimale Dokumentationsanpassung ist durch die geänderte Progression zwingend nötig.
+Geprüft wurden insbesondere:
+
+- kein abgeschnittener Text
+- keine Überlappungen
+- keine kaputten Tabellen-/Blockgrenzen
+- sichtbare Zielvorlagen und Anweisungen vollständig
+- A10-Übungsseiten sauber getrennt
+
+## Nicht Teil dieses Nachweises
+
+Diese gezielte QA ersetzt **nicht** die noch offene vollständige didaktische Enddiagnose des gesamten Kurses nach `modebrecht/M/didactic.md` und **nicht** den Praxistest auf den realen Schul-PCs.
