@@ -97,6 +97,43 @@ oder:
 
 > Gestalte den Text so, dass Titel, Datum und Ort sofort erkennbar sind.
 
+## Didaktische QA / Diagnose
+
+Vor dem ersten Unterrichtseinsatz wird der komplette Kurs noch einmal **als Lernsystem und nicht nur technisch** geprüft. Verbindliche Referenz dafür ist die Review-Vorlage in `modebrecht/M/didactic.md`.
+
+Zentraler Grundsatz aus dieser Vorlage:
+
+> **Do not assume that “harder” means “hide more information”. Only hide information that belongs to the actual learning objective.**
+
+Für jedes Arbeitsblatt bzw. jede grössere Aufgabe werden mindestens folgende Fragen geprüft:
+
+1. Was ist das eigentliche Lernziel?
+2. Was müssen die Schülerinnen und Schüler bereits wissen oder können?
+3. Welche Informationen sind sichtbar?
+4. Welche Informationen sind verborgen?
+5. Was müssen die Schülerinnen und Schüler tatsächlich erinnern oder ableiten?
+6. Entsteht die Schwierigkeit aus der beabsichtigten Kompetenz oder aus unbeabsichtigter Zusatzlast?
+7. Ist die Progression von geführt → teilweise geführt → selbstständig konsistent?
+8. Werden hilfreiche Kontextanker später unbeabsichtigt entfernt?
+9. Werden versehentlich zwei Dinge gleichzeitig geprüft, obwohl nur eines Lernziel ist?
+10. Wird dasselbe Konzept über verschiedene Arbeitsblätter hinweg konsistent dargestellt?
+
+Zusätzlich wird gezielt nach folgenden Problemen gesucht:
+
+- unnötige Abstraktion
+- versteckter Kontext
+- unbeabsichtigte kognitive Belastung
+- inkonsistentes Scaffolding
+- Aufgabenformat-Wechsel, die unbemerkt etwas anderes prüfen
+- irreführende Schwierigkeit
+- fehlende oder überflüssige visuelle Anker
+- Unterschiede zwischen dem, was die Aufgabe scheinbar prüft, und dem, was sie tatsächlich prüft
+- Formulierungen, die trotz technisch korrekter Umsetzung vernünftig missverstanden werden können
+
+Befunde werden als **MUST FIX / SHOULD FIX / OPTIONAL** klassifiziert. Änderungen sollen nur vorgeschlagen werden, wenn sie Verständnis, Lernen, Fairness oder Progression materiell verbessern. Reine Geschmacks- oder Verschönerungsvorschläge gehören nicht in diese Diagnose.
+
+Diese didaktische QA wird vor dem ersten Einsatz vollständig durchgeführt und später nach grösseren inhaltlichen Änderungen erneut angewendet.
+
 ## Technische Robustheit
 
 Der Kurs soll möglichst wenig von einer ganz bestimmten Word-Version abhängen. Funktionen, die auf den Schulgeräten problematisch oder uneinheitlich reagieren, müssen lokal getestet werden.
