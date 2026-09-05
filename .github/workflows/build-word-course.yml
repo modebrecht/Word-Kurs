@@ -2,7 +2,7 @@ name: Build Word course
 
 on:
   push:
-    branches: [main, 2nd-rnd-qa]
+    branches: [main]
     paths:
       - 'src/**'
       - 'requirements.txt'
@@ -25,16 +25,6 @@ jobs:
       - run: python src/generate_course.py
       - name: Validate generated package
         run: python src/validate_build.py
-      - name: Upload Word test QA artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: word-test-final-qa
-          path: |
-            arbeitsblaetter/Word_Test.docx
-            arbeitsblaetter/Word_Test_Ausgangsdokument.docx
-            arbeitsblaetter/Word_Test_Korrekturblatt.docx
-            arbeitsblaetter/assets/word_test_rheinfall.png
-            arbeitsblaetter/pakete/Word_Test_Paket.zip
       - name: Commit generated Word package
         run: |
           git config user.name "github-actions[bot]"
