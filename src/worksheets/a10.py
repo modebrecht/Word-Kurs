@@ -63,10 +63,10 @@ def build_document(out: Path, preview_path: Path):
     add_step(r, 'B', [('Kopfzeile', True, False, NAVY), ('  →  «SCHULAUSFLUG LUZERN» eingeben', False, False, None)])
     add_step(r, 'C', [('Doppelklicke ganz unten auf der ersten Übungsseite', True, False, NAVY), ('  →  Fusszeile öffnen', False, False, None)])
     add_step(r, 'D', [('Fusszeile', True, False, NAVY), ('  →  «Seite » eingeben', False, False, None)])
-    add_step(r, 'E', [('Direkt hinter «Seite »', True, False, NAVY), ('  →  Einfügen → Seitenzahl → Aktuelle Position', False, False, None)])
+    add_step(r, 'E', [('Direkt hinter «Seite »', True, False, NAVY), ('  →  Einfügen → Seitenzahl → Aktuelle Position → eine einfache Zahl ohne Rahmen/Design wählen', False, False, None)])
     add_step(r, 'F', [('Kontrolliere die zweite Übungsseite', True, False, NAVY), ('  →  Kopf- und Fusszeile erscheinen dort automatisch; die Zahl steigt von 1 auf 2.', False, False, None)])
     add_tip(doc, 'Kopfzeile = Bereich oben. Fusszeile = Bereich unten. Beide wiederholen sich auf den Übungsseiten.')
-    add_tip(doc, 'Die Seitenzahl ist automatisch: Tippe nur «Seite » und füge die Zahl über Einfügen → Seitenzahl → Aktuelle Position ein. Die Zahl nicht von Hand schreiben.', 'MERKE')
+    add_tip(doc, 'Die Seitenzahl ist automatisch: Tippe nur «Seite » und wähle Einfügen → Seitenzahl → Aktuelle Position → eine einfache Zahl ohne Rahmen/Design. Die Zahl nicht von Hand schreiben.', 'MERKE')
     add_check(doc, 'Oben steht auf beiden Übungsseiten «SCHULAUSFLUG LUZERN». Unten steht auf der ersten Übungsseite «Seite 1» und auf der zweiten «Seite 2».')
     add_finish(doc)
     new_detached_workspace_section(
