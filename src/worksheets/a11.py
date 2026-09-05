@@ -38,7 +38,7 @@ def preview(path: Path, asset_path: Path):
     im=Image.new('RGB',(W,H),'white'); d=ImageDraw.Draw(im)
     fh=ImageFont.truetype(bold,22); ft=ImageFont.truetype(bold,52); f1=ImageFont.truetype(bold,30); fb=ImageFont.truetype(reg,24); fbb=ImageFont.truetype(bold,24); fs=ImageFont.truetype(reg,20); ftab=ImageFont.truetype(reg,21); ftabb=ImageFont.truetype(bold,21)
     d.rounded_rectangle((18,18,W-18,H-18),radius=18,outline='#D3DEE2',width=3,fill='white')
-    d.text((65,45),'KLASSENLAGER 2026',font=fh,fill='#17324D'); d.text((1320,45),'SEK 8B',font=fh,fill='#237B78'); d.line((65,85,1535,85),fill='#237B78',width=4)
+    d.text((65,45),'KLASSENLAGER 2026',font=fh,fill='#17324D'); d.text((1320,45),'SEK 8B',font=fh,fill='#237B78')
     d.text((65,125),'KLASSENLAGER FLIMS',font=ft,fill='#17324D'); d.text((67,190),'15.–18. Juni 2026',font=fbb,fill='#237B78')
     pic=Image.open(asset_path).convert('RGB').crop((110,80,1090,750)); pic.thumbnail((520,340)); im.paste(pic,(1000,135)); d.rectangle((1000,135,1000+pic.width,135+pic.height),outline='#D3DEE2',width=2)
     d.text((65,255),'Vier Tage unterwegs in Graubünden:',font=fb,fill='#17324D'); d.text((65,295),'wandern, gemeinsam kochen und Zeit am See.',font=fb,fill='#17324D')
@@ -51,9 +51,9 @@ def preview(path: Path, asset_path: Path):
     for ri,row in enumerate(rows):
         x=x0
         for w,val in zip(cols,row):
-            d.rectangle((x,y,x+w,y+48 if ri==0 else y+45),fill='#EAF4F3' if ri==0 else 'white',outline='#D3DEE2',width=2); d.text((x+12,y+12 if ri==0 else y+11),val,font=ftabb if ri==0 else ftab,fill='#17324D'); x+=w
+            d.rectangle((x,y,x+w,y+48 if ri==0 else y+45),fill='white',outline='#D3DEE2',width=2); d.text((x+12,y+12 if ri==0 else y+11),val,font=ftabb if ri==0 else ftab,fill='#17324D'); x+=w
         y+=48 if ri==0 else 45
-    d.line((65,935,1535,935),fill='#D3DEE2',width=2); d.text((65,947),'Klassenlager Flims',font=fs,fill='#667684'); d.text((1440,947),'1',font=fs,fill='#667684')
+    d.text((65,947),'Klassenlager Flims',font=fs,fill='#667684'); d.text((1440,947),'1',font=fs,fill='#667684')
     im.save(path,quality=95)
 
 
@@ -61,6 +61,7 @@ def build_document(out: Path, preview_path: Path):
     doc=base_doc('A11','Dokument nachbauen','Jetzt ohne Klickanleitung','Du kombinierst bekannte Word-Werkzeuge und baust eine Vorlage möglichst genau nach.','mehrere bekannte Word-Funktionen selbstständig kombinieren und ein Dokument nach einer sichtbaren Vorlage nachbauen.')
     t=block(doc,'01','NACHBAUEN'); r=t.cell(0,1); p=r.paragraphs[0]; _clear(p); x=p.add_run('Baue Seite 2 so um, dass sie wie diese Vorlage aussieht'); set_run(x,size=12.6,bold=True,color=NAVY); add_text(r,'Der Text und die Daten sind vorgegeben. Du entscheidest selbst, welche bekannten Werkzeuge du dafür brauchst.',9.35); add_picture(r,preview_path,10.9)
     t=block(doc,'PFLICHT',None,fill_left=WARM,fill_right=WARM,label_color=NAVY,label_size=9.3); p=t.cell(0,1).paragraphs[0]; _clear(p); x=p.add_run('Verwende wirklich: '); set_run(x,size=9.55,bold=True,color=NAVY); x=p.add_run('Formatvorlagen für Titel/Überschriften · echte Aufzählung · echte Tabelle · Bild mit Textumbruch · Kopfzeile · automatische Seitenzahl.'); set_run(x,size=9.25)
+    add_tip(doc,'Bei Titel und Überschriften zählt die richtige Formatvorlage. Das genaue Aussehen darf je nach Word-Version leicht von der Vorlage abweichen.','MERKE')
     add_tip(doc,'Arbeite von gross nach klein: zuerst Aufbau und Bereiche, danach Bild/Tabelle, ganz am Schluss Abstände und Feinarbeit.')
     add_check(doc,'Stimmen Reihenfolge, Grössenverhältnisse, Bildposition, Liste, Tabelle sowie Kopf- und Fussbereich?')
     add_finish(doc,'Gib dieses Arbeitsblatt zusammen mit der Bilddatei in deinem Ordner "IB" ab.')
