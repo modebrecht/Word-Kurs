@@ -8,8 +8,9 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from course_common import (
     NAVY, TEAL, TEAL_DARK, PALE, PALE_TEAL, WARM, MID, TEXT, WHITE,
     base_doc, block, add_text, add_step, add_workarea, add_tip, add_check,
-    add_finish, add_picture, finalise, set_run, _clear, _keep_first, _fill,
+    add_finish, add_picture, finalise, set_run,
 )
+from course_build_helpers import clear_paragraph as _clear
 
 
 def fonts():

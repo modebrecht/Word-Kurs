@@ -3,15 +3,13 @@ from __future__ import annotations
 from pathlib import Path
 
 from PIL import Image, ImageDraw
-from docx.shared import Pt, Cm
-from docx.enum.section import WD_SECTION
-from docx.oxml import OxmlElement
-from docx.oxml.ns import qn
+from docx.shared import Pt
 
 from course_common import (
     NAVY, TEAL, TEAL_DARK, PALE, PALE_TEAL, WARM, MID, TEXT, WHITE,
-    base_doc, block, add_text, add_check, add_finish, finalise, set_run, _clear,
+    base_doc, block, add_text, add_check, add_finish, finalise, set_run,
 )
+from course_build_helpers import clear_paragraph as _clear, new_detached_workspace_section
 
 
 def a13_asset(path: Path):
@@ -59,38 +57,6 @@ def a13_asset(path: Path):
 
     d.rectangle((4,4,W-5,H-5), outline="#D3DEE2", width=8)
     im.save(path, quality=95)
-
-
-def _restart_page_numbering(section, start=1):
-    sectPr = section._sectPr
-    pgNumType = sectPr.find(qn("w:pgNumType"))
-    if pgNumType is None:
-        pgNumType = OxmlElement("w:pgNumType")
-        sectPr.append(pgNumType)
-    pgNumType.set(qn("w:start"), str(start))
-
-
-def _empty_workspace_section(doc, code):
-    sec = doc.add_section(WD_SECTION.NEW_PAGE)
-    sec.page_width = Cm(21)
-    sec.page_height = Cm(29.7)
-    sec.top_margin = Cm(2.0)
-    sec.bottom_margin = Cm(1.8)
-    sec.left_margin = Cm(2.0)
-    sec.right_margin = Cm(2.0)
-    sec.header.is_linked_to_previous = False
-    sec.footer.is_linked_to_previous = False
-    for part in (sec.header, sec.footer):
-        for p in part.paragraphs:
-            _clear(p)
-        for table in list(part.tables):
-            table._tbl.getparent().remove(table._tbl)
-    _restart_page_numbering(sec, 1)
-    p = doc.add_paragraph()
-    p.paragraph_format.space_after = Pt(5)
-    r = p.add_run(f"{code} · ARBEITSSEITE")
-    set_run(r, size=9.3, bold=True, color=TEAL_DARK)
-    return sec
 
 
 def _requirement(cell, title, text):
@@ -143,7 +109,7 @@ def build_a13(out: Path):
     )
     add_finish(doc, 'Gib dieses Arbeitsblatt zusammen mit der Bilddatei in deinem Ordner "IB" ab.')
 
-    _empty_workspace_section(doc, "A13")
+    new_detached_workspace_section(doc, "A13", top_margin_cm=2.0, bottom_margin_cm=1.8)
     raw = [
         ("PROJEKTWOCHE BERN", 5),
         ("12.–15. Mai 2027", 4),

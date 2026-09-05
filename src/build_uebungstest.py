@@ -8,8 +8,9 @@ from docx.shared import Pt, Cm
 
 from course_common import (
     NAVY, TEAL, TEAL_DARK, PALE, PALE_TEAL, WARM, MID, TEXT, WHITE,
-    base_doc, block, add_text, add_finish, finalise, set_run, _clear, _font,
+    base_doc, block, add_text, add_finish, finalise, set_run,
 )
+from course_build_helpers import clear_paragraph as _clear, style_run as _font
 
 
 def practice_asset(path: Path):

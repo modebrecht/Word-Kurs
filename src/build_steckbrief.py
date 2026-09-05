@@ -10,7 +10,13 @@ from docx.enum.table import WD_CELL_VERTICAL_ALIGNMENT
 from course_common import (
     NAVY, TEAL_DARK, PALE_TEAL, WARM, MID, LIGHT_LINE,
     WHITE, TEXT, base_doc, block, add_text, finalise, set_run,
-    _clear, _font, _fill, _margins, _border,
+)
+from course_build_helpers import (
+    clear_paragraph as _clear,
+    style_run as _font,
+    fill_cell as _fill,
+    set_cell_margins as _margins,
+    set_cell_borders as _border,
 )
 
 
@@ -179,7 +185,7 @@ def build_steckbrief(out: Path):
     set_run(x, size=9.3, color=MID)
     p = doc.add_paragraph()
     p.paragraph_format.space_after = Pt(2)
-    x = p.add_run("Notenschlüssel: Note = 1 + 5 × (Punkte / 20). Auf eine Dezimalstelle runden. 12/20 = Note 4.0.")
+    x = p.add_run("Notenschlüssel: Note = 1 + 5 × (Punkte / 20). Kaufmännisch auf eine Dezimalstelle runden. 12/20 = Note 4.0.")
     set_run(x, size=9.3, bold=True, color=TEAL_DARK)
     p = doc.add_paragraph()
     p.paragraph_format.space_after = Pt(0)

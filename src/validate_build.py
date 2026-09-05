@@ -9,6 +9,8 @@ from xml.etree import ElementTree
 from docx import Document
 from PIL import Image
 
+from grading import swiss_grade_str
+
 EXPECTED_DOCX = (
     "A1_Text_formatieren.docx",
     "A2_Nach_Vorlage_gestalten.docx",
@@ -88,6 +90,22 @@ def _validate_task_points(path: Path, expected_count: int, expected_sum: int) ->
         )
 
 
+def _validate_grade_rounding() -> None:
+    expected = {
+        (12, 20): "4.0",
+        (13, 20): "4.3",  # 4.25 must round half-up, not bankers-round to 4.2.
+        (18, 30): "4.0",
+        (30, 30): "6.0",
+    }
+    wrong = {
+        key: (swiss_grade_str(*key), note)
+        for key, note in expected.items()
+        if swiss_grade_str(*key) != note
+    }
+    if wrong:
+        raise RuntimeError(f"Swiss grade rounding is inconsistent: {wrong}")
+
+
 def _validate_steckbrief(path: Path) -> None:
     doc = Document(path)
     rubric_rows = 0
@@ -101,6 +119,8 @@ def _validate_steckbrief(path: Path) -> None:
     text = _docx_text(path)
     if "maximal 20 Punkte" not in text or "12/20 = Note 4.0" not in text:
         raise RuntimeError("Steckbrief 20-point grading key is incomplete or inconsistent.")
+    if "Kaufmännisch auf eine Dezimalstelle runden" not in text:
+        raise RuntimeError("Steckbrief grading key does not define half-up rounding explicitly.")
 
 
 def _validate_word_test_key(path: Path) -> None:
@@ -117,10 +137,19 @@ def _validate_word_test_key(path: Path) -> None:
     if set(mapping) != set(range(31)):
         missing = sorted(set(range(31)) - set(mapping))
         raise RuntimeError(f"Word-test grading table does not cover 0-30 points; missing {missing}.")
-    expected = {0: "1.0", 18: "4.0", 30: "6.0"}
-    wrong = {points: (mapping.get(points), note) for points, note in expected.items() if mapping.get(points) != note}
+
+    expected = {points: swiss_grade_str(points, 30) for points in range(31)}
+    wrong = {
+        points: (mapping.get(points), note)
+        for points, note in expected.items()
+        if mapping.get(points) != note
+    }
     if wrong:
-        raise RuntimeError(f"Word-test grading table has inconsistent anchor notes: {wrong}")
+        raise RuntimeError(f"Word-test grading table is inconsistent with the shared grade function: {wrong}")
+
+    text = _docx_text(path)
+    if "Kaufmännisch auf eine Dezimalstelle runden" not in text:
+        raise RuntimeError("Word-test grading key does not define half-up rounding explicitly.")
 
 
 def validate_course_package(root: Path) -> tuple[int, int]:
@@ -146,6 +175,7 @@ def validate_course_package(root: Path) -> tuple[int, int]:
     for path in png_files:
         _validate_png(path)
 
+    _validate_grade_rounding()
     _validate_task_points(output / "Uebungstest_Word.docx", expected_count=10, expected_sum=30)
     _validate_task_points(output / "Word_Test.docx", expected_count=11, expected_sum=30)
     _validate_steckbrief(output / "Benoteter_Steckbrief.docx")

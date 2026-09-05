@@ -11,8 +11,15 @@ from docx.enum.section import WD_SECTION
 from course_common import (
     NAVY, TEAL, TEAL_DARK, PALE, PALE_TEAL, WARM, MID, LIGHT_LINE,
     WHITE, TEXT, base_doc, block, add_text, add_finish, finalise, set_run,
-    _clear, _font, _fill, _margins, _border,
 )
+from course_build_helpers import (
+    clear_paragraph as _clear,
+    style_run as _font,
+    fill_cell as _fill,
+    set_cell_margins as _margins,
+    set_cell_borders as _border,
+)
+from grading import swiss_grade_str
 
 
 def test_asset(path: Path):
@@ -216,7 +223,7 @@ def build_correction_sheet(out: Path):
     _clear(p)
     x = p.add_run("Formel: Note = 1 + 5 × (Punkte / 30). ")
     set_run(x, size=9.5, bold=True, color=NAVY)
-    x = p.add_run("Auf eine Dezimalstelle runden. 18/30 = 60 % = Note 4.0.")
+    x = p.add_run("Kaufmännisch auf eine Dezimalstelle runden. 18/30 = 60 % = Note 4.0.")
     set_run(x, size=9.3, color=TEXT)
 
     sec2 = doc.add_section(WD_SECTION.NEW_PAGE)
@@ -233,7 +240,7 @@ def build_correction_sheet(out: Path):
     x = p.add_run("30 Punkte → Schweizer Note")
     set_run(x, size=25, bold=True, color=NAVY)
 
-    mapping = [(pts, f"{round(1 + 5*pts/30, 1):.1f}") for pts in range(30,-1,-1)]
+    mapping = [(pts, swiss_grade_str(pts, 30)) for pts in range(30,-1,-1)]
     tbl = doc.add_table(rows=17, cols=4)
     tbl.autofit = False
     widths = [Cm(3.0)] * 4

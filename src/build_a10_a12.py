@@ -2,16 +2,18 @@ from __future__ import annotations
 
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
-from docx.shared import Pt, Cm
+from docx.shared import Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_BREAK
-from docx.enum.section import WD_SECTION
-from docx.oxml import OxmlElement
-from docx.oxml.ns import qn
 
 from course_common import (
     NAVY, TEAL, TEAL_DARK, PALE_TEAL, WARM, MID, TEXT,
     base_doc, block, add_text, add_step, add_tip, add_check, add_finish,
-    add_picture, finalise, set_run, _clear, _font,
+    add_picture, finalise, set_run,
+)
+from course_build_helpers import (
+    clear_paragraph as _clear,
+    style_run as _font,
+    new_detached_workspace_section,
 )
 
 
@@ -49,15 +51,6 @@ def a10_preview(path: Path):
     im.save(path, quality=95)
 
 
-def _restart_page_numbering(section, start=1):
-    sectPr = section._sectPr
-    pgNumType = sectPr.find(qn('w:pgNumType'))
-    if pgNumType is None:
-        pgNumType = OxmlElement('w:pgNumType')
-        sectPr.append(pgNumType)
-    pgNumType.set(qn('w:start'), str(start))
-
-
 def build_a10(out: Path, preview: Path):
     doc = base_doc(
         'A10', 'Kopf- & Fusszeile', 'Infos auf jeder Seite',
@@ -88,23 +81,15 @@ def build_a10(out: Path, preview: Path):
 
     # Workspace section: deliberately no course header/footer. Page numbering is already
     # configured to restart at 1, so students only learn the intended skill: insert PAGE.
-    sec = doc.add_section(WD_SECTION.NEW_PAGE)
-    sec.page_width = Cm(21)
-    sec.page_height = Cm(29.7)
-    sec.top_margin = Cm(2.2)
-    sec.bottom_margin = Cm(2.0)
-    sec.left_margin = Cm(2.0)
-    sec.right_margin = Cm(2.0)
-    sec.header_distance = Cm(.7)
-    sec.footer_distance = Cm(.7)
-    sec.header.is_linked_to_previous = False
-    sec.footer.is_linked_to_previous = False
-    # Ensure the unlinked parts start empty.
-    for p in sec.header.paragraphs:
-        _clear(p)
-    for p in sec.footer.paragraphs:
-        _clear(p)
-    _restart_page_numbering(sec, 1)
+    new_detached_workspace_section(
+        doc,
+        top_margin_cm=2.2,
+        bottom_margin_cm=2.0,
+        left_margin_cm=2.0,
+        right_margin_cm=2.0,
+        header_distance_cm=.7,
+        footer_distance_cm=.7,
+    )
 
     # Page 2 content.
     p = doc.add_paragraph()
@@ -217,17 +202,6 @@ def a11_preview(path: Path, asset: Path):
     im.save(path,quality=95)
 
 
-def _empty_workspace_section(doc, code):
-    sec=doc.add_section(WD_SECTION.NEW_PAGE); sec.page_width=Cm(21); sec.page_height=Cm(29.7); sec.top_margin=Cm(1.8); sec.bottom_margin=Cm(1.8); sec.left_margin=Cm(2.0); sec.right_margin=Cm(2.0)
-    sec.header.is_linked_to_previous=False; sec.footer.is_linked_to_previous=False
-    for part in (sec.header,sec.footer):
-        for p in part.paragraphs: _clear(p)
-        for table in list(part.tables): table._tbl.getparent().remove(table._tbl)
-    _restart_page_numbering(sec,1)
-    p=doc.add_paragraph(); p.paragraph_format.space_after=Pt(5); r=p.add_run(f'{code} · ARBEITSSEITE'); set_run(r,size=9.3,bold=True,color=TEAL_DARK)
-    return sec
-
-
 def build_a11(out: Path, preview: Path):
     doc=base_doc('A11','Dokument nachbauen','Jetzt ohne Klickanleitung','Du kombinierst bekannte Word-Werkzeuge und baust eine Vorlage möglichst genau nach.','mehrere bekannte Word-Funktionen selbstständig kombinieren und ein Dokument nach einer sichtbaren Vorlage nachbauen.')
     t=block(doc,'01','NACHBAUEN'); r=t.cell(0,1); p=r.paragraphs[0]; _clear(p); x=p.add_run('Baue Seite 2 so um, dass sie wie diese Vorlage aussieht'); set_run(x,size=12.6,bold=True,color=NAVY); add_text(r,'Der Text und die Daten sind vorgegeben. Du entscheidest selbst, welche bekannten Werkzeuge du dafür brauchst.',9.35); add_picture(r,preview,10.9)
@@ -235,7 +209,7 @@ def build_a11(out: Path, preview: Path):
     add_tip(doc,'Arbeite von gross nach klein: zuerst Aufbau und Bereiche, danach Bild/Tabelle, ganz am Schluss Abstände und Feinarbeit.')
     add_check(doc,'Stimmen Reihenfolge, Grössenverhältnisse, Bildposition, Liste, Tabelle sowie Kopf- und Fussbereich?')
     add_finish(doc,'Gib dieses Arbeitsblatt zusammen mit der Bilddatei in deinem Ordner "IB" ab.')
-    _empty_workspace_section(doc,'A11')
+    new_detached_workspace_section(doc,'A11',top_margin_cm=1.8,bottom_margin_cm=1.8)
     for text in ['KLASSENLAGER FLIMS','15.–18. Juni 2026','Vier Tage unterwegs in Graubünden: wandern, gemeinsam kochen und Zeit am See.','MITNEHMEN','Wanderschuhe','Regenjacke','Trinkflasche','kleiner Rucksack','PROGRAMM','Tag | Vormittag | Nachmittag','Montag | Anreise | Dorfrundgang','Dienstag | Wanderung | Caumasee','Mittwoch | Sport | Freizeit','Donnerstag | Aufräumen | Rückreise']:
         p=doc.add_paragraph(); p.paragraph_format.space_after=Pt(3.5); x=p.add_run(text); set_run(x,size=11)
     p=doc.add_paragraph(); p.paragraph_format.space_before=Pt(8); x=p.add_run('BILDDATEI: a11_klassenlager_berge.png'); set_run(x,size=9.5,bold=True,color=TEAL_DARK)
@@ -265,7 +239,7 @@ def build_a12(out: Path):
     t=block(doc,'DU','ENTSCHEIDEST',fill_left=PALE_TEAL,fill_right=PALE_TEAL,label_color=TEAL_DARK,label_size=13.5); p=t.cell(0,1).paragraphs[0]; _clear(p); x=p.add_run('Du entscheidest selbst über Anordnung, Grössen, Abstände, Bildposition und eine passende Farbe. '); set_run(x,size=9.35); x=p.add_run('Der Flyer soll vor allem schnell lesbar sein.'); set_run(x,size=9.35,bold=True,color=TEAL_DARK)
     add_check(doc,'Sind Datum, Zeit und Ort sofort sichtbar? Ist alles auf einer Seite? Sind Liste, Tabelle, Bild und Fusszeile wirklich vorhanden?')
     add_finish(doc,'Gib dieses Arbeitsblatt zusammen mit der Bilddatei in deinem Ordner "IB" ab.')
-    _empty_workspace_section(doc,'A12')
+    new_detached_workspace_section(doc,'A12',top_margin_cm=1.8,bottom_margin_cm=1.8)
     raw=['SOMMERABEND IM SCHULHAUS','Freitag, 19. Juni 2026','18.00–21.00 Uhr','Schulhaus Sonnenberg · Innenhof','Wir beenden das Schuljahr gemeinsam mit Musik, Spielen, Essen und Zeit zum Zusammensitzen.','PROGRAMM','18.00 | Start und Musik','18.45 | Grill und Getränke','19.30 | Spielturnier','20.30 | Dessert und Abschluss','MITBRINGEN','Trinkbecher','Jacke oder Pullover','gute Laune','wer möchte: ein Kartenspiel','WICHTIG','Bei Regen findet der Sommerabend in der Aula statt. Die Teilnahme ist kostenlos.','BILDDATEI: a12_sommerabend.png']
     for text in raw:
         p=doc.add_paragraph(); p.paragraph_format.space_after=Pt(4); x=p.add_run(text); set_run(x,size=11)

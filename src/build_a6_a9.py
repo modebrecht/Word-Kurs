@@ -4,16 +4,14 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 from docx.shared import Pt, Cm
 from docx.enum.text import WD_ALIGN_PARAGRAPH
-from docx.enum.section import WD_SECTION, WD_ORIENT
-from docx.oxml import OxmlElement
-from docx.oxml.ns import qn
+from docx.enum.section import WD_ORIENT
 
 from course_common import (
     NAVY, TEAL, TEAL_DARK, PALE, PALE_TEAL, WARM, MID, TEXT, WHITE,
     base_doc, block, add_text, add_step, add_tip, add_check, add_finish,
-    add_picture, new_workspace_section, finalise, set_run, _clear, _keep_first,
-    _fill, _border,
+    add_picture, new_workspace_section, finalise, set_run,
 )
+from course_build_helpers import clear_paragraph as _clear
 
 
 def fonts():
