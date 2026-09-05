@@ -40,11 +40,46 @@ def preview(path: Path):
     im.save(path,quality=95)
 
 
-def build_document(out: Path, preview_path: Path):
+def table_tools_anchor(path: Path):
+    reg,bold=resolve_font_paths(); W,H=1500,280
+    im=Image.new('RGB',(W,H),'white'); d=ImageDraw.Draw(im)
+    fl=ImageFont.truetype(bold,23); fs=ImageFont.truetype(reg,20); fb=ImageFont.truetype(bold,21)
+    d.rounded_rectangle((18,18,W-18,H-18),radius=18,outline='#D3DEE2',width=3,fill='white')
+    panels=[
+        (55,'Einfügen → Tabelle','4 × 5'),
+        (535,'Tabellenlayout','Darüber einfügen'),
+        (1015,'Tabellenlayout','Zellen verbinden'),
+    ]
+    for x,title,action in panels:
+        d.text((x,38),title,font=fl,fill='#1D6765')
+        d.rounded_rectangle((x,86,x+410,205),radius=10,outline='#AEBCC3',width=2,fill='#F8FAFB')
+        if action=='4 × 5':
+            gx,gy=x+28,104
+            for r in range(5):
+                for c in range(4):
+                    d.rectangle((gx+c*45,gy+r*17,gx+c*45+40,gy+r*17+13),fill='#EAF4F3',outline='#237B78',width=1)
+            d.text((x+245,124),'4 × 5',font=fb,fill='#17324D')
+        elif action=='Darüber einfügen':
+            d.line((x+48,145,x+180,145),fill='#17324D',width=4)
+            d.polygon([(x+108,100),(x+88,128),(x+128,128)],fill='#237B78')
+            d.text((x+210,122),action,font=fs,fill='#17324D')
+        else:
+            for c in range(4):
+                d.rectangle((x+35+c*44,112,x+75+c*44,154),outline='#17324D',width=2)
+            d.line((x+75,112,x+75,154),fill='#F8FAFB',width=5)
+            d.line((x+119,112,x+119,154),fill='#F8FAFB',width=5)
+            d.line((x+163,112,x+163,154),fill='#F8FAFB',width=5)
+            d.text((x+235,122),action,font=fs,fill='#17324D')
+        d.text((x,222),action,font=fs,fill='#5E6D78')
+    im.save(path,quality=95)
+
+
+def build_document(out: Path, preview_path: Path, tools_path: Path):
     doc=base_doc('A8','Tabellen','Infos ins Raster bringen','Du baust eine einfache Tabelle und passt sie Schritt für Schritt an.','eine Tabelle erstellen, Daten in Zellen eintragen, eine Zeile ergänzen und Zellen verbinden.')
     t=block(doc,'01','AUFGABE'); r=t.cell(0,1); p=r.paragraphs[0]; _clear(p); x=p.add_run('Baue den Sporttag-Plan nach'); set_run(x,size=12.8,bold=True,color=NAVY)
-    add_text(r,'Arbeite auf Seite 2. Die Daten stehen dort bereits bereit.',9.5,after=.25)
-    add_text(r,'NEU: Einfügen → Tabelle → 4 × 5.  Neue Zeile → Tabellenlayout → Darüber einfügen.  Verbinden → Tabellenlayout → Zellen verbinden.',9.1,bold=True,color=TEAL_DARK,after=.55)
+    add_text(r,'Arbeite auf Seite 2. Die Daten stehen dort bereits bereit.',9.5,after=.2)
+    add_text(r,'NEU: Einfügen → Tabelle → 4 × 5.  Neue Zeile → Tabellenlayout → Darüber einfügen.  Verbinden → Tabellenlayout → Zellen verbinden.',9.1,bold=True,color=TEAL_DARK,after=.1)
+    add_picture(r,tools_path,10.6)
     add_picture(r,preview_path,10.9)
     for letter,parts in [
         ('A',[('Unter «HIER TABELLE EINFÜGEN»',True,False,NAVY),('  →  Tabelle mit 4 Spalten und 5 Zeilen einfügen',False,False,None)]),
@@ -67,8 +102,9 @@ def build_document(out: Path, preview_path: Path):
 
 def build(root: Path):
     sheets=root/'arbeitsblaetter'; prev=sheets/'assets'/'vorlagen'; prev.mkdir(parents=True,exist_ok=True)
-    image=prev/'a8_sporttag_tabelle_vorlage.png'; preview(image)
-    build_document(sheets/'A8_Tabellen.docx',image)
+    image=prev/'a8_sporttag_tabelle_vorlage.png'; tools=prev/'a8_tabellen_werkzeuge.png'
+    preview(image); table_tools_anchor(tools)
+    build_document(sheets/'A8_Tabellen.docx',image,tools)
 
 
 if __name__ == '__main__':
