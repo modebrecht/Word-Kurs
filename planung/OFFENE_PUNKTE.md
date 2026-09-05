@@ -18,9 +18,29 @@ Details stehen in [BEWERTUNG.md](BEWERTUNG.md) und [STECKBRIEF.md](STECKBRIEF.md
 
 ---
 
-## Vor dem ersten Einsatz noch praktisch testen
+## Vor dem ersten Einsatz noch notwendig
 
-### Schul-PCs / Word-Version
+### 1. Didaktische QA / Diagnose
+
+Der vollständige Kurs muss noch einmal systematisch **didaktisch diagnostiziert** werden. Dabei geht es nicht um technische Fehler oder optische Geschmacksfragen, sondern um versteckte Lern- und Fairnessprobleme.
+
+Verbindliche Review-Referenz ist `modebrecht/M/didactic.md`. Die konkrete Prüflogik ist zusätzlich in [DIDAKTIK.md](DIDAKTIK.md) dokumentiert.
+
+Für A1–A13, Übungstest, Steckbrief und Word-Test wird geprüft:
+
+- Lernziel und notwendiges Vorwissen
+- sichtbare und versteckte Informationen
+- tatsächliche Erinnerungs- bzw. Ableitungsleistung
+- beabsichtigte vs. unbeabsichtigte Schwierigkeit
+- geführte → teilweise geführte → selbstständige Progression
+- Kontextanker und visuelle Hilfen
+- unbeabsichtigtes Doppelprüfen
+- konsistente Darstellung derselben Konzepte
+- mögliche Missverständnisse trotz technisch korrekter Aufgabe
+
+Befunde werden als **MUST FIX / SHOULD FIX / OPTIONAL** klassifiziert. Nur Punkte, die Verständnis, Lernen, Fairness oder Progression materiell betreffen, sollen Änderungen auslösen.
+
+### 2. Schul-PCs / Word-Version
 
 Mindestens einmal auf den tatsächlichen Geräten prüfen:
 
@@ -46,4 +66,9 @@ Tabulatoren und komplexe hängende Einzüge gehören weiterhin **nicht zum Pflic
 
 **Inhaltlich und bewertungstechnisch ist der Kurs vollständig festgelegt.**
 
-Der einzige noch notwendige Schritt vor dem realen Unterrichtseinsatz ist ein kurzer Praxistest auf den tatsächlichen Schulgeräten und mit dem tatsächlichen Abgabeweg. Dabei sollen keine neuen Inhalte mehr entwickelt werden, sondern nur technische Überraschungen ausgeschlossen werden.
+Vor dem realen Unterrichtseinsatz bleiben noch zwei QA-Schritte:
+
+1. vollständige didaktische Diagnose nach `modebrecht/M/didactic.md`
+2. kurzer Praxistest auf den tatsächlichen Schulgeräten und mit dem tatsächlichen Abgabeweg
+
+Dabei sollen keine neuen Inhalte mehr entwickelt werden, sondern nur noch materielle didaktische oder technische Probleme gefunden und behoben werden.
