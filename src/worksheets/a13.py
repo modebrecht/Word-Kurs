@@ -17,10 +17,10 @@ from course_build_helpers import clear_paragraph as _clear, new_detached_workspa
 
 
 def asset(path: Path):
-    W, H = 1600, 950
-    im = Image.new("RGB", (W, H), "#E7F1F5")
-    d = ImageDraw.Draw(im)
-    d.rectangle((0, 0, W, 560), fill="#DDECF3")
+    SW, SH = 1600, 950
+    scene = Image.new("RGB", (SW, SH), "#E7F1F5")
+    d = ImageDraw.Draw(scene)
+    d.rectangle((0, 0, SW, 560), fill="#DDECF3")
     d.polygon(
         [(0,560),(280,400),(520,510),(760,360),(1030,500),(1320,350),(1600,520),(1600,700),(0,700)],
         fill="#8DA59A",
@@ -45,7 +45,13 @@ def asset(path: Path):
     for x in range(95,650,90): d.line((x,720,x,760), fill="#E8E1D4", width=9)
     for x in (75,1510):
         d.rectangle((x-12,570,x+12,755), fill="#775B45"); d.ellipse((x-95,470,x+95,645), fill="#4F7667")
-    d.rectangle((4,4,W-5,H-5), outline="#D3DEE2", width=8)
+    d.rectangle((4,4,SW-5,SH-5), outline="#D3DEE2", width=8)
+
+    # Deliberately give the source image generous empty margins so that
+    # cropping remains a meaningful transfer task in the final exercise.
+    W, H = 1960, 1250
+    im = Image.new("RGB", (W, H), "#F4F6F7")
+    im.paste(scene, (180, 150))
     im.save(path, quality=95)
 
 
@@ -63,10 +69,10 @@ def build_document(out: Path):
     )
     t = block(doc, "01", "GESAMTAUFTRAG"); r = t.cell(0,1); p = r.paragraphs[0]; _clear(p)
     x = p.add_run("Gestalte ab Seite 2 ein Infodokument «PROJEKTWOCHE BERN»"); set_run(x, size=12.5, bold=True, color=NAVY)
-    add_text(r, "Der Inhalt ist vollständig vorgegeben. Dein fertiges Dokument soll genau zwei Seiten lang sein.", 9.35)
+    add_text(r, "Der Inhalt ist vollständig vorgegeben. Dein fertiges Infodokument soll zwei Seiten lang sein. Falls deine Word-Version bei Formatvorlagen leicht andere Abstände verwendet, darfst du kleine Abstände anpassen – Schrift und Inhalte nicht verkleinern.", 9.35)
     t = block(doc, "PFLICHT", "AUFBAU", fill_left=WARM, fill_right=WARM, label_color=NAVY, label_size=12.7); r = t.cell(0,1); _clear(r.paragraphs[0])
     _requirement(r, "Seite", "A4 Hochformat · Seitenränder «Schmal»")
-    _requirement(r, "Text", "Arial 11 pt · Zeilenabstand 1,15 · Absatzabstand danach 6 pt")
+    _requirement(r, "Fliesstext", "Arial 11 pt · Zeilenabstand 1,15 · Absatzabstand danach 6 pt")
     _requirement(r, "Struktur", "Titel mit Formatvorlage «Titel» · Hauptbereiche mit «Überschrift 1»")
     _requirement(r, "Umbruch", "Vor «PROGRAMM» einen echten Seitenumbruch mit Ctrl + Enter setzen")
     t = block(doc, "PFLICHT", "ELEMENTE", fill_left=PALE_TEAL, fill_right=PALE_TEAL, label_color=TEAL_DARK, label_size=12.7); r = t.cell(0,1); _clear(r.paragraphs[0])
