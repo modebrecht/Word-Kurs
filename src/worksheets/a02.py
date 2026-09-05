@@ -30,7 +30,7 @@ def preview(path: Path):
     d.text((x,y),'18.30-21.00 Uhr',font=f_body_b,fill='#17324D'); y+=52
     d.text((x,y),'Zimmer 204',font=f_body_b,fill='#237B78'); y+=64
     d.text((x,y),'Bring dein Lieblingsspiel mit.',font=f_body,fill='#17324D'); y+=52
-    d.text((x,y),'Getränke stehen bereit. Anmeldung bis Mittwoch bei Frau Keller.',font=f_small,fill='#5E6D78')
+    d.text((x,y),'Getränke stehen bereit. Anmeldung bis Mittwoch bei Frau Keller.',font=f_small,fill='#17324D')
     path.parent.mkdir(parents=True, exist_ok=True); im.save(path,quality=95)
 
 
