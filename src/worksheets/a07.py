@@ -54,17 +54,16 @@ def preview(path: Path, icon_path: Path):
 def build_document(out: Path, preview_path: Path):
     doc=base_doc('A7','Bilder in Word','Ein Bild passend einsetzen','Du fügst ein Bild ein und passt es so an, dass Text und Bild zusammenpassen.','ein Bild aus einer Datei einfügen, zuschneiden, auf eine passende Grösse bringen und den Text darum laufen lassen.')
     t=block(doc,'01','AUFGABE'); r=t.cell(0,1); p=r.paragraphs[0]; _clear(p); x=p.add_run('Baue das Infoblatt nach'); set_run(x,size=12.8,bold=True,color=NAVY); add_text(r,'Bilddatei: a7_schulhaus.png',9.5,bold=True,color=TEAL_DARK); add_picture(r,preview_path,11.1)
-    for letter,parts in [
-        ('A',[('Klicke auf «[BILD HIER EINFÜGEN]»',True,False,NAVY),('  →  Bild a7_schulhaus.png einfügen',False,False,None)]),
-        ('B',[('Bild zuschneiden',True,False,NAVY),('  →  den grossen weissen Rand entfernen',False,False,None)]),
-        ('C',[('Bildbreite',True,False,NAVY),('  →  ungefähr 5,5 cm',False,False,None)]),
-        ('D',[('Textumbruch',True,False,NAVY),('  →  Quadrat',False,False,None)]),
-        ('E',[('Bild',True,False,NAVY),('  →  rechts neben den Text verschieben',False,False,None)]),
-        ('F',[('«[BILD HIER EINFÜGEN]»',True,False,NAVY),('  →  löschen',False,False,None)]),
-    ]: add_step(r,letter,parts)
-    t=block(doc,'HIER','ARBEITEN',fill_left=PALE,fill_right='FBFCFC',label_color=TEAL_DARK,label_size=11.0); r=t.cell(0,1); p=r.paragraphs[0]; _clear(p); x=p.add_run('UNSER SCHULHAUS'); set_run(x,size=18,bold=True,color=NAVY); add_text(r,'[BILD HIER EINFÜGEN]',9.5,bold=True,color=TEAL_DARK); add_text(r,'Im Schulhaus Sonnenberg lernen rund 240 Schülerinnen und Schüler.',10.6); add_text(r,'Die Bibliothek befindet sich im Erdgeschoss.',10.6); add_text(r,'In der grossen Pause ist sie geöffnet.',10.6)
-    add_tip(doc,'Bild anklicken → Bildformat. Dort findest du Zuschneiden. Für den Textumbruch klickst du auf das kleine Layout-Symbol neben dem Bild.')
-    add_check(doc,'Ist der weisse Rand weg? Steht das Bild rechts? Läuft der Text links am Bild vorbei?')
+    add_text(r,'1 · BILD EINSETZEN',8.8,bold=True,color=TEAL_DARK,after=.1)
+    add_step(r,'A',[('Klicke hinter «UNSER SCHULHAUS» und drücke Enter',True,False,NAVY),('  →  Einfügen → Bilder → a7_schulhaus.png',False,False,None)])
+    add_step(r,'B',[('Bild zuschneiden',True,False,NAVY),('  →  Bild anklicken → Bildformat → Zuschneiden → grossen weissen Rand entfernen',False,False,None)])
+    add_step(r,'C',[('Bildbreite',True,False,NAVY),('  →  Bild anklicken → Bildformat → Grösse → Breite ca. 5,5 cm',False,False,None)])
+    add_text(r,'2 · BILD + TEXT',8.8,bold=True,color=TEAL_DARK,after=.1)
+    add_step(r,'D',[('Textumbruch',True,False,NAVY),('  →  Quadrat wählen; dann kann der Text am Bild vorbeilaufen',False,False,None)])
+    add_step(r,'E',[('Bild',True,False,NAVY),('  →  rechts neben den Text verschieben',False,False,None)])
+    t=block(doc,'HIER','ARBEITEN',fill_left=PALE,fill_right='FBFCFC',label_color=TEAL_DARK,label_size=11.0); r=t.cell(0,1); p=r.paragraphs[0]; _clear(p); x=p.add_run('UNSER SCHULHAUS'); set_run(x,size=18,bold=True,color=NAVY); add_text(r,'Im Schulhaus Sonnenberg lernen rund 240 Schülerinnen und Schüler.',10.6); add_text(r,'Die Bibliothek befindet sich im Erdgeschoss.',10.6); add_text(r,'In der grossen Pause ist sie geöffnet.',10.6)
+    add_tip(doc,'Für den Textumbruch: Bild anklicken → kleines Layout-Symbol neben dem Bild → «Quadrat». Neue Bildfunktionen musst du hier nicht erraten: Die Wege stehen in den Schritten A–D.')
+    add_check(doc,'Ist der weisse Rand weg? Ist das Bild ungefähr 5,5 cm breit? Steht es rechts? Läuft der Text links am Bild vorbei?')
     add_finish(doc,'Gib dieses Arbeitsblatt zusammen mit der Bilddatei in deinem Ordner "IB" ab.')
     finalise(doc,out,'A7 - Bilder in Word')
 
