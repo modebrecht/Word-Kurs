@@ -2,7 +2,7 @@ name: Build Word course
 
 on:
   push:
-    branches: [main, 2nd-rnd-qa]
+    branches: [main]
     paths:
       - 'src/**'
       - 'requirements.txt'
@@ -25,13 +25,6 @@ jobs:
       - run: python src/generate_course.py
       - name: Validate generated package
         run: python src/validate_build.py
-      - name: Upload A5 QA artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: a5-qa
-          path: |
-            arbeitsblaetter/A5_Rette_das_Chaos_Dokument.docx
-            arbeitsblaetter/assets/vorlagen/a5_schulfest_vorlage.png
       - name: Commit generated Word package
         run: |
           git config user.name "github-actions[bot]"
