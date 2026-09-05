@@ -22,7 +22,7 @@ def preview(path: Path):
     W,H=1500,540
     im=Image.new('RGB',(W,H),'white'); d=ImageDraw.Draw(im)
     f_title=ImageFont.truetype(bold,66); f_sub=ImageFont.truetype(bold,34)
-    f_body=ImageFont.truetype(reg,30); f_body_b=ImageFont.truetype(bold,30); f_small=ImageFont.truetype(reg,28)
+    f_body=ImageFont.truetype(reg,30); f_body_b=ImageFont.truetype(bold,30); f_small=ImageFont.truetype(reg,30)
     d.rounded_rectangle((18,18,W-18,H-18),radius=18,outline='#D3DEE2',width=3,fill='white')
     x=65; y=52
     d.text((x,y),'Game Night',font=f_title,fill='#237B78'); y+=96
