@@ -32,17 +32,22 @@ def school_icon(path: Path):
 def preview(path: Path, icon_path: Path):
     reg,bold=resolve_font_paths(); W,H=1500,520
     im=Image.new('RGB',(W,H),'white'); d=ImageDraw.Draw(im)
-    ft=ImageFont.truetype(bold,50); fs=ImageFont.truetype(bold,27); fb=ImageFont.truetype(reg,23); fh=ImageFont.truetype(bold,24)
+    ft=ImageFont.truetype(bold,48); fs=ImageFont.truetype(bold,26); fh=ImageFont.truetype(bold,24); fb=ImageFont.truetype(reg,23)
     d.rounded_rectangle((18,18,W-18,H-18),radius=18,outline='#D3DEE2',width=3,fill='white')
-    icon=Image.open(icon_path).convert('RGBA'); icon.thumbnail((115,82)); im.paste(icon,((W-icon.width)//2,34),icon)
-    s='SCHULFEST 2026'; box=d.textbbox((0,0),s,font=ft); d.text(((W-(box[2]-box[0]))/2,118),s,font=ft,fill='#17324D')
-    s='Freitag, 12. Juni · 17.30 Uhr'; box=d.textbbox((0,0),s,font=fs); d.text(((W-(box[2]-box[0]))/2,188),s,font=fs,fill='#237B78')
-    d.text((80,255),'Mitnehmen',font=fh,fill='#17324D'); y=300
+
+    icon=Image.open(icon_path).convert('RGBA'); icon.thumbnail((105,75)); im.paste(icon,((W-icon.width)//2,30),icon)
+    s='SCHULFEST 2026'; box=d.textbbox((0,0),s,font=ft); d.text(((W-(box[2]-box[0]))/2,108),s,font=ft,fill='#17324D')
+    s='Freitag, 12. Juni · 17.30 Uhr'; box=d.textbbox((0,0),s,font=fs); d.text(((W-(box[2]-box[0]))/2,172),s,font=fs,fill='#172A3A')
+
+    x=115; y=235
+    d.text((x,y),'Mitnehmen',font=fh,fill='#172A3A'); y+=38
     for s in ['Trinkflasche','Jacke für den Abend','gute Laune']:
-        d.text((88,y),'•',font=fb,fill='#237B78'); d.text((125,y),s,font=fb,fill='#17324D'); y+=43
-    x=760; d.text((x,255),'Ablauf',font=fh,fill='#17324D'); y=300
+        d.text((x+8,y),'•',font=fb,fill='#172A3A'); d.text((x+44,y),s,font=fb,fill='#172A3A'); y+=34
+
+    y=382
+    d.text((x,y),'Ablauf',font=fh,fill='#172A3A'); y+=38
     for i,s in enumerate(['Begrüssung','Spiel & Essen','Musik in der Aula'],1):
-        d.text((x+5,y),f'{i}.',font=fb,fill='#237B78'); d.text((x+48,y),s,font=fb,fill='#17324D'); y+=43
+        d.text((x+5,y),f'{i}.',font=fb,fill='#172A3A'); d.text((x+48,y),s,font=fb,fill='#172A3A'); y+=34
     im.save(path,quality=95)
 
 
@@ -53,7 +58,7 @@ def build_document(out: Path, preview_path: Path, icon: Path):
     add_step(r,'B',[('Datum',True,False,NAVY),('  →  Arial, 11 pt, fett, zentriert',False,False,None)])
     add_step(r,'C',[('«Mitnehmen» + drei Dinge',True,False,NAVY),('  →  Überschrift fett, Dinge als echte Word-Aufzählung',False,False,None)])
     add_step(r,'D',[('«Ablauf» + drei Schritte',True,False,NAVY),('  →  Überschrift fett, Schritte als echte Word-Nummerierung',False,False,None)])
-    add_step(r,'E',[('Normale Textzeilen',True,False,NAVY),('  →  Arial, 11 pt, links, Zeilenabstand 1,0',False,False,None)])
+    add_step(r,'E',[('Text in den beiden Listen',True,False,NAVY),('  →  Arial, 11 pt, links, Zeilenabstand 1,0',False,False,None)])
     add_step(r,'F',[('MINI-NEU · Grafik',True,False,TEAL_DARK),('  →  anklicken → Bildformat → Grösse → Breite ca. 2,2 cm; danach über den Titel verschieben und zentrieren',False,False,None)])
     t=block(doc,'CHAOS','DOKUMENT 01',fill_left=PALE,fill_right='FBFCFC',label_color=TEAL_DARK,label_size=11.0); r=t.cell(0,1); p=r.paragraphs[0]; _clear(p)
     x=p.add_run('SCHULFEST 2026'); set_run(x,name='Times New Roman',size=24,italic=True,color='C05A2B')
