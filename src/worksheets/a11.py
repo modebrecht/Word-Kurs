@@ -45,16 +45,16 @@ def preview(path: Path, asset_path: Path):
     d.text((65,425),'MITNEHMEN',font=f1,fill='#237B78'); y=480
     for item in ['Wanderschuhe','Regenjacke','Trinkflasche','kleiner Rucksack']:
         d.ellipse((74,y+10,88,y+24),fill='#17324D'); d.text((105,y),item,font=fb,fill='#17324D'); y+=50
-    d.text((65,700),'PROGRAMM',font=f1,fill='#237B78')
-    x0,y0=65,755; cols=[220,390,420]; rows=[['Tag','Vormittag','Nachmittag'],['Montag','Anreise','Dorfrundgang'],['Dienstag','Wanderung','Caumasee'],['Mittwoch','Sport','Freizeit'],['Donnerstag','Aufräumen','Rückreise']]
+    d.text((65,665),'PROGRAMM',font=f1,fill='#237B78')
+    x0,y0=65,720; cols=[220,390,420]; rows=[['Tag','Vormittag','Nachmittag'],['Montag','Anreise','Dorfrundgang'],['Dienstag','Wanderung','Caumasee'],['Mittwoch','Sport','Freizeit'],['Donnerstag','Aufräumen','Rückreise']]
     y=y0
     for ri,row in enumerate(rows):
         x=x0
-        row_h=52 if ri==0 else 49
+        row_h=48 if ri==0 else 43
         for w,val in zip(cols,row):
             d.rectangle((x,y,x+w,y+row_h),fill='white',outline='#D3DEE2',width=2); d.text((x+12,y+12),val,font=ftabb if ri==0 else ftab,fill='#17324D'); x+=w
         y+=row_h
-    d.text((65,1000),'Klassenlager Flims',font=fs,fill='#667684'); d.text((1450,1000),'1',font=fs,fill='#667684')
+    d.text((65,980),'Klassenlager Flims',font=fs,fill='#667684'); d.text((1450,980),'1',font=fs,fill='#667684')
     im.save(path,quality=95)
 
 
