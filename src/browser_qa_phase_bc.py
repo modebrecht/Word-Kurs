@@ -33,6 +33,13 @@ def test_b(page):
     page.locator("#choice").select_option("Word")
     page.locator("#reason").fill("Damit ich den Text direkt selbst ändern kann.")
     page.locator("#check").fill("Die Fakten und die Lesbarkeit.")
+    page.reload(wait_until="networkidle")
+    assert page.locator("#choice").input_value() == "Word"
+    assert page.locator("#reason").input_value() == "Damit ich den Text direkt selbst ändern kann."
+    assert page.locator("#check").input_value() == "Die Fakten und die Lesbarkeit."
+    assert [page.locator("#case-" + str(n)).input_value() for n in (1, 2, 3)] == ["word", "ki", "dossier"]
+    assert page.locator('[data-tool="word"]').get_attribute("aria-pressed") == "true"
+    assert "wiederhergestellt" in page.locator("#autosave-b").inner_text()
     page.locator("#copy-b").click()
     page.wait_for_timeout(150)
     assert ("Kopiert" in page.locator("#copy-status").inner_text()
@@ -53,12 +60,30 @@ def test_c(page):
     for check in page.locator("#checks input[type=checkbox]").all():
         check.check()
     page.locator("#check-c").click()
-    assert "Alle fünf Punkte" in page.locator("#check-status").inner_text()
+    assert "selbst bestätigt" in page.locator("#check-status").inner_text()
+    assert "NICHT automatisch geprüft" in page.locator("#check-status").inner_text()
+    page.locator("#lesson").fill("Ich muss die Angaben mit echten Quellen vergleichen.")
+    page.reload(wait_until="networkidle")
+    assert "8. Klasse" in page.locator("#editor").input_value()
+    assert "Beruf, Klasse, Enddatum" in page.locator("#findings").input_value()
+    assert page.locator("#lesson").input_value() == "Ich muss die Angaben mit echten Quellen vergleichen."
+    assert page.locator("#checks input[type=checkbox]:checked").count() == 5
+    assert "wiederhergestellt" in page.locator("#autosave-c").inner_text()
+    page.locator("#editor").fill(page.locator("#editor").input_value() + "\nVielen Dank.")
+    assert page.locator("#checks input[type=checkbox]:checked").count() == 0
+    assert "Text geändert" in page.locator("#check-status").inner_text()
+    page.reload(wait_until="networkidle")
+    assert "Vielen Dank." in page.locator("#editor").input_value()
+    assert page.locator("#checks input[type=checkbox]:checked").count() == 0
     page.locator("#solutions summary").click()
     assert page.locator("#solutions").evaluate("(e) => e.open")
     page.once("dialog", lambda d: d.accept())
     page.locator("#reset-c").click()
     assert "9. Klasse" in page.locator("#editor").input_value()
+    assert page.locator("#checks input[type=checkbox]:checked").count() == 0
+    page.reload(wait_until="networkidle")
+    assert "9. Klasse" in page.locator("#editor").input_value()
+    assert page.locator("#checks input[type=checkbox]:checked").count() == 0
 
 def main():
     OUT.mkdir(parents=True, exist_ok=True)

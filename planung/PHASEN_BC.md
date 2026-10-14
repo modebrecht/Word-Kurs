@@ -7,7 +7,7 @@ Status: eigenständige ergänzende Schülerlektionen, keine Änderung an Phase A
 - **Phase B (`phase-b.html`):** Die Schülerinnen und Schüler lernen anhand derselben fiktiven Bewerbungsangaben, wann Word, KI oder ein spezialisiertes Dossier-Werkzeug sinnvoll sein könnte. Sichtbarer Vergleich von drei **vereinfachten, ausdrücklich simulierten** Ausgaben (keine echten KI-Antworten und keine Anbindung an CV Cover Charm); anschliessend drei Entscheidungssituationen, kurzer eigener Schreibauftrag und Begründung. Ca. 45 Minuten, ohne Note.
 - **Phase C (`phase-c.html`):** Die Schülerinnen und Schüler vergleichen einen absichtlich fehlerhaften, als KI-Entwurf dargestellten Text mit einer Faktenkarte, finden mindestens fünf Fehler, verbessern das Schreiben direkt im Browser, kontrollieren es selbst und übertragen es auf Wunsch nach Word. Ca. 45 Minuten, ohne Note.
 - **Inklusion:** B/C sind mit einem Browser und Word auch ohne KI-Zugang oder Benutzerkonto vollständig bearbeitbar. KI-/Dossier-Tools können bei Verfügbarkeit freiwillig ausprobiert werden, sind keine Voraussetzung.
-- **Datenschutz durch Gestaltung:** Nur fiktive Bewerberin, fiktives Unternehmen, keine echten Personendaten nötig. Kein Formular-Upload, keine API, keine externen Ressourcen, kein Server-Speichern. Antworten werden nur im aktuellen Browserfenster gehalten; beim Neuladen können sie verloren gehen.
+- **Datenschutz durch Gestaltung:** Nur fiktive Bewerberin, fiktives Unternehmen, keine echten Personendaten nötig. Kein Formular-Upload, keine API, keine externen Ressourcen, kein Server-Speichern. Antworten bleiben als lokaler Zwischenstand im Browser dieses Geräts auch nach einem Neuladen erhalten. Auf gemeinsam genutzten Geräten sind ältere Eingaben unter Umständen sichtbar; daher nur fiktive Angaben verwenden.
 - **Ergebnis/Abgabe:** Phase B: kurze Bewerbung (4–6 Sätze) und drei begründende Antworten im Word-Dokument. Phase C: korrigierter Brief sowie ein Satz zur Qualitätssicherung. Aus dem Browser per Kopieren/Einfügen nach Word; keine ZIP-Dateien.
 - **Didaktische Grenze:** Werkzeugwahl ist nicht eine richtige Multiple-Choice-Antwort. Formative Rückmeldungen nennen sinnvolle Vor- und Nachteile. Phase C vergibt ausdrücklich keine automatische Note und behauptet nicht, den Inhalt zuverlässig maschinell beurteilen zu können.
 
@@ -26,3 +26,12 @@ Phase A bleibt vollständig bestehen und unverändert. B/C ersetzen die klassisc
 - **Responsive QA:** je Phase 1365, 820, 390 und 320 px = 8 echte Browserdurchläufe. Acht Screenshots und [Messbericht](../qa/browser/phase-bc-report.json) liegen unter `qa/browser/`. Für alle Ansichten: keine horizontale Überbreite, keine abgeschnittenen interaktiven Elemente, keine JavaScript-Fehler.
 - **Nachkontrolle der Screenshots:** Desktop und 320-px-Smartphone beider Seiten einzeln visuell geprüft; keine erkennbaren Überlappungen oder unlesbaren Buttons. Tablet/390-px-Abmessungen automatisch geprüft, visuelle Detailprüfung noch separat möglich.
 - **Bewertung:** **B/C BROWSER QA PASS**; echte Schülererprobung, native Word-365-Kompatibilität und eventuelle spätere Live-URL **UNVERIFIED**. Die Seiten setzen keine angebliche KI-Anbindung voraus.
+
+## Senior-Dev-Fixes — lokales Speichern und ehrliche Selbstkontrolle (14.10.2026)
+
+- Phase B: Werkzeugansicht, drei Entscheidungen, Werkzeugwahl und Begründungen werden lokal in `localStorage` gespeichert (Schlüssel `word-kurs.phase-b.v1`) und nach Neuladen wiederhergestellt.
+- Phase C: Fehlerliste, korrigierter Brief, Abschlussantwort und fünf Kontrollhäkchen werden lokal gespeichert (`word-kurs.phase-c.v1`).
+- **Bei jeder Änderung am Brief** entfernt die Seite die fünf alten Häkchen, damit ein geänderter Brief nicht als bereits geprüft erscheint. «Ausgangstext wiederherstellen» setzt nur den Brief sowie die Kontrollhäkchen zurück und speichert den zurückgesetzten Stand.
+- Checkliste bezeichnet ausdrücklich nur **vom Schüler selbst bestätigte Punkte**, keine automatische Inhaltsprüfung und keine Note.
+- Bei Browser-Speichersperren bleibt die Lektion nutzbar; ein Hinweis empfiehlt Kopieren nach Word. Kein Upload, Konto oder neues Modul.
+- Playwright-Tests werden erweitert um Eingaben → Neuladen → Wiederherstellung, Checkbox-Invalidierung bei Textänderung und persistentes Zurücksetzen auf allen vier Bildschirmgrössen.

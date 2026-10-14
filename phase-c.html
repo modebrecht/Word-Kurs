@@ -83,28 +83,76 @@ Freundliche Grüsse
 Lina Berger</textarea>
 <div class="action"><button type="button" class="btn" id="copy-c">Meinen verbesserten Brief kopieren</button><button type="button" class="btn secondary" id="reset-c">Ausgangstext wiederherstellen</button></div>
 <p class="status" id="editor-status" aria-live="polite"></p>
-<p class="small">Füge deinen fertigen Text bei Bedarf in Word ein. Diese Seite sendet keine Angaben an einen Server und speichert sie nicht dauerhaft. Lade die Seite während der Arbeit nicht neu.</p>
+<p class="small">Füge deinen fertigen Text bei Bedarf in Word ein. Dein Zwischenstand bleibt auch nach dem Neuladen in diesem Browser auf diesem Gerät erhalten – nicht im Internet. Verwende nur fiktive Angaben.</p>
+<p class="small" id="autosave-c">Deine Antworten werden automatisch auf diesem Gerät gespeichert.</p>
 </section>
 
-<section id="kontrolle" class="section"><div class="number">Aufgabe 4 · 10 Minuten</div><h2>Würdest du den Brief abschicken?</h2><p class="lead">Prüfe deinen eigenen Text, bevor du ihn als fertig bezeichnest.</p>
+<section id="kontrolle" class="section"><div class="number">Aufgabe 4 · 10 Minuten</div><h2>Würdest du den Brief abschicken?</h2><p class="lead">Prüfe deinen eigenen Text. <strong>Setze ein Häkchen nur, wenn du den Punkt selbst kontrolliert hast.</strong> Die Website kann nicht erkennen, ob dein Brief richtig ist.</p>
 <div id="checks">
-<label class="tick"><input type="checkbox"><span>Der Beruf stimmt: <strong>Mediamatikerin EFZ</strong>.</span></label>
-<label class="tick"><input type="checkbox"><span>Die Klasse und die Schnupperdaten sind richtig.</span></label>
-<label class="tick"><input type="checkbox"><span>Es stehen <strong>keine erfundenen Fähigkeiten</strong> im Brief.</span></label>
-<label class="tick"><input type="checkbox"><span>Die Anrede passt zur bekannten Kontaktperson.</span></label>
-<label class="tick"><input type="checkbox"><span>Der Brief klingt freundlich, glaubwürdig und altersgerecht.</span></label>
+<label class="tick"><input type="checkbox"><span>Ich habe geprüft: Der Beruf stimmt – <strong>Mediamatikerin EFZ</strong>.</span></label>
+<label class="tick"><input type="checkbox"><span>Ich habe Klasse und Schnupperdaten mit der Faktenkarte verglichen.</span></label>
+<label class="tick"><input type="checkbox"><span>Ich habe kontrolliert, dass <strong>keine Fähigkeiten erfunden</strong> sind.</span></label>
+<label class="tick"><input type="checkbox"><span>Ich habe die Anrede mit der Kontaktperson verglichen.</span></label>
+<label class="tick"><input type="checkbox"><span>Ich habe geprüft, ob der Brief freundlich, glaubwürdig und altersgerecht klingt.</span></label>
 </div>
 <div class="action"><button type="button" class="btn" id="check-c">Meine Checkliste überprüfen</button></div>
 <p class="status" id="check-status" aria-live="polite"></p>
 <div class="box warm" style="margin-top:15px"><label for="lesson">Ein Satz zum Abschluss: Was sollte man bei KI-Dokumenten immer kontrollieren?</label><textarea id="lesson" rows="2" maxlength="450" placeholder="Ich prüfe immer …"></textarea></div>
 <div class="action"><a class="btn secondary" href="phase-b.html">← Zu Phase B</a><a class="btn secondary" href="index.html">Zu Phase A</a></div>
-<p class="small">Es gibt hier bewusst <strong>keine automatische Note</strong>. Ob dein Brief inhaltlich und sprachlich gut ist, beurteilst du mit deiner Checkliste – und bei Bedarf gemeinsam mit der Lehrperson.</p>
+<p class="small">Die Häkchen sind eine <strong>Selbsteinschätzung, keine automatische Briefprüfung und keine Note</strong>. Kontrolliere den Inhalt selbst oder bespreche ihn mit der Lehrperson.</p>
 </section></main>
 <script>
 (function(){
 "use strict";
 var edit=document.getElementById("editor");
 var initial=edit.value;
+var storageKeyC="word-kurs.phase-c.v1";
+var checksC=[].slice.call(document.querySelectorAll("#checks input[type=checkbox]"));
+var fieldsC=["findings","editor","lesson"];
+function saveC(){
+ var data={};
+ fieldsC.forEach(function(id){data[id]=document.getElementById(id).value});
+ data.checks=checksC.map(function(el){return el.checked});
+ try{
+  localStorage.setItem(storageKeyC,JSON.stringify(data));
+  document.getElementById("autosave-c").textContent="Zwischenstand auf diesem Gerät gespeichert (nicht online).";
+ }catch(e){
+  document.getElementById("autosave-c").textContent="Speichern in diesem Browser nicht möglich. Kopiere deinen Brief rechtzeitig in Word.";
+ }
+}
+function restoreC(){
+ try{
+  var raw=localStorage.getItem(storageKeyC);
+  if(!raw)return;
+  var data=JSON.parse(raw);
+  if(!data||typeof data!=="object"||Array.isArray(data))return;
+  fieldsC.forEach(function(id){
+   if(typeof data[id]!=="string")return;
+   var field=document.getElementById(id);
+   field.value=data[id].slice(0,field.maxLength>0?field.maxLength:3500);
+  });
+  if(Array.isArray(data.checks)&&data.checks.length===checksC.length){
+   checksC.forEach(function(el,i){el.checked=data.checks[i]===true});
+  }
+  document.getElementById("autosave-c").textContent="Dein letzter Zwischenstand wurde auf diesem Gerät wiederhergestellt.";
+ }catch(e){
+  document.getElementById("autosave-c").textContent="Alter Zwischenstand nicht lesbar. Du kannst normal weiterarbeiten.";
+ }
+}
+fieldsC.forEach(function(id){
+ document.getElementById(id).addEventListener("input",function(){
+  if(id==="editor"){
+   checksC.forEach(function(el){el.checked=false});
+   document.getElementById("check-status").textContent="Text geändert: Bitte überprüfe die fünf Punkte erneut selbst.";
+  }
+  saveC();
+ });
+});
+checksC.forEach(function(el){el.addEventListener("change",function(){
+ document.getElementById("check-status").textContent="Häkchen sind deine eigene Kontrolle; die Website prüft den Brief nicht.";
+ saveC();
+})});
+restoreC();
 document.getElementById("copy-c").addEventListener("click",async function(){
  var status=document.getElementById("editor-status");
  if(edit.value.trim().length<70){status.textContent="Dein Brief ist noch sehr kurz. Überarbeite zuerst den Text.";return}
@@ -114,14 +162,17 @@ document.getElementById("copy-c").addEventListener("click",async function(){
 document.getElementById("reset-c").addEventListener("click",function(){
  if(window.confirm("Deine Änderungen wirklich zurücksetzen?")){
   edit.value=initial;
+  checksC.forEach(function(el){el.checked=false});
+  document.getElementById("check-status").textContent="Text zurückgesetzt: Bitte kontrolliere den Brief erneut.";
   document.getElementById("editor-status").textContent="Der ursprüngliche KI-Entwurf ist wieder da.";
+  saveC();
  }
 });
 document.getElementById("check-c").addEventListener("click",function(){
  var all=[].slice.call(document.querySelectorAll("#checks input[type=checkbox]"));
  var checked=all.filter(function(el){return el.checked}).length;
  var s=document.getElementById("check-status");
- s.textContent=checked===5?"Alle fünf Punkte abgehakt. Lies deinen Brief vor dem Abschicken noch einmal selbst durch.":checked+" von 5 Punkten abgehakt. Prüfe die restlichen Stellen.";
+ s.textContent=checked===5?"5 von 5 Punkten von dir selbst bestätigt. Die Website hat den Brief NICHT automatisch geprüft.":"Du hast "+checked+" von 5 Punkten selbst bestätigt. Die Website prüft den Brief nicht automatisch.";
 });
 })();
 </script><footer><div class="shell">Word-Kurs · Phase C · Übung mit erfundenen Daten · <a href="index.html">Zurück zu Phase A</a></div></footer></body></html>

@@ -8,10 +8,14 @@ PAGES = {
     "B": {"file": "phase-b.html", "sections": ("vergleichen", "entscheiden", "ausprobieren", "abgeben"),
           "components": ('data-tool="word"', 'data-tool="ki"', 'data-tool="dossier"',
                          'id="case-1"', 'id="case-2"', 'id="case-3"',
-                         'id="choice"', 'id="copy-b"', 'id="compare"')},
+                         'id="choice"', 'id="copy-b"', 'id="compare"',
+                         'id="autosave-b"', 'word-kurs.phase-b.v1',
+                         'function saveB()', 'function restoreB()')},
     "C": {"file": "phase-c.html", "sections": ("fakten", "entwurf", "verbessern", "kontrolle"),
           "components": ('id="editor"', 'id="findings"', 'id="solutions"',
-                         'id="copy-c"', 'id="reset-c"', 'id="checks"', 'id="check-c"')},
+                         'id="copy-c"', 'id="reset-c"', 'id="checks"', 'id="check-c"',
+                         'id="autosave-c"', 'word-kurs.phase-c.v1', 'function saveC()',
+                         'function restoreC()', 'NICHT automatisch geprüft')},
 }
 
 class PageParser(HTMLParser):

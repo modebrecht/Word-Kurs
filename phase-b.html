@@ -92,6 +92,7 @@ footer{padding:22px 0;background:var(--navy);color:#dce8ec;font-size:.84rem}foot
 <div class="field"><label for="check">Kontrollieren musste ich trotzdem …</label><textarea id="check" rows="2" maxlength="450" placeholder="Zum Beispiel: die Daten und den Beruf."></textarea></div>
 <div class="action"><button class="btn" type="button" id="copy-b">Meine Antworten kopieren</button><a class="btn secondary" href="phase-c.html">Weiter zu Phase C →</a></div>
 <p class="status" id="copy-status" aria-live="polite"></p>
+<p class="small" id="autosave-b">Deine Antworten werden automatisch auf diesem Gerät gespeichert (nicht online).</p>
 <div class="notice">Fertig? Du hast nicht nur ein Programm benutzt, sondern auch begründet, <strong>warum</strong> du es eingesetzt hast.</div>
 </section></main>
 <script>
@@ -111,6 +112,7 @@ buttons.forEach(function(button){
  document.getElementById("tool-care").textContent="Achtung: "+item.care;
  document.getElementById("tool-feedback").textContent=button.textContent+" ausgewählt";
  buttons.forEach(function(other){var isCurrent=other===button;other.setAttribute("aria-pressed",String(isCurrent));other.classList.toggle("secondary",!isCurrent)});
+ saveB();
  });
 });
 var hints=[
@@ -124,6 +126,48 @@ document.getElementById("compare").addEventListener("click",function(){
   document.getElementById("feedback-"+i).textContent=v?hints[i-1][v]:"Wähle zuerst ein Werkzeug.";
  }
 });
+// Auto-save only in this browser: no network or user account.
+var storageKeyB="word-kurs.phase-b.v1";
+var fieldsB=["case-1","case-2","case-3","choice","reason","check"];
+var restoringB=false;
+function saveB(){
+ if(restoringB)return;
+ var pressed=document.querySelector(".tool[aria-pressed='true']");
+ var data={tool:pressed?pressed.dataset.tool:"word"};
+ fieldsB.forEach(function(id){data[id]=document.getElementById(id).value});
+ try{
+  localStorage.setItem(storageKeyB,JSON.stringify(data));
+  document.getElementById("autosave-b").textContent="Zwischenstand auf diesem Gerät gespeichert (nicht online).";
+ }catch(e){
+  document.getElementById("autosave-b").textContent="Speichern in diesem Browser nicht möglich. Kopiere deine Antworten rechtzeitig in Word.";
+ }
+}
+function restoreB(){
+ try{
+  var raw=localStorage.getItem(storageKeyB);
+  if(!raw)return;
+  var data=JSON.parse(raw);
+  if(!data||typeof data!=="object"||Array.isArray(data))return;
+  restoringB=true;
+  fieldsB.forEach(function(id){
+   if(typeof data[id]!=="string")return;
+   var field=document.getElementById(id);
+   if(field.tagName==="SELECT"){
+    if([].some.call(field.options,function(o){return o.value===data[id]}))field.value=data[id];
+   }else{field.value=data[id].slice(0,field.maxLength>0?field.maxLength:3500)}
+  });
+  var selected=buttons.find(function(button){return button.dataset.tool===data.tool});
+  if(selected)selected.click();
+  document.getElementById("autosave-b").textContent="Dein letzter Zwischenstand wurde auf diesem Gerät wiederhergestellt.";
+ }catch(e){
+  document.getElementById("autosave-b").textContent="Alter Zwischenstand nicht lesbar. Du kannst normal weiterarbeiten.";
+ }finally{restoringB=false}
+}
+fieldsB.forEach(function(id){
+ var field=document.getElementById(id);
+ field.addEventListener(field.tagName==="SELECT"?"change":"input",saveB);
+});
+restoreB();
 document.getElementById("copy-b").addEventListener("click",async function(){
  var choice=document.getElementById("choice").value,reason=document.getElementById("reason").value.trim(),check=document.getElementById("check").value.trim();
  var status=document.getElementById("copy-status");
