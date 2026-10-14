@@ -28,3 +28,12 @@ Das **Repository ist öffentlich** und enthält auch benotete Prüfungen, Muster
 - Alle Links nur relativ, keine Downloads von Archiven.
 - Responsives Layout (3/2/1) und Tastaturfokus; Browser-Sichtprüfung später im gewählten Hosting.
 - Schule muss testen, ob die DOCX-Dateien am echten Schul-PC mit Office korrekt heruntergeladen und bearbeitet werden.
+
+## Fix 1 – zweiter Bilddownload entfällt (14.10.2026)
+
+- A11, A12 und A13: **ein DOCX reicht**. Das originale, vollständige PNG-Bild ist als eigenständiges, auswählbares Inline-Bild in der Word-Anleitung eingebettet, nicht bloss als Bestandteil eines Vorschaubilds. Per Strg+C / Strg+V auf die Arbeitsseite kopieren; Zuschneiden, Positionieren und Textumbruch bleiben Lernanforderungen. Keine externe Bilddatei mehr nötig.
+- A7: unverändert zwei Einzeldateien, weil Bild **aus Datei einfügen** hier ausdrücklich neu eingeführt wird.
+- PLUS 1 / PLUS 2: Aufgabenblatt und Startdatei weiterhin separat (beides DOCX). Keine ZIP-Downloads auf der Schülerseite.
+- **CI:** [Run 38555065511](https://github.com/modebrecht/Word-Kurs/actions/runs/38555065511) PASS (Generierung, Inhalts-/Bild-Validierung, Schülerseiten-Links, LibreOffice-Rendering). Index: 17 einzelne DOCX-Links und ein A7-PNG-Link, insgesamt 18 Downloads.
+- **Visuelle Prüfung:** A11, A12, A13 je zwei Seiten, **6/6 Seiten** kontrolliert. Kein Überlauf, kein fehlendes Bild, keine ungewollte Zusatzseite. Quellbilder sind auch als Medienobjekt im DOCX nachgewiesen.
+- **Extern weiterhin UNVERIFIED:** Word 365 auf Schul-PCs; echtes Kopieren/Bildbearbeiten und Schülerzeit. Keine Veröffentlichung.

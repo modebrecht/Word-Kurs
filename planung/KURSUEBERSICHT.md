@@ -165,6 +165,10 @@ Pflichtbestandteile:
 
 ---
 
+### Bildmaterial bei A11–A13 (Round 3)
+
+Für die Schüler-Startseite wird **nur eine Word-Datei pro Aufgabe benötigt**. Die Originalbilder stehen direkt auf der Anleitungsseite des jeweiligen DOCX, können einzeln markiert und auf die Arbeitsseite kopiert werden. Zuschneiden, Textumbruch und selbstständiges Platzieren bleiben erforderlich. A7 verwendet weiterhin eine externe Bilddatei, weil das Einfügen aus einer Datei dort neues Lernziel ist.
+
 ## Unbenoteter Übungstest
 
 Der Übungstest bildet die spätere Testsituation möglichst realistisch ab, bleibt aber **unbenotet**.
