@@ -47,3 +47,19 @@ Der automatisch generierte Ergebnis-HEAD vor diesem reinen Berichtscommit ist `f
 Diese externen Gates können nicht durch GitHub Actions oder LibreOffice ersetzt werden. Erst nach deren Abnahme ist der Kurs für den ersten produktiven Einsatz vollständig freizugeben.
 
 **Status: internes QA-Paket abgeschlossen, externe Unterrichtsfreigabe offen.**
+
+## Visuelle Identitätsrunde – alle V3-Materialien (14.10.2026)
+
+**Entscheid: INTERNE STIL-QA PASS**, unabhängig vom weiter offenen Word-365-/Schüler-Praxistest.
+
+- **Verbindliche Designquelle:** `src/course_common.py` (Arial, Navy `#17324D`, Teal `#237B78`, dunkel Teal `#1D6765`, gemeinsamer Kurskopf, Labelspalte, Footer, Seitenzahl).
+- **Schülerblätter A1/A7/PLUS 1/PLUS 2:** `base_doc()` und unveränderte visuelle Identität.
+- **Lehrperson `LEHRPERSONENHILFEN_V3.docx`:** derselbe DOCX-Grundrenderer wie die Schülerblätter, mit bewusst abweichender Rollenbezeichnung `LEHRPERSON`, `EINSATZ` statt Schüler-Lernziel und kompakt beschrifteten Sektionen.
+- **START-/MUSTER-Dokumente:** bewusst echte Schüler-Übungsprodukte ohne Kurs-Header auf dem Brief selbst; gemeinsame Arial-Typografie, Navy bei Dokumentüberschriften, Teal bei Links und identifizierbare Kursmetadaten. So bleibt die Unterrichtsidentität kohärent, ohne das zu übende Geschäftsbrief-Layout zu beschädigen.
+- **Automatische Prüfungen:** neue `_validate_v3_visual_identity()` in `src/validate_build.py`, Rückwärtskompatibilität des `base_doc()`-Headers; alle bisherigen Modul- und Testdateien bleiben reproduzierbar.
+- **Layout-Korrekturen:** erste Rundeversion war im Lehrerhandbuch zu dicht; zweite erzeugte eine fast leere zweite Seite (nur das letzte Wort). Dritte Fassung mit knappen linken Labels, angepassten Abständen und einem strikten 1-Seiten-Gate.
+- **Finales QA-Rendering:** Workflow [38543471581](https://github.com/modebrecht/Word-Kurs/actions/runs/38543471581) **SUCCESS**; `python src/generate_course.py`, DOCX-Validierung, visueller Renderer und GitHub-Publishing grün. Neun betroffene DOCX-Dateien ergeben neun Seiten. Manuelle AI-Sichtprüfung: finaler Lehrerbogen ohne Überlauf/Überlappung, saubere Links- und Dokumenttypografie, kein neuer Layoutdefekt.
+- **QA-Ausnahmen:** `qa/3rd-round/manifest.json` trägt maschinell korrekt `RENDERED_NOT_VISUALLY_APPROVED`: der Workflow behauptet keine menschliche Prüfung. Die visuelle Prüfung wird separat hier dokumentiert.
+- **Unverändert:** `main` und `2nd-rnd-qa`. Kein Merge.
+
+Die native Microsoft-Word-365-Sichtprüfung und ein echter Lernenden-Durchlauf bleiben **UNVERIFIED**. Stil-QA PASS bedeutet nicht automatische Unterrichtsfreigabe.
