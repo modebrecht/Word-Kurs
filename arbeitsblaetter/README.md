@@ -18,6 +18,14 @@ Vollständiger Arbeitsstand des Word-Kurses.
 - A12 – Selbstständig gestalten
 - A13 – Gesamtauftrag / Prüfungsvorbereitung
 
+## Freiwillige Zusatzaufträge (nicht Teil der Noten)
+
+- `ZUSATZ_Schnupperlehrbrief.docx` + `START_Schnupperlehrbrief.docx` – Schnupperlehr-Brief und PDF-Export
+- `ZUSATZ_Links_und_Quellen.docx` + `START_Links_und_Quellen.docx` – zwei echte Hyperlinks und eine Quellenzeile
+- `lehrperson/LEHRPERSONENHILFEN_V3.docx` und zwei Musterlösungen für die Lehrperson
+
+Fertige Schülerpakete: `pakete/ZUSATZ_Schnupperlehrbrief_Paket.zip` und `pakete/ZUSATZ_Links_und_Quellen_Paket.zip`.
+
 ## Schülerpakete mit Bilddateien
 
 Für Aufgaben, die eine separate Bilddatei benötigen, liegen unter `pakete/` fertige ZIP-Dateien. Im ZIP liegen DOCX und benötigte PNG-Datei(en) direkt nebeneinander.
