@@ -12,7 +12,7 @@ from docx.shared import Pt
 from build_runtime import resolve_font_paths
 from course_common import (
     NAVY, TEAL_DARK, WARM,
-    base_doc, block, add_text, add_tip, add_check, add_finish,
+    base_doc, block, add_text, add_tip, add_check, add_finish, add_embedded_image_material,
     add_picture, finalise, set_run,
 )
 from course_build_helpers import clear_paragraph as _clear, new_detached_workspace_section
@@ -58,18 +58,18 @@ def preview(path: Path, asset_path: Path):
     im.save(path,quality=95)
 
 
-def build_document(out: Path, preview_path: Path):
+def build_document(out: Path, preview_path: Path, image_path: Path):
     doc=base_doc('A11','Dokument nachbauen','Jetzt ohne Klickanleitung','Du kombinierst bekannte Word-Werkzeuge und baust eine Vorlage möglichst genau nach.','mehrere bekannte Word-Funktionen selbstständig kombinieren und ein Dokument nach einer sichtbaren Vorlage nachbauen.')
-    t=block(doc,'01','NACHBAUEN'); r=t.cell(0,1); p=r.paragraphs[0]; _clear(p); x=p.add_run('Baue Seite 2 so um, dass sie wie diese Vorlage aussieht'); set_run(x,size=12.6,bold=True,color=NAVY); add_text(r,'Der Text und die Daten sind vorgegeben. Du entscheidest selbst, welche bekannten Werkzeuge du dafür brauchst.',9.35); add_picture(r,preview_path,10.9)
+    t=block(doc,'01','NACHBAUEN'); r=t.cell(0,1); p=r.paragraphs[0]; _clear(p); x=p.add_run('Baue Seite 2 so um, dass sie wie diese Vorlage aussieht'); set_run(x,size=12.6,bold=True,color=NAVY); add_text(r,'Der Text und die Daten sind vorgegeben. Du entscheidest selbst, welche bekannten Werkzeuge du dafür brauchst.',9.35); add_picture(r,preview_path,8.6)
     t=block(doc,'PFLICHT',None,fill_left=WARM,fill_right=WARM,label_color=NAVY,label_size=9.3); p=t.cell(0,1).paragraphs[0]; _clear(p); x=p.add_run('Verwende wirklich: '); set_run(x,size=9.55,bold=True,color=NAVY); x=p.add_run('Formatvorlagen für Titel/Überschriften · echte Aufzählung · echte Tabelle · Bild mit Textumbruch · Kopfzeile · automatische Seitenzahl.'); set_run(x,size=9.25)
     add_tip(doc,'Bei Titel und Überschriften zählt die richtige Formatvorlage. Das genaue Aussehen darf je nach Word-Version leicht von der Vorlage abweichen.','MERKE')
     add_tip(doc,'Arbeite von gross nach klein: zuerst Aufbau und Bereiche, danach Bild/Tabelle, ganz am Schluss Abstände und Feinarbeit.')
     add_check(doc,'Stimmen Reihenfolge, Grössenverhältnisse, Bildposition, Liste, Tabelle sowie Kopf- und Fussbereich?')
-    add_finish(doc,'Gib dieses Arbeitsblatt zusammen mit der Bilddatei in deinem Ordner "IB" ab.')
+    add_embedded_image_material(doc, image_path)
+    add_finish(doc,'Speichere dieses Word-Dokument in deinem Ordner "IB" ab.')
     new_detached_workspace_section(doc,'A11',top_margin_cm=1.8,bottom_margin_cm=1.8)
     for text in ['KLASSENLAGER FLIMS','15.–18. Juni 2026','Vier Tage unterwegs in Graubünden: wandern, gemeinsam kochen und Zeit am See.','MITNEHMEN','Wanderschuhe','Regenjacke','Trinkflasche','kleiner Rucksack','PROGRAMM','Tag | Vormittag | Nachmittag','Montag | Anreise | Dorfrundgang','Dienstag | Wanderung | Caumasee','Mittwoch | Sport | Freizeit','Donnerstag | Aufräumen | Rückreise']:
         p=doc.add_paragraph(); p.paragraph_format.space_after=Pt(3.5); x=p.add_run(text); set_run(x,size=11)
-    p=doc.add_paragraph(); p.paragraph_format.space_before=Pt(8); x=p.add_run('BILDDATEI: a11_klassenlager_berge.png'); set_run(x,size=9.5,bold=True,color=TEAL_DARK)
     finalise(doc,out,'A11 - Dokument nach Vorlage nachbauen')
 
 
@@ -77,7 +77,7 @@ def build(root: Path):
     sheets=root/'arbeitsblaetter'; assets=sheets/'assets'; prev=assets/'vorlagen'; assets.mkdir(parents=True,exist_ok=True); prev.mkdir(parents=True,exist_ok=True)
     image_asset=assets/'a11_klassenlager_berge.png'; image_preview=prev/'a11_klassenlager_vorlage.png'
     asset(image_asset); preview(image_preview,image_asset)
-    build_document(sheets/'A11_Dokument_nach_Vorlage_nachbauen.docx',image_preview)
+    build_document(sheets/'A11_Dokument_nach_Vorlage_nachbauen.docx',image_preview,image_asset)
 
 
 if __name__ == '__main__':

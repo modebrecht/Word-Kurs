@@ -312,6 +312,24 @@ def add_finish(doc, text='Gib dieses Arbeitsblatt in deinem Ordner "IB" ab.'):
     return t
 
 
+def add_embedded_image_material(doc: Document, image_path: Path, *, width_cm: float = 4.2):
+    """A selectable, copyable picture in the instructions; no additional download."""
+    box = block(doc, "BILD", "IM DOKUMENT",
+                fill_left=PALE_TEAL, fill_right=PALE_TEAL,
+                label_color=TEAL_DARK, label_size=10.0)
+    cell = box.cell(0, 1)
+    intro = cell.paragraphs[0]
+    _clear(intro)
+    intro.paragraph_format.space_after = Pt(2)
+    caption = intro.add_run("Das Bild ist schon hier: anklicken → Strg + C → auf der Arbeitsseite Strg + V. Danach zuschneiden und platzieren.")
+    _font(caption, size=9.2, color=TEXT)
+    picture_paragraph = cell.add_paragraph()
+    picture_paragraph.paragraph_format.space_after = Pt(0)
+    picture_paragraph.paragraph_format.space_before = Pt(0)
+    picture_paragraph.add_run().add_picture(str(image_path), width=Cm(width_cm))
+    return box
+
+
 def add_picture(cell, path: Path, width_cm: float):
     p = cell.add_paragraph()
     p.paragraph_format.space_before = Pt(0)

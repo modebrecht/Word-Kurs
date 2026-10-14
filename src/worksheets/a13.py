@@ -11,7 +11,7 @@ from docx.shared import Pt
 
 from course_common import (
     NAVY, TEAL_DARK, PALE_TEAL, WARM, TEXT,
-    base_doc, block, add_text, add_check, add_finish, finalise, set_run,
+    base_doc, block, add_text, add_check, add_finish, add_embedded_image_material, finalise, set_run,
 )
 from course_build_helpers import clear_paragraph as _clear, new_detached_workspace_section
 
@@ -61,7 +61,7 @@ def _requirement(cell, title, text):
     r = p.add_run(text); set_run(r, size=9.25, color=TEXT)
 
 
-def build_document(out: Path):
+def build_document(out: Path, image_path: Path):
     doc = base_doc(
         "A13", "Gesamtauftrag", "Alles zusammen",
         "Keine neue Word-Funktion mehr. Jetzt kombinierst du das Gelernte selbstständig.",
@@ -76,17 +76,18 @@ def build_document(out: Path):
     _requirement(r, "Struktur", "Titel mit Formatvorlage «Titel» · Hauptbereiche mit «Überschrift 1»")
     _requirement(r, "Umbruch", "Vor «PROGRAMM» einen echten Seitenumbruch mit Ctrl + Enter setzen")
     t = block(doc, "PFLICHT", "ELEMENTE", fill_left=PALE_TEAL, fill_right=PALE_TEAL, label_color=TEAL_DARK, label_size=12.7); r = t.cell(0,1); _clear(r.paragraphs[0])
-    _requirement(r, "Bild", "a13_bern_altstadt.png einfügen · zuschneiden · ca. 6 cm breit · Textumbruch «Quadrat»")
+    _requirement(r, "Bild", "Bild aus dem BILD-Kasten kopieren · zuschneiden · ca. 6 cm breit · Textumbruch «Quadrat»")
     _requirement(r, "Listen", "«MITBRINGEN» als echte Aufzählung · «TAGESABLAUF» als echte Nummerierung")
     _requirement(r, "Tabelle", "Programmdaten als echte Tabelle mit 4 Spalten darstellen · Kopfzeile fett")
     _requirement(r, "Kopf/Fuss", "Kopfzeile «PROJEKTWOCHE BERN» · Fusszeile mit automatischer Seitenzahl")
     add_check(doc,"Kontrolliere jede Pflichtzeile einzeln. Wenn alle erfüllt sind und das Dokument gut lesbar ist, bist du bereit für den Übungstest.")
-    add_finish(doc, 'Gib dieses Arbeitsblatt zusammen mit der Bilddatei in deinem Ordner "IB" ab.')
+    add_embedded_image_material(doc, image_path)
+    add_finish(doc, 'Speichere dieses Word-Dokument in deinem Ordner "IB" ab.')
     new_detached_workspace_section(doc, "A13", top_margin_cm=2.0, bottom_margin_cm=1.8)
     raw = [
         ("PROJEKTWOCHE BERN", 5),("12.–15. Mai 2027", 4),("ÜBER DIE WOCHE", 4),
         ("Vier Tage lang entdecken wir Bern in kleinen Gruppen. Wir besuchen bekannte Orte, lösen Aufgaben in der Altstadt und arbeiten an einem gemeinsamen Abschlussprodukt.", 6),
-        ("Treffpunkt: Montag, 08.00 Uhr beim Schulhaus. Rückkehr: Donnerstag, ungefähr 17.30 Uhr.", 7),("BILDDATEI: a13_bern_altstadt.png", 8),
+        ("Treffpunkt: Montag, 08.00 Uhr beim Schulhaus. Rückkehr: Donnerstag, ungefähr 17.30 Uhr.", 7),
         ("MITBRINGEN", 4),("Trinkflasche", 2),("Regenjacke", 2),("Schreibzeug", 2),("kleiner Rucksack", 2),("Lunch für Montag", 7),
         ("TAGESABLAUF", 4),("Treffpunkt beim Schulhaus", 2),("Zugfahrt nach Bern", 2),("Zimmer beziehen und Material holen", 2),("Start mit der ersten Gruppenaufgabe", 8),
         ("PROGRAMM", 4),("Tag | Vormittag | Nachmittag | Abend", 2),("Montag | Anreise | Altstadt-Rallye | gemeinsames Kochen", 2),
@@ -102,7 +103,7 @@ def build_document(out: Path):
 def build(root: Path):
     sheets=root/'arbeitsblaetter'; assets=sheets/'assets'; assets.mkdir(parents=True,exist_ok=True)
     image=assets/'a13_bern_altstadt.png'; asset(image)
-    build_document(sheets/'A13_Gesamtauftrag_Pruefungsvorbereitung.docx')
+    build_document(sheets/'A13_Gesamtauftrag_Pruefungsvorbereitung.docx', image)
 
 
 if __name__ == '__main__':

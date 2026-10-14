@@ -6,7 +6,7 @@ Eine ruhige, mobil nutzbare `index.html` im etablierten Navy-/Teal-Stil. Schüle
 ## Schülersicht
 - Desktop: drei Kacheln pro Zeile; Tablets: zwei; Smartphones: eine.
 - Kurze Handlungsbeschreibungen und echte Vorlagenbilder, falls vorhanden. Bei A12/A13 nur Bildmaterial, **keine falsche Zielvorlage**.
-- **Einzelne Word-Dateien**, bei A7/A11/A12/A13 zusätzlich **einzeln herunterladbare Bilder**.
+- **Einzelne Word-Dateien**, **nur bei A7** zusätzlich die einzelne Bilddatei. In A11–A13 sind die Bilder direkt auf der Anleitungsseite des Word-Dokuments eingebettet und kopierbar.
 - PLUS 1 / PLUS 2: je Aufgabenblatt und Startdatei als einzelne Word-Downloads.
 - **Kein ZIP, kein Entpacken, keine Anmeldung, keine externen Skripte oder CDNs.**
 - Lehrerdateien, Übungstest, benoteter Steckbrief und Word-Test werden auf der Startseite nicht verlinkt. Die Lehrperson verteilt Tests selbst.
@@ -23,7 +23,7 @@ Das **Repository ist öffentlich** und enthält auch benotete Prüfungen, Muster
 
 ## QA
 - Alle 13 Pflichtdateien und zwei optionale Zusatzaufgaben müssen einzeln erreichbar sein.
-- Vier separate benötigte PNGs müssen abrufbar sein.
+- Nur die separate A7-PNG muss abrufbar sein. A11–A13 müssen ihre Originalbilder als kopierbare Medien im DOCX enthalten, nicht nur im Vorschau-Screenshot.
 - Bilder brauchen beschreibende Alternativtexte.
 - Alle Links nur relativ, keine Downloads von Archiven.
 - Responsives Layout (3/2/1) und Tastaturfokus; Browser-Sichtprüfung später im gewählten Hosting.

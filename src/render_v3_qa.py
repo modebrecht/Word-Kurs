@@ -16,6 +16,9 @@ PREVIEWS = ROOT / "qa" / "3rd-round" / "pages"
 DOCS = [
     ("A1_Text_formatieren.docx", 1),
     ("A7_Bilder_in_Word.docx", 1),
+    ("A11_Dokument_nach_Vorlage_nachbauen.docx", 3),
+    ("A12_Selbststaendig_gestalten.docx", 3),
+    ("A13_Gesamtauftrag_Pruefungsvorbereitung.docx", 4),
     ("ZUSATZ_Schnupperlehrbrief.docx", 1),
     ("START_Schnupperlehrbrief.docx", 1),
     ("ZUSATZ_Links_und_Quellen.docx", 1),

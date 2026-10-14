@@ -322,6 +322,29 @@ def validate_course_package(root: Path) -> tuple[int, int, int]:
     if body.count("<w:hyperlink") != 2:
         raise RuntimeError("Expected exactly two real hyperlinks in link solution.")
 
+
+    # A11–A13: the original source PNG must be embedded as a distinct,
+    # copyable Word drawing (not merely baked into the target preview).
+    for filename, source_name in {
+        "A11_Dokument_nach_Vorlage_nachbauen.docx": "a11_klassenlager_berge.png",
+        "A12_Selbststaendig_gestalten.docx": "a12_sommerabend.png",
+        "A13_Gesamtauftrag_Pruefungsvorbereitung.docx": "a13_bern_altstadt.png",
+    }.items():
+        source_bytes = (output / "assets" / source_name).read_bytes()
+        document_path = output / filename
+        with zipfile.ZipFile(document_path, "r") as package:
+            media = [
+                package.read(item) for item in package.namelist()
+                if item.startswith("word/media/") and not item.endswith("/")
+            ]
+        if source_bytes not in media:
+            raise RuntimeError(f"{filename}: eigenes kopierbares Bild fehlt.")
+        content = _docx_text(document_path)
+        if not all(token in content for token in ("BILD", "Strg + C", "Strg + V")):
+            raise RuntimeError(f"{filename}: Kopieranweisung fehlt.")
+        if "BILDDATEI:" in content:
+            raise RuntimeError(f"{filename}: alter externer Bilddatei-Platzhalter.")
+
     png_files = sorted((output / "assets").rglob("*.png"))
     if not png_files:
         raise RuntimeError("No generated PNG assets found.")

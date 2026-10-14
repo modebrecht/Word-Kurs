@@ -11,9 +11,6 @@ SITE = ROOT / "index.html"
 BANNED = ("word_test", "korrekturblatt", "benoteter_steckbrief", "uebungstest", ".zip")
 EXPECTED_IMAGES = {
     "a7_schulhaus.png",
-    "a11_klassenlager_berge.png",
-    "a12_sommerabend.png",
-    "a13_bern_altstadt.png",
 }
 EXPECTED_DOCX = {
     "A1_Text_formatieren.docx", "A2_Nach_Vorlage_gestalten.docx",
@@ -89,15 +86,19 @@ def validate() -> None:
         raise RuntimeError(f"Word-Downloads stimmen nicht: {sorted(set(docx)^EXPECTED_DOCX)}")
     if set(images) != EXPECTED_IMAGES or len(images) != len(EXPECTED_IMAGES):
         raise RuntimeError(f"Bild-Downloads stimmen nicht: {images}")
-    if len(parser.downloads) != 21:
-        raise RuntimeError(f"Erwartet 21 einzelne Downloads, gefunden {len(parser.downloads)}.")
+    if len(parser.downloads) != 18:
+        raise RuntimeError(f"Erwartet 18 einzelne Downloads, gefunden {len(parser.downloads)}.")
+    for i in (11, 12, 13):
+        fragment = html.split(f'id="a{i}"', 1)[1].split("</article>", 1)[0]
+        if "Bild herunterladen" in fragment:
+            raise RuntimeError(f"A{i} darf keinen zweiten Bilddownload benötigen.")
     for i in range(1, 14):
         if not re.search(r'class="task-number">A' + str(i) + r"</span>", html):
             raise RuntimeError(f"A{i} fehlt.")
     for code in ("PLUS 1", "PLUS 2"):
         if f'class="task-number">{code}</span>' not in html:
             raise RuntimeError(f"{code} fehlt.")
-    print(f"Student index PASS: 13 Pflichtkacheln + 2 PLUS, {len(docx)} Word- und {len(images)} Bild-Downloads, {len(parser.assets)} überprüfte Pfade, keine ZIP/Prüfungen/externen Abhängigkeiten.")
+    print(f"Student index PASS: 13 Pflichtkacheln + 2 PLUS, {len(docx)} Word- und {len(images)} Bild-Downloads, {len(parser.assets)} überprüfte Pfade, nur A7 mit separatem Bild; keine ZIP/Prüfungen/externen Abhängigkeiten.")
 
 
 if __name__ == "__main__":
