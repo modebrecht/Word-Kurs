@@ -40,4 +40,4 @@ Branch: 3rd-round-qa. Kein Merge und keine Veraenderung von main oder 2nd-rnd-qa
 6. Didaktischer Zweitdurchgang, besonders kognitive Last und nur optionale Zusatzskills.
 7. Schul-PC-Praxistest als externer offener Gate.
 
-Bis Gates 1–6 mit wirklicher Evidenz belegt sind, bleibt der Branch Status IN PROGRESS / UNVERIFIED.
+Die Renderer-Ausgabe wird unter `qa/3rd-round/pages` als Sichtprüf-Evidenz abgelegt. Render-Erfolg ist ausdrücklich noch kein visueller PASS.\n\nBis Gates 1–6 mit wirklicher Evidenz belegt sind, bleibt der Branch Status IN PROGRESS / UNVERIFIED.
