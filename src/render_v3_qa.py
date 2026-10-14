@@ -22,7 +22,7 @@ DOCS = [
     ("START_Links_und_Quellen.docx", 1),
     ("lehrperson/MUSTER_Schnupperlehrbrief.docx", 1),
     ("lehrperson/MUSTER_Links_und_Quellen.docx", 1),
-    ("lehrperson/LEHRPERSONENHILFEN_V3.docx", 4),
+    ("lehrperson/LEHRPERSONENHILFEN_V3.docx", 1),
 ]
 
 

@@ -257,10 +257,10 @@ def _teacher(out: Path) -> None:
         section = block(doc, code, section_labels[code], label_size=10.4)
         paragraph = section.cell(0, 1).paragraphs[0]
         paragraph.paragraph_format.space_before = Pt(1)
-        paragraph.paragraph_format.line_spacing = 1.14
-        paragraph.paragraph_format.space_after = Pt(3)
+        paragraph.paragraph_format.line_spacing = 1.10
+        paragraph.paragraph_format.space_after = Pt(1.5)
         run = paragraph.add_run(text)
-        set_run(run, size=10.15)
+        set_run(run, size=9.95)
     check = block(
         doc, "CHECK", "Beobachtung", fill_left=PALE_TEAL,
         fill_right=PALE_TEAL, label_color=TEAL_DARK, label_size=11.0,
@@ -274,7 +274,7 @@ def _teacher(out: Path) -> None:
         "Bei Schwierigkeiten: Bedienung sichtbar vormachen; keine versteckten Zusatzanforderungen aufbauen.",
         "Extern offen: Microsoft Word 365 auf Schul-PCs und echter Schülerdurchlauf samt Zeitmessung.",
     ]:
-        add_text(cell, "• " + item, size=9.8, after=1.5)
+        add_text(cell, "• " + item, size=9.45, after=.6)
     doc.save(out)
 
 
