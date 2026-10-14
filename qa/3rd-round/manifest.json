@@ -43,7 +43,7 @@
     },
     {
       "docx": "lehrperson/LEHRPERSONENHILFEN_V3.docx",
-      "pages": 2,
+      "pages": 1,
       "render": "LibreOffice + poppler"
     }
   ],
