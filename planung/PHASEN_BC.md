@@ -18,3 +18,11 @@ Status: eigenständige ergänzende Schülerlektionen, keine Änderung an Phase A
 ## Abgrenzung
 
 Phase A bleibt vollständig bestehen und unverändert. B/C ersetzen die klassischen Word-Lernziele nicht und erweitern die Bewertung nicht. Keine echte KI-Anbindung und kein Link zu einem Dienst, der ein persönliches Login voraussetzt.
+## Abnahme nach Browser-QA (14.10.2026)
+
+- **CI SUCCESS**: [Run 38569577340](https://github.com/modebrecht/Word-Kurs/actions/runs/38569577340), nach einer korrigierten, zunächst zu strengen Testbehauptung für die Dossier-Ansicht.
+- **Strukturelle QA:** Beide vollständigen HTML-Seiten und ihre vier Abschnittsanker, lokale Navigation und interaktive Komponenten bestehen den Validator. Die Dateien benötigen keine externen JS-/CSS-Pakete und keine Anmeldung.
+- **Funktionale QA:** Umschalten Word / KI / Dossier-Tool, Entscheidungsauswertung, Phase-B-Kopierfunktion; Phase-C-Editor, Kopieren, Lösungshinweise aufklappen, Checkliste und Reset in realem Chromium geprüft.
+- **Responsive QA:** je Phase 1365, 820, 390 und 320 px = 8 echte Browserdurchläufe. Acht Screenshots und [Messbericht](../qa/browser/phase-bc-report.json) liegen unter `qa/browser/`. Für alle Ansichten: keine horizontale Überbreite, keine abgeschnittenen interaktiven Elemente, keine JavaScript-Fehler.
+- **Nachkontrolle der Screenshots:** Desktop und 320-px-Smartphone beider Seiten einzeln visuell geprüft; keine erkennbaren Überlappungen oder unlesbaren Buttons. Tablet/390-px-Abmessungen automatisch geprüft, visuelle Detailprüfung noch separat möglich.
+- **Bewertung:** **B/C BROWSER QA PASS**; echte Schülererprobung, native Word-365-Kompatibilität und eventuelle spätere Live-URL **UNVERIFIED**. Die Seiten setzen keine angebliche KI-Anbindung voraus.
