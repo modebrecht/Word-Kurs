@@ -48,7 +48,7 @@ def check(page, name, columns):
         }""")
         if not img.evaluate("im => im.complete && im.naturalWidth > 0 && im.naturalHeight > 0"):
             raise AssertionError(f"{name}: broken image {img.get_attribute('src')}")
-    geometry = page.evaluate("""() => {
+    geometry = page.evaluate(r"""() => {
         const cards = [...document.querySelectorAll('.task-card')];
         const offenders = [];
         for (const [i, c] of cards.entries()) {
@@ -96,9 +96,23 @@ def check_downloads(page):
         src = (ROOT / unquote(urlsplit(href).path)).resolve()
         if not src.is_relative_to(ROOT.resolve()):
             raise AssertionError(f"Unsafe download path: {href}")
-        with page.expect_download(timeout=15000) as ev:
-            link.click()
-        dl = ev.value
+        print(f"CHECKING DOWNLOAD {index + 1}/18 {href} -> {filename}", flush=True)
+        print("LINK HTML:", link.evaluate("(e) => e.outerHTML"), flush=True)
+        current = page.url
+        try:
+            with page.expect_download(timeout=8000) as ev:
+                link.click()
+            dl = ev.value
+        except Exception as exc:
+            print("DOWNLOAD DEBUG page_url:", page.url, "before:", current, flush=True)
+            print("DOWNLOAD DEBUG document title:", page.title(), flush=True)
+            try:
+                print("DOWNLOAD DEBUG direct response:", page.request.get(
+                    f"{page.url.split('/', 3)[0]}//{urlsplit(page.url).netloc}/{href}"
+                ).status, flush=True)
+            except Exception as test_error:
+                print("DOWNLOAD DEBUG direct response error:", test_error, flush=True)
+            raise AssertionError(f"No download event for {index + 1}/18: {href}: {exc}") from exc
         if dl.failure() or dl.suggested_filename != filename:
             raise AssertionError(f"Download failed or wrong name: {href}")
         a = hashlib.sha256(src.read_bytes()).hexdigest()
