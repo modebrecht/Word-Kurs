@@ -197,7 +197,7 @@ def _teacher(out: Path) -> None:
         "Die Ergänzungen zu A1, A7 und den freiwilligen PLUS-Aufträgen.",
         "Die Pflichtfolge A1–A13 und alle drei bestehenden Noten bleiben unverändert. "
         "PLUS 1 und PLUS 2 sind freiwillig und geben keine Fleisspunkte.",
-        header_kind="LEHRPERSON", goal_caption="ÜBERBLICK",
+        header_kind="LEHRPERSON", goal_caption="ÜBERBLICK", goal_block_label="EINSATZ",
     )
     doc.core_properties.title = "Lehrpersonenhilfen: Word-Kurs V3"
     doc.core_properties.subject = "Word-Kurs · Sek 8 · Lehrpersonenmaterial"
@@ -245,17 +245,22 @@ def _teacher(out: Path) -> None:
             "Prüfungskompetenz verlangen. Zuerst Pflichtauftrag, dann freiwillige PLUS-Aufgaben."
         ),
     ]
+    section_labels = {
+        "A1": "SPEICHERN",
+        "A7": "ALT-TEXT",
+        "PLUS 1": "BRIEF + PDF",
+        "PLUS 2": "LINKS / QUELLEN",
+        "A12/A13": "BEWERTUNG",
+    }
     for heading, text in sections:
-        if " · " in heading:
-            code, subtitle = heading.split(" · ", 1)
-        else:
-            code, subtitle = "A12/A13", "Leistungsnachweise"
-        section = block(doc, code, subtitle, label_size=10.0)
+        code = heading.split(" · ", 1)[0] if " · " in heading else "A12/A13"
+        section = block(doc, code, section_labels[code], label_size=10.4)
         paragraph = section.cell(0, 1).paragraphs[0]
-        paragraph.paragraph_format.line_spacing = 1.08
-        paragraph.paragraph_format.space_after = Pt(1)
+        paragraph.paragraph_format.space_before = Pt(1)
+        paragraph.paragraph_format.line_spacing = 1.14
+        paragraph.paragraph_format.space_after = Pt(3)
         run = paragraph.add_run(text)
-        set_run(run, size=9.45)
+        set_run(run, size=10.15)
     check = block(
         doc, "CHECK", "Beobachtung", fill_left=PALE_TEAL,
         fill_right=PALE_TEAL, label_color=TEAL_DARK, label_size=11.0,
@@ -269,7 +274,7 @@ def _teacher(out: Path) -> None:
         "Bei Schwierigkeiten: Bedienung sichtbar vormachen; keine versteckten Zusatzanforderungen aufbauen.",
         "Extern offen: Microsoft Word 365 auf Schul-PCs und echter Schülerdurchlauf samt Zeitmessung.",
     ]:
-        add_text(cell, "• " + item, size=9.2, after=.35)
+        add_text(cell, "• " + item, size=9.8, after=1.5)
     doc.save(out)
 
 

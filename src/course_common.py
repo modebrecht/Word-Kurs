@@ -163,7 +163,7 @@ def add_step(cell, letter, parts, after=0.45):
     return p
 
 
-def base_doc(code: str, topic: str, title: str, subtitle: str, learning_goal: str, *, header_kind: str = 'ARBEITSBLATT', goal_caption: str = 'Ich kann ...') -> Document:
+def base_doc(code: str, topic: str, title: str, subtitle: str, learning_goal: str, *, header_kind: str = 'ARBEITSBLATT', goal_caption: str = 'Ich kann ...', goal_block_label: str = 'LERNZIEL') -> Document:
     doc = Document()
     sec = doc.sections[0]
     sec.page_width = Cm(21)
@@ -212,7 +212,7 @@ def base_doc(code: str, topic: str, title: str, subtitle: str, learning_goal: st
     r = p.add_run(subtitle)
     _font(r, size=10.8, color=MID)
 
-    learning = block(doc, "LERNZIEL", None, fill_left=NAVY, fill_right=PALE, label_size=9.3)
+    learning = block(doc, goal_block_label, None, fill_left=NAVY, fill_right=PALE, label_size=9.3)
     rcell = learning.cell(0,1)
     p = rcell.paragraphs[0]
     _clear(p)
