@@ -1,0 +1,133 @@
+{
+  "status": "BROWSER_QA_PASS",
+  "engine": "Playwright / Chromium / localhost",
+  "scope": "real browser QA, not deployed hosting or native Word 365",
+  "screenshots": [
+    "desktop.png",
+    "tablet.png",
+    "mobile.png",
+    "small-mobile.png"
+  ],
+  "results": {
+    "downloads": [
+      {
+        "name": "A1_Text_formatieren.docx",
+        "bytes": 79479,
+        "sha256": "2314476123aaf7edb1c25143ef1833f631b4996688e5ea6b9e503c7b047be501"
+      },
+      {
+        "name": "A2_Nach_Vorlage_gestalten.docx",
+        "bytes": 70501,
+        "sha256": "3ca61a9d35503b3c99feca71f541b89c2386dfe4f13d9c7c61230481315792a9"
+      },
+      {
+        "name": "A3_Absaetze_und_Ordnung.docx",
+        "bytes": 87235,
+        "sha256": "500fbcd1dffda459fa5b06a941f222c4032552cbaeec1cbe2d1d7663ed333ca0"
+      },
+      {
+        "name": "A4_Listen_und_Nummerierungen.docx",
+        "bytes": 58413,
+        "sha256": "1cb234f6cba188d2c56d163ab7cfa4cf99018c788dbc97d07268386c1517b6bf"
+      },
+      {
+        "name": "A5_Rette_das_Chaos_Dokument.docx",
+        "bytes": 82731,
+        "sha256": "ee0583c34db602956a6e64afda1af422b2d6f5836c0286e0cb106a0eb92fd368"
+      },
+      {
+        "name": "A6_Seitenlayout.docx",
+        "bytes": 56064,
+        "sha256": "c5addf9fb2449486ed035366ea242175263aa296c998f22a1177d81ab8f87deb"
+      },
+      {
+        "name": "A7_Bilder_in_Word.docx",
+        "bytes": 81036,
+        "sha256": "c18e8192c43cc4b0e7aee544f791dc43c820789974a7bebf8eab94ddd96c2dbc"
+      },
+      {
+        "name": "a7_schulhaus.png",
+        "bytes": 5234,
+        "sha256": "a3b7b00f12933c0cc351f390b2a73a1b9969144acfd9067560525d911094a567"
+      },
+      {
+        "name": "A8_Tabellen.docx",
+        "bytes": 77282,
+        "sha256": "530668e75a64012e637880f5bca4f8b7e6b1ea8e4b111ff31d55e71635e8c51e"
+      },
+      {
+        "name": "A9_Formatvorlagen_und_Ueberschriften.docx",
+        "bytes": 89737,
+        "sha256": "b2cf7bbf3bd96aad6864f60ddb2826bdfc6b22bde5317e331071266599eadcef"
+      },
+      {
+        "name": "A10_Kopf_Fusszeile_Seitenzahlen.docx",
+        "bytes": 59280,
+        "sha256": "fef2094b9d33eeac4dae5ea93f58a428192321b3a7826fec090278e51996ca29"
+      },
+      {
+        "name": "A11_Dokument_nach_Vorlage_nachbauen.docx",
+        "bytes": 160214,
+        "sha256": "76b7f9d79b31a169966bec857738a38267f4b12732342fd62a8a6a32d82973c8"
+      },
+      {
+        "name": "A12_Selbststaendig_gestalten.docx",
+        "bytes": 47220,
+        "sha256": "509a4e335d3c4ac62242242b2deae63fbfd9309d770770dad27568c998d150bc"
+      },
+      {
+        "name": "A13_Gesamtauftrag_Pruefungsvorbereitung.docx",
+        "bytes": 52665,
+        "sha256": "e06c377806d3dcffe02c0bbf5c9e98403184d858a7631c04f77e4f935f7d6268"
+      },
+      {
+        "name": "ZUSATZ_Schnupperlehrbrief.docx",
+        "bytes": 37901,
+        "sha256": "e477bf0466db7ad1e732caa537043bda685399727f393ee8f543693939e38bd2"
+      },
+      {
+        "name": "START_Schnupperlehrbrief.docx",
+        "bytes": 34671,
+        "sha256": "c02e33d90cd3c49300ee4c7aa418a5b2db9e3c1976e93cdbffc240ece053256e"
+      },
+      {
+        "name": "ZUSATZ_Links_und_Quellen.docx",
+        "bytes": 37556,
+        "sha256": "b19e387b424c6b5b1ea4d9c34f00523e92e69695d0e9103edbf6ac174d5d72fc"
+      },
+      {
+        "name": "START_Links_und_Quellen.docx",
+        "bytes": 34543,
+        "sha256": "2680f8dc763f34314f9b4ef290bbe85eb40d02256d6d330326600edebb297aaa"
+      }
+    ],
+    "desktop": {
+      "viewportWidth": 1440,
+      "documentWidth": 1440,
+      "columns": 3,
+      "offenders": [],
+      "brokenImages": []
+    },
+    "tablet": {
+      "viewportWidth": 820,
+      "documentWidth": 820,
+      "columns": 2,
+      "offenders": [],
+      "brokenImages": []
+    },
+    "mobile": {
+      "viewportWidth": 390,
+      "documentWidth": 390,
+      "columns": 1,
+      "offenders": [],
+      "brokenImages": []
+    },
+    "small-mobile": {
+      "viewportWidth": 320,
+      "documentWidth": 320,
+      "columns": 1,
+      "offenders": [],
+      "brokenImages": []
+    }
+  }
+}
