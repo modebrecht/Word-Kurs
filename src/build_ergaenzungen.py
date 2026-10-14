@@ -157,7 +157,7 @@ def _model_links(out: Path) -> None:
     _add_link(p, "Berufsberatung Schweiz", "https://www.berufsberatung.ch/")
     p = doc.add_paragraph("Für Zugverbindungen: ")
     _add_link(p, "SBB Fahrplan", "https://www.sbb.ch/")
-    doc.add_paragraph("Quelle: Berufsberatung Schweiz, Informationen zu Berufen, www.berufsberatung.ch, Zugriff am 14.10.2026 (Datum beim eigenen Auftrag aktualisieren).")
+    doc.add_paragraph("Quelle: Berufsberatung Schweiz, Informationen zu Berufen, www.berufsberatung.ch, Zugriff am 14.10.2026.")
     doc.save(out)
 
 
@@ -165,7 +165,7 @@ def _teacher(out: Path) -> None:
     doc = Document()
     _raw_style(doc)
     doc.core_properties.title = "Lehrpersonenhilfen: Word-Kurs 3rd-round-qa"
-    doc.add_heading("Word-Kurs: gezielte Ergänzungen V3", 0)
+    doc.add_heading("Word-Kurs · Ergänzungen V3", 0)
     doc.add_paragraph("Die Pflichtfolge A1–A13 und alle bestehenden Prüfungen bleiben unverändert. Die zwei Zusatzaufträge werden nicht in die Fleissnote aufgenommen.")
     topics = [
         ("A1 · Dateisicherheit (Kurzroutine, 5–8 Min.)",
