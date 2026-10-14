@@ -46,3 +46,11 @@ Das **Repository ist öffentlich** und enthält auch benotete Prüfungen, Muster
 - Die PLUS-Aufgaben zeigen künftig neutrale schematische Ansichten statt der bisher als JPG referenzierten **Lehrpersonen-Musterlösungen**. Dadurch wird der Sachfakt der Quellenrecherche nicht in der Schülerkarte verraten.
 - Die Downloadlinks und der Kursstoff bleiben unverändert; kein ZIP. Auch hier gilt: keine öffentliche Auslieferung der vertraulichen Lehrpersonen- und Prüfungsdateien.
 - Neuer automatischer QA-Gate in `src/validate_student_index.py`: Vorschau-Typ und Beschriftung aller 15 Kacheln, vorhandene Bilder, keine Lehrpersonenlösung.
+
+## Fix 1 – echte Browser-QA (14.10.2026)
+
+- Playwright / Chromium ruft die echte Schüler-HTML-Seite über einen lokalen HTTP-Server auf und prüft Desktop (1440 px, 3 Spalten), Tablet (820 px, 2 Spalten), Smartphone (390 px, 1 Spalte) und kleines Smartphone (320 px, 1 Spalte).
+- Für alle vier Grössen werden 15 Kacheln, 13 geladene Miniaturbilder, 18 sichtbare Downloadlinks, horizontale Überläufe, abgeschnittene Knöpfe, die vier Abschnittsnavigationen und Konsolen-/Netzwerkfehler getestet.
+- Unter Desktop werden alle 18 Downloadlinks wirklich angeklickt; Dateinamen und SHA256-Prüfsummen der empfangenen Dateien müssen mit den Originalen übereinstimmen. Mobiler A7-Bilddownload wird zusätzlich geprüft.
+- CI schreibt vier echte Screenshots und eine JSON-Auswertung nach `qa/browser/`; **automatische Tests ersetzen die spätere Sichtprüfung nicht**.
+- Unverändert: kein Deployment und keine Veröffentlichung des Repository-Inhalts. Native Word 365, Schul-PC-Tests und Schutz der im Repository vorhandenen Prüfungsdateien sind separate Gates.
