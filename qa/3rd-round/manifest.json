@@ -1,0 +1,52 @@
+{
+  "status": "RENDERED_NOT_VISUALLY_APPROVED",
+  "documents": [
+    {
+      "docx": "A1_Text_formatieren.docx",
+      "pages": 1,
+      "render": "LibreOffice + poppler"
+    },
+    {
+      "docx": "A7_Bilder_in_Word.docx",
+      "pages": 1,
+      "render": "LibreOffice + poppler"
+    },
+    {
+      "docx": "ZUSATZ_Schnupperlehrbrief.docx",
+      "pages": 1,
+      "render": "LibreOffice + poppler"
+    },
+    {
+      "docx": "START_Schnupperlehrbrief.docx",
+      "pages": 1,
+      "render": "LibreOffice + poppler"
+    },
+    {
+      "docx": "ZUSATZ_Links_und_Quellen.docx",
+      "pages": 1,
+      "render": "LibreOffice + poppler"
+    },
+    {
+      "docx": "START_Links_und_Quellen.docx",
+      "pages": 1,
+      "render": "LibreOffice + poppler"
+    },
+    {
+      "docx": "lehrperson/MUSTER_Schnupperlehrbrief.docx",
+      "pages": 1,
+      "render": "LibreOffice + poppler"
+    },
+    {
+      "docx": "lehrperson/MUSTER_Links_und_Quellen.docx",
+      "pages": 1,
+      "render": "LibreOffice + poppler"
+    },
+    {
+      "docx": "lehrperson/LEHRPERSONENHILFEN_V3.docx",
+      "pages": 1,
+      "render": "LibreOffice + poppler"
+    }
+  ],
+  "native_word_365": "UNVERIFIED",
+  "student_test": "UNVERIFIED"
+}
