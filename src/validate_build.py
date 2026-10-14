@@ -252,18 +252,31 @@ def validate_course_package(root: Path) -> tuple[int, int, int]:
     for teacher_rel in EXPECTED_TEACHER_DOCX:
         _validate_docx(output / teacher_rel)
     for file_name, phrase in {
-        "A1_Text_formatieren.docx": "A1_Nachname_Vorname.docx",
-        "A7_Bilder_in_Word.docx": "Alternativtext",
+        "A1_Text_formatieren.docx": "START: Speichere das Arbeitsblatt zuerst",
+        "A7_Bilder_in_Word.docx": "Als dekorativ kennzeichnen",
         "ZUSATZ_Schnupperlehrbrief.docx": "Schnupperbrief_Nachname.pdf",
-        "ZUSATZ_Links_und_Quellen.docx": "Strg + K",
+        "ZUSATZ_Links_und_Quellen.docx": "Strg + Klick",
     }.items():
         if phrase not in _docx_text(output / file_name):
             raise RuntimeError(f"V3 learning element missing: {file_name}: {phrase}")
+    for name, checks in {
+        "A1_Text_formatieren.docx": ["A1_Nachname_Vorname.docx", "Strg + S", "wieder geöffnet"],
+        "ZUSATZ_Schnupperlehrbrief.docx": ["BRIEFSCHEMA", "zuerst Strg + S", "PDF öffnen", "erneut geöffneten"],
+        "START_Links_und_Quellen.docx": ["Das habe ich herausgefunden:", "Quelle:"],
+        "ZUSATZ_Links_und_Quellen.docx": ["FAKT + QUELLE", "Dauer", "Zugriffsdatum"],
+        "lehrperson/MUSTER_Links_und_Quellen.docx": ["3 oder 4 Jahre", "[Datum der Bearbeitung]"],
+        "lehrperson/LEHRPERSONENHILFEN_V3.docx": ["Schwächere Lernende", "Dauer"],
+    }.items():
+        generated_text = _docx_text(output / name)
+        for phrase in checks:
+            if phrase not in generated_text:
+                raise RuntimeError(f"V3 didactic regression in {name}: {phrase}")
+
     sample_links = output / "lehrperson/MUSTER_Links_und_Quellen.docx"
     with zipfile.ZipFile(sample_links, "r") as z:
         rels = z.read("word/_rels/document.xml.rels").decode("utf-8")
         body = z.read("word/document.xml").decode("utf-8")
-    for target in ("https://www.berufsberatung.ch/", "https://www.sbb.ch/"):
+    for target in ("https://www.berufsberatung.ch/de/bildungssystem/d/lehre-efz", "https://www.sbb.ch/"):
         if target not in rels:
             raise RuntimeError(f"Missing real hyperlink target in solution: {target}")
     if body.count("<w:hyperlink") != 2:

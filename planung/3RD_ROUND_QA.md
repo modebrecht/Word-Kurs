@@ -40,4 +40,12 @@ Branch: 3rd-round-qa. Kein Merge und keine Veraenderung von main oder 2nd-rnd-qa
 6. Didaktischer Zweitdurchgang, besonders kognitive Last und nur optionale Zusatzskills.
 7. Schul-PC-Praxistest als externer offener Gate.
 
-Die Renderer-Ausgabe wird unter `qa/3rd-round/pages` als Sichtprüf-Evidenz abgelegt. Render-Erfolg ist ausdrücklich noch kein visueller PASS.\n\nBis Gates 1–6 mit wirklicher Evidenz belegt sind, bleibt der Branch Status IN PROGRESS / UNVERIFIED.
+Die Renderer-Ausgabe wird unter `qa/3rd-round/pages` als Sichtprüf-Evidenz abgelegt. Render-Erfolg ist ausdrücklich noch kein visueller PASS.
+
+Bis Gates 1–6 mit wirklicher Evidenz belegt sind, bleibt der Branch Status IN PROGRESS / UNVERIFIED.
+
+## Nachbesserung nach unabhängigem Didaktik-Audit (14.10.2026)
+
+Auf demselben Branch werden die sieben festgestellten Schwachstellen geschlossen: (1) A1 Speichern früh und kontrolliert, (2) A7 informatives vs. dekoratives Bild, (3) Briefschema, (4) Brief nach Bearbeitung speichern und PDF erneut mit DOCX vergleichen, (5) Word-Link öffnen (Strg+Klick), (6) belegbarer Fakt statt blosser Quellenabschrift mit variablem Zugriffsdatum, (7) präzisere Lehrpersonenhilfen mit Sek-B-Differenzierung. Automatische Inhalts-/Relationstests ergänzen die bestehende visuelle QA. Keine Änderungen am Notenmodell oder A2–A6/A8–A13.
+
+QA-Bericht wird erst nach einem tatsächlichen erfolgreichen Build und Sichtprüfung aktualisiert. Schul-PC-Word-365 und echte Schülerzeit bleiben UNVERIFIED.

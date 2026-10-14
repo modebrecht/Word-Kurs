@@ -57,16 +57,19 @@ def _instruction_brief(out: Path) -> None:
     add_text(cell, "Öffne START_Schnupperlehrbrief.docx. Speichere sofort eine eigene Kopie als Schnupperbrief_Nachname.docx im Ordner IB.", 9.5)
     t = block(doc, "02", "GESTALTEN")
     cell = t.cell(0, 1)
-    add_text(cell, "Alle Texte sind bereits vorhanden. Du musst nichts neu erfinden. Die Firma und die Person sind fiktiv. Sende diesen Übungsbrief nicht ab.", 9.3)
+    add_text(cell, "Alle Texte sind vorhanden. Die Firma und die Person sind fiktiv. Sende diesen Übungsbrief nicht ab.", 9.3)
+    add_text(cell, "BRIEFSCHEMA · Von oben nach unten: links Absender → links Empfänger → rechts Ort/Datum → links Betreff (fett) → Anrede → zwei Textabsätze → Gruss und Name.", 9.2, bold=True, color=NAVY, after=.5)
     add_step(cell, "A", [("A4 Hochformat, Ränder Normal, Arial 11 pt.", True, False, NAVY)])
     add_step(cell, "B", [("Absender oben, Empfänger darunter, Datum rechts, dann Betreff.", True, False, NAVY)])
     add_step(cell, "C", [("Betreff fett; Anrede, zwei kurze Textabsätze und Grussformel gut lesbar.", True, False, NAVY)])
     add_step(cell, "D", [("Keine Abstände mit vielen Leerzeichen erzeugen. Nutze Absätze und Absatzabstände.", True, False, NAVY)])
     t = block(doc, "03", "EXPORTIEREN")
     cell = t.cell(0, 1)
-    add_text(cell, "Kontrolliere in der Druckvorschau: genau 1 Briefseite. Speichere ausserdem eine PDF-Datei, zum Beispiel über Datei → Speichern unter → Dateityp PDF (alternativ Datei → Exportieren). Name: Schnupperbrief_Nachname.pdf.", 9.25)
+    add_text(cell, "1 · Nach dem Gestalten zuerst Strg + S: fertige DOCX-Datei speichern. Druckvorschau: genau eine Briefseite kontrollieren.", 9.25)
+    add_text(cell, "2 · PDF aus der BRIEFDATEI exportieren: Datei → Speichern unter → Dateityp PDF (oder Datei → Exportieren). Name: Schnupperbrief_Nachname.pdf.", 9.25)
+    add_text(cell, "3 · PDF öffnen und mit der erneut geöffneten DOCX vergleichen: gleicher Text, gleiche Anordnung, genau eine Seite. Beide Dateien müssen im Ordner IB liegen.", 9.25)
     add_tip(doc, "DOCX = später bearbeitbar. PDF = zum Weitergeben, ohne dass sich das Layout leicht verschiebt.", "MERKE")
-    add_check(doc, "Sind Absender, Empfänger, Datum, Betreff, Anrede und Grussformel vorhanden? Eine Seite? Liegen DOCX und PDF im richtigen Ordner?")
+    add_check(doc, "Stimmt der Briefaufbau? Wurde die DOCX nach der Bearbeitung gespeichert? Sind die erneut geöffneten DOCX und PDF inhaltlich und optisch gleich, jeweils genau 1 Seite?")
     add_finish(doc, "Gib die DOCX- und die PDF-Datei im Ordner IB ab. Den Brief nicht an ein Unternehmen senden.")
     finalise(doc, out, "Zusatz: Schnupperlehrbrief")
 
@@ -126,13 +129,14 @@ def _instruction_links(out: Path) -> None:
     t = block(doc, "01", "ZWEI LINKS")
     cell = t.cell(0, 1)
     add_text(cell, "Öffne START_Links_und_Quellen.docx und speichere eine Kopie im Ordner IB.", 9.5)
-    add_step(cell, "A", [("Markiere «Berufsberatung Schweiz» und drücke Strg + K.", True, False, NAVY), ("  Adresse: https://www.berufsberatung.ch/", False, False, None)])
+    add_step(cell, "A", [("Markiere «Lehre EFZ (Berufsberatung Schweiz)» und drücke Strg + K.", True, False, NAVY), ("  Adresse: https://www.berufsberatung.ch/de/bildungssystem/d/lehre-efz", False, False, None)])
     add_step(cell, "B", [("Markiere «SBB Fahrplan» und drücke Strg + K.", True, False, NAVY), ("  Adresse: https://www.sbb.ch/", False, False, None)])
-    t = block(doc, "02", "QUELLE")
+    t = block(doc, "02", "FAKT + QUELLE")
     cell = t.cell(0, 1)
-    add_text(cell, "Ergänze die vorhandene Zeile «Quelle:» mit diesen Angaben: Berufsberatung Schweiz · Informationen zu Berufen · www.berufsberatung.ch · Zugriffsdatum heute. Die Angabe nennt, wo man Informationen nachlesen kann.", 9.4)
-    add_tip(doc, "Ein guter Linktext verrät das Ziel. «Berufsberatung Schweiz» ist besser als «Hier klicken». Die Quelle soll zu der Information passen.", "MERKE")
-    add_check(doc, "Sind beide Wörtergruppen wirklich anklickbare Links? Öffnen sich die angegebenen Webseiten? Ist die Quellenzeile ergänzt?")
+    add_text(cell, "Öffne den ersten Link (in Word meist Strg + Klick). Lies auf der Seite «Lehre EFZ» den Abschnitt «Dauer». Ergänze im Startdokument in eigenen Worten, wie viele Jahre eine EFZ-Lehre dauert.", 9.35)
+    add_text(cell, "Trage bei «Quelle:» Anbieter, Seitentitel «Lehre EFZ», genaue Webadresse und heutiges Zugriffsdatum ein. So belegt die Quelle eine konkrete Aussage.", 9.35)
+    add_tip(doc, "Ein guter Linktext verrät das Ziel. Eine Quelle muss zur verwendeten Information passen, nicht irgendeine Seite nennen. Einem Link in Word folgst du meist mit Strg + Klick.", "MERKE")
+    add_check(doc, "Sind zwei echte Hyperlinks vorhanden? Stimmt die Dauer der EFZ-Lehre mit der verlinkten Seite überein? Belegt die Quellenzeile diese Information mit heutigem Zugriffsdatum?")
     add_finish(doc, "Speichere die bearbeitete DOCX im Ordner IB. Dieser Zusatzauftrag ist freiwillig und nicht Teil des Word-Tests.")
     finalise(doc, out, "Zusatz: Links und Quellen")
 
@@ -142,8 +146,9 @@ def _starter_links(out: Path) -> None:
     _raw_style(doc)
     doc.core_properties.title = "Rohtext: Links und Quellen"
     doc.add_heading("Hilfreiche Webseiten für Schule und Beruf", 1)
-    doc.add_paragraph("Für Berufsinformationen: Berufsberatung Schweiz")
+    doc.add_paragraph("Für Infos zur EFZ-Lehre: Lehre EFZ (Berufsberatung Schweiz)")
     doc.add_paragraph("Für Zugverbindungen: SBB Fahrplan")
+    doc.add_paragraph("Das habe ich herausgefunden: ")
     doc.add_paragraph("Quelle: ")
     doc.save(out)
 
@@ -153,45 +158,81 @@ def _model_links(out: Path) -> None:
     _raw_style(doc)
     doc.core_properties.title = "Musterlösung: Links und Quellen"
     doc.add_heading("Hilfreiche Webseiten für Schule und Beruf", 1)
-    p = doc.add_paragraph("Für Berufsinformationen: ")
-    _add_link(p, "Berufsberatung Schweiz", "https://www.berufsberatung.ch/")
+    p = doc.add_paragraph("Für Infos zur EFZ-Lehre: ")
+    _add_link(p, "Lehre EFZ (Berufsberatung Schweiz)", "https://www.berufsberatung.ch/de/bildungssystem/d/lehre-efz")
     p = doc.add_paragraph("Für Zugverbindungen: ")
     _add_link(p, "SBB Fahrplan", "https://www.sbb.ch/")
-    doc.add_paragraph("Quelle: Berufsberatung Schweiz, Informationen zu Berufen, www.berufsberatung.ch, Zugriff am 14.10.2026.")
+    doc.add_paragraph("Das habe ich herausgefunden: Eine EFZ-Lehre dauert 3 oder 4 Jahre.")
+    doc.add_paragraph("Quelle: Berufsberatung Schweiz, «Lehre EFZ», www.berufsberatung.ch/de/bildungssystem/d/lehre-efz, Zugriff am [Datum der Bearbeitung].")
     doc.save(out)
 
 
 def _teacher(out: Path) -> None:
     doc = Document()
     _raw_style(doc)
-    doc.core_properties.title = "Lehrpersonenhilfen: Word-Kurs 3rd-round-qa"
+    doc.core_properties.title = "Lehrpersonenhilfen: Word-Kurs V3"
     doc.add_heading("Word-Kurs · Ergänzungen V3", 0)
-    doc.add_paragraph("Die Pflichtfolge A1–A13 und alle bestehenden Prüfungen bleiben unverändert. Die zwei Zusatzaufträge werden nicht in die Fleissnote aufgenommen.")
-    topics = [
-        ("A1 · Dateisicherheit (Kurzroutine, 5–8 Min.)",
-         "Vorbereitung: Speicherort IB zeigen. Demonstration: Dokument benennen, speichern, schliessen, wieder öffnen. Typischer Fehler: Datei irgendwo in Downloads abgelegt. Formativ: Jedes Kind zeigt die gespeicherte Datei am korrekten Ort. Bei Bedarf später erneut üben."),
-        ("A7 · Alternativtext (freiwillig, 5 Min.)",
-         "Nach der Hauptaufgabe kurz zeigen: Rechtsklick auf Bild → Alternativtext anzeigen/bearbeiten. Nur Bildinhalt und Zweck beschreiben, nicht 'Bild von'. Alternative: dekorative Bilder als dekorativ kennzeichnen. Keine Pflicht für A7 und keine neue Prüfungsanforderung."),
-        ("PLUS 1 · Schnupperlehrbrief (ca. 45 Min.)",
-         "Vorbereitung: Aufgabenblatt und START_Schnupperlehrbrief.docx bereitstellen. Einstieg: Absender / Empfänger / Datum / Betreff zeigen. 5 Min Demo, 25 Min gestalten, 10 Min PDF und Rückkontrolle, 5 Min Reserve. Hilfen: markierte Positionen, Musterlösung nur für Lehrperson. Formativ: genau einseitige DOCX und PDF, gleiche Inhalte. Nicht an echte Firmen senden."),
-        ("PLUS 2 · Links und Quellen (ca. 20–25 Min.)",
-         "Vorbereitung: Aufgabenblatt und START_Links_und_Quellen.docx. 3 Min Demo Strg+K, 12 Min Links, 5 Min Quellenzeile, 5 Min Kontrolle. Technik: Internetzugriff auf zwei offizielle Seiten prüfen. Formativ: zwei echte Hyperlink-Ziele, lesbare Linktexte, Quellenzeile mit Zugriffsdatum."),
-        ("A12/A13 & Prüfungen",
-         "A12/A13 bleiben im Hauptauftrag ohne neue Pflichtfunktion. Kein PDF oder Hyperlink wird im bestehenden 30-Punkte-Test unangekuendigt verlangt. Die Zusatzaufträge können nach dem Pflichtkurs oder als freiwillige Wahlaufgaben eingesetzt werden."),
+    doc.add_paragraph(
+        "Die Pflichtfolge A1–A13, der Übungstest, der Steckbrief und der benotete Word-Test bleiben unverändert. "
+        "PLUS 1 und PLUS 2 sind freiwillig und geben keine Fleisspunkte."
+    )
+
+    sections = [
+        (
+            "A1 · Sicher speichern (5–8 Minuten)",
+            "VOR der Formatierung: Datei → Speichern unter → persönlicher Ordner IB; Namen vergeben. "
+            "NACH der Bearbeitung: Strg + S, schliessen und aus IB erneut öffnen. "
+            "Schwächere Lernende bekommen den Speicherort gezeigt und führen den Ablauf einmal vor; "
+            "fortgeschrittene Lernende erledigen ihn selbst. Formative Evidenz: die fertige Datei lässt sich wiederfinden. "
+            "Kein Abzug für zunächst falsches Speichern, wenn anschliessend korrigiert."
+        ),
+        (
+            "A7 · Bild: informativ oder dekorativ? (freiwillig, 5 Minuten)",
+            "Erst das Bildlayout fertigstellen. Beim gezeichneten Schulhaus kann die Illustration im vorhandenen Text "
+            "lediglich schmücken: dann «Als dekorativ kennzeichnen». "
+            "Ein informatives Bild vermittelt relevante neue Inhalte: nur diese Information knapp als Alternativtext "
+            "beschreiben. Die Unterscheidung ist Lernziel; das blosse Abschreiben einer Bildbeschreibung nicht. "
+            "Word-Funktion vor Ort prüfen; kein Prüfungsstoff."
+        ),
+        (
+            "PLUS 1 · Schnupperlehrbrief und PDF (Richtwert 45 Minuten)",
+            "5 Minuten Briefschema erklären (Absender/Empfänger links, Datum rechts, Betreff/Anrede/Text/Gruss). "
+            "25 Minuten vorhandenen Rohtext ordnen, 10 Minuten Strg + S / PDF-Export / BEIDE Dateien öffnen, "
+            "5 Minuten Reserve. Unterlegen: START_Schnupperlehrbrief.docx und Aufgabenblatt. "
+            "Schwächere Lernende orientieren sich an den Schema-Zeilen; andere arbeiten ohne weiteren Klickplan. "
+            "Formativ: korrekte Bestandteile, eine Seite, identisches DOCX/PDF, Ordner IB. "
+            "Die Musterlösung bleibt bei der Lehrperson; Übungsbrief nicht real versenden."
+        ),
+        (
+            "PLUS 2 · Hyperlinks, Aussage und Quellenbeleg (25–30 Minuten)",
+            "Strg + K zum Einfügen eines Links; in Word einem Link normalerweise mit Strg + Klick folgen. "
+            "Erster Link führt direkt zu «Lehre EFZ» bei berufsberatung.ch; dort unter «Dauer» die konkrete "
+            "Information finden: EFZ-Lehre dauert drei oder vier Jahre. Diesen Fakt in einem eigenen Satz "
+            "notieren und mit Anbieter, Titel, Seitenadresse und Zugriffsdatum belegen. Zweiter Link: SBB Fahrplan. "
+            "Schwächere Lernende erhalten die Seite geöffnet; falls Schulfilter sperren, einen Ausdruck der "
+            "Originalquelle zur Verfügung stellen. Ein festes Musterdatum darf nicht abgeschrieben werden: "
+            "die Musterlösung enthält bewusst [Datum der Bearbeitung]."
+        ),
+        (
+            "A12/A13 und benotete Leistungsnachweise",
+            "Beide Pflichtblätter sowie alle drei bestehenden Noten unverändert lassen. "
+            "PDF-Export, Alternativtext oder Linkwissen nicht überraschend als zusätzliche "
+            "Prüfungskompetenz verlangen. Zuerst Pflichtauftrag, dann freiwillige PLUS-Aufgaben."
+        ),
     ]
-    for heading, body in topics:
+    for heading, text in sections:
         doc.add_heading(heading, level=2)
-        doc.add_paragraph(body)
-    doc.add_heading("Beobachtungskriterien", level=2)
-    for s in [
-        "Dateisicherheit: richtiger Speicherort und Dateiname; Datei lässt sich erneut finden.",
-        "Brief: Adressblöcke, Datum, Betreff, Abschnitte, Grussformel, 1 Seite, identische PDF-Kopie.",
-        "Links: echte anklickbare Beziehungen (nicht nur blau gefärbter Text).",
-        "Quellen: Urheber / Anbieter, Seitenthema, Adresse und Zugriffstag.",
-        "Bei Problemen zuerst technische Bedienung vormachen; nicht zugleich Textproduktion und neue Word-Funktionen fordern.",
-        "Letztes Gate: auf den tatsächlichen Schul-PCs in Word 365 prüfen. LibreOffice- oder CI-Build ist kein Ersatz.",
+        doc.add_paragraph(text)
+    doc.add_heading("Kurzraster: formative Beobachtung", level=2)
+    for item in [
+        "A1: vor Arbeitsbeginn speichern; nach Änderungen Strg + S; Datei im korrekten Ordner erneut öffnen.",
+        "A7: dekorativ vs. informativ begründet entscheiden, ohne die Bildlayout-Hauptaufgabe zu verändern.",
+        "PLUS 1: Briefschema, gespeicherte End-DOCX, geöffnete PDF und visuelle Übereinstimmung.",
+        "PLUS 2: zwei echte Hyperlinks, korrekte Dauer-Aussage, passende Quelle, aktuelles Datum.",
+        "Bei Schwierigkeiten: Bedienung sichtbar vormachen; keine versteckten Zusatzanforderungen aufbauen.",
+        "Extern offen: Microsoft Word 365 auf Schul-PCs und echter Schülerdurchlauf samt Zeitmessung.",
     ]:
-        doc.add_paragraph(s, style="List Bullet")
+        doc.add_paragraph(item, style="List Bullet")
     doc.save(out)
 
 
