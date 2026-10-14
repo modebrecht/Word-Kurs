@@ -12,6 +12,21 @@
       "render": "LibreOffice + poppler"
     },
     {
+      "docx": "A11_Dokument_nach_Vorlage_nachbauen.docx",
+      "pages": 2,
+      "render": "LibreOffice + poppler"
+    },
+    {
+      "docx": "A12_Selbststaendig_gestalten.docx",
+      "pages": 2,
+      "render": "LibreOffice + poppler"
+    },
+    {
+      "docx": "A13_Gesamtauftrag_Pruefungsvorbereitung.docx",
+      "pages": 2,
+      "render": "LibreOffice + poppler"
+    },
+    {
       "docx": "ZUSATZ_Schnupperlehrbrief.docx",
       "pages": 1,
       "render": "LibreOffice + poppler"
