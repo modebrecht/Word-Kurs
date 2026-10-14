@@ -10,6 +10,15 @@ Die responsive [Schülerseite](index.html) zeigt A1–A13 und zwei freiwillige P
 
 **Bereitstellung:** Die `index.html` kann als einfache Kurswebsite veröffentlicht werden. Die unbenotete Übungsprüfung benötigt keine separate Zugriffskontrolle. Es genügt eine erreichbare URL und funktionierende Einzel-Downloads; kein zusätzliches Hosting- oder Sicherheitsprojekt. Einchecken ist noch kein Deployment. Technische Prüfung: `python src/validate_student_index.py`.
 
+## Phase B und C – digitale Dokumentkompetenz
+
+Zwei **separate interaktive HTML-Lektionen** ergänzen die bestehenden Word-Grundlagen, ohne A1–A13 zu ändern:
+
+- [Phase B · Werkzeuge vergleichen und bewusst auswählen](phase-b.html) – Word, KI und Dossier-Tool.
+- [Phase C · KI-Dokument kontrollieren und verbessern](phase-c.html) – Fehler im fiktiven Bewerbungsschreiben finden und korrigieren.
+
+Beide Seiten sind ohne Login und ohne KI-Abo bearbeitbar; keine Note, keine ZIP-Dateien. Ablauf: [Phasen B/C – Lehrpersonenhinweise](planung/PHASEN_BC.md).
+
 ## Aktueller Stand
 
 Das vollständige Paket ist erstellt:

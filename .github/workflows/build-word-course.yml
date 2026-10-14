@@ -6,6 +6,8 @@ on:
     paths:
       - 'src/**'
       - 'index.html'
+      - 'phase-b.html'
+      - 'phase-c.html'
       - 'requirements.txt'
       - '.github/workflows/build-word-course.yml'
   workflow_dispatch:
@@ -28,12 +30,15 @@ jobs:
         run: python src/validate_build.py
       - name: Validate student landing page (individual downloads only)
         run: python src/validate_student_index.py
+      - name: Validate phase B/C student lessons
+        run: python src/validate_phase_bc.py
       - name: Browser QA in real Chromium (4 sizes; 18 real downloads)
         if: github.ref_name == '3rd-round-qa'
         run: |
           python -m pip install playwright==1.55.0
           python -m playwright install --with-deps chromium
           python src/browser_qa_student_index.py
+          python src/browser_qa_phase_bc.py
       - name: Render V3 DOCX pages for review
         if: github.ref_name == '3rd-round-qa'
         run: |

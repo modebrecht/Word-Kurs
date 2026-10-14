@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="de-CH">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light">
+<title>Word-Kurs · Phase C | Dokumenten-Detektive</title>
+<meta name="description" content="Informatikbildung Sek 8: Dokumenten-Detektive. Einzelne, selbstständig nutzbare Unterrichtsseite ohne Login.">
+<style>
+:root{--navy:#17324d;--teal:#237b78;--deep:#1d6765;--mint:#eaf4f3;--pale:#f3f6f7;--warm:#f8f3ea;--ink:#203545;--muted:#58707d;--line:#d3dee2;--white:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font:16px/1.52 Arial,Helvetica,sans-serif;color:var(--ink);background:#f7fafb}
+button,input,textarea,select{font:inherit}a{color:var(--deep)}:focus-visible{outline:3px solid #e5a840;outline-offset:3px}
+.skip{position:absolute;left:-10000px;top:auto;background:white;padding:10px;z-index:10}.skip:focus{left:10px;top:10px}
+.top{background:var(--navy);color:#fff;border-bottom:5px solid var(--teal)}
+.shell{width:min(1100px,calc(100% - 36px));margin:auto}.top .shell{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:10px}
+.wordmark{font-weight:800;letter-spacing:.09em;font-size:.86rem}.wordmark span{color:#9ed8d1}.topnav{display:flex;flex-wrap:wrap;gap:12px}.topnav a{color:#e3f1f0;text-decoration:none;font-size:.85rem;padding:7px 0}.topnav a[aria-current="page"]{color:#fff;border-bottom:2px solid #b6e2de;font-weight:800}
+.hero{background:linear-gradient(120deg,#e9f4f2,#f4f7fa);border-bottom:1px solid var(--line);padding:36px 0 33px}.eyebrow{color:var(--deep);font-size:.76rem;letter-spacing:.09em;font-weight:800;text-transform:uppercase}
+h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.12;letter-spacing:-.035em;margin:9px 0 13px;color:var(--navy);max-width:760px}
+.hero p{max-width:700px;margin:0 0 16px}.meta{display:flex;flex-wrap:wrap;gap:8px}.meta span{border:1px solid #c5dcd9;border-radius:6px;padding:5px 9px;font-size:.82rem;color:var(--deep);background:white}
+main{padding:22px 0 60px}.steps{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 25px}.steps a{padding:8px 12px;background:#fff;border:1px solid var(--line);border-radius:8px;text-decoration:none;font-size:.88rem;font-weight:700}
+.section{background:#fff;border:1px solid var(--line);border-radius:15px;box-shadow:0 8px 30px #17324d08;padding:clamp(17px,3vw,30px);margin:0 0 22px;scroll-margin-top:15px}
+.number{color:var(--teal);font-size:.75rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}h2{color:var(--navy);line-height:1.22;font-size:clamp(1.35rem,3vw,1.9rem);letter-spacing:-.02em;margin:6px 0 9px}h3{font-size:1.07rem;color:var(--navy);margin:0 0 8px}
+.lead{color:#426171;max-width:780px;margin:0 0 19px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.box{border:1px solid var(--line);border-radius:11px;padding:17px;background:#fff;min-width:0}.soft{background:#f5f9f8}.warm{background:var(--warm);border-color:#e7dece}.small{font-size:.88rem;color:var(--muted)}
+.fact{list-style:none;padding:0;margin:0}.fact li{padding:7px 0;border-bottom:1px solid #e2e9ea}.fact li:last-child{border:0}.fact b{color:var(--navy)}
+.btn{appearance:none;display:inline-flex;justify-content:center;align-items:center;gap:6px;border:0;border-radius:8px;cursor:pointer;background:var(--navy);color:#fff;font-weight:750;padding:11px 17px;min-height:45px;text-align:center;text-decoration:none}.btn:hover{background:#254b68}.btn.secondary{background:#e7f3f1;border:1px solid #add1cb;color:var(--deep)}.btn.secondary:hover{background:#d4eae6}
+.action{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:15px}
+textarea,input[type=text],select{width:100%;border:1px solid #a8bfca;border-radius:8px;background:white;color:var(--ink);padding:11px;min-height:44px}
+textarea{min-height:112px;resize:vertical}label{display:block;font-weight:700;color:var(--navy);margin:0 0 7px}.field{margin:0 0 16px}
+.paper{background:#fff;border:1px solid #b9cbd4;border-radius:3px;box-shadow:0 8px 20px #17324d16;padding:22px;min-height:245px;max-width:580px;margin:0 auto;font-size:.93rem;color:#243949}.paper h3{margin-top:0;text-align:left;font-size:1.15rem}.paper p{margin:10px 0}.paper .rule{height:1px;background:#c4d4db;margin:14px 0}.paper strong{color:var(--navy)}
+.notice{background:#f9f3e9;border-left:4px solid #9f895f;padding:13px 17px;border-radius:4px;margin:17px 0;font-size:.94rem}
+.tick{display:flex;align-items:flex-start;gap:10px;padding:11px 0;border-bottom:1px solid #e3ebed}.tick input{margin-top:5px;width:18px;height:18px;flex:0 0 auto;accent-color:var(--teal)}.tick span{flex:1}
+.status{min-height:25px;color:var(--deep);font-weight:700;font-size:.9rem;margin-top:11px}details{border:1px solid var(--line);border-radius:9px;padding:11px 15px;background:var(--pale)}summary{font-weight:800;color:var(--navy);cursor:pointer}
+footer{padding:22px 0;background:var(--navy);color:#dce8ec;font-size:.84rem}footer a{color:#c8f0ec}
+@media(max-width:680px){.grid{grid-template-columns:1fr}.shell{width:min(100% - 28px,1100px)}.top .shell{justify-content:flex-start}.topnav{gap:16px}.hero{padding:27px 0}.paper{padding:16px}.section{margin-bottom:15px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{body{background:white}.top,.topnav,.steps,.action,.btn,.skip,footer{display:none!important}.section{box-shadow:none;break-inside:avoid;margin:0 0 10px}.hero{background:white;padding:8px 0}}
+</style></head><body>
+<a class="skip" href="#inhalt">Direkt zum Inhalt</a>
+<header class="top"><div class="shell"><div class="wordmark">WORD-KURS <span>· DOKUMENTKOMPETENZ</span></div><nav class="topnav" aria-label="Kursphasen"><a href="index.html">A · Word</a><a href="phase-b.html" >B · Werkzeuge</a><a href="phase-c.html" aria-current="page">C · Prüfen</a></nav></div></header>
+<div class="hero"><div class="shell"><div class="eyebrow">Informatikbildung · Phase C · Sek 8</div><h1>Dokumenten-Detektive</h1><p>Ein KI-Entwurf kann überzeugend aussehen und trotzdem Fehler enthalten. Hier prüfst du ein erfundenes Bewerbungsschreiben und verbesserst es selbst.</p><div class="meta"><span>ca. 45 Minuten</span><span>ohne Note</span><span>ohne Anmeldung lösbar</span></div></div></div>
+<main id="inhalt" class="shell">
+<nav class="steps" aria-label="Aufgaben"><a href="#fakten">1 · Fakten</a><a href="#entwurf">2 · Fehler finden</a><a href="#verbessern">3 · Verbessern</a><a href="#kontrolle">4 · Kontrollieren</a></nav>
+<section id="fakten" class="section"><div class="number">Aufgabe 1 · 5 Minuten</div><h2>Die Faktenkarte</h2>
+<p class="lead">Diese Informationen stimmen. Alles andere darf im Bewerbungsschreiben <strong>nicht als Tatsache behauptet</strong> werden.</p>
+<div class="grid">
+<div class="box soft"><h3>Fiktive Schülerin</h3><ul class="fact">
+<li><b>Name:</b> Lina Berger</li><li><b>Klasse:</b> 8. Klasse</li>
+<li><b>Beruf:</b> Mediamatikerin EFZ</li><li><b>Art:</b> Schnupperlehre</li>
+<li><b>Datum:</b> 10.–12. März 2027</li></ul></div>
+<div class="box"><h3>Was Lina wirklich kann</h3><ul class="fact">
+<li>Sie fotografiert gern.</li><li>Sie hat ein Plakat für die Schule gestaltet.</li>
+<li>Sie hat <b>noch keine Berufserfahrung</b>.</li>
+<li>Ihre Kontaktperson heisst <b>Frau Widmer</b>.</li>
+<li>Die Firma heisst <b>Atelier Nord AG</b> (erfunden).</li></ul></div></div>
+</section>
+<section id="entwurf" class="section"><div class="number">Aufgabe 2 · 10 Minuten</div><h2>Der KI-Entwurf</h2>
+<p class="lead">Lina hat einen Entwurf erhalten. <strong>Lies zuerst den Text und vergleiche ihn mit der Faktenkarte.</strong> Finde mindestens fünf Probleme. Die Fehler sind absichtlich eingebaut.</p>
+<div class="paper" aria-label="Absichtlich fehlerhaftes Beispiel eines KI-Schreibens"><div style="text-align:right;font-size:.86rem;color:#647985">Lina Berger · Solothurn</div><div class="rule"></div>
+<p>Atelier Nord AG</p><p><b>Bewerbung für eine Schnupperlehre als Informatikerin EFZ</b></p>
+<p>Sehr geehrte Damen und Herren</p>
+<p>Mein Name ist Lina Berger und ich gehe in die 9. Klasse. Ich bewerbe mich für die Schnupperlehre vom 10. bis 13. März 2027.</p>
+<p>Ich verfüge bereits über mehrere Jahre Berufserfahrung und beherrsche Photoshop perfekt. Ich bin garantiert die beste Bewerberin für Ihr Unternehmen.</p>
+<p>Mit freundlichen Grüssen<br>Lina Berger</p></div>
+<div class="notice"><strong>Frage:</strong> Was ist sachlich falsch? Und was klingt für eine Achtklässlerin unpassend? Es geht nicht darum, möglichst viele Rechtschreibfehler zu suchen.</div>
+<div class="field"><label for="findings">Schreibe mindestens fünf Probleme auf:</label><textarea id="findings" rows="4" maxlength="1100" placeholder="1. …&#10;2. …&#10;3. …"></textarea></div>
+<details id="solutions"><summary>Kontrollhilfe anzeigen – erst nach dem eigenen Versuch</summary>
+<p>Prüfe diese sechs Stellen: falscher Beruf · falsche Klasse · falsches Enddatum · erfundene Berufserfahrung · erfundene Photoshop-Kenntnisse · unpassende Übertreibung («beste Bewerberin»). Zusätzlich ist die Anrede unpersönlich, obwohl Frau Widmer bekannt ist.</p>
+<p><b>Wichtig:</b> Es gibt mehrere gute Formulierungen. Nicht jeder KI-Satz ist automatisch falsch.</p>
+</details></section>
+
+<section id="verbessern" class="section"><div class="number">Aufgabe 3 · 20 Minuten</div><h2>Mach den Brief glaubwürdig</h2><p class="lead">Bearbeite den Text im Feld. Korrigiere falsche Fakten und formuliere in einer Sprache, die zu Lina passt. Erfinde keine neuen Fähigkeiten. Ziel: ein kurzer, freundlicher Bewerbungstext.</p>
+<label for="editor">Deine verbesserte Version</label>
+<textarea id="editor" rows="14" spellcheck="true" maxlength="3500">Lina Berger
+Atelier Nord AG
+
+Bewerbung für eine Schnupperlehre als Informatikerin EFZ
+
+Sehr geehrte Damen und Herren
+
+Mein Name ist Lina Berger und ich gehe in die 9. Klasse. Ich bewerbe mich für die Schnupperlehre vom 10. bis 13. März 2027.
+
+Ich verfüge bereits über mehrere Jahre Berufserfahrung und beherrsche Photoshop perfekt. Ich bin garantiert die beste Bewerberin für Ihr Unternehmen.
+
+Freundliche Grüsse
+Lina Berger</textarea>
+<div class="action"><button type="button" class="btn" id="copy-c">Meinen verbesserten Brief kopieren</button><button type="button" class="btn secondary" id="reset-c">Ausgangstext wiederherstellen</button></div>
+<p class="status" id="editor-status" aria-live="polite"></p>
+<p class="small">Füge deinen fertigen Text bei Bedarf in Word ein. Diese Seite sendet keine Angaben an einen Server und speichert sie nicht dauerhaft. Lade die Seite während der Arbeit nicht neu.</p>
+</section>
+
+<section id="kontrolle" class="section"><div class="number">Aufgabe 4 · 10 Minuten</div><h2>Würdest du den Brief abschicken?</h2><p class="lead">Prüfe deinen eigenen Text, bevor du ihn als fertig bezeichnest.</p>
+<div id="checks">
+<label class="tick"><input type="checkbox"><span>Der Beruf stimmt: <strong>Mediamatikerin EFZ</strong>.</span></label>
+<label class="tick"><input type="checkbox"><span>Die Klasse und die Schnupperdaten sind richtig.</span></label>
+<label class="tick"><input type="checkbox"><span>Es stehen <strong>keine erfundenen Fähigkeiten</strong> im Brief.</span></label>
+<label class="tick"><input type="checkbox"><span>Die Anrede passt zur bekannten Kontaktperson.</span></label>
+<label class="tick"><input type="checkbox"><span>Der Brief klingt freundlich, glaubwürdig und altersgerecht.</span></label>
+</div>
+<div class="action"><button type="button" class="btn" id="check-c">Meine Checkliste überprüfen</button></div>
+<p class="status" id="check-status" aria-live="polite"></p>
+<div class="box warm" style="margin-top:15px"><label for="lesson">Ein Satz zum Abschluss: Was sollte man bei KI-Dokumenten immer kontrollieren?</label><textarea id="lesson" rows="2" maxlength="450" placeholder="Ich prüfe immer …"></textarea></div>
+<div class="action"><a class="btn secondary" href="phase-b.html">← Zu Phase B</a><a class="btn secondary" href="index.html">Zu Phase A</a></div>
+<p class="small">Es gibt hier bewusst <strong>keine automatische Note</strong>. Ob dein Brief inhaltlich und sprachlich gut ist, beurteilst du mit deiner Checkliste – und bei Bedarf gemeinsam mit der Lehrperson.</p>
+</section></main>
+<script>
+(function(){
+"use strict";
+var edit=document.getElementById("editor");
+var initial=edit.value;
+document.getElementById("copy-c").addEventListener("click",async function(){
+ var status=document.getElementById("editor-status");
+ if(edit.value.trim().length<70){status.textContent="Dein Brief ist noch sehr kurz. Überarbeite zuerst den Text.";return}
+ try{await navigator.clipboard.writeText(edit.value);status.textContent="Kopiert! Füge den Text in Word ein (Strg + V)."}
+ catch(e){edit.focus();edit.select();status.textContent="Markiere den Text und drücke Strg + C."}
+});
+document.getElementById("reset-c").addEventListener("click",function(){
+ if(window.confirm("Deine Änderungen wirklich zurücksetzen?")){
+  edit.value=initial;
+  document.getElementById("editor-status").textContent="Der ursprüngliche KI-Entwurf ist wieder da.";
+ }
+});
+document.getElementById("check-c").addEventListener("click",function(){
+ var all=[].slice.call(document.querySelectorAll("#checks input[type=checkbox]"));
+ var checked=all.filter(function(el){return el.checked}).length;
+ var s=document.getElementById("check-status");
+ s.textContent=checked===5?"Alle fünf Punkte abgehakt. Lies deinen Brief vor dem Abschicken noch einmal selbst durch.":checked+" von 5 Punkten abgehakt. Prüfe die restlichen Stellen.";
+});
+})();
+</script><footer><div class="shell">Word-Kurs · Phase C · Übung mit erfundenen Daten · <a href="index.html">Zurück zu Phase A</a></div></footer></body></html>

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="de-CH">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light">
+<title>Word-Kurs · Phase B | Drei Wege. Welcher passt?</title>
+<meta name="description" content="Informatikbildung Sek 8: Drei Wege. Welcher passt?. Einzelne, selbstständig nutzbare Unterrichtsseite ohne Login.">
+<style>
+:root{--navy:#17324d;--teal:#237b78;--deep:#1d6765;--mint:#eaf4f3;--pale:#f3f6f7;--warm:#f8f3ea;--ink:#203545;--muted:#58707d;--line:#d3dee2;--white:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font:16px/1.52 Arial,Helvetica,sans-serif;color:var(--ink);background:#f7fafb}
+button,input,textarea,select{font:inherit}a{color:var(--deep)}:focus-visible{outline:3px solid #e5a840;outline-offset:3px}
+.skip{position:absolute;left:-10000px;top:auto;background:white;padding:10px;z-index:10}.skip:focus{left:10px;top:10px}
+.top{background:var(--navy);color:#fff;border-bottom:5px solid var(--teal)}
+.shell{width:min(1100px,calc(100% - 36px));margin:auto}.top .shell{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:10px}
+.wordmark{font-weight:800;letter-spacing:.09em;font-size:.86rem}.wordmark span{color:#9ed8d1}.topnav{display:flex;flex-wrap:wrap;gap:12px}.topnav a{color:#e3f1f0;text-decoration:none;font-size:.85rem;padding:7px 0}.topnav a[aria-current="page"]{color:#fff;border-bottom:2px solid #b6e2de;font-weight:800}
+.hero{background:linear-gradient(120deg,#e9f4f2,#f4f7fa);border-bottom:1px solid var(--line);padding:36px 0 33px}.eyebrow{color:var(--deep);font-size:.76rem;letter-spacing:.09em;font-weight:800;text-transform:uppercase}
+h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.12;letter-spacing:-.035em;margin:9px 0 13px;color:var(--navy);max-width:760px}
+.hero p{max-width:700px;margin:0 0 16px}.meta{display:flex;flex-wrap:wrap;gap:8px}.meta span{border:1px solid #c5dcd9;border-radius:6px;padding:5px 9px;font-size:.82rem;color:var(--deep);background:white}
+main{padding:22px 0 60px}.steps{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 25px}.steps a{padding:8px 12px;background:#fff;border:1px solid var(--line);border-radius:8px;text-decoration:none;font-size:.88rem;font-weight:700}
+.section{background:#fff;border:1px solid var(--line);border-radius:15px;box-shadow:0 8px 30px #17324d08;padding:clamp(17px,3vw,30px);margin:0 0 22px;scroll-margin-top:15px}
+.number{color:var(--teal);font-size:.75rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}h2{color:var(--navy);line-height:1.22;font-size:clamp(1.35rem,3vw,1.9rem);letter-spacing:-.02em;margin:6px 0 9px}h3{font-size:1.07rem;color:var(--navy);margin:0 0 8px}
+.lead{color:#426171;max-width:780px;margin:0 0 19px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.box{border:1px solid var(--line);border-radius:11px;padding:17px;background:#fff;min-width:0}.soft{background:#f5f9f8}.warm{background:var(--warm);border-color:#e7dece}.small{font-size:.88rem;color:var(--muted)}
+.fact{list-style:none;padding:0;margin:0}.fact li{padding:7px 0;border-bottom:1px solid #e2e9ea}.fact li:last-child{border:0}.fact b{color:var(--navy)}
+.btn{appearance:none;display:inline-flex;justify-content:center;align-items:center;gap:6px;border:0;border-radius:8px;cursor:pointer;background:var(--navy);color:#fff;font-weight:750;padding:11px 17px;min-height:45px;text-align:center;text-decoration:none}.btn:hover{background:#254b68}.btn.secondary{background:#e7f3f1;border:1px solid #add1cb;color:var(--deep)}.btn.secondary:hover{background:#d4eae6}
+.action{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:15px}
+textarea,input[type=text],select{width:100%;border:1px solid #a8bfca;border-radius:8px;background:white;color:var(--ink);padding:11px;min-height:44px}
+textarea{min-height:112px;resize:vertical}label{display:block;font-weight:700;color:var(--navy);margin:0 0 7px}.field{margin:0 0 16px}
+.paper{background:#fff;border:1px solid #b9cbd4;border-radius:3px;box-shadow:0 8px 20px #17324d16;padding:22px;min-height:245px;max-width:580px;margin:0 auto;font-size:.93rem;color:#243949}.paper h3{margin-top:0;text-align:left;font-size:1.15rem}.paper p{margin:10px 0}.paper .rule{height:1px;background:#c4d4db;margin:14px 0}.paper strong{color:var(--navy)}
+.notice{background:#f9f3e9;border-left:4px solid #9f895f;padding:13px 17px;border-radius:4px;margin:17px 0;font-size:.94rem}
+.tick{display:flex;align-items:flex-start;gap:10px;padding:11px 0;border-bottom:1px solid #e3ebed}.tick input{margin-top:5px;width:18px;height:18px;flex:0 0 auto;accent-color:var(--teal)}.tick span{flex:1}
+.status{min-height:25px;color:var(--deep);font-weight:700;font-size:.9rem;margin-top:11px}details{border:1px solid var(--line);border-radius:9px;padding:11px 15px;background:var(--pale)}summary{font-weight:800;color:var(--navy);cursor:pointer}
+footer{padding:22px 0;background:var(--navy);color:#dce8ec;font-size:.84rem}footer a{color:#c8f0ec}
+@media(max-width:680px){.grid{grid-template-columns:1fr}.shell{width:min(100% - 28px,1100px)}.top .shell{justify-content:flex-start}.topnav{gap:16px}.hero{padding:27px 0}.paper{padding:16px}.section{margin-bottom:15px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{body{background:white}.top,.topnav,.steps,.action,.btn,.skip,footer{display:none!important}.section{box-shadow:none;break-inside:avoid;margin:0 0 10px}.hero{background:white;padding:8px 0}}
+</style></head><body>
+<a class="skip" href="#inhalt">Direkt zum Inhalt</a>
+<header class="top"><div class="shell"><div class="wordmark">WORD-KURS <span>· DOKUMENTKOMPETENZ</span></div><nav class="topnav" aria-label="Kursphasen"><a href="index.html">A · Word</a><a href="phase-b.html" aria-current="page">B · Werkzeuge</a><a href="phase-c.html" >C · Prüfen</a></nav></div></header>
+<div class="hero"><div class="shell"><div class="eyebrow">Informatikbildung · Phase B · Sek 8</div><h1>Drei Wege. Welcher passt?</h1><p>Du hast Word gelernt. Jetzt entscheidest du: Wann ist Word praktisch, wann hilft KI und wann ein Dossier-Tool? Es gibt nicht immer nur eine richtige Wahl.</p><div class="meta"><span>ca. 45 Minuten</span><span>ohne Note</span><span>ohne Anmeldung lösbar</span></div></div></div>
+<main id="inhalt" class="shell">
+<nav class="steps" aria-label="Aufgaben"><a href="#vergleichen">1 · Vergleichen</a><a href="#entscheiden">2 · Entscheiden</a><a href="#ausprobieren">3 · Ausprobieren</a><a href="#abgeben">4 · Abschluss</a></nav>
+<section class="section" id="vergleichen">
+<div class="number">Aufgabe 1 · 10 Minuten</div><h2>Dasselbe Ziel – drei Wege</h2>
+<p class="lead">Lina möchte ein kurzes Bewerbungsdossier für eine Schnupperlehre erstellen. Schau dir die drei <strong>vereinfachten Beispiele</strong> an. Es sind keine echten KI-Ausgaben und kein Live-Zugriff auf Programme.</p>
+<div class="grid">
+<div class="box soft"><h3>Die Ausgangsdaten</h3><ul class="fact">
+<li><b>Name:</b> Lina Berger (erfunden)</li><li><b>Schule:</b> 8. Klasse</li>
+<li><b>Gesucht:</b> Schnupperlehre Mediamatikerin EFZ</li><li><b>Zeitraum:</b> 10.–12. März 2027</li>
+<li><b>Kann:</b> fotografieren, Schulplakat gestalten</li>
+<li><b>Noch nicht:</b> Berufserfahrung</li></ul></div>
+<div class="box">
+<h3>Welchen Weg möchtest du ansehen?</h3><div class="action" role="group" aria-label="Werkzeug wählen">
+<button type="button" class="btn tool" data-tool="word" aria-pressed="true">Word</button>
+<button type="button" class="btn secondary tool" data-tool="ki" aria-pressed="false">KI</button>
+<button type="button" class="btn secondary tool" data-tool="dossier" aria-pressed="false">Dossier-Tool</button>
+</div><p class="small">Klicke alle drei Möglichkeiten einmal an.</p><p id="tool-feedback" class="status" aria-live="polite">Word ausgewählt</p>
+</div></div>
+<div class="box soft" style="margin-top:15px">
+<div id="demo-preview" class="paper" aria-live="polite"><h3>Bewerbung – Lina Berger</h3><p><strong>Schnupperlehre Mediamatikerin EFZ</strong></p><div class="rule"></div><p>Ich bin in der 8. Klasse, fotografiere gern und habe in der Schule ein Plakat gestaltet.</p><p><strong>Weg:</strong> Text selbst in Word eingeben und formatieren.</p></div>
+<div class="grid" style="margin-top:13px"><p class="small" id="tool-plus"><b>Praktisch:</b> Ich kann einzelne Wörter, Abstände und Bilder direkt ändern.</p><p class="small" id="tool-care"><b>Achtung:</b> Gestaltung und Korrektur brauchen etwas Zeit.</p></div>
+</div>
+<div class="notice"><strong>Merke:</strong> Ein schöner Entwurf ist noch nicht automatisch richtig. Die Inhalte müssen bei jedem Werkzeug stimmen.</div>
+</section>
+
+<section class="section" id="entscheiden">
+<div class="number">Aufgabe 2 · 10 Minuten</div><h2>Welches Werkzeug würdest du wählen?</h2>
+<p class="lead">Wähle pro Situation eine Möglichkeit. Drücke danach auf «Vergleich anzeigen». Du bekommst eine mögliche Begründung – nicht einfach eine Note.</p>
+<div class="grid">
+<div class="box"><label for="case-1">1 · Du musst in einer bestehenden Word-Datei nur Datum und Tabelle ändern.</label>
+<select id="case-1"><option value="">Bitte wählen</option><option value="word">Word</option><option value="ki">KI</option><option value="dossier">Dossier-Tool</option></select><p class="small" id="feedback-1"></p></div>
+<div class="box"><label for="case-2">2 · Du brauchst zuerst Ideen für einen freundlichen Bewerbungstext.</label>
+<select id="case-2"><option value="">Bitte wählen</option><option value="word">Word</option><option value="ki">KI</option><option value="dossier">Dossier-Tool</option></select><p class="small" id="feedback-2"></p></div>
+<div class="box"><label for="case-3">3 · Du willst Lebenslauf und Anschreiben mit einem einheitlichen Design ausgeben.</label>
+<select id="case-3"><option value="">Bitte wählen</option><option value="word">Word</option><option value="ki">KI</option><option value="dossier">Dossier-Tool</option></select><p class="small" id="feedback-3"></p></div>
+</div><div class="action"><button type="button" class="btn" id="compare">Vergleich anzeigen</button></div><p class="small">Es sind mehrere Wege möglich. Entscheidend ist deine Begründung.</p>
+</section>
+
+<section class="section" id="ausprobieren">
+<div class="number">Aufgabe 3 · 15 Minuten</div><h2>Jetzt bist du dran</h2>
+<p class="lead"><strong>Auftrag:</strong> Formuliere eine kurze Bewerbung für Lina: <b>4–6 Sätze</b>. Verwende nur die Ausgangsdaten von oben. Du darfst <strong>Word</strong> oder – wenn verfügbar und von der Lehrperson erlaubt – ein <strong>KI-Werkzeug</strong> verwenden. Ein Dossier-Tool ist eine weitere freiwillige Möglichkeit.</p>
+<div class="grid">
+<div class="box warm"><h3>Weg 1 · Ohne KI</h3><p>Öffne Word. Schreibe 4–6 Sätze über Lina und ihre Motivation für den Beruf Mediamatikerin. Speichere das Dokument in deinem IB-Ordner.</p></div>
+<div class="box soft"><h3>Weg 2 · Mit KI (freiwillig)</h3><p>Bitte die KI um 4–6 einfache Sätze mit den Daten von Lina. Kopiere das Ergebnis in Word und überprüfe, ob alles stimmt.</p></div>
+</div>
+<details style="margin-top:15px"><summary>Beispiel für einen KI-Auftrag anzeigen</summary><p>«Schreibe 4–6 kurze, freundliche Sätze für eine Schnupperbewerbung. Nutze nur diese erfundenen Fakten: Lina Berger, 8. Klasse, Schnupperlehre Mediamatikerin EFZ vom 10. bis 12. März 2027, fotografiert gern und hat ein Schulplakat gestaltet. Erfinde keine Erfahrungen oder Kenntnisse. Schreibe einfach und altersgerecht.»</p></details>
+<p class="small">Kein KI-Zugang? Du kannst die ganze Phase auch mit Word und den Beispielen oben bearbeiten. Verwende keine persönlichen Daten.</p>
+</section>
+
+<section class="section" id="abgeben">
+<div class="number">Aufgabe 4 · 10 Minuten</div><h2>Deine Entscheidung erklären</h2><p class="lead">Ergänze die drei Sätze. Kopiere sie bei Bedarf in dein Word-Dokument. Die Seite speichert nichts im Internet.</p>
+<div class="field"><label for="choice">Für die Bewerbung habe ich dieses Werkzeug gewählt:</label><select id="choice"><option value="">Wähle deinen Weg</option><option>Word</option><option>KI + Word</option><option>Dossier-Tool</option></select></div>
+<div class="field"><label for="reason">Es war für diese Aufgabe praktisch, weil …</label><textarea id="reason" rows="2" maxlength="450" placeholder="Zum Beispiel: Ich konnte den Text schnell ändern."></textarea></div>
+<div class="field"><label for="check">Kontrollieren musste ich trotzdem …</label><textarea id="check" rows="2" maxlength="450" placeholder="Zum Beispiel: die Daten und den Beruf."></textarea></div>
+<div class="action"><button class="btn" type="button" id="copy-b">Meine Antworten kopieren</button><a class="btn secondary" href="phase-c.html">Weiter zu Phase C →</a></div>
+<p class="status" id="copy-status" aria-live="polite"></p>
+<div class="notice">Fertig? Du hast nicht nur ein Programm benutzt, sondern auch begründet, <strong>warum</strong> du es eingesetzt hast.</div>
+</section></main>
+<script>
+(function(){
+"use strict";
+var examples={
+ word:{heading:"Bewerbung – Lina Berger",sub:"Schnupperlehre Mediamatikerin EFZ",text:"Ich bin in der 8. Klasse, fotografiere gern und habe in der Schule ein Plakat gestaltet.",way:"Text selbst in Word eingeben und formatieren.",plus:"Einzelne Wörter, Bilder und Abstände direkt ändern.",care:"Gestaltung und Korrektur kosten etwas Zeit."},
+ ki:{heading:"Textentwurf (Beispiel einer KI)",sub:"Schnupperlehre im Medienbereich",text:"Ich interessiere mich für Bilder und Medien. Gern möchte ich Ihren Beruf kennenlernen. Über eine Rückmeldung freue ich mich.",way:"Textidee auf Knopfdruck erzeugen.",plus:"Ein erster Text entsteht sehr schnell.",care:"Prüfe Fakten, Ton und fehlende Angaben. KI kann etwas erfinden."},
+ dossier:{heading:"LINA BERGER · Bewerbungsdossier",sub:"Schnupperlehre Mediamatikerin EFZ",text:"Schule: 8. Klasse · Interesse: Fotografie · Projekt: Schulplakat",way:"Daten in Felder eintragen, ein Design auswählen und als PDF ausgeben.",plus:"Einheitlicher Aufbau und wiederverwendbare Daten.",care:"Prüfe, ob alle Felder und Formulierungen korrekt sind."}
+};
+var buttons=[].slice.call(document.querySelectorAll(".tool"));
+buttons.forEach(function(button){
+ button.addEventListener("click",function(){
+ var item=examples[button.dataset.tool];
+ document.getElementById("demo-preview").innerHTML="<h3>"+item.heading+"</h3><p><strong>"+item.sub+"</strong></p><div class='rule'></div><p>"+item.text+"</p><p><strong>Weg:</strong> "+item.way+"</p>";
+ document.getElementById("tool-plus").textContent="Praktisch: "+item.plus;
+ document.getElementById("tool-care").textContent="Achtung: "+item.care;
+ document.getElementById("tool-feedback").textContent=button.textContent+" ausgewählt";
+ buttons.forEach(function(other){var isCurrent=other===button;other.setAttribute("aria-pressed",String(isCurrent));other.classList.toggle("secondary",!isCurrent)});
+ });
+});
+var hints=[
+ {word:"Gut passend: Die Datei ist bereits in Word. Eine direkte Änderung ist meistens am schnellsten.",ki:"Möglich, aber für zwei kleine Änderungen oft unnötig kompliziert.",dossier:"Wenig passend: Die bestehende Word-Datei müsste erst übertragen werden."},
+ {word:"Möglich: Du kannst die Sätze auch selbst schreiben und dabei lernen.",ki:"Oft praktisch: Die KI liefert Textideen. Fakten und Ton selbst prüfen!",dossier:"Ein Dossier-Tool kann Textbausteine anbieten, ist aber nicht nötig, um Ideen zu sammeln."},
+ {word:"Möglich: Ein einheitliches Layout lässt sich in Word selbst gestalten.",ki:"Möglich: KI kann beim Entwurf helfen. Export und Layout müssen geprüft werden.",dossier:"Oft praktisch: Eine Spezialanwendung unterstützt ein einheitliches Dossier-Design."}
+];
+document.getElementById("compare").addEventListener("click",function(){
+ for(var i=1;i<=3;i++){
+  var v=document.getElementById("case-"+i).value;
+  document.getElementById("feedback-"+i).textContent=v?hints[i-1][v]:"Wähle zuerst ein Werkzeug.";
+ }
+});
+document.getElementById("copy-b").addEventListener("click",async function(){
+ var choice=document.getElementById("choice").value,reason=document.getElementById("reason").value.trim(),check=document.getElementById("check").value.trim();
+ var status=document.getElementById("copy-status");
+ if(!choice||!reason||!check){status.textContent="Bitte ergänze zuerst alle drei Antworten.";return}
+ var message="PHASE B – WERKZEUGWAHL\nWerkzeug: "+choice+"\nWarum: "+reason+"\nWas kontrolliert: "+check;
+ try{await navigator.clipboard.writeText(message);status.textContent="Kopiert! Füge den Text jetzt in Word ein (Strg + V)."}
+ catch(e){status.textContent="Kopieren nicht möglich. Markiere deine Antworten und kopiere sie mit Strg + C."}
+});
+})();
+</script><footer><div class="shell">Word-Kurs · Phase B · Übung mit erfundenen Daten · <a href="phase-c.html">Weiter zu Phase C →</a></div></footer></body></html>
