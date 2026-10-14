@@ -58,7 +58,23 @@ def _instruction_brief(out: Path) -> None:
     t = block(doc, "02", "GESTALTEN")
     cell = t.cell(0, 1)
     add_text(cell, "Alle Texte sind vorhanden. Die Firma und die Person sind fiktiv. Sende diesen Übungsbrief nicht ab.", 9.3)
-    add_text(cell, "BRIEFSCHEMA · Von oben nach unten: links Absender → links Empfänger → rechts Ort/Datum → links Betreff (fett) → Anrede → zwei Textabsätze → Gruss und Name.", 9.2, bold=True, color=NAVY, after=.5)
+    add_text(cell, "BRIEFSCHEMA · So liegen die Teile auf der Briefseite:", 9.2, bold=True, color=NAVY, after=.2)
+    schema = cell.add_table(rows=4, cols=2)
+    for row_index, (left_text, right_text) in enumerate([
+        ("Absender: Name und Adresse", ""),
+        ("Empfänger: Firma und Adresse", "Ort, Datum"),
+        ("Betreff (fett) · Anrede", ""),
+        ("Zwei Textabsätze · Gruss · Name", ""),
+    ]):
+        for col_index, label in enumerate((left_text, right_text)):
+            p = schema.cell(row_index, col_index).paragraphs[0]
+            p.paragraph_format.space_after = Pt(1)
+            p.alignment = WD_ALIGN_PARAGRAPH.RIGHT if col_index == 1 else WD_ALIGN_PARAGRAPH.LEFT
+            run = p.add_run(label)
+            run.font.name = "Arial"
+            run.font.size = Pt(9)
+            run.bold = row_index in (0, 2)
+
     add_step(cell, "A", [("A4 Hochformat, Ränder Normal, Arial 11 pt.", True, False, NAVY)])
     add_step(cell, "B", [("Absender oben, Empfänger darunter, Datum rechts, dann Betreff.", True, False, NAVY)])
     add_step(cell, "C", [("Betreff fett; Anrede, zwei kurze Textabsätze und Grussformel gut lesbar.", True, False, NAVY)])
