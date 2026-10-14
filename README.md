@@ -6,9 +6,9 @@ Der bestehende ältere Kurs wird **nicht einfach gekürzt oder modernisiert**, s
 
 ## Schüler-Startseite (Round 3)
 
-Die responsive [Schülerseite](index.html) zeigt A1–A13 und zwei freiwillige PLUS-Aufträge in 3/2/1 Kacheln mit echten Vorlagenminiaturen, kurzen Erklärungen und **nur einzelnen Word- und ggf. Bilddateien**. **Keine ZIP-Downloads** auf der Schüleroberfläche. Prüfungen und Lehrerdateien werden nicht über diese Seite angeboten.
+Die responsive [Schülerseite](index.html) zeigt A1–A13 und zwei freiwillige PLUS-Aufträge in 3/2/1 Kacheln mit echten Vorlagenminiaturen, kurzen Erklärungen und **nur einzelnen Word- und ggf. Bilddateien**. **Keine ZIP-Downloads** auf der Schüleroberfläche. Lehrpersonenmaterial und zusätzliche Übungsprüfungen können bei Bedarf weiterhin über den gewohnten Unterrichtsweg bereitgestellt werden.
 
-**Noch nicht veröffentlicht:** Das Einchecken der `index.html` ist kein Deployment. Vor einer externen Veröffentlichung die Zugänglichkeit und Vertraulichkeit der benoteten Prüfungen beachten: Das GitHub-Repository ist öffentlich. Für eine echte Schüler-URL nur freigegebene Schülerdateien bereitstellen. Prüfung: `python src/validate_student_index.py`.
+**Bereitstellung:** Die `index.html` kann als einfache Kurswebsite veröffentlicht werden. Die unbenotete Übungsprüfung benötigt keine separate Zugriffskontrolle. Es genügt eine erreichbare URL und funktionierende Einzel-Downloads; kein zusätzliches Hosting- oder Sicherheitsprojekt. Einchecken ist noch kein Deployment. Technische Prüfung: `python src/validate_student_index.py`.
 
 ## Aktueller Stand
 

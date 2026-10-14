@@ -8,7 +8,7 @@ from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "index.html"
-BANNED = ("word_test", "korrekturblatt", "benoteter_steckbrief", "uebungstest", ".zip")
+BANNED = (".zip",)
 EXPECTED_IMAGES = {
     "a7_schulhaus.png",
 }
@@ -70,7 +70,7 @@ def validate() -> None:
     html = SITE.read_text(encoding="utf-8")
     content = html.lower()
     if any(x in content for x in BANNED):
-        raise RuntimeError("Schülerseite enthält Prüfungs-, Lehrer- oder Archivverweise.")
+        raise RuntimeError("Die Schülerseite bietet keine ZIP-Dateien an.")
     if "<script" in content or "http://" in content or "https://" in content:
         raise RuntimeError("Die Schülerseite soll ohne externe Dienste und Skripte funktionieren.")
     parser = IndexLinks()

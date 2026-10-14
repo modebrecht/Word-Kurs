@@ -14,12 +14,12 @@ Eine ruhige, mobil nutzbare `index.html` im etablierten Navy-/Teal-Stil. Schüle
 ## Technische Umsetzung
 - `index.html` enthält reines, statisches HTML und CSS; echte Vorschaudateien aus `arbeitsblaetter/assets/vorlagen/` und `qa/3rd-round/pages/`.
 - Downloadlinks sind relativ zu einem statischen Webserver, der den Repository-Root ausliefert.
-- Der Validator `src/validate_student_index.py` prüft die vorhandenen Dateien und verhindert ZIP-/Prüfungslinks; CI führt den Validator nach dem Kursgenerator aus.
+- Der Validator `src/validate_student_index.py` prüft die vorhandenen Dateien, Downloadpfade und den Verzicht auf ZIP-Dateien; CI führt ihn nach dem Kursgenerator aus.
 - Start-/Muster-Dokumente sind selbständiges Word-Übungsmaterial und erhalten deshalb keinen dekorativen Kurs-Header.
 - Die Weboberfläche wurde nicht auf eine bestimmte Plattform deployed.
 
-## Verbindliche Grenze vor Veröffentlichung
-Das **Repository ist öffentlich** und enthält auch benotete Prüfungen, Musterlösungen und Lehrerdateien. Das Weglassen von Links in der `index.html` **schützt diese Dateien nicht**. Für Schüler eine getrennte veröffentlichte Website bzw. ein Schulportal mit **ausschliesslich** freigegebenen Schülerdateien verwenden; Prüfungen und Musterlösungen privat halten. Kein öffentliches Hosting des gesamten Repo-Inhalts ohne Bereinigung.
+## Bereitstellung für die Klasse
+Die Kurs-Startseite kann ohne separates Zugangssystem veröffentlicht werden. Die unbenotete Übungsprüfung ist kein Geheimhaltungsfall. Für den Einsatz genügt ein erreichbarer Website-Link mit funktionierenden Einzel-Downloads. Eine vom Unterricht nicht benötigte zusätzliche Berechtigungs- oder Hostingarchitektur ist **kein Freigabe-Gate**. Die vorhandenen benoteten Materialien bleiben in ihrem bisherigen Repository-Stand; es wird keine Zugriffssicherheit behauptet.
 
 ## QA
 - Alle 13 Pflichtdateien und zwei optionale Zusatzaufgaben müssen einzeln erreichbar sein.
@@ -44,7 +44,7 @@ Das **Repository ist öffentlich** und enthält auch benotete Prüfungen, Muster
 - Für A1/A4/A6 werden die vorhandenen tatsächlichen Word-Werkzeugbilder benutzt statt ganzer Dokumentseiten oder erfundener Beispieldokumente. Die Quellen sind die bereits im Kurs vorhandenen PNGs.
 - A12/A13 zeigen ausschliesslich Bildmaterial; ausdrücklich **keine Zielvorlage**.
 - Die PLUS-Aufgaben zeigen künftig neutrale schematische Ansichten statt der bisher als JPG referenzierten **Lehrpersonen-Musterlösungen**. Dadurch wird der Sachfakt der Quellenrecherche nicht in der Schülerkarte verraten.
-- Die Downloadlinks und der Kursstoff bleiben unverändert; kein ZIP. Auch hier gilt: keine öffentliche Auslieferung der vertraulichen Lehrpersonen- und Prüfungsdateien.
+- Die Downloadlinks und der Kursstoff bleiben unverändert; keine ZIP-Dateien. Die unbenotete Übungsprüfung benötigt keine besondere Zugriffssperre.
 - Neuer automatischer QA-Gate in `src/validate_student_index.py`: Vorschau-Typ und Beschriftung aller 15 Kacheln, vorhandene Bilder, keine Lehrpersonenlösung.
 
 ## Fix 1 – echte Browser-QA (14.10.2026)
@@ -53,7 +53,7 @@ Das **Repository ist öffentlich** und enthält auch benotete Prüfungen, Muster
 - Für alle vier Grössen werden 15 Kacheln, 13 geladene Miniaturbilder, 18 sichtbare Downloadlinks, horizontale Überläufe, abgeschnittene Knöpfe, die vier Abschnittsnavigationen und Konsolen-/Netzwerkfehler getestet.
 - Unter Desktop werden alle 18 Downloadlinks wirklich angeklickt; Dateinamen und SHA256-Prüfsummen der empfangenen Dateien müssen mit den Originalen übereinstimmen. Mobiler A7-Bilddownload wird zusätzlich geprüft.
 - CI schreibt vier echte Screenshots und eine JSON-Auswertung nach `qa/browser/`; **automatische Tests ersetzen die spätere Sichtprüfung nicht**.
-- Unverändert: kein Deployment und keine Veröffentlichung des Repository-Inhalts. Native Word 365, Schul-PC-Tests und Schutz der im Repository vorhandenen Prüfungsdateien sind separate Gates.
+- Unverändert: kein Deployment. Der Schul-PC-Test mit nativem Word 365 bleibt eine praktische Qualitätskontrolle; keine zusätzliche Zugangskontrolle als Blocker.
 
 **Browser-Testpräzisierung:** Ein erster CI-Lauf löste zehn Downloads hintereinander in derselben Chromium-Sitzung aus. Chromium blockierte dann weitere automatische Downloads (Browser-Schutzmechanismus). Die reale Schülernutzung ist ein einzelner Download je Aufgabe. Der vollständige QA-Gate prüft darum jeden der 18 Downloads in einer separaten Inkognito-Browsersitzung: tatsächlicher Klick, Download-Ereignis, Dateiname und SHA256-Dateiintegrität. Der Browserschutz bleibt aktiv und wird nicht abgeschaltet.
 
@@ -65,4 +65,8 @@ Das **Repository ist öffentlich** und enthält auch benotete Prüfungen, Muster
 - **Geometrie:** Desktop 1440 px → 3 Spalten, Tablet 820 px → 2, Smartphone 390 px → 1, kleines Smartphone 320 px → 1. Bei allen vier Messungen `documentWidth == viewportWidth`, keine Offender und keine defekten Bilder. Kein horizontales Scrollen.
 - **Sichtprüfung:** Alle vier vollständigen Screenshots einzeln manuell mittels visueller AI-Bildkontrolle betrachtet. Kein abgeschnittener Download-Button, keine überlappenden Texte, keine fehlerhaften oder fehlenden Bilder, korrekt angeordnete Zusatzaufgaben. Auf 320 px bricht der Hero-Titel in mehrere lesbare Zeilen um, ohne Überlauf.
 - **Ursache des ersten CI-Fehlers:** Test versuchte 18 Dateien in einer einzigen Browsersitzung automatisch herunterzuladen; Chromium bremste nach dem zehnten Download. Testkorrektur: eine unabhängige Sitzung pro Download. Browser-Sicherheit bleibt aktiv; der reale Einzeldownload ist nachgewiesen.
-- **Urteil:** **BROWSER-QA PASS für die lokale Schülerseite**. Ein separater öffentlich erreichbarer Hosting-Test (einschliesslich der sicheren Verteilung nur freigegebener Dateien) sowie native Word-365-Schul-PC-Tests bleiben OFFEN. Kein Deployment/Merge.
+- **Urteil:** **BROWSER-QA PASS für die lokale Schülerseite**. Ein kurzer Funktionstest unter der späteren öffentlichen Adresse und Word 365 auf Schul-PCs bleiben sinnvoll. Kein Deployment/Merge.
+
+## Entscheidung nach Nutzerfeedback (14.10.2026)
+
+**Fix 2 (separate abgesicherte Hosting-Architektur) entfällt ausdrücklich.** Es geht um einen unkomplizierten Schülerzugang zu einem Word-Übungskurs; die Übungsprüfung ist unbenotet. Keine künstliche Geheimhaltungsanforderung und keine gesonderte Infrastruktur als Pflichtkriterium. Verbindlich bleiben: funktionierende Downloadlinks ohne ZIP und einfache Bedienbarkeit. Veröffentlichung nur auf ausdrückliche Freigabe.
