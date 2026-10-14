@@ -37,3 +37,12 @@ Das **Repository ist öffentlich** und enthält auch benotete Prüfungen, Muster
 - **CI:** [Run 38555065511](https://github.com/modebrecht/Word-Kurs/actions/runs/38555065511) PASS (Generierung, Inhalts-/Bild-Validierung, Schülerseiten-Links, LibreOffice-Rendering). Index: 17 einzelne DOCX-Links und ein A7-PNG-Link, insgesamt 18 Downloads.
 - **Visuelle Prüfung:** A11, A12, A13 je zwei Seiten, **6/6 Seiten** kontrolliert. Kein Überlauf, kein fehlendes Bild, keine ungewollte Zusatzseite. Quellbilder sind auch als Medienobjekt im DOCX nachgewiesen.
 - **Extern weiterhin UNVERIFIED:** Word 365 auf Schul-PCs; echtes Kopieren/Bildbearbeiten und Schülerzeit. Keine Veröffentlichung.
+
+## Fix 2 — konsistente, ehrliche Miniaturansichten (14.10.2026)
+
+- Alle **15 Kacheln** erhalten exakt denselben Vorschau-Rahmen und eine der drei erklärenden Unterschriften: **SO SOLL ES AUSSEHEN** (konkrete Vorlage), **DAS ÜBST DU** (Werkzeug oder schematische Tätigkeit), **DEIN BILDMATERIAL** (offene Gestaltung ohne Zielvorlage).
+- Für A1/A4/A6 werden die vorhandenen tatsächlichen Word-Werkzeugbilder benutzt statt ganzer Dokumentseiten oder erfundener Beispieldokumente. Die Quellen sind die bereits im Kurs vorhandenen PNGs.
+- A12/A13 zeigen ausschliesslich Bildmaterial; ausdrücklich **keine Zielvorlage**.
+- Die PLUS-Aufgaben zeigen künftig neutrale schematische Ansichten statt der bisher als JPG referenzierten **Lehrpersonen-Musterlösungen**. Dadurch wird der Sachfakt der Quellenrecherche nicht in der Schülerkarte verraten.
+- Die Downloadlinks und der Kursstoff bleiben unverändert; kein ZIP. Auch hier gilt: keine öffentliche Auslieferung der vertraulichen Lehrpersonen- und Prüfungsdateien.
+- Neuer automatischer QA-Gate in `src/validate_student_index.py`: Vorschau-Typ und Beschriftung aller 15 Kacheln, vorhandene Bilder, keine Lehrpersonenlösung.

@@ -92,6 +92,42 @@ def validate() -> None:
         fragment = html.split(f'id="a{i}"', 1)[1].split("</article>", 1)[0]
         if "Bild herunterladen" in fragment:
             raise RuntimeError(f"A{i} darf keinen zweiten Bilddownload benötigen.")
+
+    # Einheitliche, didaktisch korrekte Vorschau: A1–A13 und PLUS 1/2.
+    expected = {
+        "a1": "ueben", "a2": "ziel", "a3": "ziel", "a4": "ueben",
+        "a5": "ziel", "a6": "ueben", "a7": "ziel", "a8": "ziel",
+        "a9": "ueben", "a10": "ueben", "a11": "ziel",
+        "a12": "material", "a13": "material",
+        "plus-1": "ueben", "plus-2": "ueben",
+    }
+    preview_labels = {
+        "ziel": "SO SOLL ES AUSSEHEN",
+        "ueben": "DAS ÜBST DU",
+        "material": "DEIN BILDMATERIAL",
+    }
+    for card_id, preview_type in expected.items():
+        match = re.search(
+            r'<article class="task-card" id="' + re.escape(card_id)
+            + r'"[\s\S]*?</article>', html,
+        )
+        if not match:
+            raise RuntimeError(f"Vorschau fehlt: {card_id}")
+        card = match.group(0)
+        if ('<figure class="task-preview" data-type="' + preview_type + '">') not in card:
+            raise RuntimeError(f"Falsche Vorschau-Art: {card_id}")
+        if ('<figcaption class="preview-label">' + preview_labels[preview_type] + '</figcaption>') not in card:
+            raise RuntimeError(f"Vorschau-Beschriftung falsch: {card_id}")
+        if "preview-surface" not in card or ("<img " not in card and 'role="img"' not in card):
+            raise RuntimeError(f"Vorschau ohne Bild oder Alternative: {card_id}")
+        if card_id in ("a12", "a13") and preview_type != "material":
+            raise RuntimeError(f"Bei freier Gestaltung darf keine Zielvorlage vorgetäuscht werden: {card_id}")
+    if len(re.findall(r'<figure class="task-preview"', html)) != len(expected):
+        raise RuntimeError("Jede Aufgabe braucht genau eine einheitliche Vorschau.")
+    if "lehrperson__" in content or "muster_schnupperlehrbrief" in content or "muster_links_und_quellen" in content:
+        raise RuntimeError("Lehrer-Musterlösungen dürfen nicht als Schüler-Vorschaubilder erscheinen.")
+    if "qa/3rd-round/pages/START_" in html:
+        raise RuntimeError("PLUS-Vorschauen bleiben bewusst schematisch, keine Musterlösung oder Startdatei-Abbildung.")
     for i in range(1, 14):
         if not re.search(r'class="task-number">A' + str(i) + r"</span>", html):
             raise RuntimeError(f"A{i} fehlt.")
