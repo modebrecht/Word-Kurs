@@ -87,41 +87,44 @@ def check(page, name, columns):
     return geometry
 
 def check_downloads(page):
-    page.goto("/", wait_until="networkidle")
+    """Check every file as a single intentional student download.
+
+    Chromium blocks 11+ consecutive downloads from the same site in one
+    browsing context. Students instead download one task at a time. Isolate
+    each file in a new context so the QA covers all 18 without disabling
+    normal browser protections.
+    """
+    origin = urlsplit(page.url)
+    base_url = f"{origin.scheme}://{origin.netloc}"
+    browser = page.context.browser
     downloads = []
-    links = page.locator(".card-actions a[download]")
-    for index in range(links.count()):
-        link = links.nth(index)
-        href, filename = link.get_attribute("href"), link.get_attribute("download")
-        src = (ROOT / unquote(urlsplit(href).path)).resolve()
-        if not src.is_relative_to(ROOT.resolve()):
-            raise AssertionError(f"Unsafe download path: {href}")
-        print(f"CHECKING DOWNLOAD {index + 1}/18 {href} -> {filename}", flush=True)
-        print("LINK HTML:", link.evaluate("(e) => e.outerHTML"), flush=True)
-        current = page.url
+    if page.locator(".card-actions a[download]").count() != 18:
+        raise AssertionError("Student index must have 18 file downloads")
+    for index in range(18):
+        context = browser.new_context(base_url=base_url, accept_downloads=True)
         try:
-            with page.expect_download(timeout=8000) as ev:
+            check_page = context.new_page()
+            check_page.goto("/", wait_until="domcontentloaded")
+            link = check_page.locator(".card-actions a[download]").nth(index)
+            href, filename = link.get_attribute("href"), link.get_attribute("download")
+            src = (ROOT / unquote(urlsplit(href).path)).resolve()
+            if not src.is_relative_to(ROOT.resolve()):
+                raise AssertionError(f"Unsafe download path: {href}")
+            print(f"Checking single-file download {index+1}/18: {filename}", flush=True)
+            with check_page.expect_download(timeout=15000) as event:
                 link.click()
-            dl = ev.value
-        except Exception as exc:
-            print("DOWNLOAD DEBUG page_url:", page.url, "before:", current, flush=True)
-            print("DOWNLOAD DEBUG document title:", page.title(), flush=True)
-            try:
-                print("DOWNLOAD DEBUG direct response:", page.request.get(
-                    f"{page.url.split('/', 3)[0]}//{urlsplit(page.url).netloc}/{href}"
-                ).status, flush=True)
-            except Exception as test_error:
-                print("DOWNLOAD DEBUG direct response error:", test_error, flush=True)
-            raise AssertionError(f"No download event for {index + 1}/18: {href}: {exc}") from exc
-        if dl.failure() or dl.suggested_filename != filename:
-            raise AssertionError(f"Download failed or wrong name: {href}")
-        a = hashlib.sha256(src.read_bytes()).hexdigest()
-        b = hashlib.sha256(Path(dl.path()).read_bytes()).hexdigest()
-        if a != b:
-            raise AssertionError(f"Corrupt download: {href}")
-        downloads.append({"name": filename, "bytes": src.stat().st_size, "sha256": a})
+            dl = event.value
+            if dl.failure() or dl.suggested_filename != filename:
+                raise AssertionError(f"Download failed or wrong name: {href}")
+            expected = hashlib.sha256(src.read_bytes()).hexdigest()
+            actual = hashlib.sha256(Path(dl.path()).read_bytes()).hexdigest()
+            if expected != actual:
+                raise AssertionError(f"Corrupt/truncated download: {href}")
+            downloads.append({"name": filename, "bytes": src.stat().st_size, "sha256": expected})
+        finally:
+            context.close()
     if len(downloads) != 18:
-        raise AssertionError(f"Expected 18 real file downloads, got {len(downloads)}")
+        raise AssertionError("Not all 18 links delivered downloadable files")
     return downloads
 
 def main():

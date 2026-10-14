@@ -54,3 +54,5 @@ Das **Repository ist öffentlich** und enthält auch benotete Prüfungen, Muster
 - Unter Desktop werden alle 18 Downloadlinks wirklich angeklickt; Dateinamen und SHA256-Prüfsummen der empfangenen Dateien müssen mit den Originalen übereinstimmen. Mobiler A7-Bilddownload wird zusätzlich geprüft.
 - CI schreibt vier echte Screenshots und eine JSON-Auswertung nach `qa/browser/`; **automatische Tests ersetzen die spätere Sichtprüfung nicht**.
 - Unverändert: kein Deployment und keine Veröffentlichung des Repository-Inhalts. Native Word 365, Schul-PC-Tests und Schutz der im Repository vorhandenen Prüfungsdateien sind separate Gates.
+
+**Browser-Testpräzisierung:** Ein erster CI-Lauf löste zehn Downloads hintereinander in derselben Chromium-Sitzung aus. Chromium blockierte dann weitere automatische Downloads (Browser-Schutzmechanismus). Die reale Schülernutzung ist ein einzelner Download je Aufgabe. Der vollständige QA-Gate prüft darum jeden der 18 Downloads in einer separaten Inkognito-Browsersitzung: tatsächlicher Klick, Download-Ereignis, Dateiname und SHA256-Dateiintegrität. Der Browserschutz bleibt aktiv und wird nicht abgeschaltet.
