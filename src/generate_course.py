@@ -7,6 +7,7 @@ from pathlib import Path
 import build_steckbrief
 import build_uebungstest
 import build_word_test
+import build_ergaenzungen
 from build_runtime import install_deterministic_docx_save, staged_course_root
 from validate_build import validate_course_package
 from worksheets import a01, a02, a03, a04, a05, a06, a07, a08, a09, a10, a11, a12, a13
@@ -40,6 +41,14 @@ STUDENT_PACKAGES = {
     'UEBUNGSTEST': (
         'Uebungstest_Word_Paket.zip',
         ('Uebungstest_Word.docx', 'Uebungstest_Ausgangsdokument.docx', 'assets/uebungstest_greifensee.png'),
+    ),
+    'PLUS_BRIEF': (
+        'ZUSATZ_Schnupperlehrbrief_Paket.zip',
+        ('ZUSATZ_Schnupperlehrbrief.docx', 'START_Schnupperlehrbrief.docx'),
+    ),
+    'PLUS_LINKS': (
+        'ZUSATZ_Links_und_Quellen_Paket.zip',
+        ('ZUSATZ_Links_und_Quellen.docx', 'START_Links_und_Quellen.docx'),
     ),
     'WORD_TEST': (
         'Word_Test_Paket.zip',
@@ -93,6 +102,14 @@ Vollständiger Arbeitsstand des Word-Kurses.
 - A12 – Selbstständig gestalten
 - A13 – Gesamtauftrag / Prüfungsvorbereitung
 
+## Freiwillige Zusatzaufträge (nicht Teil der Noten)
+
+- `ZUSATZ_Schnupperlehrbrief.docx` + `START_Schnupperlehrbrief.docx` – Schnupperlehr-Brief und PDF-Export
+- `ZUSATZ_Links_und_Quellen.docx` + `START_Links_und_Quellen.docx` – zwei echte Hyperlinks und eine Quellenzeile
+- `lehrperson/LEHRPERSONENHILFEN_V3.docx` und zwei Musterlösungen für die Lehrperson
+
+Fertige Schülerpakete: `pakete/ZUSATZ_Schnupperlehrbrief_Paket.zip` und `pakete/ZUSATZ_Links_und_Quellen_Paket.zip`.
+
 ## Schülerpakete mit Bilddateien
 
 Für Aufgaben, die eine separate Bilddatei benötigen, liegen unter `pakete/` fertige ZIP-Dateien. Im ZIP liegen DOCX und benötigte PNG-Datei(en) direkt nebeneinander.
@@ -129,6 +146,7 @@ def _build_complete_package(root: Path):
     build_uebungstest.build_all(root)
     build_steckbrief.build_all(root)
     build_word_test.build_all(root)
+    build_ergaenzungen.build_all(root)
     build_student_packages(root)
     write_readme(root)
     validate_course_package(root)

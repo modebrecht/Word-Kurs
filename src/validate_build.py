@@ -31,6 +31,16 @@ EXPECTED_DOCX = (
     "Word_Test.docx",
     "Word_Test_Ausgangsdokument.docx",
     "Word_Test_Korrekturblatt.docx",
+    "ZUSATZ_Schnupperlehrbrief.docx",
+    "START_Schnupperlehrbrief.docx",
+    "ZUSATZ_Links_und_Quellen.docx",
+    "START_Links_und_Quellen.docx",
+)
+
+EXPECTED_TEACHER_DOCX = (
+    'lehrperson/MUSTER_Schnupperlehrbrief.docx',
+    'lehrperson/MUSTER_Links_und_Quellen.docx',
+    'lehrperson/LEHRPERSONENHILFEN_V3.docx',
 )
 
 EXPECTED_ASSETS = (
@@ -58,6 +68,14 @@ EXPECTED_PACKAGES = {
     "pakete/A13_Gesamtauftrag_Pruefungsvorbereitung.zip": (
         "A13_Gesamtauftrag_Pruefungsvorbereitung.docx",
         "a13_bern_altstadt.png",
+    ),
+    "pakete/ZUSATZ_Schnupperlehrbrief_Paket.zip": (
+        "ZUSATZ_Schnupperlehrbrief.docx",
+        "START_Schnupperlehrbrief.docx",
+    ),
+    "pakete/ZUSATZ_Links_und_Quellen_Paket.zip": (
+        "ZUSATZ_Links_und_Quellen.docx",
+        "START_Links_und_Quellen.docx",
     ),
     "pakete/Uebungstest_Word_Paket.zip": (
         "Uebungstest_Word.docx",
@@ -221,6 +239,7 @@ def validate_course_package(root: Path) -> tuple[int, int, int]:
 
     missing = [name for name in EXPECTED_DOCX if not (output / name).is_file()]
     missing += [name for name in EXPECTED_ASSETS if not (output / name).is_file()]
+    missing += [name for name in EXPECTED_TEACHER_DOCX if not (output / name).is_file()]
     missing += [name for name in EXPECTED_PACKAGES if not (output / name).is_file()]
     if not (output / "README.md").is_file():
         missing.append("README.md")
@@ -230,6 +249,25 @@ def validate_course_package(root: Path) -> tuple[int, int, int]:
     docx_files = sorted(output.glob("*.docx"))
     for path in docx_files:
         _validate_docx(path)
+    for teacher_rel in EXPECTED_TEACHER_DOCX:
+        _validate_docx(output / teacher_rel)
+    for file_name, phrase in {
+        "A1_Text_formatieren.docx": "A1_Nachname_Vorname.docx",
+        "A7_Bilder_in_Word.docx": "Alternativtext",
+        "ZUSATZ_Schnupperlehrbrief.docx": "Schnupperbrief_Nachname.pdf",
+        "ZUSATZ_Links_und_Quellen.docx": "Strg + K",
+    }.items():
+        if phrase not in _docx_text(output / file_name):
+            raise RuntimeError(f"V3 learning element missing: {file_name}: {phrase}")
+    sample_links = output / "lehrperson/MUSTER_Links_und_Quellen.docx"
+    with zipfile.ZipFile(sample_links, "r") as z:
+        rels = z.read("word/_rels/document.xml.rels").decode("utf-8")
+        body = z.read("word/document.xml").decode("utf-8")
+    for target in ("https://www.berufsberatung.ch/", "https://www.sbb.ch/"):
+        if target not in rels:
+            raise RuntimeError(f"Missing real hyperlink target in solution: {target}")
+    if body.count("<w:hyperlink") != 2:
+        raise RuntimeError("Expected exactly two real hyperlinks in link solution.")
 
     png_files = sorted((output / "assets").rglob("*.png"))
     if not png_files:

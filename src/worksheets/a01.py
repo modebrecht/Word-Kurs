@@ -90,6 +90,7 @@ def build_document(out: Path, toolbar_path: Path):
     add_step(r,'E',[('Markiere den letzten Satz',True,False,NAVY),('  →  ',False,False,None),('Kursiv',False,True,NAVY)])
     add_workarea(doc,'HIER','ARBEITEN 01',['Mein Lieblingsort','Der Walensee liegt in der Ostschweiz. Auf der einen Seite ragen die Churfirsten steil auf, auf der anderen liegt das Glarnerland.','Im Sommer kann man baden, wandern oder einfach am Ufer sitzen.','Besonders schön finde ich den Blick über den See am Abend.'])
     add_tip(doc,'Etwas falsch gemacht? Mit Ctrl + Z machst du den letzten Schritt rückgängig.')
+    add_tip(doc,'DATEI · Speichere im Ordner IB als A1_Nachname_Vorname.docx. Schliess das Dokument und öffne es wieder. Wenn du das noch nie gemacht hast, zeigt es dir die Lehrperson.', 'SPEICHERN')
     add_check(doc,'Ist der Titel deutlich anders als der Fliesstext? Sind «Walensee» und «Churfirsten» fett? Ist «Sommer» blau? Ist der letzte Satz kursiv?')
     add_finish(doc); finalise(doc,out,'A1 - Text formatieren')
 

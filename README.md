@@ -15,6 +15,10 @@ Das vollständige Paket ist erstellt:
 
 Die fertigen Dateien liegen unter [arbeitsblaetter/](arbeitsblaetter/README.md). Benötigte Bilddateien und visuelle Vorlagen liegen in `arbeitsblaetter/assets/`.
 
+## Dritte QA-Runde (Branch `3rd-round-qa`)
+
+Zwei **freiwillige**, nicht benotete Transferaufträge ergänzen den Pflichtkurs: Schnupperlehr-Brief mit PDF und echte Hyperlinks mit Quellenangabe. Dazu kommen Musterlösungen und Lehrpersonenhinweise. Der Pflichtkurs A1–A13, Übungstest, Steckbrief und Word-Test bleibt bestehen. Umsetzung und QA-Gates stehen unter [planung/3RD_ROUND_QA.md](planung/3RD_ROUND_QA.md).
+
 ## Bewertungsmodell
 
 Es entstehen drei Noten:

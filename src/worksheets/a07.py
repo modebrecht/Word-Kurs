@@ -81,6 +81,7 @@ def build_document(out: Path, preview_path: Path, tools_path: Path):
     add_step(r,'E',[('Bild anklicken',True,False,NAVY),('  →  mit der Maus rechts neben den Text ziehen',False,False,None)])
     t=block(doc,'HIER','ARBEITEN',fill_left=PALE,fill_right='FBFCFC',label_color=TEAL_DARK,label_size=11.0); r=t.cell(0,1); p=r.paragraphs[0]; _clear(p); x=p.add_run('UNSER SCHULHAUS'); set_run(x,size=18,bold=True,color=NAVY); add_text(r,'Im Schulhaus Sonnenberg lernen rund 240 Schülerinnen und Schüler.',10.6); add_text(r,'Die Bibliothek befindet sich im Erdgeschoss.',10.6); add_text(r,'In der grossen Pause ist sie geöffnet.',10.6)
     add_tip(doc,'Für den Textumbruch: Bild anklicken → kleines Layout-Symbol neben dem Bild → «Quadrat». Dann kann der Text am Bild vorbeilaufen.')
+    add_tip(doc,'PLUS (freiwillig): Rechtsklick auf das Bild → Alternativtext anzeigen/bearbeiten. Beschreibe das Bild kurz: «Illustration eines Schulhauses mit Fenstern und Eingang». Erst die Hauptaufgabe fertigstellen.', 'PLUS')
     add_check(doc,'Ist der weisse Rand weg? Ist das Bild ungefähr 5,5 cm breit? Steht es rechts? Läuft der Text links am Bild vorbei und darunter wieder über die ganze Breite?')
     add_finish(doc,'Gib dieses Arbeitsblatt zusammen mit der Bilddatei in deinem Ordner "IB" ab.')
     finalise(doc,out,'A7 - Bilder in Word')
