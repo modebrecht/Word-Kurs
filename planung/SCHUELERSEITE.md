@@ -56,3 +56,13 @@ Das **Repository ist öffentlich** und enthält auch benotete Prüfungen, Muster
 - Unverändert: kein Deployment und keine Veröffentlichung des Repository-Inhalts. Native Word 365, Schul-PC-Tests und Schutz der im Repository vorhandenen Prüfungsdateien sind separate Gates.
 
 **Browser-Testpräzisierung:** Ein erster CI-Lauf löste zehn Downloads hintereinander in derselben Chromium-Sitzung aus. Chromium blockierte dann weitere automatische Downloads (Browser-Schutzmechanismus). Die reale Schülernutzung ist ein einzelner Download je Aufgabe. Der vollständige QA-Gate prüft darum jeden der 18 Downloads in einer separaten Inkognito-Browsersitzung: tatsächlicher Klick, Download-Ereignis, Dateiname und SHA256-Dateiintegrität. Der Browserschutz bleibt aktiv und wird nicht abgeschaltet.
+
+
+## Finale Browser-Sichtprüfung – Fix 1 PASS (14.10.2026)
+
+- **Beleg:** [GitHub Actions 38561500944](https://github.com/modebrecht/Word-Kurs/actions/runs/38561500944), Resultat SUCCESS. Die vier Screenshots sowie der JSON-Messbericht wurden unter [`qa/browser/`](../qa/browser/) veröffentlicht.
+- **Technisch:** echte HTTP-Server-Auslieferung an Chromium; 15/15 Kacheln und semantische Vorschauen, 13/13 reale Bilder geladen, 18/18 Einzel-Dateidownloads mit Dateinamen und SHA256 geprüft, Abschnitte A1–A5 / A6–A10 / A11–A13 / PLUS direkt anspringbar.
+- **Geometrie:** Desktop 1440 px → 3 Spalten, Tablet 820 px → 2, Smartphone 390 px → 1, kleines Smartphone 320 px → 1. Bei allen vier Messungen `documentWidth == viewportWidth`, keine Offender und keine defekten Bilder. Kein horizontales Scrollen.
+- **Sichtprüfung:** Alle vier vollständigen Screenshots einzeln manuell mittels visueller AI-Bildkontrolle betrachtet. Kein abgeschnittener Download-Button, keine überlappenden Texte, keine fehlerhaften oder fehlenden Bilder, korrekt angeordnete Zusatzaufgaben. Auf 320 px bricht der Hero-Titel in mehrere lesbare Zeilen um, ohne Überlauf.
+- **Ursache des ersten CI-Fehlers:** Test versuchte 18 Dateien in einer einzigen Browsersitzung automatisch herunterzuladen; Chromium bremste nach dem zehnten Download. Testkorrektur: eine unabhängige Sitzung pro Download. Browser-Sicherheit bleibt aktiv; der reale Einzeldownload ist nachgewiesen.
+- **Urteil:** **BROWSER-QA PASS für die lokale Schülerseite**. Ein separater öffentlich erreichbarer Hosting-Test (einschliesslich der sicheren Verteilung nur freigegebener Dateien) sowie native Word-365-Schul-PC-Tests bleiben OFFEN. Kein Deployment/Merge.
