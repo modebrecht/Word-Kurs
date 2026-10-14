@@ -5,6 +5,7 @@ on:
     branches: [main, 3rd-round-qa]
     paths:
       - 'src/**'
+      - 'index.html'
       - 'requirements.txt'
       - '.github/workflows/build-word-course.yml'
   workflow_dispatch:
@@ -25,6 +26,8 @@ jobs:
       - run: python src/generate_course.py
       - name: Validate generated package
         run: python src/validate_build.py
+      - name: Validate student landing page (individual downloads only)
+        run: python src/validate_student_index.py
       - name: Render V3 DOCX pages for review
         if: github.ref_name == '3rd-round-qa'
         run: |

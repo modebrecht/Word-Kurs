@@ -4,6 +4,12 @@ Neu konzipierter Word-Kurs für eine 8. Klasse in der Schweiz.
 
 Der bestehende ältere Kurs wird **nicht einfach gekürzt oder modernisiert**, sondern didaktisch neu aufgebaut: kurze Aufträge, wenig Erklärungstext, direktes Arbeiten in Word und zunehmend selbstständige Anwendung.
 
+## Schüler-Startseite (Round 3)
+
+Die responsive [Schülerseite](index.html) zeigt A1–A13 und zwei freiwillige PLUS-Aufträge in 3/2/1 Kacheln mit echten Vorlagenminiaturen, kurzen Erklärungen und **nur einzelnen Word- und ggf. Bilddateien**. **Keine ZIP-Downloads** auf der Schüleroberfläche. Prüfungen und Lehrerdateien werden nicht über diese Seite angeboten.
+
+**Noch nicht veröffentlicht:** Das Einchecken der `index.html` ist kein Deployment. Vor einer externen Veröffentlichung die Zugänglichkeit und Vertraulichkeit der benoteten Prüfungen beachten: Das GitHub-Repository ist öffentlich. Für eine echte Schüler-URL nur freigegebene Schülerdateien bereitstellen. Prüfung: `python src/validate_student_index.py`.
+
 ## Aktueller Stand
 
 Das vollständige Paket ist erstellt:
