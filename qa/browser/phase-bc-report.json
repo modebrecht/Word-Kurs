@@ -1,0 +1,57 @@
+{
+  "status": "PASS",
+  "scope": "localhost Chromium, no live AI/provider integration",
+  "viewports": 4,
+  "pages": 2,
+  "screenshots": 8,
+  "results": {
+    "b-desktop": {
+      "screen": 1365,
+      "page": 1365,
+      "sections": 4,
+      "clipped": []
+    },
+    "c-desktop": {
+      "screen": 1365,
+      "page": 1365,
+      "sections": 4,
+      "clipped": []
+    },
+    "b-tablet": {
+      "screen": 820,
+      "page": 820,
+      "sections": 4,
+      "clipped": []
+    },
+    "c-tablet": {
+      "screen": 820,
+      "page": 820,
+      "sections": 4,
+      "clipped": []
+    },
+    "b-mobile": {
+      "screen": 390,
+      "page": 390,
+      "sections": 4,
+      "clipped": []
+    },
+    "c-mobile": {
+      "screen": 390,
+      "page": 390,
+      "sections": 4,
+      "clipped": []
+    },
+    "b-small-mobile": {
+      "screen": 320,
+      "page": 320,
+      "sections": 4,
+      "clipped": []
+    },
+    "c-small-mobile": {
+      "screen": 320,
+      "page": 320,
+      "sections": 4,
+      "clipped": []
+    }
+  }
+}
