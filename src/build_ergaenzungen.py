@@ -10,7 +10,7 @@ from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.opc.constants import RELATIONSHIP_TYPE as RT
 
-from course_common import base_doc, block, add_text, add_step, add_tip, add_check, add_finish, finalise, NAVY
+from course_common import base_doc, block, add_text, add_step, add_tip, add_check, add_finish, finalise, NAVY, TEAL, TEAL_DARK, PALE_TEAL, WHITE, set_run
 
 
 def _raw_style(doc: Document) -> None:
@@ -23,6 +23,14 @@ def _raw_style(doc: Document) -> None:
     normal.font.size = Pt(11)
     normal.paragraph_format.space_after = Pt(6)
     normal.paragraph_format.line_spacing = 1.15
+    doc.core_properties.subject = "Word-Kurs · Sek 8 · Praxisdokument"
+    doc.core_properties.keywords = "Word-Kurs; Sekundarstufe I; Sek 8; Informatikbildung"
+    heading = doc.styles["Heading 1"]
+    heading.font.name = "Arial"
+    heading.font.size = Pt(17)
+    heading.font.bold = True
+    heading.font.color.rgb = RGBColor.from_string(NAVY)
+    heading.paragraph_format.space_after = Pt(8)
 
 
 def _add_link(paragraph, title: str, target: str) -> None:
@@ -33,7 +41,7 @@ def _add_link(paragraph, title: str, target: str) -> None:
     run = OxmlElement("w:r")
     props = OxmlElement("w:rPr")
     color = OxmlElement("w:color")
-    color.set(qn("w:val"), "116C94")
+    color.set(qn("w:val"), TEAL_DARK)
     props.append(color)
     underline = OxmlElement("w:u")
     underline.set(qn("w:val"), "single")
@@ -184,14 +192,15 @@ def _model_links(out: Path) -> None:
 
 
 def _teacher(out: Path) -> None:
-    doc = Document()
-    _raw_style(doc)
-    doc.core_properties.title = "Lehrpersonenhilfen: Word-Kurs V3"
-    doc.add_heading("Word-Kurs · Ergänzungen V3", 0)
-    doc.add_paragraph(
-        "Die Pflichtfolge A1–A13, der Übungstest, der Steckbrief und der benotete Word-Test bleiben unverändert. "
-        "PLUS 1 und PLUS 2 sind freiwillig und geben keine Fleisspunkte."
+    doc = base_doc(
+        "LP V3", "Lehrpersonenmaterial", "Unterrichtshinweise",
+        "Die Ergänzungen zu A1, A7 und den freiwilligen PLUS-Aufträgen.",
+        "Die Pflichtfolge A1–A13 und alle drei bestehenden Noten bleiben unverändert. "
+        "PLUS 1 und PLUS 2 sind freiwillig und geben keine Fleisspunkte.",
+        header_kind="LEHRPERSON", goal_caption="ÜBERBLICK",
     )
+    doc.core_properties.title = "Lehrpersonenhilfen: Word-Kurs V3"
+    doc.core_properties.subject = "Word-Kurs · Sek 8 · Lehrpersonenmaterial"
 
     sections = [
         (
@@ -237,9 +246,21 @@ def _teacher(out: Path) -> None:
         ),
     ]
     for heading, text in sections:
-        doc.add_heading(heading, level=2)
-        doc.add_paragraph(text)
-    doc.add_heading("Kurzraster: formative Beobachtung", level=2)
+        if " · " in heading:
+            code, subtitle = heading.split(" · ", 1)
+        else:
+            code, subtitle = "A12/A13", "Leistungsnachweise"
+        section = block(doc, code, subtitle, label_size=10.0)
+        paragraph = section.cell(0, 1).paragraphs[0]
+        paragraph.paragraph_format.line_spacing = 1.08
+        paragraph.paragraph_format.space_after = Pt(1)
+        run = paragraph.add_run(text)
+        set_run(run, size=9.45)
+    check = block(
+        doc, "CHECK", "Beobachtung", fill_left=PALE_TEAL,
+        fill_right=PALE_TEAL, label_color=TEAL_DARK, label_size=11.0,
+    )
+    cell = check.cell(0, 1)
     for item in [
         "A1: vor Arbeitsbeginn speichern; nach Änderungen Strg + S; Datei im korrekten Ordner erneut öffnen.",
         "A7: dekorativ vs. informativ begründet entscheiden, ohne die Bildlayout-Hauptaufgabe zu verändern.",
@@ -248,7 +269,7 @@ def _teacher(out: Path) -> None:
         "Bei Schwierigkeiten: Bedienung sichtbar vormachen; keine versteckten Zusatzanforderungen aufbauen.",
         "Extern offen: Microsoft Word 365 auf Schul-PCs und echter Schülerdurchlauf samt Zeitmessung.",
     ]:
-        doc.add_paragraph(item, style="List Bullet")
+        add_text(cell, "• " + item, size=9.2, after=.35)
     doc.save(out)
 
 

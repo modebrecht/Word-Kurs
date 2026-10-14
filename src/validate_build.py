@@ -7,6 +7,7 @@ from pathlib import Path
 from xml.etree import ElementTree
 
 from docx import Document
+from docx.shared import RGBColor
 from PIL import Image
 
 from grading import effort_grade, final_grade_with_drop_str, swiss_grade_str
@@ -231,6 +232,44 @@ def _validate_word_test_key(path: Path) -> None:
         raise RuntimeError("Word-test grading key does not define half-up rounding explicitly.")
 
 
+
+def _validate_v3_visual_identity(output: Path) -> None:
+    """One editorial identity; authentic student-produced documents remain unbranded."""
+    for name, role in (
+        ("A1_Text_formatieren.docx", "ARBEITSBLATT"),
+        ("A7_Bilder_in_Word.docx", "ARBEITSBLATT"),
+        ("ZUSATZ_Schnupperlehrbrief.docx", "ARBEITSBLATT"),
+        ("ZUSATZ_Links_und_Quellen.docx", "ARBEITSBLATT"),
+        ("lehrperson/LEHRPERSONENHILFEN_V3.docx", "LEHRPERSON"),
+    ):
+        doc = Document(output / name)
+        header = " ".join(cell.text for table in doc.sections[0].header.tables for row in table.rows for cell in row.cells)
+        footer = " ".join(cell.text for table in doc.sections[0].footer.tables for row in table.rows for cell in row.cells)
+        if "WORD KURS" not in header or role not in header or "WORD KURS" not in footer:
+            raise RuntimeError(f"V3 header/footer identity missing: {name} ({role})")
+        if doc.styles["Normal"].font.name != "Arial":
+            raise RuntimeError(f"V3 normal font differs from course: {name}")
+        with zipfile.ZipFile(output / name) as archive:
+            xml = archive.read("word/document.xml").decode("utf-8")
+        if "17324D" not in xml and "17324d" not in xml:
+            raise RuntimeError(f"V3 Navy accent missing: {name}")
+
+    for name in (
+        "START_Schnupperlehrbrief.docx", "START_Links_und_Quellen.docx",
+        "lehrperson/MUSTER_Schnupperlehrbrief.docx",
+        "lehrperson/MUSTER_Links_und_Quellen.docx",
+    ):
+        doc = Document(output / name)
+        if doc.styles["Normal"].font.name != "Arial":
+            raise RuntimeError(f"V3 practice document font differs: {name}")
+        if "Word-Kurs" not in doc.core_properties.subject:
+            raise RuntimeError(f"V3 practice document provenance missing: {name}")
+    for name in ("START_Links_und_Quellen.docx", "lehrperson/MUSTER_Links_und_Quellen.docx"):
+        heading = Document(output / name).styles["Heading 1"].font
+        if heading.name != "Arial" or heading.color.rgb != RGBColor(0x17, 0x32, 0x4D):
+            raise RuntimeError(f"V3 link-practice heading differs from course: {name}")
+
+
 def validate_course_package(root: Path) -> tuple[int, int, int]:
     root = Path(root)
     output = root / "arbeitsblaetter"
@@ -251,6 +290,7 @@ def validate_course_package(root: Path) -> tuple[int, int, int]:
         _validate_docx(path)
     for teacher_rel in EXPECTED_TEACHER_DOCX:
         _validate_docx(output / teacher_rel)
+    _validate_v3_visual_identity(output)
     for file_name, phrase in {
         "A1_Text_formatieren.docx": "START: Speichere das Arbeitsblatt zuerst",
         "A7_Bilder_in_Word.docx": "Als dekorativ kennzeichnen",

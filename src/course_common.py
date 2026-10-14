@@ -163,7 +163,7 @@ def add_step(cell, letter, parts, after=0.45):
     return p
 
 
-def base_doc(code: str, topic: str, title: str, subtitle: str, learning_goal: str) -> Document:
+def base_doc(code: str, topic: str, title: str, subtitle: str, learning_goal: str, *, header_kind: str = 'ARBEITSBLATT', goal_caption: str = 'Ich kann ...') -> Document:
     doc = Document()
     sec = doc.sections[0]
     sec.page_width = Cm(21)
@@ -187,7 +187,7 @@ def base_doc(code: str, topic: str, title: str, subtitle: str, learning_goal: st
     _fill(h.cell(0,0), NAVY)
     _fill(h.cell(0,1), PALE)
     _fill(h.cell(0,2), PALE_TEAL)
-    texts = [("WORD KURS", WHITE), ("SEKUNDARSTUFE I · SEK 8", MID), (f"ARBEITSBLATT  {code}", TEAL_DARK)]
+    texts = [("WORD KURS", WHITE), ("SEKUNDARSTUFE I · SEK 8", MID), (f"{header_kind}  {code}", TEAL_DARK)]
     for i,(txt,col) in enumerate(texts):
         p = h.cell(0,i).paragraphs[0]
         p.alignment = WD_ALIGN_PARAGRAPH.LEFT if i == 0 else WD_ALIGN_PARAGRAPH.CENTER
@@ -216,7 +216,7 @@ def base_doc(code: str, topic: str, title: str, subtitle: str, learning_goal: st
     rcell = learning.cell(0,1)
     p = rcell.paragraphs[0]
     _clear(p)
-    r = p.add_run("Ich kann ...")
+    r = p.add_run(goal_caption)
     _font(r, size=12.6, bold=True, color=NAVY)
     add_text(rcell, learning_goal, 9.6, after=0)
 

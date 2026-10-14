@@ -49,3 +49,11 @@ Bis Gates 1–6 mit wirklicher Evidenz belegt sind, bleibt der Branch Status IN 
 Auf demselben Branch werden die sieben festgestellten Schwachstellen geschlossen: (1) A1 Speichern früh und kontrolliert, (2) A7 informatives vs. dekoratives Bild, (3) Briefschema, (4) Brief nach Bearbeitung speichern und PDF erneut mit DOCX vergleichen, (5) Word-Link öffnen (Strg+Klick), (6) belegbarer Fakt statt blosser Quellenabschrift mit variablem Zugriffsdatum, (7) präzisere Lehrpersonenhilfen mit Sek-B-Differenzierung. Automatische Inhalts-/Relationstests ergänzen die bestehende visuelle QA. Keine Änderungen am Notenmodell oder A2–A6/A8–A13.
 
 QA-Bericht wird erst nach einem tatsächlichen erfolgreichen Build und Sichtprüfung aktualisiert. Schul-PC-Word-365 und echte Schülerzeit bleiben UNVERIFIED.
+
+## Visuelle Identität — verbindlicher Standard für alle V3-Dateien
+
+- **Schüler-Arbeitsblätter** (A1, A7, PLUS 1 und PLUS 2): gemeinsamer `base_doc()`-Generator, identischer Navy/Teal-Header, Zweispalten-Raster, Lernziel/Aufgabe/Merke/Check, Footer und Arial.
+- **Lehrpersonenmaterial**: dieselbe gemeinsame `base_doc()`-Architektur mit eindeutiger Rollenbezeichnung `LEHRPERSON`, dem gleichen Header/Footer, Farb- und Tabellenraster; kein abweichendes Word-Standardlayout.
+- **Startdateien und Musterlösungen**: bewusst echte, bearbeitbare Endprodukte statt Arbeitsblätter im Kurspapier. Arial und bei relevanten Überschriften Navy/Teal werden vereinheitlicht; für den echten formellen Brief bleiben die Briefelemente neutral und ungestört. Kurszugehörigkeit ist in den DOCX-Metadaten erkennbar.
+- **Regressionsschutz**: `validate_build.py` kontrolliert die Kurs-Header/Footers, Schrift, Farb-Akzente, die Rollenkennzeichnung und die Metadaten. Das ist nur eine Strukturprüfung; endgültige visuelle QA erfolgt durch die generierten Seitenbilder.
+- Alle Änderungen ausschliesslich aus Python-Generatoren; keine nur manuell modifizierten DOCX-Dateien.
