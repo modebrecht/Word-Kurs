@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-"""Optionale Transferauftraege V3: keine A14, keine Notenaenderung."""
+"""Optionale Transferaufträge V3: keine A14, keine Notenänderung."""
 from pathlib import Path
 
 from docx import Document
@@ -60,8 +60,8 @@ def _instruction_brief(out: Path) -> None:
     add_text(cell, "Alle Texte sind bereits vorhanden. Du musst nichts neu erfinden. Die Firma und die Person sind fiktiv. Sende diesen Übungsbrief nicht ab.", 9.3)
     add_step(cell, "A", [("A4 Hochformat, Ränder Normal, Arial 11 pt.", True, False, NAVY)])
     add_step(cell, "B", [("Absender oben, Empfänger darunter, Datum rechts, dann Betreff.", True, False, NAVY)])
-    add_step(cell, "C", [("Betreff fett; Anrede, zwei kurze Textabsaetze und Grussformel gut lesbar.", True, False, NAVY)])
-    add_step(cell, "D", [("Keine Abstaende mit vielen Leerzeichen erzeugen. Nutze Absätze und Absatzabstaende.", True, False, NAVY)])
+    add_step(cell, "C", [("Betreff fett; Anrede, zwei kurze Textabsätze und Grussformel gut lesbar.", True, False, NAVY)])
+    add_step(cell, "D", [("Keine Abstände mit vielen Leerzeichen erzeugen. Nutze Absätze und Absatzabstände.", True, False, NAVY)])
     t = block(doc, "03", "EXPORTIEREN")
     cell = t.cell(0, 1)
     add_text(cell, "Kontrolliere in der Druckvorschau: genau 1 Briefseite. Speichere ausserdem eine PDF-Datei, zum Beispiel über Datei → Speichern unter → Dateityp PDF (alternativ Datei → Exportieren). Name: Schnupperbrief_Nachname.pdf.", 9.25)
@@ -82,7 +82,7 @@ def _starter_brief(out: Path) -> None:
         "Anfrage für eine Schnupperlehre als Informatikerin EFZ",
         "Sehr geehrte Damen und Herren",
         "Ich interessiere mich für den Beruf Informatikerin EFZ. Darum möchte ich gerne einen Einblick in den Berufsalltag erhalten.",
-        "Über eine Moeglichkeit zum Schnuppern wuerde ich mich freuen. Ich bin motiviert und lerne gern Neues.",
+        "Über eine Möglichkeit zum Schnuppern würde ich mich freuen. Ich bin motiviert und lerne gern Neues.",
         "Freundliche Grüsse", "Sara Muster",
     ]
     for item in lines:
@@ -93,7 +93,7 @@ def _starter_brief(out: Path) -> None:
 def _model_brief(out: Path) -> None:
     doc = Document()
     _raw_style(doc)
-    doc.core_properties.title = "Musterloesung: Schnupperlehrbrief"
+    doc.core_properties.title = "Musterlösung: Schnupperlehrbrief"
     for s in ["Sara Muster", "Beispielweg 4", "4500 Solothurn"]:
         p = doc.add_paragraph(s)
         p.paragraph_format.space_after = Pt(0)
@@ -111,7 +111,7 @@ def _model_brief(out: Path) -> None:
     r.bold = True
     doc.add_paragraph("Sehr geehrte Damen und Herren")
     doc.add_paragraph("Ich interessiere mich für den Beruf Informatikerin EFZ. Darum möchte ich gerne einen Einblick in den Berufsalltag erhalten.")
-    doc.add_paragraph("Über eine Moeglichkeit zum Schnuppern wuerde ich mich freuen. Ich bin motiviert und lerne gern Neues.")
+    doc.add_paragraph("Über eine Möglichkeit zum Schnuppern würde ich mich freuen. Ich bin motiviert und lerne gern Neues.")
     doc.add_paragraph("Freundliche Grüsse")
     doc.add_paragraph("Sara Muster")
     doc.save(out)
@@ -120,18 +120,18 @@ def _model_brief(out: Path) -> None:
 def _instruction_links(out: Path) -> None:
     doc = base_doc(
         "PLUS 2", "Links & Quellen", "Links mit Sinn",
-        "Verbinde verstaendliche Linktexte mit richtigen Webseiten und nenne eine Quelle.",
+        "Verbinde verständliche Linktexte mit richtigen Webseiten und nenne eine Quelle.",
         "einen echten Word-Hyperlink setzen und eine einfache Quellenangabe schreiben.",
     )
     t = block(doc, "01", "ZWEI LINKS")
     cell = t.cell(0, 1)
     add_text(cell, "Öffne START_Links_und_Quellen.docx und speichere eine Kopie im Ordner IB.", 9.5)
-    add_step(cell, "A", [("Markiere «Berufsberatung Schweiz» und druecke Strg + K.", True, False, NAVY), ("  Adresse: https://www.berufsberatung.ch/", False, False, None)])
-    add_step(cell, "B", [("Markiere «SBB Fahrplan» und druecke Strg + K.", True, False, NAVY), ("  Adresse: https://www.sbb.ch/", False, False, None)])
+    add_step(cell, "A", [("Markiere «Berufsberatung Schweiz» und drücke Strg + K.", True, False, NAVY), ("  Adresse: https://www.berufsberatung.ch/", False, False, None)])
+    add_step(cell, "B", [("Markiere «SBB Fahrplan» und drücke Strg + K.", True, False, NAVY), ("  Adresse: https://www.sbb.ch/", False, False, None)])
     t = block(doc, "02", "QUELLE")
     cell = t.cell(0, 1)
-    add_text(cell, "Ergaenze die vorhandene Zeile «Quelle:» mit diesen Angaben: Berufsberatung Schweiz · Informationen zu Berufen · www.berufsberatung.ch · Zugriffsdatum heute. Die Angabe nennt, wo man Informationen nachlesen kann.", 9.4)
-    add_tip(doc, "Ein guter Linktext verraet das Ziel. «Berufsberatung Schweiz» ist besser als «Hier klicken». Die Quelle soll zu der Information passen.", "MERKE")
+    add_text(cell, "Ergänze die vorhandene Zeile «Quelle:» mit diesen Angaben: Berufsberatung Schweiz · Informationen zu Berufen · www.berufsberatung.ch · Zugriffsdatum heute. Die Angabe nennt, wo man Informationen nachlesen kann.", 9.4)
+    add_tip(doc, "Ein guter Linktext verrät das Ziel. «Berufsberatung Schweiz» ist besser als «Hier klicken». Die Quelle soll zu der Information passen.", "MERKE")
     add_check(doc, "Sind beide Wörtergruppen wirklich anklickbare Links? Öffnen sich die angegebenen Webseiten? Ist die Quellenzeile ergänzt?")
     add_finish(doc, "Speichere die bearbeitete DOCX im Ordner IB. Dieser Zusatzauftrag ist freiwillig und nicht Teil des Word-Tests.")
     finalise(doc, out, "Zusatz: Links und Quellen")
@@ -151,7 +151,7 @@ def _starter_links(out: Path) -> None:
 def _model_links(out: Path) -> None:
     doc = Document()
     _raw_style(doc)
-    doc.core_properties.title = "Musterloesung: Links und Quellen"
+    doc.core_properties.title = "Musterlösung: Links und Quellen"
     doc.add_heading("Hilfreiche Webseiten für Schule und Beruf", 1)
     p = doc.add_paragraph("Für Berufsinformationen: ")
     _add_link(p, "Berufsberatung Schweiz", "https://www.berufsberatung.ch/")
@@ -165,19 +165,19 @@ def _teacher(out: Path) -> None:
     doc = Document()
     _raw_style(doc)
     doc.core_properties.title = "Lehrpersonenhilfen: Word-Kurs 3rd-round-qa"
-    doc.add_heading("Word-Kurs: gezielte Ergaenzungen V3", 0)
-    doc.add_paragraph("Die Pflichtfolge A1–A13 und alle bestehenden Prüfungen bleiben unveraendert. Die zwei Zusatzauftraege werden nicht in die Fleissnote aufgenommen.")
+    doc.add_heading("Word-Kurs: gezielte Ergänzungen V3", 0)
+    doc.add_paragraph("Die Pflichtfolge A1–A13 und alle bestehenden Prüfungen bleiben unverändert. Die zwei Zusatzaufträge werden nicht in die Fleissnote aufgenommen.")
     topics = [
         ("A1 · Dateisicherheit (Kurzroutine, 5–8 Min.)",
-         "Vorbereitung: Speicherort IB zeigen. Demonstration: Dokument benennen, speichern, schliessen, wieder oeffnen. Typischer Fehler: Datei irgendwo in Downloads abgelegt. Formativ: Jedes Kind zeigt die gespeicherte Datei am korrekten Ort. Bei Bedarf später erneut üben."),
+         "Vorbereitung: Speicherort IB zeigen. Demonstration: Dokument benennen, speichern, schliessen, wieder öffnen. Typischer Fehler: Datei irgendwo in Downloads abgelegt. Formativ: Jedes Kind zeigt die gespeicherte Datei am korrekten Ort. Bei Bedarf später erneut üben."),
         ("A7 · Alternativtext (freiwillig, 5 Min.)",
          "Nach der Hauptaufgabe kurz zeigen: Rechtsklick auf Bild → Alternativtext anzeigen/bearbeiten. Nur Bildinhalt und Zweck beschreiben, nicht 'Bild von'. Alternative: dekorative Bilder als dekorativ kennzeichnen. Keine Pflicht für A7 und keine neue Prüfungsanforderung."),
         ("PLUS 1 · Schnupperlehrbrief (ca. 45 Min.)",
-         "Vorbereitung: Aufgabenblatt und START_Schnupperlehrbrief.docx bereitstellen. Einstieg: Absender / Empfänger / Datum / Betreff zeigen. 5 Min Demo, 25 Min gestalten, 10 Min PDF und Rückkontrolle, 5 Min Reserve. Hilfen: markierte Positionen, Musterloesung nur für Lehrperson. Formativ: genau einseitige DOCX und PDF, gleiche Inhalte. Nicht an echte Firmen senden."),
+         "Vorbereitung: Aufgabenblatt und START_Schnupperlehrbrief.docx bereitstellen. Einstieg: Absender / Empfänger / Datum / Betreff zeigen. 5 Min Demo, 25 Min gestalten, 10 Min PDF und Rückkontrolle, 5 Min Reserve. Hilfen: markierte Positionen, Musterlösung nur für Lehrperson. Formativ: genau einseitige DOCX und PDF, gleiche Inhalte. Nicht an echte Firmen senden."),
         ("PLUS 2 · Links und Quellen (ca. 20–25 Min.)",
          "Vorbereitung: Aufgabenblatt und START_Links_und_Quellen.docx. 3 Min Demo Strg+K, 12 Min Links, 5 Min Quellenzeile, 5 Min Kontrolle. Technik: Internetzugriff auf zwei offizielle Seiten prüfen. Formativ: zwei echte Hyperlink-Ziele, lesbare Linktexte, Quellenzeile mit Zugriffsdatum."),
         ("A12/A13 & Prüfungen",
-         "A12/A13 bleiben im Hauptauftrag ohne neue Pflichtfunktion. Kein PDF oder Hyperlink wird im bestehenden 30-Punkte-Test unangekuendigt verlangt. Die Zusatzauftraege koennen nach dem Pflichtkurs oder als freiwillige Wahlaufgaben eingesetzt werden."),
+         "A12/A13 bleiben im Hauptauftrag ohne neue Pflichtfunktion. Kein PDF oder Hyperlink wird im bestehenden 30-Punkte-Test unangekuendigt verlangt. Die Zusatzaufträge können nach dem Pflichtkurs oder als freiwillige Wahlaufgaben eingesetzt werden."),
     ]
     for heading, body in topics:
         doc.add_heading(heading, level=2)
@@ -185,11 +185,11 @@ def _teacher(out: Path) -> None:
     doc.add_heading("Beobachtungskriterien", level=2)
     for s in [
         "Dateisicherheit: richtiger Speicherort und Dateiname; Datei lässt sich erneut finden.",
-        "Brief: Adressbloecke, Datum, Betreff, Abschnitte, Grussformel, 1 Seite, identische PDF-Kopie.",
-        "Links: echte anklickbare Beziehungen (nicht nur blau gefaerbter Text).",
+        "Brief: Adressblöcke, Datum, Betreff, Abschnitte, Grussformel, 1 Seite, identische PDF-Kopie.",
+        "Links: echte anklickbare Beziehungen (nicht nur blau gefärbter Text).",
         "Quellen: Urheber / Anbieter, Seitenthema, Adresse und Zugriffstag.",
         "Bei Problemen zuerst technische Bedienung vormachen; nicht zugleich Textproduktion und neue Word-Funktionen fordern.",
-        "Letztes Gate: auf den tatsaechlichen Schul-PCs in Word 365 prüfen. LibreOffice- oder CI-Build ist kein Ersatz.",
+        "Letztes Gate: auf den tatsächlichen Schul-PCs in Word 365 prüfen. LibreOffice- oder CI-Build ist kein Ersatz.",
     ]:
         doc.add_paragraph(s, style="List Bullet")
     doc.save(out)
