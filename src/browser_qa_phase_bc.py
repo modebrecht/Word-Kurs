@@ -22,7 +22,7 @@ def test_b(page):
     assert "Textentwurf" in page.locator("#demo-preview").inner_text()
     assert page.locator('[data-tool="ki"]').get_attribute("aria-pressed") == "true"
     page.locator('[data-tool="dossier"]').click()
-    assert "Dossier" in page.locator("#demo-preview").inner_text()
+    assert "bewerbungsdossier" in page.locator("#demo-preview").inner_text().lower()
     page.locator('[data-tool="word"]').click()
     assert "Word" in page.locator("#demo-preview").inner_text()
     for n, v in [(1, "word"), (2, "ki"), (3, "dossier")]:
